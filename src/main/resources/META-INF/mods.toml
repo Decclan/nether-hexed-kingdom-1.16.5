@@ -1,0 +1,55 @@
+
+modLoader="javafml" #mandatory
+# A version range to match for said mod loader - for regular FML @Mod it will be the forge version
+loaderVersion="[36,)" #mandatory 
+
+license="All rights reserved"
+
+#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
+
+[[mods]] #mandatory
+
+modId="netherhexedkingdom" #mandatory
+# ${} variables useable 
+# ${file.jarVersion} will substitute the value of the Implementation-Version as read from the mod's JAR file metadata
+# see the associated build.gradle script for how to populate this completely automatically during a build
+version="${file.jarVersion}" #mandatory
+
+displayName="Nether Hexed Kingdom" #mandatory
+
+#JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
+#updateJSONURL="https://change.me.example.invalid/updates.json" #optional
+
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
+# logo in root of the mod JAR
+logoFile="hexedlogo19264.png" #optional
+
+credits="Forge, TelepathicGrunt, SilentChaos512, Opensource Software" #optional
+
+authors="Deimos Hexxus" #optional
+
+#Description (#mandatory)
+description='''
+Fragments of the long lost nether kingdoms.
+'''
+# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+[[dependencies.netherhexedkingdom]] #optional
+    # the modid of the dependency
+    modId="forge" #mandatory
+    # Does this dependency have to exist - if not, ordering below must be specified
+    mandatory=true #mandatory
+    # The version range of the dependency
+    versionRange="[36,)" #mandatory
+    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+    ordering="NONE"
+    # Side this dependency is applied on - BOTH, CLIENT or SERVER
+    side="BOTH"
+    
+# Here's another dependency
+[[dependencies.netherhexedkingdom]]
+    modId="minecraft"
+    mandatory=true
+# This version range declares a minimum of the current minecraft version up to but not including the next major version
+    versionRange="[1.16.5, 1.17.0)"
+    ordering="NONE"
+    side="BOTH"

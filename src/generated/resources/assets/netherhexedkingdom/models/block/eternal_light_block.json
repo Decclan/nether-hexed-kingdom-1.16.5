@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "netherhexedkingdom:block/eternal_light_side",
+    "end": "netherhexedkingdom:block/eternal_light_end"
+  }
+}

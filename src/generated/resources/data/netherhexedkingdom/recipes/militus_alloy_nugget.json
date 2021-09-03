@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "netherhexedkingdom:militus_alloy_ingot"
+    }
+  ],
+  "result": {
+    "item": "netherhexedkingdom:militus_alloy_nugget",
+    "count": 9
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "#m#",
+    "s#s"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:polished_blackstone"
+    },
+    "m": {
+      "item": "minecraft:magma_block"
+    },
+    "s": {
+      "item": "minecraft:polished_blackstone_brick_slab"
+    }
+  },
+  "result": {
+    "item": "netherhexedkingdom:blackstone_firestand_block"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "netherhexedkingdom:block/human_skeleton_bottom_block",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "netherhexedkingdom:block/human_skeleton_bottom_block",
+      "y": 180
+    },
+    "facing=north": {
+      "model": "netherhexedkingdom:block/human_skeleton_bottom_block",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "netherhexedkingdom:block/human_skeleton_bottom_block",
+      "y": -90
+    },
+    "facing=west": {
+      "model": "netherhexedkingdom:block/human_skeleton_bottom_block"
+    },
+    "facing=east": {
+      "model": "netherhexedkingdom:block/human_skeleton_bottom_block",
+      "y": 180
+    }
+  }
+}
