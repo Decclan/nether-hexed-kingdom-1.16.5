@@ -9,17 +9,15 @@ import net.minecraft.world.gen.feature.StructureFeature;
 
 public class NetherConfiguredStructures 
 {
-
 	public static StructureFeature<?, ?> CONFIGURED_RUN_DOWN_HOUSE = NetherStructures.RUN_DOWN_HOUSE.get().configured(IFeatureConfig.NONE);
-
 	public static StructureFeature<?, ?> CONFIGURED_NETHER_WATCH_TOWER = NetherStructures.NETHER_WATCH_TOWER.get().configured(IFeatureConfig.NONE);
-
+	public static StructureFeature<?, ?> CONFIGURED_NETHER_PRISON = NetherStructures.NETHER_PRISON.get().configured(IFeatureConfig.NONE);
 
 	public static void registerConfiguredStructures() {
         Registry<StructureFeature<?, ?>> registry = WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE;
         Registry.register(registry, new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "configured_run_down_house"), CONFIGURED_RUN_DOWN_HOUSE);
-
         Registry.register(registry, new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "configured_hexed_watch_tower"), CONFIGURED_NETHER_WATCH_TOWER);
+        Registry.register(registry, new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "configured_hexed_prison"), CONFIGURED_NETHER_PRISON);
 
         /* add your structure to this to
         * prevent any sort of crash or issue with other mod's custom ChunkGenerators. If they use
@@ -38,5 +36,6 @@ public class NetherConfiguredStructures
         */
         FlatGenerationSettings.STRUCTURE_FEATURES.put(NetherStructures.RUN_DOWN_HOUSE.get(), CONFIGURED_RUN_DOWN_HOUSE);
         FlatGenerationSettings.STRUCTURE_FEATURES.put(NetherStructures.NETHER_WATCH_TOWER.get(), CONFIGURED_NETHER_WATCH_TOWER);
+        FlatGenerationSettings.STRUCTURE_FEATURES.put(NetherStructures.NETHER_PRISON.get(), CONFIGURED_NETHER_PRISON);
     }
 }

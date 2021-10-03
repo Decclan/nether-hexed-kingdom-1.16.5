@@ -3,7 +3,6 @@ package com.deimoshexxus.netherhexedkingdom.data;
 import com.deimoshexxus.netherhexedkingdom.NetherHexedKingdomMain;
 import com.deimoshexxus.netherhexedkingdom.init.ModBlocks;
 import com.deimoshexxus.netherhexedkingdom.init.ModTags;
-import com.deimoshexxus.netherhexedkingdom.init.Registration;
 
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
@@ -27,7 +26,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 		tag(ModTags.Blocks.STORAGE_BLOCKS_MILITUS).add(ModBlocks.MILITUS_ALLOY_BLOCK.get());
 		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.STORAGE_BLOCKS_MILITUS);
 		
-		
 		tag(ModTags.Blocks.BLOCK_IRON_PLATE).add(ModBlocks.IRON_PLATE_BLOCK.get());
 		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.BLOCK_IRON_PLATE);
 		
@@ -41,10 +39,17 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 
 		tag(ModTags.Blocks.BLOCK_BLACKSTONE_FIRESTAND).add(ModBlocks.BACKSTONE_FIRESTAND_BLOCK.get());
 		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.BLOCK_BLACKSTONE_FIRESTAND);
+		
 		tag(ModTags.Blocks.BLOCK_GOLD_GARGOYLE).add(ModBlocks.GARGOYLE_GOLD_BLOCK.get());
 		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.BLOCK_GOLD_GARGOYLE);
 		tag(ModTags.Blocks.BLOCK_BLACKSTONE_GARGOYLE).add(ModBlocks.GARGOYLE_BLACKSTONE_BLOCK.get());
 		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.BLOCK_BLACKSTONE_GARGOYLE);
+		tag(ModTags.Blocks.BLOCK_QUARTZ_GARGOYLE).add(ModBlocks.GARGOYLE_QUARTZ_BLOCK.get());
+		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.BLOCK_QUARTZ_GARGOYLE);
+		tag(ModTags.Blocks.BLOCK_BASALT_GARGOYLE).add(ModBlocks.GARGOYLE_BASALT_BLOCK.get());
+		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.BLOCK_BASALT_GARGOYLE);
+		tag(ModTags.Blocks.BLOCK_OBSIDIAN_GARGOYLE).add(ModBlocks.GARGOYLE_OBSIDIAN_BLOCK.get());
+		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.BLOCK_OBSIDIAN_GARGOYLE);
 
 		
 //		tag(ModTags.Blocks.NETHER_BRICK_PLATE).add(ModBlocks.NETHER_BRICK_PRESSURE_PLATE.get());
@@ -56,7 +61,5 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 //		tag(Tags.Blocks.STONE).addTag(ModTags.Blocks.NETHER_BRICK_WALL_TORCH);
 		
 	}
-
-	
 
 }

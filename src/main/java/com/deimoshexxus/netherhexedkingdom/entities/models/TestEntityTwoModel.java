@@ -3,32 +3,14 @@ package com.deimoshexxus.netherhexedkingdom.entities.models;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
-import com.deimoshexxus.netherhexedkingdom.entities.TestEntityTwo;
+import com.deimoshexxus.netherhexedkingdom.entities.HexanGuardEntity;
 
-import net.minecraft.client.renderer.entity.model.SkeletonModel;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.renderer.entity.model.EntityModel;
-import net.minecraft.client.renderer.model.ModelHelper;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.IRangedAttackMob;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.client.renderer.RenderType;
 
-// Made with Blockbench 3.8.4
-// Exported for Minecraft version 1.15 - 1.16
-// Paste this class into your mod and generate all required imports
-
-//Made with Blockbench 3.8.4
-//Exported for Minecraft version 1.15 - 1.16
-//Paste this class into your mod and generate all required imports
-
-
-public class TestEntityTwoModel extends EntityModel<TestEntityTwo> 
+public class TestEntityTwoModel extends EntityModel<HexanGuardEntity> 
 {
 	
 	private final ModelRenderer waist;
@@ -102,7 +84,7 @@ public class TestEntityTwoModel extends EntityModel<TestEntityTwo>
 	}
 
 	@Override
-	public void setupAnim(TestEntityTwo entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(HexanGuardEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
 		boolean flag = entity.getFallFlyingTicks() > 4;
 	      this.body.yRot = 0.0F;

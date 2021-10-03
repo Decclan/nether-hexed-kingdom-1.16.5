@@ -1,31 +1,19 @@
 package com.deimoshexxus.netherhexedkingdom.entities.models;
 
-
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
-import com.deimoshexxus.netherhexedkingdom.entities.TestEntityFour;
-import com.deimoshexxus.netherhexedkingdom.entities.TestEntityTwo;
-
+import com.deimoshexxus.netherhexedkingdom.entities.HexanGuardMeleeEntity;
 import net.minecraft.client.renderer.entity.model.SkeletonModel;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.model.BipedModel;
-import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelHelper;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.IRangedAttackMob;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.Hand;
 import net.minecraft.util.HandSide;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraft.client.renderer.RenderType;
 
-public class TestEntityFourModel extends SkeletonModel<TestEntityFour> 
+public class TestEntityFourModel extends SkeletonModel<HexanGuardMeleeEntity> 
 {
 	
 	private final ModelRenderer waist;
@@ -41,7 +29,6 @@ public class TestEntityFourModel extends SkeletonModel<TestEntityFour>
 
 	public TestEntityFourModel() 
 	{
-		//super(0.0F);
 		super(0.0F, false);
 		
 		texWidth = 64;
@@ -100,7 +87,7 @@ public class TestEntityFourModel extends SkeletonModel<TestEntityFour>
 	}
 	
 	@Override
-	public void prepareMobModel(TestEntityFour entity, float p_212843_2_, float p_212843_3_, float p_212843_4_) 
+	public void prepareMobModel(HexanGuardMeleeEntity entity, float p_212843_2_, float p_212843_3_, float p_212843_4_) 
 	{
 		this.rightArmPose = BipedModel.ArmPose.EMPTY;
 		this.leftArmPose = BipedModel.ArmPose.EMPTY;
@@ -121,10 +108,10 @@ public class TestEntityFourModel extends SkeletonModel<TestEntityFour>
 	}
 	
 
-	public void setupAnim(TestEntityFour entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(HexanGuardMeleeEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
 		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-		ItemStack itemstack = entity.getMainHandItem();
+//		ItemStack itemstack = entity.getMainHandItem();
 		
 	      boolean flag = entity.getFallFlyingTicks() > 4;
 	      boolean flag1 = entity.isVisuallySwimming();

@@ -2,27 +2,18 @@ package com.deimoshexxus.netherhexedkingdom.init;
 
 import java.util.function.Supplier;
 
-import com.deimoshexxus.netherhexedkingdom.NetherHexedKingdomMain;
 import com.deimoshexxus.netherhexedkingdom.block.RotatableBlock;
+import com.deimoshexxus.netherhexedkingdom.item.ModItemGroup;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.DirectionalBlock;
-import net.minecraft.block.PressurePlateBlock;
 import net.minecraft.block.RotatedPillarBlock;
-import net.minecraft.block.TorchBlock;
-import net.minecraft.block.WallTorchBlock;
-import net.minecraft.block.AbstractPressurePlateBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.Item.Properties;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.WallOrFloorItem;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ToolType;
@@ -37,7 +28,8 @@ public class ModBlocks
 				.harvestLevel(2)
 				.sound(SoundType.STONE)
 				.requiresCorrectToolForDrops()
-				.harvestTool(ToolType.PICKAXE)));
+				.harvestTool(ToolType.PICKAXE)
+				));
 
 	public static final RegistryObject<Block> MILITUS_ALLOY_BLOCK = register("militus_alloy_block", () ->
 		new Block(AbstractBlock.Properties.of(Material.METAL)
@@ -100,50 +92,34 @@ public class ModBlocks
 				.requiresCorrectToolForDrops()
 				.harvestTool(ToolType.PICKAXE)
 				.sound(SoundType.STONE)));
-		
-//	public static final RegistryObject<NetherBrickPressurePlate> NETHER_BRICK_PRESSURE_PLATE = register("nether_brick_pressure_plate", () ->
-//			new NetherBrickPressurePlate(AbstractBlock.Properties.of(Material.DECORATION)
-//					.strength(2, 2)
-//					.sound(SoundType.NETHER_BRICKS)));
 	
-//	public static final RegistryObject<Block> NETHER_BRICK_PRESSURE_PLATE = register("nether_brick_pressure_plate", () -> 
-//			new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, AbstractBlock.Properties.of(Material.STONE)
-//            .harvestLevel(2)
-//            .requiresCorrectToolForDrops()
-//            .harvestTool(ToolType.PICKAXE)
-//            .strength(2, 2)));
+	public static final RegistryObject<RotatableBlock> GARGOYLE_QUARTZ_BLOCK = register("gargoyle_quartz_block", () ->
+		new RotatableBlock(AbstractBlock.Properties.of(Material.STONE)
+				.harvestLevel(1)
+				.strength(2, 3)
+				.noOcclusion()
+				.requiresCorrectToolForDrops()
+				.harvestTool(ToolType.PICKAXE)
+				.sound(SoundType.STONE)));
 	
-//    public static final RegistryObject<TorchBlock> NETHER_BRICK_TORCH = register("nether_brick_torch", () -> 
-//    		new TorchBlock(AbstractBlock.Properties.of(Material.DECORATION)
-//                    .noCollission()
-//                    .strength(0)
-//                    .lightLevel(state -> 14)
-//                    .sound(SoundType.STONE),
-//                    ParticleTypes.FLAME));
-////    				bro -> getNetherBrickTorchItem());
-//    
-//    public static final RegistryObject<WallTorchBlock> NETHER_BRICK_WALL_TORCH = registerNoItem("nether_brick_wall_torch", () ->
-//    		new WallTorchBlock(AbstractBlock.Properties.of(Material.DECORATION)
-//    				.noCollission()
-//    				.strength(0)
-//    				.lightLevel(state -> 14)
-//    				.sound(SoundType.STONE),
-////    				.dropsLike(NETHER_BRICK_TORCH.get()),
-//    				ParticleTypes.FLAME));
-    
+	public static final RegistryObject<RotatableBlock> GARGOYLE_BASALT_BLOCK = register("gargoyle_basalt_block", () ->
+		new RotatableBlock(AbstractBlock.Properties.of(Material.STONE)
+				.harvestLevel(1)
+				.strength(2, 3)
+				.noOcclusion()
+				.requiresCorrectToolForDrops()
+				.harvestTool(ToolType.PICKAXE)
+				.sound(SoundType.STONE)));
+	
+	public static final RegistryObject<RotatableBlock> GARGOYLE_OBSIDIAN_BLOCK = register("gargoyle_obsidian_block", () ->
+		new RotatableBlock(AbstractBlock.Properties.of(Material.STONE)
+				.harvestLevel(3)
+				.strength(6, 6)
+				.noOcclusion()
+				.requiresCorrectToolForDrops()
+				.harvestTool(ToolType.PICKAXE)
+				.sound(SoundType.STONE)));
 
-	
-	
-	
-//	private static BlockRegistryObject <T extends Block> Supplier(BlockItem) defaultItem(BlockRegistryObject<T> block)
-//	{
-//		
-//	}
-//	
-//    private static Supplier<BlockItem> getNetherBrickTorchItem() {
-//        return () -> new WallOrFloorItem(NETHER_BRICK_TORCH.get(), NETHER_BRICK_WALL_TORCH.get(), new Item.Properties());
-//    }
-	
 	private static <T extends Block>RegistryObject<T> registerNoItem(String name, Supplier <T> block)
 	{
 		return Registration.BLOCKS.register(name, block);
@@ -152,7 +128,7 @@ public class ModBlocks
 	private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block)
 	{
 		RegistryObject<T> ret = registerNoItem(name, block);
-		Registration.ITEMS.register(name, () -> new BlockItem(ret.get(), new Item.Properties().tab(ItemGroup.TAB_BUILDING_BLOCKS)));
+		Registration.ITEMS.register(name, () -> new BlockItem(ret.get(), new Item.Properties().tab(ModItemGroup.NETHER_HEXED_GROUP)));
 		return ret;
 	}
 	
@@ -163,7 +139,5 @@ public class ModBlocks
 	{
 		RenderTypeLookup.setRenderLayer(HUMAN_SKELETON_TOP_BLOCK.get(), RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(HUMAN_SKELETON_BOTTOM_BLOCK.get(), RenderType.cutout());
-//        RenderTypeLookup.setRenderLayer(NETHER_BRICK_TORCH.get(), RenderType.cutout());
-//        RenderTypeLookup.setRenderLayer(NETHER_BRICK_WALL_TORCH.get(), RenderType.cutout());
     }
 }

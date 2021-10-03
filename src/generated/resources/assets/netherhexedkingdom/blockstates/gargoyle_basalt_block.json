@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "netherhexedkingdom:block/gargoyle_basalt_block",
+      "y": 360
+    },
+    "facing=up": {
+      "model": "netherhexedkingdom:block/gargoyle_basalt_block",
+      "y": 360
+    },
+    "facing=north": {
+      "model": "netherhexedkingdom:block/gargoyle_basalt_block",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "netherhexedkingdom:block/gargoyle_basalt_block",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "netherhexedkingdom:block/gargoyle_basalt_block",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "netherhexedkingdom:block/gargoyle_basalt_block",
+      "y": 360
+    }
+  }
+}

@@ -9,6 +9,7 @@ import com.deimoshexxus.netherhexedkingdom.init.ModItems;
 
 import net.minecraft.data.loot.EntityLootTables;
 import net.minecraft.entity.EntityType;
+import net.minecraft.item.Items;
 import net.minecraft.loot.ConstantRange;
 import net.minecraft.loot.ItemLootEntry;
 import net.minecraft.loot.LootPool;
@@ -23,20 +24,27 @@ public class ModEntityLootTableProvider extends EntityLootTables
 	@Override
 	protected void addTables()
 	{
-		this.add(ModEntities.FACE_EATER_ENTITY.get(), LootTable.lootTable()
+		this.add(ModEntities.VOLCAN_DAEMON_ENTITY.get(), LootTable.lootTable()
 				.withPool(LootPool.lootPool()
 				.setRolls(ConstantRange.exactly(1))
-				.add(ItemLootEntry.lootTableItem(ModItems.MILITUS_ALLOY_INGOT.get()))
-				.apply(SetCount.setCount(RandomValueRange.between(0.0F, 1.0F)))
+				.add(ItemLootEntry.lootTableItem(ModItems.NETHERITE_OXIDE.get()))
+				.apply(SetCount.setCount(RandomValueRange.between(1.0F, 6.0F)))
 				));
 		
-		this.add(ModEntities.TEST_ENTITY_FOUR.get(), LootTable.lootTable());
-		this.add(ModEntities.TEST_ENTITY_THREE.get(), LootTable.lootTable());
-		this.add(ModEntities.TEST_ENTITY_TWO.get(), LootTable.lootTable());
+		this.add(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), LootTable.lootTable());
+		this.add(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), LootTable.lootTable());
+		this.add(ModEntities.HEXAN_GUARD_ENTITY.get(), LootTable.lootTable());
 		this.add(ModEntities.WIGHT_ENTITY.get(), LootTable.lootTable());
 		this.add(ModEntities.WIGHT_KNIGHT_ENTITY.get(), LootTable.lootTable());
 		this.add(ModEntities.WIGHT_TRADER_ENTITY.get(), LootTable.lootTable());
-		this.add(ModEntities.WITHER_SKELETON_HORSE.get(), LootTable.lootTable());
+		
+		this.add(ModEntities.WITHER_SKELETON_HORSE.get(), LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+				.setRolls(ConstantRange.exactly(1))
+				.add(ItemLootEntry.lootTableItem(Items.COAL))
+				.apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F)))
+				));
+		
 		this.add(ModEntities.WITHER_SKELETON_HORSE_RIDER.get(), LootTable.lootTable());
 		
 //		this.add(EntityType.BLAZE, LootTable.lootTable()

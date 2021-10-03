@@ -7,6 +7,9 @@
     "#netherhexedkingdom:skeleton_bottom",
     "#netherhexedkingdom:blackstone_firestand",
     "#netherhexedkingdom:gold_gargoyle",
-    "#netherhexedkingdom:blackstone_gargoyle"
+    "#netherhexedkingdom:blackstone_gargoyle",
+    "#netherhexedkingdom:quartz_gargoyle",
+    "#netherhexedkingdom:basalt_gargoyle",
+    "#netherhexedkingdom:obsidian_gargoyle"
   ]
 }

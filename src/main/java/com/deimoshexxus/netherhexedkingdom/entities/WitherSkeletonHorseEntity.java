@@ -5,7 +5,6 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 import net.minecraft.entity.CreatureAttribute;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.LivingEntity;
@@ -14,35 +13,19 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.FollowParentGoal;
-import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.ai.goal.PanicGoal;
-import net.minecraft.entity.ai.goal.RunAroundLikeCrazyGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
-import net.minecraft.entity.monster.piglin.AbstractPiglinEntity;
-import net.minecraft.entity.passive.horse.ZombieHorseEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.passive.horse.AbstractChestedHorseEntity;
-import net.minecraft.entity.passive.horse.AbstractHorseEntity;
 import net.minecraft.entity.passive.horse.HorseEntity;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.monster.SpiderEntity;
-import net.minecraft.entity.monster.WitherSkeletonEntity;
-import net.minecraft.entity.passive.horse.SkeletonHorseEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.HorseArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
@@ -63,18 +46,6 @@ public class WitherSkeletonHorseEntity extends HorseEntity
 	{
 		super(type, worldIn);
 		this.setPathfindingMalus(PathNodeType.DANGER_FIRE, 0.0F);
-//		this.isTamed();
-//		this.setTamed(true);
-//		this.isSaddled();
-//		this.isSaddleable();
-//		this.canBeControlledByRider();
-//		this.equipSaddle(null);
-//		this.canWearArmor(false);
-//		this.setArmor(useItem);
-		//this.setPathfindingMalus(PathNodeType.LAVA, 8.0F);
-		//this.isTrap();
-		//this.fedFood(p_241395_1_, p_241395_2_)
-		
 	}
 	
 //  public void equipSaddle() //BREAKS ENTITY RIDING
@@ -105,50 +76,6 @@ public class WitherSkeletonHorseEntity extends HorseEntity
    {
       this.goalSelector.addGoal(0, new SwimGoal(this));
    }
-	
-
-//   public ActionResultType mobInteract(PlayerEntity p_230254_1_, Hand p_230254_2_) {
-//	      ItemStack itemstack = p_230254_1_.getItemInHand(p_230254_2_);
-//	      if (!this.isBaby()) {
-//	         if (this.isTamed() && p_230254_1_.isSecondaryUseActive()) {
-//	            this.openInventory(p_230254_1_);
-//	            return ActionResultType.sidedSuccess(this.level.isClientSide);
-//	         }
-//
-//	         if (this.isVehicle()) {
-//	            return super.mobInteract(p_230254_1_, p_230254_2_);
-//	         }
-//	      }
-//
-//	      if (!itemstack.isEmpty()) {
-////	         if (this.isFood(itemstack)) {
-////	            return this.fedFood(p_230254_1_, itemstack);
-////	         }
-//
-//	         ActionResultType actionresulttype = itemstack.interactLivingEntity(p_230254_1_, this, p_230254_2_);
-//	         if (actionresulttype.consumesAction()) {
-//	            return actionresulttype;
-//	         }
-//
-//	         if (!this.isTamed()) {
-//	            this.makeMad();
-//	            return ActionResultType.sidedSuccess(this.level.isClientSide);
-//	         }
-//
-//	         boolean flag = !this.isBaby() && !this.isSaddled() && itemstack.getItem() == Items.SADDLE;
-//	         if (this.isArmor(itemstack) || flag) {
-//	            this.openInventory(p_230254_1_);
-//	            return ActionResultType.sidedSuccess(this.level.isClientSide);
-//	         }
-//	      }
-//
-//	      if (this.isBaby()) {
-//	         return super.mobInteract(p_230254_1_, p_230254_2_);
-//	      } else {
-//	         this.doPlayerRide(p_230254_1_);
-//	         return ActionResultType.sidedSuccess(this.level.isClientSide);
-//	      }
-//	   }
 	
 	   public ActionResultType mobInteract(PlayerEntity player, Hand hand) {
 		      ItemStack itemstack = player.getItemInHand(hand);
@@ -277,14 +204,6 @@ public class WitherSkeletonHorseEntity extends HorseEntity
 				.add(Attributes.MOVEMENT_SPEED, (double)0.3F)
 				.add(Attributes.JUMP_STRENGTH, 1.2D);
 	}
-
-   	
-//    public void addAdditionalSaveData(CompoundNBT p_213281_1_) {
-//        super.addAdditionalSaveData(p_213281_1_);
-//
-//        //p_213281_1_.putBoolean("SkeletonTrap", this.isTrap());
-//        //p_213281_1_.putInt("SkeletonTrapTime", this.trapTime);
-//     }
    	
     protected SoundEvent getAmbientSound() {
         super.getAmbientSound();
@@ -319,11 +238,6 @@ public class WitherSkeletonHorseEntity extends HorseEntity
 
         return SoundEvents.SKELETON_HORSE_SWIM;
      }
-   	
-//	public boolean isTrap() 
-//	{
-//		return false;
-//	}
 	
      public boolean rideableUnderWater() 
      {

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "netherhexedkingdom:imperial_coins"
+  },
+  "result": "minecraft:gold_nugget",
+  "experience": 0.4,
+  "cookingtime": 200
+}

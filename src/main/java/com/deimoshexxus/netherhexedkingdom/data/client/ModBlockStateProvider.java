@@ -3,15 +3,10 @@ package com.deimoshexxus.netherhexedkingdom.data.client;
 import com.deimoshexxus.netherhexedkingdom.NetherHexedKingdomMain;
 import com.deimoshexxus.netherhexedkingdom.init.ModBlocks;
 
-import net.minecraft.block.PaneBlock;
-import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelBuilder;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -57,6 +52,24 @@ public class ModBlockStateProvider extends BlockStateProvider
 				.rotationY((int) state.getValue(BlockStateProperties.FACING).toYRot() + 90)
 				.build());
 		
+		getVariantBuilder(ModBlocks.GARGOYLE_QUARTZ_BLOCK.get())		
+		.forAllStates(state -> ConfiguredModel.builder()
+				.modelFile(existingModelFile("gargoyle_quartz_block"))
+				.rotationY((int) state.getValue(BlockStateProperties.FACING).toYRot() + 90)
+				.build());
+		
+		getVariantBuilder(ModBlocks.GARGOYLE_BASALT_BLOCK.get())		
+		.forAllStates(state -> ConfiguredModel.builder()
+				.modelFile(existingModelFile("gargoyle_basalt_block"))
+				.rotationY((int) state.getValue(BlockStateProperties.FACING).toYRot() + 90)
+				.build());
+		
+		getVariantBuilder(ModBlocks.GARGOYLE_OBSIDIAN_BLOCK.get())		
+		.forAllStates(state -> ConfiguredModel.builder()
+				.modelFile(existingModelFile("gargoyle_obsidian_block"))
+				.rotationY((int) state.getValue(BlockStateProperties.FACING).toYRot() + 90)
+				.build());
+		
 //		simpleBlock(ModBlocks.NETHER_BRICK_PRESSURE_PLATE.get(), models().withExistingParent("nether_brick_pressure_plate", mcLoc("block/stone_pressure_plate")));
 
 		//		simpleBlock(ModBlocks.NETHER_BRICK_TORCH.get(), models().torch("nether_brick_torch", modLoc("block/nether_brick_torch")));
@@ -65,13 +78,6 @@ public class ModBlockStateProvider extends BlockStateProvider
 //				.modelFile(wallTorch("nether_brick_wall_torch", modLoc("block/nether_brick_torch")))
 //				.rotationY((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 90)
 //				.build());
-
-
-//		simpleBlock(ModBlocks.HUMAN_SKELETON_TOP_BLOCK.get(), models().withExistingParent("customblock/human_skeleton_top_block", modLoc("human_skeleton_top_block")));
-//		simpleBlock(ModBlocks.HUMAN_SKELETON_BOTTOM_BLOCK.get(), models().withExistingParent("customblock/human_skeleton_bottom_block", modLoc("human_skeleton_bottom_block")));
-
-
-		
 
 
 	}
@@ -86,14 +92,4 @@ public class ModBlockStateProvider extends BlockStateProvider
 	{
 		return models().getExistingFile(modLoc(name));
 	}   //(name, parent, textureKey, texture)
-	
-//	public ModelFile.ExistingModelFile skeleBotBlock(String name) 
-//	{
-//		return models().getExistingFile(modLoc(name));
-//	}
-	
-	public ModelBuilder<BlockModelBuilder> wallTorch(String name, ResourceLocation torch) 
-	{
-		return models().singleTexture(name, mcLoc("block/wall_torch"), "torch", torch);
-	}
 }

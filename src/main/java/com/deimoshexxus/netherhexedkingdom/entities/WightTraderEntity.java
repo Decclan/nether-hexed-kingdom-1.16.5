@@ -9,35 +9,16 @@ import com.google.common.collect.Sets;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.INPC;
-import net.minecraft.entity.IRangedAttackMob;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.monster.AbstractSkeletonEntity;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.monster.SkeletonEntity;
-import net.minecraft.entity.monster.ZombieEntity;
-
 import net.minecraft.entity.monster.ZombifiedPiglinEntity;
-import net.minecraft.entity.monster.piglin.AbstractPiglinEntity;
 import net.minecraft.entity.merchant.IMerchant;
-import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
-import net.minecraft.entity.merchant.villager.WanderingTraderEntity;
-
-import net.minecraft.entity.passive.IronGolemEntity;
-import net.minecraft.entity.passive.TurtleEntity;
-import net.minecraft.entity.passive.horse.SkeletonHorseEntity;
-import net.minecraft.entity.villager.VillagerType;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.MerchantOffer;
 import net.minecraft.item.MerchantOffers;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.pathfinding.GroundPathNavigator;
 import net.minecraft.pathfinding.PathNodeType;
@@ -48,22 +29,15 @@ import net.minecraft.util.GroundPathHelper;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.entity.ai.goal.HurtByTargetGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.RestrictSunGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
-import net.minecraft.entity.ai.goal.ZombieAttackGoal;
-
-
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 
 public class WightTraderEntity extends WightEntity implements INPC, IMerchant 
 {
@@ -82,7 +56,6 @@ public class WightTraderEntity extends WightEntity implements INPC, IMerchant
 	    this.setCanPickUpLoot(true);
 	    this.setPathfindingMalus(PathNodeType.DANGER_FIRE, 8.0F);
 	    this.removeVehicle();
-
 	}
 
 
@@ -94,8 +67,6 @@ public class WightTraderEntity extends WightEntity implements INPC, IMerchant
 		this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, ZombifiedPiglinEntity.class, 6.0F, 1.0D, 1.2D));
 		this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-//		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
-//		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolemEntity.class, true));
 		this.addBehaviourGoals();
 	}
 	
@@ -104,21 +75,18 @@ public class WightTraderEntity extends WightEntity implements INPC, IMerchant
 	   	this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.0D, false));
 	    this.goalSelector.addGoal(7, new WaterAvoidingRandomWalkingGoal(this, 0.5D));
 	    this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers(WightEntity.class));
-//	    this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
-//	    this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillagerEntity.class, false));
-//	    this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolemEntity.class, true));
 	}
 
-	public static AttributeModifierMap.MutableAttribute createAttributes() 
-	{
-		return MonsterEntity.createMonsterAttributes()
-		.add(Attributes.FOLLOW_RANGE, 24.0D)
-		.add(Attributes.ATTACK_KNOCKBACK, 6.0D)
-		.add(Attributes.MOVEMENT_SPEED, 0.3D)
-		.add(Attributes.ATTACK_DAMAGE, 4.5D)
-		.add(Attributes.ARMOR, 2.0D)
-		.add(Attributes.MAX_HEALTH, 24.0D);
-	}
+//	public static AttributeModifierMap.MutableAttribute createAttributes() 
+//	{
+//		return MonsterEntity.createMonsterAttributes()
+//		.add(Attributes.FOLLOW_RANGE, 24.0D)
+//		.add(Attributes.ATTACK_KNOCKBACK, 6.0D)
+//		.add(Attributes.MOVEMENT_SPEED, 0.3D)
+//		.add(Attributes.ATTACK_DAMAGE, 4.5D)
+//		.add(Attributes.ARMOR, 2.0D)
+//		.add(Attributes.MAX_HEALTH, 24.0D);
+//	}
 	
 
 	   public ActionResultType mobInteract(PlayerEntity p_230254_1_, Hand p_230254_2_) {

@@ -1,5 +1,4 @@
 {
-	"credit": "Made with Blockbench",
 	"parent": "netherhexedkingdom:block/gargoyle_gold_block",
 	"textures": {
 		"2": "block/polished_blackstone",

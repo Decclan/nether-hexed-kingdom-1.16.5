@@ -1,11 +1,30 @@
 {
+	"itemGroup.netherHexedModTab": "Nether Hexed Kingdom Mod",
+	
 	"item.netherhexedkingdom.militus_alloy_ingot": "Militus Alloy Ingot",
 	"item.netherhexedkingdom.militus_alloy_nugget": "Militus Alloy Nugget",
-	
+	"item.netherhexedkingdom.militus_alloy_boots": "Militus Alloy Boots",
+	"item.netherhexedkingdom.militus_alloy_chestplate": "Militus Alloy Chestplate",
+	"item.netherhexedkingdom.militus_alloy_leggings": "Militus Alloy Leggings",
+	"item.netherhexedkingdom.militus_alloy_helmet": "Militus Alloy Helmet",
+	"item.netherhexedkingdom.iron_clump": "Iron Clump",
+	"item.netherhexedkingdom.netherite_fragment_bundle": "Netherite Fragment Bundle",
+	"item.netherhexedkingdom.netherite_fragment": "Netherite Fragment",
+	"item.netherhexedkingdom.netherite_oxide": "Netherite Oxide",
+ 	"item.netherhexedkingdom.imperial_coins": "Imperial Gold Coins",
+ 	"item.netherhexedkingdom.militus_alloy_shield": "Militus Alloy Shield",
+ 	"item.netherhexedkingdom.skeleton_bone_shield": "Skeleton Bone Shield",
+ 	
 	"block.netherhexedkingdom.militus_alloy_ore": "Militus Alloy Ore",
 	"block.netherhexedkingdom.militus_alloy_block": "Militus Alloy Block",
-	"block.netherhexedkingdom.eternal_light_block": "Eternal Light",
 	"block.netherhexedkingdom.iron_plate_block": "Iron Plate Block",
-	
-	"block.netherhexedkingdom.nether_brick_pressure_plate": "Nether Brick Pressure PLate"
+	"block.netherhexedkingdom.eternal_light_block": "Eternal Light",
+	"block.netherhexedkingdom.human_skeleton_top_block": "Human Skeleton Torso",
+	"block.netherhexedkingdom.human_skeleton_bottom_block": "Human Skeleton Legs",
+	"block.netherhexedkingdom.blackstone_firestand_block": "Blackstone Firestand",
+	"block.netherhexedkingdom.gargoyle_gold_block": "Gold Gargoyle",
+	"block.netherhexedkingdom.gargoyle_blackstone_block": "Blackstone Gargoyle",
+	"block.netherhexedkingdom.gargoyle_quartz_block": "Quartz Gargoyle",
+	"block.netherhexedkingdom.gargoyle_basalt_block": "Basalt Gargoyle",
+	"block.netherhexedkingdom.gargoyle_obsidian_block": "Obsidian Gargoyle"
 }

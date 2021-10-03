@@ -9,7 +9,6 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.AbstractFurnaceBlock;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
@@ -38,14 +37,14 @@ public class RotatableBlock extends Block
    public BlockState rotate(BlockState p_185499_1_, Rotation p_185499_2_) {
 	      return p_185499_1_.setValue(FACING, p_185499_2_.rotate(p_185499_1_.getValue(FACING)));
 	   }
+//
+   public BlockState mirror(BlockState p_185471_1_, Mirror p_185471_2_) {
+      return p_185471_1_.rotate(p_185471_2_.getRotation(p_185471_1_.getValue(FACING)));
+   }
 
-	   public BlockState mirror(BlockState p_185471_1_, Mirror p_185471_2_) {
-	      return p_185471_1_.rotate(p_185471_2_.getRotation(p_185471_1_.getValue(FACING)));
-	   }
-
-	   protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> p_206840_1_) {
-	      p_206840_1_.add(FACING);
-	   }
+   protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> p_206840_1_) {
+      p_206840_1_.add(FACING);
+   }
 
 	public boolean useShapeForLightOcclusion() 
 	{

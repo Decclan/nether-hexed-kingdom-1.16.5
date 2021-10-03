@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "netherhexedkingdom:gargoyle_gold_block"
+  },
+  "result": "minecraft:gold_block",
+  "experience": 0.7,
+  "cookingtime": 300
+}

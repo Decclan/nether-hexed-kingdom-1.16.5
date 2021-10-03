@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.deimoshexxus.netherhexedkingdom.init.ModEntities;
 import com.deimoshexxus.netherhexedkingdom.init.Registration;
 import com.mojang.serialization.Codec;
 
@@ -31,7 +30,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
@@ -79,10 +77,12 @@ public class NetherHexedKingdomMain
     {
         LOGGER.info("PREINIT");
         event.enqueueWork(() -> {
-    		ModEntities.registerGlobalEntityAttributes();
+//    		ModEntities.registerEntityAttributes();
     		//ModEntityTypes.registerEntitySpawns();
             NetherStructures.setupStructures();
             NetherConfiguredStructures.registerConfiguredStructures();
+
+            LOGGER.info("Sounds Added");
     	});    
      }
 
@@ -124,9 +124,10 @@ public class NetherHexedKingdomMain
 //Structures code
     public void biomeModification(final BiomeLoadingEvent event) 
     {
-    	event.setCategory(Category.NETHER); //Adds above nether roof - surface structure setting
+    	event.setCategory(Category.NETHER);
         event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_RUN_DOWN_HOUSE);
         event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_WATCH_TOWER);
+        event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_PRISON);
     }
     
     public Map<Structure<?>, StructureSeparationSettings> structureConfig() {
@@ -160,6 +161,7 @@ public class NetherHexedKingdomMain
             Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(serverWorld.getChunkSource().generator.getSettings().structureConfig());
             tempMap.putIfAbsent(NetherStructures.RUN_DOWN_HOUSE.get(), DimensionStructuresSettings.DEFAULTS.get(NetherStructures.RUN_DOWN_HOUSE.get()));
             tempMap.putIfAbsent(NetherStructures.NETHER_WATCH_TOWER.get(), DimensionStructuresSettings.DEFAULTS.get(NetherStructures.NETHER_WATCH_TOWER.get()));
+            tempMap.putIfAbsent(NetherStructures.NETHER_PRISON.get(), DimensionStructuresSettings.DEFAULTS.get(NetherStructures.NETHER_PRISON.get()));
             serverWorld.getChunkSource().generator.getSettings().structureConfig = tempMap;
         }
    }

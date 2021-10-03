@@ -3,29 +3,18 @@ package com.deimoshexxus.netherhexedkingdom.entities.models;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
-import com.deimoshexxus.netherhexedkingdom.entities.TestEntityThree;
-import com.deimoshexxus.netherhexedkingdom.entities.TestEntityTwo;
-
+import com.deimoshexxus.netherhexedkingdom.entities.HexanGuardRangedEntity;
 import net.minecraft.client.renderer.entity.model.SkeletonModel;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.model.BipedModel;
-import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelHelper;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.IRangedAttackMob;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.Hand;
 import net.minecraft.util.HandSide;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraft.client.renderer.RenderType;
 
-public class TestEntityThreeModel extends SkeletonModel<TestEntityThree> 
+public class TestEntityThreeModel extends SkeletonModel<HexanGuardRangedEntity> 
 {
 	
 	private final ModelRenderer waist;
@@ -100,7 +89,7 @@ public class TestEntityThreeModel extends SkeletonModel<TestEntityThree>
 	}
 	
 	@Override
-	public void prepareMobModel(TestEntityThree entity, float p_212843_2_, float p_212843_3_, float p_212843_4_) 
+	public void prepareMobModel(HexanGuardRangedEntity entity, float p_212843_2_, float p_212843_3_, float p_212843_4_) 
 	{
 		this.rightArmPose = BipedModel.ArmPose.EMPTY;
 		this.leftArmPose = BipedModel.ArmPose.EMPTY;
@@ -121,10 +110,10 @@ public class TestEntityThreeModel extends SkeletonModel<TestEntityThree>
 	}
 	
 
-	public void setupAnim(TestEntityThree entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(HexanGuardRangedEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
 		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-		ItemStack itemstack = entity.getMainHandItem();
+//		ItemStack itemstack = entity.getMainHandItem();
 		
 	      boolean flag = entity.getFallFlyingTicks() > 4;
 	      boolean flag1 = entity.isVisuallySwimming();

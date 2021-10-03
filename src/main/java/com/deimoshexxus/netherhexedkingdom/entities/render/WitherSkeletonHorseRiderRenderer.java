@@ -2,6 +2,8 @@ package com.deimoshexxus.netherhexedkingdom.entities.render;
 
 import com.deimoshexxus.netherhexedkingdom.NetherHexedKingdomMain;
 import com.deimoshexxus.netherhexedkingdom.entities.WitherSkeletonHorseEntity;
+import com.deimoshexxus.netherhexedkingdom.entities.render.layers.DeadHorseArmorRenderer;
+import com.deimoshexxus.netherhexedkingdom.entities.render.layers.GlowEyesLayer;
 
 import net.minecraft.client.renderer.entity.AbstractHorseRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
@@ -15,8 +17,6 @@ public class WitherSkeletonHorseRiderRenderer extends AbstractHorseRenderer<With
 {
 	private static final ResourceLocation TEXTURE = new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "textures/entity/wither_skeleton_horse.png");
 
-//	private static final RenderType GLOW = RenderType.eyes(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "textures/entity/wither_skeleton_horse_redeyes.png"));
-	
 	public WitherSkeletonHorseRiderRenderer(EntityRendererManager rendererManager) 
 	{
 		super(rendererManager, new HorseModel<WitherSkeletonHorseEntity>(0.0F), 1.2F);

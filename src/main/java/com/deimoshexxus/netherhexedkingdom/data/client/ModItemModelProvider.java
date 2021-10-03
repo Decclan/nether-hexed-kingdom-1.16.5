@@ -27,8 +27,12 @@ public class ModItemModelProvider extends ItemModelProvider {
 		withExistingParent("human_skeleton_bottom_block", modLoc("block/human_skeleton_bottom_block"));
 
 		withExistingParent("blackstone_firestand_block", modLoc("block/blackstone_firestand_block"));
+		
 		withExistingParent("gargoyle_gold_block", modLoc("block/gargoyle_gold_block"));
 		withExistingParent("gargoyle_blackstone_block", modLoc("block/gargoyle_blackstone_block"));
+		withExistingParent("gargoyle_quartz_block", modLoc("block/gargoyle_quartz_block"));
+		withExistingParent("gargoyle_basalt_block", modLoc("block/gargoyle_basalt_block"));
+		withExistingParent("gargoyle_obsidian_block", modLoc("block/gargoyle_obsidian_block"));
 
 		
 //		withExistingParent("nether_brick_pressure_plate", modLoc("block/nether_brick_pressure_plate"));
@@ -40,16 +44,40 @@ public class ModItemModelProvider extends ItemModelProvider {
 		
 		ModelFile boneShieldModel = getExistingFile(modLoc("block/skeleton_bone_shield"));
 		
+//		ModelFile witheredShieldModel = getExistingFile(modLoc("item/withered_death_shield"));
+		
 		ModelFile itemGenerated = getExistingFile(mcLoc("item/generated"));
 		
 		builder(itemGenerated, "militus_alloy_ingot");  //extracted method of get builder
 		builder(itemGenerated, "militus_alloy_nugget");
 		
+//		builder(itemGenerated, "gold_clump");
+		builder(itemGenerated, "iron_clump");
+		
+		builder(itemGenerated, "netherite_fragment_bundle");
+		builder(itemGenerated, "netherite_fragment");
+		builder(itemGenerated, "netherite_oxide");
+		
+		builder(itemGenerated, "imperial_coins");
+		
 		builderCustom(militusShieldModel, "militus_alloy_shield");
 		builderCustom(boneShieldModel, "skeleton_bone_shield");
+		
+//		builder(itemGenerated, "withered_death_shield");
 
+		builder(itemGenerated, "militus_alloy_boots");
+		builder(itemGenerated, "militus_alloy_chestplate");
+		builder(itemGenerated, "militus_alloy_leggings");
+		builder(itemGenerated, "militus_alloy_helmet");
 	}
 
+	//"netherhexedkingdom:textures/item/withered_death_shield2.png"
+	
+//	private void builderShield(ModelFile itemGenerated, String name) {
+//		getBuilder(name).parent(itemGenerated);
+//	}
+	
+	
 	private void builderCustom(ModelFile itemGenerated, String name) {
 		getBuilder(name).parent(itemGenerated);
 	}

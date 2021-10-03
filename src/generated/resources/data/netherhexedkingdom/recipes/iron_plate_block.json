@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#a#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_nugget"
+    },
+    "a": {
+      "item": "minecraft:crimson_planks"
+    }
+  },
+  "result": {
+    "item": "netherhexedkingdom:iron_plate_block"
+  }
+}

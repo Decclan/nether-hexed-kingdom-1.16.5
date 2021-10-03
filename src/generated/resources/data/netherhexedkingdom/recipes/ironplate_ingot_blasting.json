@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "netherhexedkingdom:iron_plate_block"
-  },
-  "result": "minecraft:iron_ingot",
-  "experience": 0.5,
-  "cookingtime": 100
-}

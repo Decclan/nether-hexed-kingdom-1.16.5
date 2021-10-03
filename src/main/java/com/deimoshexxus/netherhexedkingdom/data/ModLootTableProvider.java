@@ -8,10 +8,8 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import com.deimoshexxus.netherhexedkingdom.init.ModBlocks;
-import com.deimoshexxus.netherhexedkingdom.init.ModItems;
 import com.deimoshexxus.netherhexedkingdom.init.Registration;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
 
 import net.minecraft.block.Block;
@@ -23,7 +21,6 @@ import net.minecraft.loot.LootParameterSet;
 import net.minecraft.loot.LootParameterSets;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.LootTableManager;
-import net.minecraft.loot.LootTables;
 import net.minecraft.loot.ValidationTracker;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.RegistryObject;
@@ -34,7 +31,6 @@ public class ModLootTableProvider extends LootTableProvider
 	public ModLootTableProvider(DataGenerator dataGenerator) 
 	{
 		super(dataGenerator);
-		
 	}
 	
 	@Override
@@ -71,11 +67,9 @@ public class ModLootTableProvider extends LootTableProvider
 			dropSelf(ModBlocks.BACKSTONE_FIRESTAND_BLOCK.get());
 			dropSelf(ModBlocks.GARGOYLE_GOLD_BLOCK.get());
 			dropSelf(ModBlocks.GARGOYLE_BLACKSTONE_BLOCK.get());
-			
-			
-//			dropSelf(ModBlocks.NETHER_BRICK_PRESSURE_PLATE.get());
-//			dropOther(ModBlocks.NETHER_BRICK_WALL_TORCH.get(), ModBlocks.NETHER_BRICK_TORCH);
-//			dropSelf(ModBlocks.NETHER_BRICK_TORCH.get());
+			dropSelf(ModBlocks.GARGOYLE_QUARTZ_BLOCK.get());
+			dropSelf(ModBlocks.GARGOYLE_BASALT_BLOCK.get());
+			dropSelf(ModBlocks.GARGOYLE_OBSIDIAN_BLOCK.get());
 		}
 		
 		@Override
@@ -85,6 +79,5 @@ public class ModLootTableProvider extends LootTableProvider
 					.map(RegistryObject::get)
 					.collect(Collectors.toList());
 		}
-		
 	}
 }

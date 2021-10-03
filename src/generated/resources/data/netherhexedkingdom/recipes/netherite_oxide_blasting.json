@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "netherhexedkingdom:netherite_oxide"
+  },
+  "result": "netherhexedkingdom:netherite_fragment",
+  "experience": 0.7,
+  "cookingtime": 300
+}

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "netherhexedkingdom:netherite_fragment_bundle"
+    },
+    {
+      "item": "netherhexedkingdom:netherite_fragment_bundle"
+    },
+    {
+      "item": "netherhexedkingdom:netherite_fragment_bundle"
+    },
+    {
+      "item": "netherhexedkingdom:netherite_fragment_bundle"
+    },
+    {
+      "item": "netherhexedkingdom:netherite_fragment_bundle"
+    },
+    {
+      "item": "netherhexedkingdom:netherite_fragment_bundle"
+    }
+  ],
+  "result": {
+    "item": "minecraft:netherite_scrap"
+  }
+}

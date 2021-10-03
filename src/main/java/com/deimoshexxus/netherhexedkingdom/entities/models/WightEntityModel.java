@@ -1,35 +1,12 @@
 package com.deimoshexxus.netherhexedkingdom.entities.models;
 
-
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import com.deimoshexxus.netherhexedkingdom.entities.WightEntity;
-import com.deimoshexxus.netherhexedkingdom.entities.TestEntityTwo;
-
-import net.minecraft.client.renderer.entity.model.SkeletonModel;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.model.BipedModel;
-import net.minecraft.client.renderer.entity.model.EntityModel;
-import net.minecraft.client.renderer.entity.model.PlayerModel;
-import net.minecraft.client.renderer.model.ModelHelper;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.IRangedAttackMob;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.util.HandSide;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.client.renderer.RenderType;
-
-// Made with Blockbench 3.8.4
-// Exported for Minecraft version 1.15 - 1.16
-// Paste this class into your mod and generate all required imports
-
-//Made with Blockbench 3.8.4
-//Exported for Minecraft version 1.15 - 1.16
-//Paste this class into your mod and generate all required imports
-
 
 public class WightEntityModel extends BipedModel<WightEntity>
 {
@@ -47,7 +24,6 @@ public class WightEntityModel extends BipedModel<WightEntity>
 
 	public WightEntityModel() 
 	{
-		//super(RenderType::entityTranslucent);
 		super(0.0F);
 		
 		texWidth = 64;
@@ -102,54 +78,6 @@ public class WightEntityModel extends BipedModel<WightEntity>
 		leftLeg.texOffs(16, 52).addBox(-2.0F, 4.0F, -2.0F, 4.0F, 8.0F, 4.0F, 0.0F, false);
 		leftLeg.texOffs(0, 52).addBox(-2.0F, 4.0F, -2.0F, 4.0F, 8.0F, 4.0F, 0.25F, true);
 		leftLeg.texOffs(35, 38).addBox(-2.0F, 1.0F, -3.0F, 5.0F, 3.0F, 6.0F, 0.0F, false);
-		
-//		body = new ModelRenderer(this);
-//		body.setPos(0.0F, 0.0F, 0.0F);
-//		body.texOffs(0, 16).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, 0.0F, false);
-//		body.texOffs(40, 16).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, 0.25F, false);
-//		body.texOffs(0, 38).addBox(-5.0F, 9.0F, -3.0F, 10.0F, 4.0F, 6.0F, 0.0F, false);
-//		
-//		head = new ModelRenderer(this);
-//		head.setPos(0.0F, 0.0F, 0.0F);
-//		body.addChild(head);
-//		head.texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, 0.0F, false);
-//		head.texOffs(32, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, 0.5F, false);
-//
-//		rightArm = new ModelRenderer(this);
-//		rightArm.setPos(-5.0F, 2.0F, 0.0F);
-//		body.addChild(rightArm);
-//		rightArm.texOffs(32, 48).addBox(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F, false);
-//		rightArm.texOffs(48, 48).addBox(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.25F, false);
-//
-//		rightItem = new ModelRenderer(this);
-//		rightItem.setPos(-3.0F, 7.0F, -2.0F);
-//		rightArm.addChild(rightItem);
-//		
-//
-//		leftArm = new ModelRenderer(this);
-//		leftArm.setPos(5.0F, 2.0F, 0.0F);
-//		body.addChild(leftArm);
-//		leftArm.texOffs(32, 48).addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F, false);
-//		leftArm.texOffs(48, 48).addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.25F, false);
-//
-//		leftItem = new ModelRenderer(this);
-//		leftItem.setPos(3.0F, 7.0F, -2.0F);
-//		leftArm.addChild(leftItem);
-//		
-//
-//		rightLeg = new ModelRenderer(this);
-//		rightLeg.setPos(-1.9F, 12.0F, 0.0F);
-//		body.addChild(rightLeg);
-//		rightLeg.texOffs(16, 52).addBox(-2.0F, 4.0F, -2.0F, 4.0F, 8.0F, 4.0F, 0.0F, false);
-//		rightLeg.texOffs(0, 52).addBox(-2.0F, 4.0F, -2.0F, 4.0F, 8.0F, 4.0F, 0.25F, false);
-//		rightLeg.texOffs(35, 38).addBox(-3.0F, 0.0F, -3.0F, 5.0F, 4.0F, 6.0F, 0.0F, false);
-//
-//		leftLeg = new ModelRenderer(this);
-//		leftLeg.setPos(1.9F, 12.0F, 0.0F);
-//		body.addChild(leftLeg);
-//		leftLeg.texOffs(16, 52).addBox(-2.0F, 4.0F, -2.0F, 4.0F, 8.0F, 4.0F, 0.0F, false);
-//		leftLeg.texOffs(0, 52).addBox(-2.0F, 4.0F, -2.0F, 4.0F, 8.0F, 4.0F, 0.25F, true);
-//		leftLeg.texOffs(35, 38).addBox(-2.0F, 0.0F, -3.0F, 5.0F, 4.0F, 6.0F, 0.0F, false);
 	}
 	
 

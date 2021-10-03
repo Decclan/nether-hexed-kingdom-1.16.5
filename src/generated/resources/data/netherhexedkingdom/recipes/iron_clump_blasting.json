@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "netherhexedkingdom:iron_plate_block"
+  },
+  "result": "netherhexedkingdom:iron_clump",
+  "experience": 0.7,
+  "cookingtime": 200
+}

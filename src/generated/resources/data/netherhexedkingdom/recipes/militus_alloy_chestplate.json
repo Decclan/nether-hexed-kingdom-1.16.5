@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "netherhexedkingdom:militus_alloy_ingot"
+    }
+  },
+  "result": {
+    "item": "netherhexedkingdom:militus_alloy_chestplate"
+  }
+}

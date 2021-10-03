@@ -1,5 +1,6 @@
 package com.deimoshexxus.netherhexedkingdom;
 
+import com.deimoshexxus.netherhexedkingdom.structures.NetherPrison;
 import com.deimoshexxus.netherhexedkingdom.structures.NetherWatchTower;
 import com.deimoshexxus.netherhexedkingdom.structures.RunDownHouseStructure;
 import com.google.common.collect.ImmutableList;
@@ -17,17 +18,14 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Supplier;
-
-import javax.annotation.Nullable;
 
 public class NetherStructures {
 
     public static final DeferredRegister<Structure<?>> DEFERRED_REGISTRY_STRUCTURE = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, NetherHexedKingdomMain.MOD_ID);
 
     public static final RegistryObject<Structure<NoFeatureConfig>> RUN_DOWN_HOUSE = DEFERRED_REGISTRY_STRUCTURE.register("run_down_house", () -> (new RunDownHouseStructure(NoFeatureConfig.CODEC)));
-
     public static final RegistryObject<Structure<NoFeatureConfig>> NETHER_WATCH_TOWER = DEFERRED_REGISTRY_STRUCTURE.register("hexed_watch_tower", () -> (new NetherWatchTower(NoFeatureConfig.CODEC)));
+    public static final RegistryObject<Structure<NoFeatureConfig>> NETHER_PRISON = DEFERRED_REGISTRY_STRUCTURE.register("hexed_prison", () -> (new NetherPrison(NoFeatureConfig.CODEC)));
 
     
     public static void setupStructures() {
@@ -38,11 +36,17 @@ public class NetherStructures {
                         1234567890 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
                 true);
 
-
         setupMapSpacingAndLand(
         		NETHER_WATCH_TOWER.get(),
                 new StructureSeparationSettings(10,
                         3,
+                        1234567890 ),
+                true);
+        
+        setupMapSpacingAndLand(
+        		NETHER_PRISON.get(),
+                new StructureSeparationSettings(10,
+                        5,
                         1234567890 ),
                 true);
         

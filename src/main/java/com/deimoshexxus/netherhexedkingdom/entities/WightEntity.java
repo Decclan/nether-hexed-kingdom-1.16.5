@@ -2,31 +2,15 @@ package com.deimoshexxus.netherhexedkingdom.entities;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.IRangedAttackMob;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.monster.AbstractSkeletonEntity;
 import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.monster.SkeletonEntity;
-import net.minecraft.entity.monster.ZombieEntity;
-
 import net.minecraft.entity.monster.ZombifiedPiglinEntity;
-import net.minecraft.entity.monster.piglin.AbstractPiglinEntity;
 import net.minecraft.entity.monster.piglin.PiglinBruteEntity;
 import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
-import net.minecraft.entity.merchant.villager.WanderingTraderEntity;
-
-import net.minecraft.entity.passive.TameableEntity;
-import net.minecraft.entity.passive.WolfEntity;
-import net.minecraft.entity.passive.SnowGolemEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
-import net.minecraft.entity.passive.TurtleEntity;
-import net.minecraft.entity.villager.VillagerType;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.pathfinding.GroundPathNavigator;
@@ -44,17 +28,14 @@ import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.RestrictSunGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
-import net.minecraft.entity.ai.goal.ZombieAttackGoal;
-
-
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 
-public class WightEntity extends MonsterEntity
+public class WightEntity extends CreatureEntity
 	{
 
-	public WightEntity(EntityType<? extends MonsterEntity> type, World worldIn) 
+	public WightEntity(EntityType<? extends CreatureEntity> type, World worldIn) 
 	{
 		super(type, worldIn);
 		this.applyOpenDoorsAbility();
@@ -68,7 +49,7 @@ public class WightEntity extends MonsterEntity
 		this.goalSelector.addGoal(2, new RestrictSunGoal(this));
 		this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, ZombifiedPiglinEntity.class, 6.0F, 1.0D, 1.2D));
 		this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
-		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+//		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
 		this.addBehaviourGoals();
 	}
 	
@@ -77,19 +58,19 @@ public class WightEntity extends MonsterEntity
 	   	this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0D, false));
 	    this.goalSelector.addGoal(7, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
 	    this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers(WightEntity.class));
-	    this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
-	    this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillagerEntity.class, false));
-	    this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolemEntity.class, true));
-	    this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, PiglinBruteEntity.class, true));
+//	    this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
+//	    this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillagerEntity.class, false));
+//	    this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolemEntity.class, true));
+//	    this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, PiglinBruteEntity.class, true));
 	}
 
 	public static AttributeModifierMap.MutableAttribute createAttributes() 
 	{
-		return MonsterEntity.createMonsterAttributes()
-		.add(Attributes.FOLLOW_RANGE, 24.0D)
-		.add(Attributes.ATTACK_KNOCKBACK, 6.0D)
+		return CreatureEntity.createLivingAttributes()
+		.add(Attributes.FOLLOW_RANGE, 16.0D)
+		.add(Attributes.ATTACK_KNOCKBACK, 2.0D)
 		.add(Attributes.MOVEMENT_SPEED, 0.3D)
-		.add(Attributes.ATTACK_DAMAGE, 4.5D)
+		.add(Attributes.ATTACK_DAMAGE, 4.2D)
 		.add(Attributes.ARMOR, 2.0D)
 		.add(Attributes.MAX_HEALTH, 24.0D);
 	}
@@ -127,7 +108,7 @@ public class WightEntity extends MonsterEntity
 
 	protected SoundEvent getHurtSound(DamageSource damageSourceIn) 
 	{
-		return SoundEvents.SKELETON_HURT;
+		return SoundEvents.GENERIC_HURT;
 	}
 
 	protected SoundEvent getDeathSound() 
@@ -137,15 +118,13 @@ public class WightEntity extends MonsterEntity
 
 	protected SoundEvent getStepSound() 
 	{
-		return SoundEvents.SKELETON_STEP;
+		return SoundEvents.STONE_STEP;
 	}
 	
 	@Nullable
 	public ILivingEntityData finalizeSpawn(IServerWorld p_213386_1_, DifficultyInstance p_213386_2_, SpawnReason p_213386_3_, @Nullable ILivingEntityData p_213386_4_, @Nullable CompoundNBT p_213386_5_) 
 	{
 		ILivingEntityData ilivingentitydata = super.finalizeSpawn(p_213386_1_, p_213386_2_, p_213386_3_, p_213386_4_, p_213386_5_);
-//		this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(4.0D);
-
 //		this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.STONE_SWORD));
 //		this.setItemSlot(EquipmentSlotType.CHEST, new ItemStack(Items.IRON_CHESTPLATE));
 //		this.setItemSlot(EquipmentSlotType.HEAD, new ItemStack(Items.LEATHER_HELMET));

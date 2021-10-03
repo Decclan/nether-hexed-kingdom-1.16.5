@@ -1,17 +1,14 @@
 package com.deimoshexxus.netherhexedkingdom.entities.models;
 
-import com.deimoshexxus.netherhexedkingdom.entities.FaceEaterEntity;
+import com.deimoshexxus.netherhexedkingdom.entities.VolcanDaemon;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 
 import net.minecraft.client.renderer.entity.model.PhantomModel;
-import net.minecraft.client.renderer.entity.model.SegmentedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 
-//public class PhantomModel<T extends Entity> extends SegmentedModel<T>
-public class FaceEaterModel extends PhantomModel<FaceEaterEntity> 
+public class FaceEaterModel extends PhantomModel<VolcanDaemon> 
 {
 	private final ModelRenderer body;
 	private final ModelRenderer leftWingBase;	//leftWingBase
@@ -80,9 +77,9 @@ public class FaceEaterModel extends PhantomModel<FaceEaterEntity>
 		tailtip.texOffs(73, 51).addBox(-3.0F, 43.0F, 11.2F, 3.0F, 3.0F, 39.0F, 0.0F, false);	}
 
 	@Override
-	public void setupAnim(FaceEaterEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
+	public void setupAnim(VolcanDaemon entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
 	      float f = ((float)(entity.getId() * 3) + ageInTicks) * 0.13F;
-	      float f1 = 16.0F;
+//	      float f1 = 16.0F;
 	      this.leftWingBase.zRot = MathHelper.cos(f) * 16.0F * ((float)Math.PI / 180F);
 	      this.leftWingTip.zRot = MathHelper.cos(f) * 16.0F * ((float)Math.PI / 180F);
 	      this.rightWingBase.zRot = -this.leftWingBase.zRot;

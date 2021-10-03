@@ -1,7 +1,7 @@
 package com.deimoshexxus.netherhexedkingdom.item;
 
-import com.deimoshexxus.netherhexedkingdom.init.ModItems;
 import com.deimoshexxus.netherhexedkingdom.init.ModTags;
+import com.deimoshexxus.netherhexedkingdom.item.render.BlockingHelper;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -9,12 +9,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShieldItem;
 import net.minecraft.item.UseAction;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 
-public class MilitusAlloyShield extends Item
+public class MilitusAlloyShield extends ShieldItem
 {
 //	IForgeItem::isShield
 	public MilitusAlloyShield(Item.Properties prop) {
@@ -24,6 +24,8 @@ public class MilitusAlloyShield extends Item
 //		this.isDamageable(getDefaultInstance());
 //		this.getDamage(getDefaultInstance());
 //		this.canBeHurtBy(null);
+		if (FMLEnvironment.dist.isClient())
+			BlockingHelper.registerShieldPropertyOverrides(this);
 		
 	}
 	
@@ -62,11 +64,11 @@ public class MilitusAlloyShield extends Item
 		return stack.isDamaged();
 	}
 	
-//	@Override
-//	public int getEntityLifespan(ItemStack itemStack, World world) 
-//	{
-//		return 0;
-//	}
+	@Override
+	public int getEntityLifespan(ItemStack itemStack, World world) 
+	{
+		return 0;
+	}
 
 	@Override
     public boolean isDamaged(ItemStack stack)
@@ -107,4 +109,22 @@ public class MilitusAlloyShield extends Item
 	{
 		return UseAction.BLOCK;
 	}
+	
+//	@OnlyIn(Dist.CLIENT)
+//	public class BlockingHelper 
+//	{
+//		  public static void registerShieldPropertyOverrides(MilitusAlloyShield item) {
+//			    ItemModelsProperties.register((Item)item, new ResourceLocation("blocking"), (stack, world, living) -> 
+//			        
+//		        (living != null && living.isUsingItem() && living.getUseItem() == stack) ? 1.0F : 0.0F);
+//
+//			  }
+//			  
+////			  public static void registerPoweredShieldPropertyOverrides(FEPoweredShieldItem item) {
+////			    registerShieldPropertyOverrides((MilitusAlloyShield)item);
+////			    ItemModelsProperties.register((Item)item, new ResourceLocation("disabled"), (stack, world, living) -> (stack.func_196082_o().func_74762_e("Energy") <= 0) ? 1.0F : 0.0F);
+////			  }
+//			  
+//
+//	}
 }
