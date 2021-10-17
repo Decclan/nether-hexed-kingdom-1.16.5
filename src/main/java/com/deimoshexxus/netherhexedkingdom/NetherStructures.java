@@ -1,6 +1,12 @@
 package com.deimoshexxus.netherhexedkingdom;
 
+import com.deimoshexxus.netherhexedkingdom.structures.NetherBullionTemple;
+import com.deimoshexxus.netherhexedkingdom.structures.NetherGreedMines;
+import com.deimoshexxus.netherhexedkingdom.structures.NetherIronClad;
+import com.deimoshexxus.netherhexedkingdom.structures.NetherLookout;
+import com.deimoshexxus.netherhexedkingdom.structures.NetherOutpost;
 import com.deimoshexxus.netherhexedkingdom.structures.NetherPrison;
+import com.deimoshexxus.netherhexedkingdom.structures.NetherRedSunTower;
 import com.deimoshexxus.netherhexedkingdom.structures.NetherWatchTower;
 import com.deimoshexxus.netherhexedkingdom.structures.RunDownHouseStructure;
 import com.google.common.collect.ImmutableList;
@@ -24,10 +30,16 @@ public class NetherStructures {
     public static final DeferredRegister<Structure<?>> DEFERRED_REGISTRY_STRUCTURE = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, NetherHexedKingdomMain.MOD_ID);
 
     public static final RegistryObject<Structure<NoFeatureConfig>> RUN_DOWN_HOUSE = DEFERRED_REGISTRY_STRUCTURE.register("run_down_house", () -> (new RunDownHouseStructure(NoFeatureConfig.CODEC)));
+    
     public static final RegistryObject<Structure<NoFeatureConfig>> NETHER_WATCH_TOWER = DEFERRED_REGISTRY_STRUCTURE.register("hexed_watch_tower", () -> (new NetherWatchTower(NoFeatureConfig.CODEC)));
     public static final RegistryObject<Structure<NoFeatureConfig>> NETHER_PRISON = DEFERRED_REGISTRY_STRUCTURE.register("hexed_prison", () -> (new NetherPrison(NoFeatureConfig.CODEC)));
+    public static final RegistryObject<Structure<NoFeatureConfig>> NETHER_GREED_MINES = DEFERRED_REGISTRY_STRUCTURE.register("hexed_greed_mines", () -> (new NetherGreedMines(NoFeatureConfig.CODEC)));
+    public static final RegistryObject<Structure<NoFeatureConfig>> NETHER_LOOKOUT = DEFERRED_REGISTRY_STRUCTURE.register("hexed_lookout", () -> (new NetherLookout(NoFeatureConfig.CODEC)));
+    public static final RegistryObject<Structure<NoFeatureConfig>> NETHER_OUTPOST = DEFERRED_REGISTRY_STRUCTURE.register("hexed_outpost", () -> (new NetherOutpost(NoFeatureConfig.CODEC)));
+    public static final RegistryObject<Structure<NoFeatureConfig>> NETHER_BULLION_TEMPLE = DEFERRED_REGISTRY_STRUCTURE.register("hexed_bullion_temple", () -> (new NetherBullionTemple(NoFeatureConfig.CODEC)));
+    public static final RegistryObject<Structure<NoFeatureConfig>> NETHER_IRON_CLAD = DEFERRED_REGISTRY_STRUCTURE.register("hexed_iron_clad", () -> (new NetherIronClad(NoFeatureConfig.CODEC)));
+    public static final RegistryObject<Structure<NoFeatureConfig>> NETHER_RED_SUN_TOWER = DEFERRED_REGISTRY_STRUCTURE.register("hexed_red_sun_tower", () -> (new NetherRedSunTower(NoFeatureConfig.CODEC)));
 
-    
     public static void setupStructures() {
         setupMapSpacingAndLand(
                 RUN_DOWN_HOUSE.get(), /* The instance of the structure */
@@ -40,16 +52,57 @@ public class NetherStructures {
         		NETHER_WATCH_TOWER.get(),
                 new StructureSeparationSettings(10,
                         3,
-                        1234567890 ),
+                        294028347 ),
                 true);
         
         setupMapSpacingAndLand(
         		NETHER_PRISON.get(),
-                new StructureSeparationSettings(10,
+                new StructureSeparationSettings(15,
                         5,
-                        1234567890 ),
+                        563854638 ),
                 true);
         
+        setupMapSpacingAndLand(
+        		NETHER_GREED_MINES.get(),
+                new StructureSeparationSettings(16,
+                        8,
+                        674646743 ),
+                false);
+        
+        setupMapSpacingAndLand(
+        		NETHER_LOOKOUT.get(),
+                new StructureSeparationSettings(18,
+                        8,
+                        329405624 ),
+                false);
+        
+        setupMapSpacingAndLand(
+        		NETHER_OUTPOST.get(),
+                new StructureSeparationSettings(12,
+                        6,
+                        920485738 ),
+                true);
+        
+        setupMapSpacingAndLand(
+        		NETHER_BULLION_TEMPLE.get(),
+                new StructureSeparationSettings(16,
+                        8,
+                        2049876748 ),
+                false);
+        
+        setupMapSpacingAndLand(
+        		NETHER_IRON_CLAD.get(),
+                new StructureSeparationSettings(10,
+                        5,
+                        994756773 ),
+                true);
+        
+        setupMapSpacingAndLand(
+        		NETHER_RED_SUN_TOWER.get(),
+                new StructureSeparationSettings(10,
+                        5,
+                        529055930 ),
+                true);
         // Add more structures here and so on
     }
 

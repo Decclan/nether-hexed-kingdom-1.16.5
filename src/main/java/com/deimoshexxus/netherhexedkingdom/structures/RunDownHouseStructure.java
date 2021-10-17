@@ -33,6 +33,7 @@ import net.minecraft.world.gen.feature.template.TemplateManager;
 import net.minecraft.world.gen.settings.StructureSeparationSettings;
 import org.apache.logging.log4j.Level;
 
+import net.minecraft.world.gen.feature.GlowstoneBlobFeature;
 import net.minecraft.world.gen.feature.BasaltColumnFeature;
 import net.minecraft.world.gen.feature.structure.BastionRemantsStructure;
 import net.minecraft.world.gen.feature.structure.NetherFossilStructure;

@@ -163,7 +163,7 @@
 			"predicate": {
 				"blocking": 1
 			},
-			"model": "netherhexedkingdommod:block/skeleton_bone_shield_blocking"
+			"model": "netherhexedkingdom:block/skeleton_bone_shield_blocking"
 		}
 	],
 	"display": {

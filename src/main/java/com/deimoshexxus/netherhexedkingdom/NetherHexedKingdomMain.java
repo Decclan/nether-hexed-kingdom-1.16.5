@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.deimoshexxus.netherhexedkingdom.config.ConfigHandler;
 import com.deimoshexxus.netherhexedkingdom.init.Registration;
 import com.mojang.serialization.Codec;
 
@@ -28,8 +29,10 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
+import net.minecraftforge.fml.config.ModConfig.Type;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
@@ -69,7 +72,9 @@ public class NetherHexedKingdomMain
         
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::client);
 
-        // Register ourselves for server and other game events we are interested in
+        ModLoadingContext.get()
+        	.registerConfig(Type.COMMON, ConfigHandler.SPEC, "netherhexedkingdom-common.toml");        
+        
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -94,40 +99,58 @@ public class NetherHexedKingdomMain
 
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
-        // some example code to dispatch IMC to another mod
         InterModComms.sendTo("netherhexedkingdom", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
     }
 
     private void processIMC(final InterModProcessEvent event)
     {
-        // example code to receive and process InterModComms from other mods
         LOGGER.info("Got IMC {}", event.getIMCStream().
                 map(m->m.getMessageSupplier().get()).
                 collect(Collectors.toList()));
     }
-    //SubscribeEvent let the Event Bus discover methods to call
+
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
         LOGGER.info("Server starting FML event");
     }
 
-    // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
-    // Event bus for receiving Registry Events)
-//    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
-//    public static class RegistryEvents {
-//        @SubscribeEvent
-//        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-//            // register a new block here
-//            LOGGER.info("HELLO from Register Block");
-//        }
-//    }
 //Structures code
     public void biomeModification(final BiomeLoadingEvent event) 
     {
     	event.setCategory(Category.NETHER);
-        event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_RUN_DOWN_HOUSE);
-        event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_WATCH_TOWER);
-        event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_PRISON);
+
+        if (ConfigHandler.NETHER_WATCH_TOWER_SPAWN.get())
+        {
+        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_WATCH_TOWER);
+        }
+        if (ConfigHandler.NETHER_PRISON_SPAWN.get())
+        {
+        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_PRISON);
+        }
+        if (ConfigHandler.NETHER_GREED_MINES_SPAWN.get())
+        {
+        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_GREED_MINES);
+        }
+        if (ConfigHandler.NETHER_LOOKOUT_SPAWN.get())
+        {
+        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_LOOKOUT);
+        }
+        if (ConfigHandler.NETHER_OUTPOST_SPAWN.get())
+        {
+        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_OUTPOST);
+        }
+        if (ConfigHandler.NETHER_BULLION_TEMPLE_SPAWN.get())
+        {
+        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_BULLION_TEMPLE);
+        }
+        if (ConfigHandler.NETHER_IRON_CLAD_SPAWN.get())
+        {
+        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_IRON_CLAD);
+        }
+        if (ConfigHandler.NETHER_RED_SUN_TOWER_SPAWN.get())
+        {
+        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_RED_SUN_TOWER);
+        }
     }
     
     public Map<Structure<?>, StructureSeparationSettings> structureConfig() {
@@ -152,16 +175,42 @@ public class NetherHexedKingdomMain
                 serverWorld.dimension().equals(World.OVERWORLD)){
                 return;
             }
-//          //prevents overworld spawn - doesn't work elif?
-//            else if(serverWorld.dimension().equals(World.OVERWORLD))
-//            {
-//                return;
-//            }
             
             Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(serverWorld.getChunkSource().generator.getSettings().structureConfig());
-            tempMap.putIfAbsent(NetherStructures.RUN_DOWN_HOUSE.get(), DimensionStructuresSettings.DEFAULTS.get(NetherStructures.RUN_DOWN_HOUSE.get()));
-            tempMap.putIfAbsent(NetherStructures.NETHER_WATCH_TOWER.get(), DimensionStructuresSettings.DEFAULTS.get(NetherStructures.NETHER_WATCH_TOWER.get()));
-            tempMap.putIfAbsent(NetherStructures.NETHER_PRISON.get(), DimensionStructuresSettings.DEFAULTS.get(NetherStructures.NETHER_PRISON.get()));
+           
+            if (ConfigHandler.NETHER_WATCH_TOWER_SPAWN.get())
+            {
+            	tempMap.putIfAbsent(NetherStructures.NETHER_WATCH_TOWER.get(), DimensionStructuresSettings.DEFAULTS.get(NetherStructures.NETHER_WATCH_TOWER.get()));
+            }
+            if (ConfigHandler.NETHER_PRISON_SPAWN.get())
+            {
+            	tempMap.putIfAbsent(NetherStructures.NETHER_PRISON.get(), DimensionStructuresSettings.DEFAULTS.get(NetherStructures.NETHER_PRISON.get()));
+            }
+            if (ConfigHandler.NETHER_GREED_MINES_SPAWN.get())
+            {
+            	tempMap.putIfAbsent(NetherStructures.NETHER_GREED_MINES.get(), DimensionStructuresSettings.DEFAULTS.get(NetherStructures.NETHER_GREED_MINES.get()));
+            }
+            if (ConfigHandler.NETHER_LOOKOUT_SPAWN.get())
+            {
+            	tempMap.putIfAbsent(NetherStructures.NETHER_LOOKOUT.get(), DimensionStructuresSettings.DEFAULTS.get(NetherStructures.NETHER_LOOKOUT.get()));
+            }
+            if (ConfigHandler.NETHER_OUTPOST_SPAWN.get())
+            {
+            	tempMap.putIfAbsent(NetherStructures.NETHER_OUTPOST.get(), DimensionStructuresSettings.DEFAULTS.get(NetherStructures.NETHER_OUTPOST.get()));
+            }
+            if (ConfigHandler.NETHER_BULLION_TEMPLE_SPAWN.get())
+            {
+            	tempMap.putIfAbsent(NetherStructures.NETHER_BULLION_TEMPLE.get(), DimensionStructuresSettings.DEFAULTS.get(NetherStructures.NETHER_BULLION_TEMPLE.get()));
+            }
+            if (ConfigHandler.NETHER_IRON_CLAD_SPAWN.get())
+            {
+            	tempMap.putIfAbsent(NetherStructures.NETHER_IRON_CLAD.get(), DimensionStructuresSettings.DEFAULTS.get(NetherStructures.NETHER_IRON_CLAD.get()));
+            }
+            if (ConfigHandler.NETHER_RED_SUN_TOWER_SPAWN.get())
+            {
+            	tempMap.putIfAbsent(NetherStructures.NETHER_RED_SUN_TOWER.get(), DimensionStructuresSettings.DEFAULTS.get(NetherStructures.NETHER_RED_SUN_TOWER.get()));
+            }
+           
             serverWorld.getChunkSource().generator.getSettings().structureConfig = tempMap;
         }
    }

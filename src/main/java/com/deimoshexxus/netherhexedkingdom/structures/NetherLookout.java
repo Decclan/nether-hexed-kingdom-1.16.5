@@ -31,14 +31,14 @@ import org.apache.logging.log4j.Level;
 
 import java.util.List;
 
-public class NetherPrison extends Structure<NoFeatureConfig> {
-    public NetherPrison(Codec<NoFeatureConfig> codec) {
+public class NetherLookout extends Structure<NoFeatureConfig> {
+    public NetherLookout(Codec<NoFeatureConfig> codec) {
         super(codec);
     }
 
     @Override
     public  IStartFactory<NoFeatureConfig> getStartFactory() {
-        return NetherPrison.Start::new;
+        return NetherLookout.Start::new;
     }
 
     @Override
@@ -48,9 +48,9 @@ public class NetherPrison extends Structure<NoFeatureConfig> {
 
 
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
-            new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 100, 4, 9),
-            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), 100, 3, 8),
-            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), 100, 1, 3)
+            new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 40, 3, 7),
+            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), 80, 3, 8),
+            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), 30, 1, 5)
     );
     
     @Override
@@ -89,12 +89,15 @@ public class NetherPrison extends Structure<NoFeatureConfig> {
 
             IBlockReader blockReader = chunkGenerator.getBaseColumn(blockpos.getX(), blockpos.getZ());
 
-            for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl; --y) {
+            for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl + 32 + this.random.nextInt(chunkGenerator.getGenDepth() - 34 - sl); --y) {
                 BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
-                blockpos$mutable.move(Direction.DOWN);
+                blockpos$mutable.move(Direction.UP);
                 BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
-                if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) {
+                if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND))) {
                    break;
+                }
+                if (blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP)) {
+                	continue;
                 }
              }
             
@@ -102,7 +105,7 @@ public class NetherPrison extends Structure<NoFeatureConfig> {
                     dynamicRegistryManager,
                     new VillageConfig(() -> dynamicRegistryManager.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY)
 
-                            .get(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "hexed_prison/start_pool")),
+                            .get(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "hexed_lookout/start_pool")),
                             10),
                     AbstractVillagePiece::new,
                     chunkGenerator,
@@ -117,7 +120,7 @@ public class NetherPrison extends Structure<NoFeatureConfig> {
             this.pieces.forEach(piece -> piece.getBoundingBox().y0 -= 1);
             this.calculateBoundingBox();
 
-            NetherHexedKingdomMain.LOGGER.log(Level.DEBUG, "Prison at " +
+            NetherHexedKingdomMain.LOGGER.log(Level.DEBUG, "Lookout at " +
                             this.pieces.get(0).getBoundingBox().x0 + " " +
                             this.pieces.get(0).getBoundingBox().y0 + " " +
                             this.pieces.get(0).getBoundingBox().z0);

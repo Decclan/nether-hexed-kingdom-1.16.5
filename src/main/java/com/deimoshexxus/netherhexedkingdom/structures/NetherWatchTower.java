@@ -5,8 +5,6 @@ import com.mojang.serialization.Codec;
 import com.deimoshexxus.netherhexedkingdom.NetherHexedKingdomMain;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
@@ -15,11 +13,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.util.registry.DynamicRegistries;
-import net.minecraft.util.registry.MutableRegistry;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.biome.provider.BiomeProvider;
@@ -30,17 +25,9 @@ import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.jigsaw.JigsawManager;
 import net.minecraft.world.gen.feature.structure.*;
 import net.minecraft.world.gen.feature.template.TemplateManager;
-import net.minecraft.world.gen.settings.StructureSeparationSettings;
 import org.apache.logging.log4j.Level;
 
-import net.minecraft.world.gen.feature.BasaltColumnFeature;
-import net.minecraft.world.gen.feature.structure.BastionRemantsStructure;
-import net.minecraft.world.gen.feature.structure.NetherFossilStructure;
-
 import java.util.List;
-import java.util.Optional;
-
-import net.minecraft.world.gen.feature.structure.Structure.IStartFactory;
 
 public class NetherWatchTower extends Structure<NoFeatureConfig> {
     public NetherWatchTower(Codec<NoFeatureConfig> codec) {
@@ -76,7 +63,7 @@ public class NetherWatchTower extends Structure<NoFeatureConfig> {
 //        return STRUCTURE_CREATURES;
 //    }
 
-
+    //generates land around base of structure
     @Override
     protected boolean isFeatureChunk(ChunkGenerator chunkGenerator, BiomeProvider biomeSource, long seed, SharedSeedRandom chunkRandom, int chunkX, int chunkZ, Biome biome, ChunkPos chunkPos, NoFeatureConfig featureConfig) {
         BlockPos centerOfChunk = new BlockPos((chunkX << 4) + 7, 0, (chunkZ << 4) + 7);
@@ -152,6 +139,5 @@ public class NetherWatchTower extends Structure<NoFeatureConfig> {
                             this.pieces.get(0).getBoundingBox().y0 + " " +
                             this.pieces.get(0).getBoundingBox().z0);
         }
-
     }
 }

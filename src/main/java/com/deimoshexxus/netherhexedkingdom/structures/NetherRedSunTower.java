@@ -31,14 +31,14 @@ import org.apache.logging.log4j.Level;
 
 import java.util.List;
 
-public class NetherPrison extends Structure<NoFeatureConfig> {
-    public NetherPrison(Codec<NoFeatureConfig> codec) {
+public class NetherRedSunTower extends Structure<NoFeatureConfig> {
+    public NetherRedSunTower(Codec<NoFeatureConfig> codec) {
         super(codec);
     }
 
     @Override
     public  IStartFactory<NoFeatureConfig> getStartFactory() {
-        return NetherPrison.Start::new;
+        return NetherRedSunTower.Start::new;
     }
 
     @Override
@@ -48,9 +48,11 @@ public class NetherPrison extends Structure<NoFeatureConfig> {
 
 
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
-            new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 100, 4, 9),
-            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), 100, 3, 8),
-            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), 100, 1, 3)
+            new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 70, 5, 9),
+            new MobSpawnInfo.Spawners(EntityType.BLAZE, 70, 3, 7),
+            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), 100, 4, 9),
+            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), 50, 2, 5)
+//            new MobSpawnInfo.Spawners(ModEntities.VOLCAN_DAEMON_ENTITY.get(), 20, 1, 3)
     );
     
     @Override
@@ -102,7 +104,7 @@ public class NetherPrison extends Structure<NoFeatureConfig> {
                     dynamicRegistryManager,
                     new VillageConfig(() -> dynamicRegistryManager.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY)
 
-                            .get(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "hexed_prison/start_pool")),
+                            .get(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "hexed_red_sun_tower/start_pool")),
                             10),
                     AbstractVillagePiece::new,
                     chunkGenerator,
@@ -117,7 +119,7 @@ public class NetherPrison extends Structure<NoFeatureConfig> {
             this.pieces.forEach(piece -> piece.getBoundingBox().y0 -= 1);
             this.calculateBoundingBox();
 
-            NetherHexedKingdomMain.LOGGER.log(Level.DEBUG, "Prison at " +
+            NetherHexedKingdomMain.LOGGER.log(Level.DEBUG, "Red Sun Tower at " +
                             this.pieces.get(0).getBoundingBox().x0 + " " +
                             this.pieces.get(0).getBoundingBox().y0 + " " +
                             this.pieces.get(0).getBoundingBox().z0);
