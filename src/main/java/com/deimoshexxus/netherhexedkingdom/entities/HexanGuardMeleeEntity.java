@@ -1,15 +1,16 @@
 package com.deimoshexxus.netherhexedkingdom.entities;
 
+import java.util.List;
+import java.util.Random;
+
 import javax.annotation.Nullable;
 
 import com.deimoshexxus.netherhexedkingdom.init.ModItems;
 import com.deimoshexxus.netherhexedkingdom.init.SoundsHandler;
 
 import net.minecraft.entity.CreatureAttribute;
-import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.monster.AbstractSkeletonEntity;
 import net.minecraft.entity.monster.MonsterEntity;
@@ -28,6 +29,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.GroundPathHelper;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.AvoidEntityGoal;
@@ -120,15 +123,6 @@ public class HexanGuardMeleeEntity extends AbstractSkeletonEntity
 		this.setItemSlot(EquipmentSlotType.OFFHAND, new ItemStack(ModItems.MILITUS_ALLOY_SHIELD.get()));
 	}
 
-	
-	@Nullable
-	public ILivingEntityData finalizeSpawn(IServerWorld p_213386_1_, DifficultyInstance p_213386_2_, SpawnReason p_213386_3_, @Nullable ILivingEntityData p_213386_4_, @Nullable CompoundNBT p_213386_5_) 
-	{
-		ILivingEntityData ilivingentitydata = super.finalizeSpawn(p_213386_1_, p_213386_2_, p_213386_3_, p_213386_4_, p_213386_5_);
-		this.reassessWeaponGoal();
-		return ilivingentitydata;
-	}
-	
 	@Override
 	protected SoundEvent getAmbientSound() 
 	{
@@ -148,5 +142,25 @@ public class HexanGuardMeleeEntity extends AbstractSkeletonEntity
 	protected SoundEvent getStepSound() 
 	{
 		return SoundEvents.SKELETON_STEP;
+	}
+	
+	public static boolean canSpawn(EntityType<HexanGuardMeleeEntity> type, IServerWorld world, 
+			SpawnReason spawnReason, BlockPos pos, Random random)
+	{
+		if (MonsterEntity.isDarkEnoughToSpawn(world, pos, random))
+		{
+			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(8);
+			List<HexanGuardMeleeEntity> entities = world.getEntitiesOfClass(HexanGuardMeleeEntity.class, box, (entity) -> {return true;});
+			return entities.size() < 3;
+		}
+		return false;
+	}
+	
+	@Nullable
+	public ILivingEntityData finalizeSpawn(IServerWorld p_213386_1_, DifficultyInstance p_213386_2_, SpawnReason p_213386_3_, @Nullable ILivingEntityData p_213386_4_, @Nullable CompoundNBT p_213386_5_) 
+	{
+		ILivingEntityData ilivingentitydata = super.finalizeSpawn(p_213386_1_, p_213386_2_, p_213386_3_, p_213386_4_, p_213386_5_);
+		this.reassessWeaponGoal();
+		return ilivingentitydata;
 	}
 }

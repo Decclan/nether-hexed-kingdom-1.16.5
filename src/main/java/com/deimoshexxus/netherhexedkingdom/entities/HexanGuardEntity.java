@@ -1,9 +1,13 @@
 package com.deimoshexxus.netherhexedkingdom.entities;
 
+import java.util.List;
+import java.util.Random;
+
 import com.deimoshexxus.netherhexedkingdom.init.SoundsHandler;
 
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.monster.ZombifiedPiglinEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
@@ -13,6 +17,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.GroundPathHelper;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.AvoidEntityGoal;
@@ -20,6 +26,7 @@ import net.minecraft.entity.ai.goal.HurtByTargetGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.RestrictSunGoal;
+import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 
 public class HexanGuardEntity extends MonsterEntity
@@ -30,7 +37,6 @@ public class HexanGuardEntity extends MonsterEntity
 		super(type, worldIn);
 		this.applyOpenDoorsAbility();
 	}
-
 	
 	protected void registerGoals() 
 	{
@@ -41,7 +47,6 @@ public class HexanGuardEntity extends MonsterEntity
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolemEntity.class, true));
-		
 	}
 
 	public static AttributeModifierMap.MutableAttribute createAttributes() 
@@ -87,5 +92,17 @@ public class HexanGuardEntity extends MonsterEntity
 	protected SoundEvent getStepSound() 
 	{
 		return SoundEvents.SKELETON_STEP;
+	}
+	
+	public static boolean canSpawn(EntityType<HexanGuardEntity> type, IServerWorld world, 
+			SpawnReason spawnReason, BlockPos pos, Random random)
+	{
+		if (MonsterEntity.isDarkEnoughToSpawn(world, pos, random))
+		{
+			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(8);
+			List<HexanGuardEntity> entities = world.getEntitiesOfClass(HexanGuardEntity.class, box, (entity) -> {return true;});
+			return entities.size() < 3;
+		}
+		return false;
 	}
 }

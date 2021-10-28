@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.deimoshexxus.netherhexedkingdom.config.ConfigHandler;
+import com.deimoshexxus.netherhexedkingdom.init.ModEntities;
 import com.deimoshexxus.netherhexedkingdom.init.Registration;
 import com.mojang.serialization.Codec;
 
@@ -83,7 +84,7 @@ public class NetherHexedKingdomMain
         LOGGER.info("PREINIT");
         event.enqueueWork(() -> {
 //    		ModEntities.registerEntityAttributes();
-    		//ModEntityTypes.registerEntitySpawns();
+//    		ModEntities.registerEntitySpawns();
             NetherStructures.setupStructures();
             NetherConfiguredStructures.registerConfiguredStructures();
 

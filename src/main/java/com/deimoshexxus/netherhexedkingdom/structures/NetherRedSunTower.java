@@ -70,7 +70,7 @@ public class NetherRedSunTower extends Structure<NoFeatureConfig> {
 
         BlockState topBlock = columnOfBlocks.getBlockState(centerOfChunk.above(landHeight));
 
-       return topBlock.getFluidState().isEmpty(); //landHeight > 100;
+        return topBlock.getFluidState().isEmpty(); //landHeight > 100;
     }
 
     public static class Start extends StructureStart<NoFeatureConfig>  {
@@ -85,7 +85,7 @@ public class NetherRedSunTower extends Structure<NoFeatureConfig> {
             int z = (chunkZ << 4) + 7;
 
             int sl = chunkGenerator.getSeaLevel();
-            int y = sl + this.random.nextInt(chunkGenerator.getGenDepth() - 2 - sl);
+            int y = sl + this.random.nextInt(chunkGenerator.getGenDepth() - 66 - sl);
             
             BlockPos blockpos = new BlockPos(x, y, z);
 
@@ -95,6 +95,10 @@ public class NetherRedSunTower extends Structure<NoFeatureConfig> {
                 BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
                 blockpos$mutable.move(Direction.DOWN);
                 BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
+                if (this.getBoundingBox().intersects(getBoundingBox()))
+                {
+                	break;
+                }
                 if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) {
                    break;
                 }

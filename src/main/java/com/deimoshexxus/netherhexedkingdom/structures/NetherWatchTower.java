@@ -24,8 +24,12 @@ import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.jigsaw.JigsawManager;
 import net.minecraft.world.gen.feature.structure.*;
+import net.minecraft.world.gen.feature.template.PlacementSettings;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 import org.apache.logging.log4j.Level;
+
+import net.minecraft.world.gen.feature.structure.NetherFossilStructure;
+import net.minecraft.world.gen.feature.structure.NetherFossilStructures;
 
 import java.util.List;
 
@@ -54,16 +58,6 @@ public class NetherWatchTower extends Structure<NoFeatureConfig> {
         return STRUCTURE_MONSTERS;
     }
 
-//    private static final List<MobSpawnInfo.Spawners> STRUCTURE_CREATURES = ImmutableList.of(
-//            new MobSpawnInfo.Spawners(EntityType.SHEEP, 30, 10, 15),
-//            new MobSpawnInfo.Spawners(EntityType.RABBIT, 100, 1, 2)
-//    );
-//    @Override
-//    public List<MobSpawnInfo.Spawners> getDefaultCreatureSpawnList() {
-//        return STRUCTURE_CREATURES;
-//    }
-
-    //generates land around base of structure
     @Override
     protected boolean isFeatureChunk(ChunkGenerator chunkGenerator, BiomeProvider biomeSource, long seed, SharedSeedRandom chunkRandom, int chunkX, int chunkZ, Biome biome, ChunkPos chunkPos, NoFeatureConfig featureConfig) {
         BlockPos centerOfChunk = new BlockPos((chunkX << 4) + 7, 0, (chunkZ << 4) + 7);
@@ -81,7 +75,7 @@ public class NetherWatchTower extends Structure<NoFeatureConfig> {
 
         // Now we test to make sure our structure is not spawning on water or other fluids.
         // You can do height check instead too to make it spawn at high elevations.
-        return topBlock.getFluidState().isEmpty(); //landHeight > 100;
+        return topBlock.getFluidState().isEmpty();// && landHeight < 80;
     }
 
     public static class Start extends StructureStart<NoFeatureConfig>  {
@@ -104,11 +98,22 @@ public class NetherWatchTower extends Structure<NoFeatureConfig> {
             IBlockReader blockReader = chunkGenerator.getBaseColumn(blockpos.getX(), blockpos.getZ());
 
             for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl; --y) {
-                BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
+            	BlockPos airblockpos = new BlockPos.Mutable(x+6, y+16, z+6);
+            	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
                 blockpos$mutable.move(Direction.DOWN);
                 BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
-                if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) {
+                if (this.getBoundingBox().intersects(getBoundingBox()))
+                {
+                	break;
+                }
+                if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) 
+                {
                    break;
+                }
+                BlockState airblockstate = blockReader.getBlockState(airblockpos);
+                if (airblockstate.is(Blocks.AIR)) 
+                {
+                	continue;
                 }
              }
             
@@ -124,6 +129,7 @@ public class NetherWatchTower extends Structure<NoFeatureConfig> {
                     new BlockPos(x, y, z), // Position of the structure. Y value is ignored if last parameter is set to true.
                     this.pieces, // The list that will be populated with the jigsaw pieces after this method.
                     this.random,
+
                     false, // Special boundary adjustments for villages. It's... hard to explain. Keep this false and make your pieces not be partially intersecting.
                         // Either not intersecting or fully contained will make children pieces spawn just fine. It's easier that way.
                     false);  // Place at heightmap (top land). Set this to false for structure to be place at the passed in blockpos's Y value instead.
@@ -132,6 +138,7 @@ public class NetherWatchTower extends Structure<NoFeatureConfig> {
 
             this.pieces.forEach(piece -> piece.move(0, 1, 0));
             this.pieces.forEach(piece -> piece.getBoundingBox().y0 -= 1);
+            
             this.calculateBoundingBox();
 
             NetherHexedKingdomMain.LOGGER.log(Level.DEBUG, "Watch Tower at " +

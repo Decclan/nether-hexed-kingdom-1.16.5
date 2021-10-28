@@ -86,7 +86,7 @@ public class NetherStructures {
         setupMapSpacingAndLand(
         		NETHER_BULLION_TEMPLE.get(),
                 new StructureSeparationSettings(16,
-                        8,
+                        7,
                         2049876748 ),
                 false);
         
@@ -99,8 +99,8 @@ public class NetherStructures {
         
         setupMapSpacingAndLand(
         		NETHER_RED_SUN_TOWER.get(),
-                new StructureSeparationSettings(10,
-                        5,
+                new StructureSeparationSettings(16,
+                        8,
                         529055930 ),
                 true);
         // Add more structures here and so on

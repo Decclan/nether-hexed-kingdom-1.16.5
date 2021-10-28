@@ -68,7 +68,7 @@ public class NetherLookout extends Structure<NoFeatureConfig> {
 
         BlockState topBlock = columnOfBlocks.getBlockState(centerOfChunk.above(landHeight));
 
-       return topBlock.getFluidState().isEmpty(); //landHeight > 100;
+        return topBlock.getFluidState().isEmpty();// && landHeight > 70;
     }
 
     public static class Start extends StructureStart<NoFeatureConfig>  {
@@ -88,17 +88,24 @@ public class NetherLookout extends Structure<NoFeatureConfig> {
             BlockPos blockpos = new BlockPos(x, y, z);
 
             IBlockReader blockReader = chunkGenerator.getBaseColumn(blockpos.getX(), blockpos.getZ());
-
-            for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl + 32 + this.random.nextInt(chunkGenerator.getGenDepth() - 34 - sl); --y) {
+            	//(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl + 64 + this.random.nextInt(chunkGenerator.getGenDepth() - 34 - sl); --y)
+            for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl + 64 + this.random.nextInt(chunkGenerator.getGenDepth() - sl); --y) {
                 BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
-                blockpos$mutable.move(Direction.UP);
+                blockpos$mutable.move(Direction.DOWN);
                 BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
-                if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND))) {
-                   break;
+                if (this.getBoundingBox().intersects(getBoundingBox()))
+                {
+                	break;
                 }
-                if (blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP)) {
-                	continue;
+                if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) {
+                    break;
                 }
+//                if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND))) {
+//                   break;
+//                }
+//                if (blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP)) {
+//                	continue;
+//                }
              }
             
             JigsawManager.addPieces(

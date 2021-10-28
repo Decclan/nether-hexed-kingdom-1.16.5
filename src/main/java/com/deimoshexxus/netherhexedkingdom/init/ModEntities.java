@@ -11,8 +11,10 @@ import com.deimoshexxus.netherhexedkingdom.entities.HexanGuardEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.WitherSkeletonHorseEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.WitherSkeletonHorseRider;
 import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
@@ -62,9 +64,6 @@ public class ModEntities
 //			EntityType.Builder.<SkeletonEntity>of(SkeletonEntity::new, EntityClassification.MONSTER)
 //			.sized(0.6F, 1.99F).clientTrackingRange(8));
 	
-	
-
-	
 	@SubscribeEvent
 	public static void registerGlobalEntityAttributes(EntityAttributeCreationEvent event)
 	{
@@ -79,6 +78,36 @@ public class ModEntities
 		event.put(ModEntities.WITHER_SKELETON_HORSE_RIDER.get(), WitherSkeletonHorseRider.createAttributes().build());
 	}
 	
+	public static void registerEntitySpawns()
+	{
+		EntitySpawnPlacementRegistry.register(ModEntities.WIGHT_ENTITY.get(),
+				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WightEntity::canSpawn);
+		
+		EntitySpawnPlacementRegistry.register(ModEntities.HEXAN_GUARD_ENTITY.get(),
+				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexanGuardEntity::canSpawn);
+		
+		EntitySpawnPlacementRegistry.register(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(),
+				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexanGuardMeleeEntity::canSpawn);
+		
+		EntitySpawnPlacementRegistry.register(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(),
+				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexanGuardRangedEntity::canSpawn);
+		
+		EntitySpawnPlacementRegistry.register(ModEntities.WITHER_SKELETON_HORSE.get(),
+				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WitherSkeletonHorseEntity::canSpawn);
+		
+//		EntitySpawnPlacementRegistry.register(ModEntities.WITHER_SKELETON_HORSE_RIDER.get(),
+//				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
+//				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WitherSkeletonHorseRider::canSpawn);
+		
+		EntitySpawnPlacementRegistry.register(ModEntities.VOLCAN_DAEMON_ENTITY.get(),
+				EntitySpawnPlacementRegistry.PlacementType.NO_RESTRICTIONS, 
+				Heightmap.Type.MOTION_BLOCKING, VolcanDaemon::canSpawn);
+	}
+	
 	static void register() {}
-
 }

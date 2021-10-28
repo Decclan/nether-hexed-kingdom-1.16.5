@@ -57,7 +57,7 @@ public class NetherIronClad extends Structure<NoFeatureConfig> {
         public Start(Structure<NoFeatureConfig> structureIn, int chunkX, int chunkZ, MutableBoundingBox mutableBoundingBox, int referenceIn, long seedIn) {
             super(structureIn, chunkX, chunkZ, mutableBoundingBox, referenceIn, seedIn);
         }
-
+        
         @Override
         public void generatePieces(DynamicRegistries dynamicRegistryManager, ChunkGenerator chunkGenerator, TemplateManager templateManagerIn, int chunkX, int chunkZ, Biome biomeIn, NoFeatureConfig config) {
 
@@ -67,27 +67,52 @@ public class NetherIronClad extends Structure<NoFeatureConfig> {
             int sl = chunkGenerator.getSeaLevel();
             int y = sl - 3;
             
+            this.boundingBox = MutableBoundingBox.getUnknownBox();
+            
             BlockPos blockpos = new BlockPos(x, y, z);
 
             IBlockReader blockReader = chunkGenerator.getBaseColumn(blockpos.getX(), blockpos.getZ());
 
-            for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl; --y) 
+            for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl; --y)
             {
-            	
+            	BlockPos.Mutable airblockpos = new BlockPos.Mutable(x+6, y+16, z+6);
+            	BlockPos.Mutable blockpos$mutableeast = new BlockPos.Mutable(x+14, y+4, z+14);
                 BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
                 blockpos$mutable.move(Direction.DOWN);
-                BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
-                if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) 
+                BlockState blockstatedown = blockReader.getBlockState(blockpos$mutable);
+                if (this.getBoundingBox().intersects(getBoundingBox()))
+                {
+                	break;
+                }
+                if (blockstate.is(Blocks.AIR) && (blockstatedown.is(Blocks.SOUL_SAND) || blockstatedown.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) 
                 {
                    break;
                 }
-                if (blockstate.is(Blocks.LAVA))
+                if (blockstatedown.is(Blocks.LAVA))
         		{
                 	continue;
-        		} else; {
+        		}
+                BlockState airblockstate = blockReader.getBlockState(airblockpos);
+                for(int yaircheck = y + 32; y < yaircheck; --y)
+                {
+                	if (airblockstate.is(Blocks.AIR))
+                	{
+                		continue;
+                	}
+                }
+                
+//                if (airblockstate.is(Blocks.AIR)) 
+//                {
+//                	continue;
+//                }
+                BlockState blockstateeast = blockReader.getBlockState(blockpos$mutableeast);
+                if (blockstateeast.is(Blocks.AIR))
+        		{
+                	continue;
+        		}else
+        		{
         			break;
         		}
-                
              }
             JigsawManager.addPieces(
                     dynamicRegistryManager,

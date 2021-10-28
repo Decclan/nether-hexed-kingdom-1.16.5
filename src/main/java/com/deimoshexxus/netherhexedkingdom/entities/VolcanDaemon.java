@@ -1,5 +1,8 @@
 package com.deimoshexxus.netherhexedkingdom.entities;
 
+import java.util.List;
+import java.util.Random;
+
 import javax.annotation.Nullable;
 
 import net.minecraft.entity.CreatureAttribute;
@@ -21,6 +24,7 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.DifficultyInstance;
@@ -55,7 +59,7 @@ public class VolcanDaemon extends PhantomEntity
 	public static AttributeModifierMap.MutableAttribute createAttributes() 
 	{
 		return MonsterEntity.createMonsterAttributes()
-		.add(Attributes.FOLLOW_RANGE, 64.0D)
+		.add(Attributes.FOLLOW_RANGE, 128.0D)
 		.add(Attributes.ATTACK_KNOCKBACK, 2.2D)
 		.add(Attributes.MOVEMENT_SPEED, 0.3D)
 		.add(Attributes.ATTACK_DAMAGE, 6.0D)
@@ -80,15 +84,15 @@ public class VolcanDaemon extends PhantomEntity
 	   }
 	   
 	   static class FireballAttackGoal extends Goal {
-		      private final VolcanDaemon faceeater;
+		      private final VolcanDaemon daemon;
 		      public int chargeTime;
 
 		      public FireballAttackGoal(VolcanDaemon p_i45837_1_) {
-		         this.faceeater = p_i45837_1_;
+		         this.daemon = p_i45837_1_;
 		      }
 
 		      public boolean canUse() {
-		         return this.faceeater.getTarget() != null;
+		         return this.daemon.getTarget() != null;
 		      }
 
 		      public void start() {
@@ -96,33 +100,33 @@ public class VolcanDaemon extends PhantomEntity
 		      }
 
 		      public void stop() {
-		         this.faceeater.setCharging(false);
+		         this.daemon.setCharging(false);
 		      }
 
 		      public void tick() {
-		         LivingEntity livingentity = this.faceeater.getTarget();
+		         LivingEntity livingentity = this.daemon.getTarget();
 //		         double d0 = 64.0D;
-		         if (livingentity.distanceToSqr(this.faceeater) < 4096.0D && this.faceeater.canSee(livingentity)) {
-		            World world = this.faceeater.level;
+		         if (livingentity.distanceToSqr(this.daemon) < 4096.0D && this.daemon.canSee(livingentity)) {
+		            World world = this.daemon.level;
 		            ++this.chargeTime;
-		            if (this.chargeTime == 10 && !this.faceeater.isSilent()) {
-		               world.levelEvent((PlayerEntity)null, 1015, this.faceeater.blockPosition(), 0);
+		            if (this.chargeTime == 10 && !this.daemon.isSilent()) {
+		               world.levelEvent((PlayerEntity)null, 1015, this.daemon.blockPosition(), 0);
 		            }
 
 		            if (this.chargeTime == 30) {
 //		               double d1 = 4.0D;
-		               Vector3d vector3d = this.faceeater.getViewVector(1.0F);
-		               double d2 = livingentity.getX() - (this.faceeater.getX() + vector3d.x * 4.0D);
-		               double d3 = livingentity.getY(0.5D) - (0.5D + this.faceeater.getY(0.5D));
-		               double d4 = livingentity.getZ() - (this.faceeater.getZ() + vector3d.z * 4.0D);
-		               if (!this.faceeater.isSilent()) {
-		                  world.levelEvent((PlayerEntity)null, 1016, this.faceeater.blockPosition(), 0);
+		               Vector3d vector3d = this.daemon.getViewVector(1.0F);
+		               double d2 = livingentity.getX() - (this.daemon.getX() + vector3d.x * 4.0D);
+		               double d3 = livingentity.getY(0.5D) - (0.5D + this.daemon.getY(0.5D));
+		               double d4 = livingentity.getZ() - (this.daemon.getZ() + vector3d.z * 4.0D);
+		               if (!this.daemon.isSilent()) {
+		                  world.levelEvent((PlayerEntity)null, 1016, this.daemon.blockPosition(), 0);
 		               }
 
-		               FireballEntity fireballentity = new FireballEntity(world, this.faceeater, d2, d3, d4);
-//		               fireballentity.doEnchantDamageEffects(livingentity, this.faceeater);
-		               fireballentity.explosionPower = this.faceeater.getExplosionPower();
-		               fireballentity.setPos(this.faceeater.getX() + vector3d.x * 4.0D, this.faceeater.getY(0.5D) + 0.5D, fireballentity.getZ() + vector3d.z * 4.0D);
+		               FireballEntity fireballentity = new FireballEntity(world, this.daemon, d2, d3, d4);
+//		               fireballentity.doEnchantDamageEffects(livingentity, this.daemon);
+		               fireballentity.explosionPower = this.daemon.getExplosionPower();
+		               fireballentity.setPos(this.daemon.getX() + vector3d.x * 4.0D, this.daemon.getY(0.5D) + 0.5D, fireballentity.getZ() + vector3d.z * 4.0D);
 		               world.addFreshEntity(fireballentity);
 		               this.chargeTime = -40;
 		            }
@@ -130,7 +134,7 @@ public class VolcanDaemon extends PhantomEntity
 		            --this.chargeTime;
 		         }
 
-		         this.faceeater.setCharging(this.chargeTime > 10);
+		         this.daemon.setCharging(this.chargeTime > 10);
 		      }
 		   }
 	   //Firecharge attack goal end//
@@ -147,14 +151,7 @@ public class VolcanDaemon extends PhantomEntity
 		         return true;
 		      }
 	   }
-	   
-	   public ILivingEntityData finalizeSpawn(IServerWorld p_213386_1_, DifficultyInstance p_213386_2_, SpawnReason p_213386_3_, @Nullable ILivingEntityData p_213386_4_, @Nullable CompoundNBT p_213386_5_) 
-	   {
-		      this.anchorPoint = this.blockPosition().above(5);
-//		      this.setPhantomSize(0);
-		      return super.finalizeSpawn(p_213386_1_, p_213386_2_, p_213386_3_, p_213386_4_, p_213386_5_);
-	   }
-	   
+   
 	   public void readAdditionalSaveData(CompoundNBT p_70037_1_) {
 		      super.readAdditionalSaveData(p_70037_1_);
 		      if (p_70037_1_.contains("AX")) {
@@ -172,4 +169,23 @@ public class VolcanDaemon extends PhantomEntity
 		      p_213281_1_.putInt("AZ", this.anchorPoint.getZ());
 		      p_213281_1_.putInt("Size", this.getPhantomSize());
 		   }
+		   
+	public static boolean canSpawn(EntityType<VolcanDaemon> type, IServerWorld world, 
+			SpawnReason spawnReason, BlockPos pos, Random random)
+	{
+		if (MonsterEntity.isDarkEnoughToSpawn(world, pos, random))
+		{
+			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(64);
+			List<VolcanDaemon> entities = world.getEntitiesOfClass(VolcanDaemon.class, box, (entity) -> {return true;});
+			return entities.size() < 32;
+		}
+		return false;
+	}
+	
+	public ILivingEntityData finalizeSpawn(IServerWorld p_213386_1_, DifficultyInstance p_213386_2_, SpawnReason p_213386_3_, @Nullable ILivingEntityData p_213386_4_, @Nullable CompoundNBT p_213386_5_) 
+	{
+	this.anchorPoint = this.blockPosition().above(5);
+	//this.setPhantomSize(0);
+	return super.finalizeSpawn(p_213386_1_, p_213386_2_, p_213386_3_, p_213386_4_, p_213386_5_);
+	}
 }

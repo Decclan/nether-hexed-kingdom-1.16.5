@@ -1,5 +1,7 @@
 package com.deimoshexxus.netherhexedkingdom.entities;
 
+import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import javax.annotation.Nullable;
@@ -17,6 +19,7 @@ import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
+import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.passive.horse.HorseEntity;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -32,6 +35,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
@@ -45,7 +50,9 @@ public class WitherSkeletonHorseEntity extends HorseEntity
 	public WitherSkeletonHorseEntity(EntityType<? extends HorseEntity> type, World worldIn) 
 	{
 		super(type, worldIn);
-		this.setPathfindingMalus(PathNodeType.DANGER_FIRE, 0.0F);
+		this.setPathfindingMalus(PathNodeType.DANGER_FIRE, 8.0F); //changed to 8.0
+		this.setPathfindingMalus(PathNodeType.LAVA, 8.0F);  //added 26/10/21
+		//may need override depending on rider ai - sideways run
 	}
 	
 //  public void equipSaddle() //BREAKS ENTITY RIDING
@@ -74,7 +81,7 @@ public class WitherSkeletonHorseEntity extends HorseEntity
    }
    protected void addBehaviourGoals() 
    {
-      this.goalSelector.addGoal(0, new SwimGoal(this));
+      this.goalSelector.addGoal(1, new SwimGoal(this));
    }
 	
 	   public ActionResultType mobInteract(PlayerEntity player, Hand hand) {
@@ -255,6 +262,18 @@ public class WitherSkeletonHorseEntity extends HorseEntity
 		return false;
 	}
 
+	public static boolean canSpawn(EntityType<WitherSkeletonHorseEntity> type, IServerWorld world, 
+			SpawnReason spawnReason, BlockPos pos, Random random)
+	{
+		if (MonsterEntity.isDarkEnoughToSpawn(world, pos, random))
+		{
+			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(16);
+			List<WitherSkeletonHorseEntity> entities = world.getEntitiesOfClass(WitherSkeletonHorseEntity.class, box, (entity) -> {return true;});
+			return entities.size() < 6;
+		}
+		return false;
+	}
+	
 	   @Nullable
 	   public ILivingEntityData finalizeSpawn(IServerWorld serverWorld, DifficultyInstance difficulty, SpawnReason spawnR, @Nullable ILivingEntityData livingDat, @Nullable CompoundNBT nbtDat) 
 	   {

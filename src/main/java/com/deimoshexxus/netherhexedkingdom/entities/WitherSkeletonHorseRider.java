@@ -234,6 +234,18 @@ public class WitherSkeletonHorseRider extends WitherSkeletonHorseEntity
       return this instanceof WitherSkeletonHorseEntity;
    }
    
+//	public static boolean canSpawn(EntityType<WitherSkeletonHorseRider> type, IServerWorld world, 
+//			SpawnReason spawnReason, BlockPos pos, Random random)
+//	{
+//		if (MonsterEntity.isDarkEnoughToSpawn(world, pos, random))
+//		{
+//			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(16);
+//			List<WitherSkeletonHorseRider> entities = world.getEntitiesOfClass(WitherSkeletonHorseRider.class, box, (entity) -> {return true;});
+//			return entities.size() < 6;
+//		}
+//		return false;
+//	}
+   
    @Nullable
    public ILivingEntityData finalizeSpawn(IServerWorld serverWorld, DifficultyInstance difficulty, SpawnReason spawnR, @Nullable ILivingEntityData livingDat, @Nullable CompoundNBT nbtDat) 
    {

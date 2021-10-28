@@ -44,7 +44,6 @@ public class Registration
 	
 	public static void registerRenderers()
 	{
-		
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.WIGHT_ENTITY.get(), WightEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.WIGHT_KNIGHT_ENTITY.get(), WightKnightEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.WIGHT_TRADER_ENTITY.get(), WightTraderEntityRenderer::new);
