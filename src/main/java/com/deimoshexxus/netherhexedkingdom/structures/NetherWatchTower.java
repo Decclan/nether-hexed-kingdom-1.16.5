@@ -24,12 +24,11 @@ import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.jigsaw.JigsawManager;
 import net.minecraft.world.gen.feature.structure.*;
-import net.minecraft.world.gen.feature.template.PlacementSettings;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 import org.apache.logging.log4j.Level;
 
-import net.minecraft.world.gen.feature.structure.NetherFossilStructure;
-import net.minecraft.world.gen.feature.structure.NetherFossilStructures;
+//import net.minecraft.world.gen.feature.structure.NetherFossilStructure;
+//import net.minecraft.world.gen.feature.structure.NetherFossilStructures;
 
 import java.util.List;
 

@@ -30,6 +30,7 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.Heightmap.Type;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -43,7 +44,7 @@ public class VolcanDaemon extends PhantomEntity
 	{
 		super(type, world);
 		this.goalSelector.addGoal(7, new VolcanDaemon.FireballAttackGoal(this));
-		this.setPersistenceRequired();
+//		this.setPersistenceRequired();
 	}
 	
    public CreatureAttribute getMobType() 
@@ -175,16 +176,23 @@ public class VolcanDaemon extends PhantomEntity
 	{
 		if (MonsterEntity.isDarkEnoughToSpawn(world, pos, random))
 		{
-			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(64);
+			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(128);
 			List<VolcanDaemon> entities = world.getEntitiesOfClass(VolcanDaemon.class, box, (entity) -> {return true;});
-			return entities.size() < 32;
+			int place = world.getChunk(pos).getHeight(Type.WORLD_SURFACE, pos.getX() & 15, pos.getY() & 15);
+			if (place > 64 && pos.getZ() >= 96 && entities.size() < 3)
+			{
+				return true;
+			}
+			
+//			int y = world.getChunk(pos).getHeight(Type.MOTION_BLOCKING, pos.getX() & 15, pos.getY() & 15);
+//			return y > 92 && pos.getY() >= 96 && entities.size() < 3;
 		}
 		return false;
 	}
 	
 	public ILivingEntityData finalizeSpawn(IServerWorld p_213386_1_, DifficultyInstance p_213386_2_, SpawnReason p_213386_3_, @Nullable ILivingEntityData p_213386_4_, @Nullable CompoundNBT p_213386_5_) 
 	{
-	this.anchorPoint = this.blockPosition().above(5);
+	this.anchorPoint = this.blockPosition().above(16);
 	//this.setPhantomSize(0);
 	return super.finalizeSpawn(p_213386_1_, p_213386_2_, p_213386_3_, p_213386_4_, p_213386_5_);
 	}

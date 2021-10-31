@@ -70,7 +70,7 @@ public class WightKnightEntity extends WightEntity {
 		ILivingEntityData ilivingentitydata = super.finalizeSpawn(p_213386_1_, p_213386_2_, p_213386_3_, p_213386_4_, p_213386_5_);
 
 		ItemStack colourLeather = new ItemStack(Items.LEATHER_CHESTPLATE, 1);
-		((DyeableArmorItem) colourLeather.getItem()).setColor(colourLeather, 234445);
+		((DyeableArmorItem) colourLeather.getItem()).setColor(colourLeather, 382000);
 		this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.STONE_SWORD));
 		this.setItemSlot(EquipmentSlotType.CHEST, colourLeather);
 		this.setItemSlot(EquipmentSlotType.HEAD, new ItemStack(Items.LEATHER_HELMET));

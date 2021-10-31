@@ -4,9 +4,7 @@ import com.deimoshexxus.netherhexedkingdom.NetherHexedKingdomMain;
 import com.deimoshexxus.netherhexedkingdom.init.ModEntities;
 
 import net.minecraft.entity.EntityClassification;
-import net.minecraft.util.RegistryKey;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraftforge.common.world.MobSpawnInfoBuilder;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
@@ -24,10 +22,11 @@ public class EntityEvents
 		MobSpawnInfoBuilder spawns = event.getSpawns();
 		
 		//if (event.getCategory().equals(Biome.Category.NETHER))
-		if (event.getCategory().equals(Biome.Category.NETHER))//getCategory().equals(Biomes.SOUL_SAND_VALLEY)
+		if (event.getCategory().equals(Biome.Category.NETHER))//getCategory().equals(Biomes.SOUL_SAND_VALLEY)			creature might not spawn in nether
 		{
-			spawns.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(ModEntities.WITHER_SKELETON_HORSE.get(), 3, 2, 3));
-			spawns.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(ModEntities.VOLCAN_DAEMON_ENTITY.get(), 1, 1, 3));
+			spawns.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(ModEntities.WITHER_SKELETON_HORSE.get(), 2, 0, 3));
+			spawns.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(ModEntities.WITHER_SKELETON_HORSE_RIDER.get(), 1, 0, 3));
+			spawns.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(ModEntities.VOLCAN_DAEMON_ENTITY.get(), 1, 0, 1));
 		} //MobSpawnInfo																								//weight min max
 	}
 	

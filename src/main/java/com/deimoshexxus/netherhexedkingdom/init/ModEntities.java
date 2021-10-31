@@ -100,9 +100,9 @@ public class ModEntities
 				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
 				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WitherSkeletonHorseEntity::canSpawn);
 		
-//		EntitySpawnPlacementRegistry.register(ModEntities.WITHER_SKELETON_HORSE_RIDER.get(),
-//				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
-//				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WitherSkeletonHorseRider::canSpawn);
+		EntitySpawnPlacementRegistry.register(ModEntities.WITHER_SKELETON_HORSE_RIDER.get(),
+				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WitherSkeletonHorseRider::canSpawnRider);
 		
 		EntitySpawnPlacementRegistry.register(ModEntities.VOLCAN_DAEMON_ENTITY.get(),
 				EntitySpawnPlacementRegistry.PlacementType.NO_RESTRICTIONS, 

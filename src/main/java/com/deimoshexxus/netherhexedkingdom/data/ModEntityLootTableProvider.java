@@ -15,6 +15,7 @@ import net.minecraft.loot.ItemLootEntry;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.RandomValueRange;
+import net.minecraft.loot.functions.LootingEnchantBonus;
 import net.minecraft.loot.functions.SetCount;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -26,13 +27,57 @@ public class ModEntityLootTableProvider extends EntityLootTables
 	{
 		this.add(ModEntities.VOLCAN_DAEMON_ENTITY.get(), LootTable.lootTable()
 				.withPool(LootPool.lootPool()
-				.setRolls(ConstantRange.exactly(1))
-				.add(ItemLootEntry.lootTableItem(ModItems.NETHERITE_OXIDE.get()))
-				.apply(SetCount.setCount(RandomValueRange.between(1.0F, 6.0F)))
-				));
-		
-		this.add(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), LootTable.lootTable());
-		this.add(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), LootTable.lootTable());
+	    			.setRolls(ConstantRange.exactly(1))
+	    			.add(ItemLootEntry.lootTableItem(Items.GUNPOWDER)
+	    			.apply(SetCount.setCount(RandomValueRange.between(2.0F, 6.0F)))
+	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))))
+	    		.withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1))
+	    			.add(ItemLootEntry.lootTableItem(ModItems.NETHERITE_OXIDE.get())
+	    			.apply(SetCount.setCount(RandomValueRange.between(0.0F, 1.0F)))
+	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))))
+	    		.withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1))
+	    			.add(ItemLootEntry.lootTableItem(Items.GOLD_NUGGET)
+	    			.apply(SetCount.setCount(RandomValueRange.between(0.0F, 1.0F)))
+	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))))
+				.withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1))
+	    			.add(ItemLootEntry.lootTableItem(Items.BLAZE_POWDER)
+	    			.apply(SetCount.setCount(RandomValueRange.between(1.0F, 3.0F)))
+	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))))));
+	
+		this.add(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+	    			.setRolls(ConstantRange.exactly(1))
+	    			.add(ItemLootEntry.lootTableItem(ModItems.IMPERIAL_COINS.get())
+	    			.apply(SetCount.setCount(RandomValueRange.between(0.0F, 3.0F)))
+	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))))
+	    		.withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1))
+	    			.add(ItemLootEntry.lootTableItem(ModItems.MILITUS_ALLOY_NUGGET.get())
+	    			.apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F)))
+	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))))
+				.withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1))
+	    			.add(ItemLootEntry.lootTableItem(Items.BONE)
+	    			.apply(SetCount.setCount(RandomValueRange.between(1.0F, 2.0F)))
+	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))))));
+
+		this.add(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+	    			.setRolls(ConstantRange.exactly(1))
+	    			.add(ItemLootEntry.lootTableItem(ModItems.IMPERIAL_COINS.get())
+	    			.apply(SetCount.setCount(RandomValueRange.between(0.0F, 3.0F)))
+	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))))
+	    		.withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1))
+	    			.add(ItemLootEntry.lootTableItem(ModItems.MILITUS_ALLOY_NUGGET.get())
+	    			.apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F)))
+	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 2.0F)))))
+	    		.withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1))
+	    			.add(ItemLootEntry.lootTableItem(Items.BONE)
+	    			.apply(SetCount.setCount(RandomValueRange.between(1.0F, 2.0F)))
+	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))))
+	    		.withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1))
+	    			.add(ItemLootEntry.lootTableItem(Items.ARROW)
+	    			.apply(SetCount.setCount(RandomValueRange.between(1.0F, 6.0F)))
+	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))))));
+
 		this.add(ModEntities.HEXAN_GUARD_ENTITY.get(), LootTable.lootTable());
 		this.add(ModEntities.WIGHT_ENTITY.get(), LootTable.lootTable());
 		this.add(ModEntities.WIGHT_KNIGHT_ENTITY.get(), LootTable.lootTable());
@@ -40,12 +85,37 @@ public class ModEntityLootTableProvider extends EntityLootTables
 		
 		this.add(ModEntities.WITHER_SKELETON_HORSE.get(), LootTable.lootTable()
 				.withPool(LootPool.lootPool()
-				.setRolls(ConstantRange.exactly(1))
-				.add(ItemLootEntry.lootTableItem(Items.COAL))
-				.apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F)))
-				));
+					.setRolls(ConstantRange.exactly(1))
+					.add(ItemLootEntry.lootTableItem(Items.COAL))
+					.apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F)))
+					));
 		
-		this.add(ModEntities.WITHER_SKELETON_HORSE_RIDER.get(), LootTable.lootTable());
+		this.add(ModEntities.WITHER_SKELETON_HORSE_RIDER.get(), LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+	    			.setRolls(ConstantRange.exactly(1))
+	    			.add(ItemLootEntry.lootTableItem(ModItems.IMPERIAL_COINS.get())
+	    			.apply(SetCount.setCount(RandomValueRange.between(2.0F, 6.0F)))
+	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))))
+	    		.withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1))
+	    			.add(ItemLootEntry.lootTableItem(Items.COAL)
+	    			.apply(SetCount.setCount(RandomValueRange.between(1.0F, 2.0F)))
+	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))))
+				.withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1))
+	    			.add(ItemLootEntry.lootTableItem(Items.GOLD_NUGGET)
+	    			.apply(SetCount.setCount(RandomValueRange.between(0.0F, 3.0F)))
+	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))))));
+
+
+//	    this.add(EntityType.SKELETON, LootTable.lootTable()
+//	    		.withPool(LootPool.lootPool()
+//	    			.setRolls(ConstantRange.exactly(1))
+//	    			.add(ItemLootEntry.lootTableItem(Items.ARROW)
+//	    			.apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F)))
+//	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))))
+//	    		.withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1))
+//	    			.add(ItemLootEntry.lootTableItem(Items.BONE)
+//	    			.apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F)))
+//	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))))));
 		
 //		this.add(EntityType.BLAZE, LootTable.lootTable()
 //				.withPool(LootPool.lootPool()

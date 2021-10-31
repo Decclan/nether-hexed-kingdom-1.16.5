@@ -7,7 +7,7 @@ public final class ConfigHandler
 	private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 	
 	public static ForgeConfigSpec SPEC;
-	
+	//Structures
 	public static final ForgeConfigSpec.BooleanValue NETHER_WATCH_TOWER_SPAWN;
 	public static final ForgeConfigSpec.BooleanValue NETHER_PRISON_SPAWN;
 	public static final ForgeConfigSpec.BooleanValue NETHER_GREED_MINES_SPAWN;
@@ -16,6 +16,10 @@ public final class ConfigHandler
 	public static final ForgeConfigSpec.BooleanValue NETHER_BULLION_TEMPLE_SPAWN;
 	public static final ForgeConfigSpec.BooleanValue NETHER_IRON_CLAD_SPAWN;
 	public static final ForgeConfigSpec.BooleanValue NETHER_RED_SUN_TOWER_SPAWN;
+	//Entities
+//	public static final ForgeConfigSpec.BooleanValue WILD_VOLCAN_DAEMON_SPAWN;
+//	public static final ForgeConfigSpec.BooleanValue WILD_WITHER_SKELETON_HORSE_SPAWN;
+//	public static final ForgeConfigSpec.BooleanValue WILD_WITHER_SKELETON_HORSE_RIDER_SPAWN;
 
 	static
 	{

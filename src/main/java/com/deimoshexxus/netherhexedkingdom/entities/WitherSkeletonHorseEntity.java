@@ -22,13 +22,14 @@ import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.passive.horse.HorseEntity;
+//import net.minecraft.entity.passive.horse.SkeletonHorseEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.HorseArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.pathfinding.PathNodeType;
+//import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
@@ -40,18 +41,17 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.Heightmap.Type;
 
 public class WitherSkeletonHorseEntity extends HorseEntity
 {
 	private static final UUID ARMOR_MODIFIER_UUID = UUID.fromString("556E1665-8B10-40C8-8F9D-CF9B1667F295");
 	
-	
-	
 	public WitherSkeletonHorseEntity(EntityType<? extends HorseEntity> type, World worldIn) 
 	{
 		super(type, worldIn);
-		this.setPathfindingMalus(PathNodeType.DANGER_FIRE, 8.0F); //changed to 8.0
-		this.setPathfindingMalus(PathNodeType.LAVA, 8.0F);  //added 26/10/21
+//		this.setPathfindingMalus(PathNodeType.DANGER_FIRE, 8.0F); //changed to 8.0
+//		this.setPathfindingMalus(PathNodeType.LAVA, 8.0F);  //added 26/10/21
 		//may need override depending on rider ai - sideways run
 	}
 	
@@ -81,7 +81,7 @@ public class WitherSkeletonHorseEntity extends HorseEntity
    }
    protected void addBehaviourGoals() 
    {
-      this.goalSelector.addGoal(1, new SwimGoal(this));
+      this.goalSelector.addGoal(0, new SwimGoal(this));
    }
 	
 	   public ActionResultType mobInteract(PlayerEntity player, Hand hand) {
@@ -107,7 +107,6 @@ public class WitherSkeletonHorseEntity extends HorseEntity
 		               return actionresulttype;
 		            }
 		         }
-
 		         this.doPlayerRide(player);
 		         return ActionResultType.sidedSuccess(this.level.isClientSide);
 		      }
@@ -123,9 +122,9 @@ public class WitherSkeletonHorseEntity extends HorseEntity
 		return false;
 	}
 	
-//	public boolean isFood(ItemStack p_70877_1_) 
+//	public boolean isFood(ItemStack stack) 
 //	{
-//		return p_70877_1_.getItem() == Items.ROTTEN_FLESH;
+//		return stack.getItem() == Items.ROTTEN_FLESH;
 //	}
 	
 	public boolean canBeControlledByRider(boolean controlBool) 
@@ -160,7 +159,6 @@ public class WitherSkeletonHorseEntity extends HorseEntity
 		this.setItemSlot(EquipmentSlotType.CHEST, itemStack);
 		this.setDropChance(EquipmentSlotType.CHEST, 0.0F);
 	}
-	
 
 	protected void updateContainerEquipment() 
 	{
@@ -268,8 +266,17 @@ public class WitherSkeletonHorseEntity extends HorseEntity
 		if (MonsterEntity.isDarkEnoughToSpawn(world, pos, random))
 		{
 			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(16);
-			List<WitherSkeletonHorseEntity> entities = world.getEntitiesOfClass(WitherSkeletonHorseEntity.class, box, (entity) -> {return true;});
+			List<WitherSkeletonHorseRider> entities = world.getEntitiesOfClass(WitherSkeletonHorseRider.class, box, (entity) -> {return true;});
 			return entities.size() < 6;
+//			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(32);
+//			List<WitherSkeletonHorseEntity> entities = world.getEntitiesOfClass(WitherSkeletonHorseEntity.class, box, (entity) -> {return true;});
+//			int height = world.getChunk(pos).getHeight(Type.WORLD_SURFACE, pos.getX() & 15, pos.getY() & 15);
+//			if (height >= 40 && entities.size() < 24) //&& pos.getZ() >= 40
+//			{
+//				return true;
+//			}
+			
+			//return entities.size() < 3;
 		}
 		return false;
 	}

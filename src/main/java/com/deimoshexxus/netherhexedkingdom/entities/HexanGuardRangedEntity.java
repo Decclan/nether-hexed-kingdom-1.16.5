@@ -38,6 +38,7 @@ import net.minecraft.entity.ai.goal.HurtByTargetGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.RestrictSunGoal;
+import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
@@ -56,8 +57,8 @@ public class HexanGuardRangedEntity extends AbstractSkeletonEntity
 	protected void registerGoals() 
 	{
 		super.registerGoals();
-		this.goalSelector.addGoal(2, new RestrictSunGoal(this));
-		this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, ZombifiedPiglinEntity.class, 6.0F, 1.0D, 1.2D));
+		this.goalSelector.addGoal(3, new RestrictSunGoal(this));
+		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, ZombifiedPiglinEntity.class, 6.0F, 1.0D, 1.2D));
 		this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
 		this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers(HexanGuardMeleeEntity.class));
 	    this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers(HexanGuardRangedEntity.class));
@@ -67,6 +68,7 @@ public class HexanGuardRangedEntity extends AbstractSkeletonEntity
 	
 	protected void addBehaviourGoals() 
 	{
+		this.goalSelector.addGoal(1, new SwimGoal(this));
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, WightEntity.class, true));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolemEntity.class, true));

@@ -26,5 +26,15 @@
 	"block.netherhexedkingdom.gargoyle_blackstone_block": "Blackstone Gargoyle",
 	"block.netherhexedkingdom.gargoyle_quartz_block": "Quartz Gargoyle",
 	"block.netherhexedkingdom.gargoyle_basalt_block": "Basalt Gargoyle",
-	"block.netherhexedkingdom.gargoyle_obsidian_block": "Obsidian Gargoyle"
+	"block.netherhexedkingdom.gargoyle_obsidian_block": "Obsidian Gargoyle",
+	
+	"entity.netherhexedkingdom.wight_entity": "Wight",
+	"entity.netherhexedkingdom.wight_knight_entity": "Wight Knight",
+	"entity.netherhexedkingdom.wight_trader_entity": "Wight Trader",
+	"entity.netherhexedkingdom.volcan_daemon_entity": "Volcan Daemon",
+	"entity.netherhexedkingdom.hexan_guard_entity": "Hexan Guard",
+	"entity.netherhexedkingdom.hexan_guard_ranged_entity": "Hexan Guard Ranged",
+	"entity.netherhexedkingdom.hexan_guard_melee_entity": "Hexan Guard Melee",
+	"entity.netherhexedkingdom.wither_skeleton_horse": "Wither Skeleton Horse",
+	"entity.netherhexedkingdom.wither_skeleton_horse_rider": "Withered Death Rider"
 }
