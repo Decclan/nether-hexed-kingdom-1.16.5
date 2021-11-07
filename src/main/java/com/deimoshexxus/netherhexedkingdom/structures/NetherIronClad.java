@@ -75,11 +75,14 @@ public class NetherIronClad extends Structure<NoFeatureConfig> {
 
             for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl; --y)
             {
-            	BlockPos.Mutable airblockpos = new BlockPos.Mutable(x+6, y+16, z+6);
-            	BlockPos.Mutable blockpos$mutableeast = new BlockPos.Mutable(x+14, y+4, z+14);
+            	BlockPos.Mutable airblockpos = new BlockPos.Mutable(x+6, y+4, z+6);
+            	//BlockPos.Mutable lavablockpos = new BlockPos.Mutable(x+6, y-4, z+6);
+            	//BlockPos.Mutable blockpos$mutableeast = new BlockPos.Mutable(x+14, y+4, z+14);
                 BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
                 blockpos$mutable.move(Direction.DOWN);
                 BlockState blockstatedown = blockReader.getBlockState(blockpos$mutable);
+                
+                
                 if (this.getBoundingBox().intersects(getBoundingBox()))
                 {
                 	break;
@@ -88,31 +91,34 @@ public class NetherIronClad extends Structure<NoFeatureConfig> {
                 {
                    break;
                 }
-                if (blockstatedown.is(Blocks.LAVA))
-        		{
-                	continue;
-        		}
+//                if (blockstatedown.is(Blocks.LAVA))
+//        		{
+//                	return;
+//        		}
+                //BlockState lavablockstate= blockReader.getBlockState(lavablockpos); //doesnt do anything
                 BlockState airblockstate = blockReader.getBlockState(airblockpos);
-                for(int yaircheck = y + 32; y < yaircheck; --y)
+                for(int yaircheck = y + 32; y < yaircheck; --y) //cancels out prior for loop --y
                 {
-                	if (airblockstate.is(Blocks.AIR))
+                	if (airblockstate.is(Blocks.AIR) && (blockstatedown.is(Blocks.LAVA))) // && (lavablockstate.is(Blocks.LAVA))
                 	{
-                		continue;
+                		return;
                 	}
-                }
+                }break;
+                
                 
 //                if (airblockstate.is(Blocks.AIR)) 
 //                {
 //                	continue;
 //                }
-                BlockState blockstateeast = blockReader.getBlockState(blockpos$mutableeast);
-                if (blockstateeast.is(Blocks.AIR))
-        		{
-                	continue;
-        		}else
-        		{
-        			break;
-        		}
+                
+//                BlockState blockstateeast = blockReader.getBlockState(blockpos$mutableeast);
+//                if (blockstateeast.is(Blocks.AIR))
+//        		{
+//                	continue;
+//        		}else
+//        		{
+//        			break;
+//        		}
              }
             JigsawManager.addPieces(
                     dynamicRegistryManager,

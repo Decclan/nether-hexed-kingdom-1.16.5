@@ -16,14 +16,10 @@ public class WitherSkeletonHorseRenderer extends AbstractHorseRenderer<WitherSke
 {
 	private static final ResourceLocation TEXTURE = new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "textures/entity/wither_skeleton_horse.png");
 
-//	private static final RenderType GLOW = RenderType.eyes(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "textures/entity/wither_skeleton_horse_redeyes.png"));
-	
 	public WitherSkeletonHorseRenderer(EntityRendererManager rendererManager) 
 	{
 		super(rendererManager, new HorseModel<WitherSkeletonHorseEntity>(0.0F), 1.2F);
 		this.addLayer(new DeadHorseArmorRenderer(this));
-		
-//		this.addLayer(new GlowEyesLayer<WitherSkeletonHorseEntity, HorseModel<WitherSkeletonHorseEntity>>(this));
 	}
 	
 	@Override

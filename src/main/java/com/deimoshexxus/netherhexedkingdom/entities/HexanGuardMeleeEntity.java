@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import com.deimoshexxus.netherhexedkingdom.init.ModItems;
 import com.deimoshexxus.netherhexedkingdom.init.SoundsHandler;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
@@ -40,9 +41,11 @@ import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.RestrictSunGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.Heightmap;
 
 public class HexanGuardMeleeEntity extends AbstractSkeletonEntity
 	{
@@ -91,6 +94,12 @@ public class HexanGuardMeleeEntity extends AbstractSkeletonEntity
 	public CreatureAttribute getMobType() 
 	{
 		return CreatureAttribute.UNDEAD;
+	}
+	
+	@Override
+	protected int getExperienceReward(PlayerEntity player) 
+	{
+		return 3 + this.random.nextInt(5);
 	}
 	
 	private void applyOpenDoorsAbility() 
@@ -146,22 +155,51 @@ public class HexanGuardMeleeEntity extends AbstractSkeletonEntity
 		return SoundEvents.SKELETON_STEP;
 	}
 	
-	public static boolean canSpawn(EntityType<HexanGuardMeleeEntity> type, IServerWorld world, 
-			SpawnReason spawnReason, BlockPos pos, Random random)
+	public static boolean checkGuardSpawnRules(EntityType<HexanGuardMeleeEntity> entity, IServerWorld serverWorld, SpawnReason p_223325_2_, BlockPos pos, Random p_223325_4_) 
 	{
-		if (MonsterEntity.isDarkEnoughToSpawn(world, pos, random))
-		{
-			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(8);
-			List<HexanGuardMeleeEntity> entities = world.getEntitiesOfClass(HexanGuardMeleeEntity.class, box, (entity) -> {return true;});
-			return entities.size() < 3;
-		}
-		return false;
+		return serverWorld.getDifficulty() != Difficulty.PEACEFUL 
+				&& serverWorld.getBlockState(pos.below()).getBlock() == Blocks.NETHER_BRICKS
+				|| serverWorld.getBlockState(pos.below()).getBlock() == Blocks.NETHERRACK
+				&& serverWorld.getBlockState(pos.below()).getBlock() != Blocks.AIR 
+				&& isDarkEnoughToSpawn(serverWorld, pos, p_223325_4_) 
+				&& checkMobSpawnRules(entity, serverWorld, p_223325_2_, pos, p_223325_4_);
 	}
 	
+//	   private static List<MobSpawnInfo.Spawners> mobsAt(ServerWorld p_241463_0_, StructureManager p_241463_1_, ChunkGenerator p_241463_2_, EntityClassification p_241463_3_, BlockPos p_241463_4_, @Nullable Biome p_241463_5_) {
+//		      return p_241463_3_ == EntityClassification.MONSTER && p_241463_0_.getBlockState(p_241463_4_.below()).getBlock() == Blocks.NETHER_BRICKS && p_241463_1_.getStructureAt(p_241463_4_, false, Structure.NETHER_BRIDGE).isValid() ? Structure.NETHER_BRIDGE.getSpecialEnemies() : p_241463_2_.getMobsAt(p_241463_5_ != null ? p_241463_5_ : p_241463_0_.getBiome(p_241463_4_), p_241463_1_, p_241463_3_, p_241463_4_);
+//		   }
+	
+//	   public static boolean checkMobSpawnRules(EntityType<? extends MobEntity> p_223315_0_, IWorld p_223315_1_, SpawnReason p_223315_2_, BlockPos p_223315_3_, Random p_223315_4_) {
+//		      BlockPos blockpos = p_223315_3_.below();
+//		      return p_223315_2_ == SpawnReason.SPAWNER || p_223315_1_.getBlockState(blockpos).isValidSpawn(p_223315_1_, blockpos, p_223315_0_);
+//		   }
+	
+//	public static boolean canSpawn(EntityType<HexanGuardMeleeEntity> type, IServerWorld world, 
+//			SpawnReason spawnReason, BlockPos pos, Random random)
+//	{
+//		if (checkMonsterSpawnRules(type, world, spawnReason, pos, random));
+//		{
+//			int x = pos.getX();
+//			int z = pos.getZ();
+//			int height = world.getHeight(Heightmap.Type.WORLD_SURFACE, pos.getX(), pos.getZ());
+//			BlockPos blockpos = new BlockPos(x, height, z);
+//			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(8);
+//			List<HexanGuardMeleeEntity> entities = world.getEntitiesOfClass(HexanGuardMeleeEntity.class, box, (entity) -> {return true;});
+//			
+//			if ((world.getBlockState(blockpos.below()).getBlock() == Blocks.AIR) && (world.getBlockState(blockpos).getBlock() == Blocks.AIR))
+//			{
+//				return false;
+//			}else {
+//				return entities.size() < 3;
+//			}
+//		}
+//		
+//	}
+
 	@Nullable
-	public ILivingEntityData finalizeSpawn(IServerWorld p_213386_1_, DifficultyInstance p_213386_2_, SpawnReason p_213386_3_, @Nullable ILivingEntityData p_213386_4_, @Nullable CompoundNBT p_213386_5_) 
+	public ILivingEntityData finalizeSpawn(IServerWorld world, DifficultyInstance difficulty, SpawnReason spawnReason, @Nullable ILivingEntityData livingDat, @Nullable CompoundNBT compNBT) 
 	{
-		ILivingEntityData ilivingentitydata = super.finalizeSpawn(p_213386_1_, p_213386_2_, p_213386_3_, p_213386_4_, p_213386_5_);
+		ILivingEntityData ilivingentitydata = super.finalizeSpawn(world, difficulty, spawnReason, livingDat, compNBT);
 		this.reassessWeaponGoal();
 		return ilivingentitydata;
 	}

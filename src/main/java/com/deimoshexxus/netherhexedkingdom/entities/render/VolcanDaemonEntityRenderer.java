@@ -2,7 +2,7 @@ package com.deimoshexxus.netherhexedkingdom.entities.render;
 
 import com.deimoshexxus.netherhexedkingdom.NetherHexedKingdomMain;
 import com.deimoshexxus.netherhexedkingdom.entities.VolcanDaemon;
-import com.deimoshexxus.netherhexedkingdom.entities.models.FaceEaterModel;
+import com.deimoshexxus.netherhexedkingdom.entities.models.VolcanDaemonModel;
 import com.deimoshexxus.netherhexedkingdom.entities.render.layers.GlowFireLayer;
 import com.mojang.blaze3d.matrix.MatrixStack;
 
@@ -16,13 +16,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 
 @OnlyIn(Dist.CLIENT)
-public class FaceEaterEntityRenderer extends MobRenderer <VolcanDaemon, PhantomModel<VolcanDaemon>>
+public class VolcanDaemonEntityRenderer extends MobRenderer <VolcanDaemon, PhantomModel<VolcanDaemon>>
 {
 	private static final ResourceLocation TEXTURE = new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "textures/entity/face_eater_entity_large_char.png");
 	
-	public FaceEaterEntityRenderer(EntityRendererManager rendererManager) 
+	public VolcanDaemonEntityRenderer(EntityRendererManager rendererManager) 
 	{
-		super(rendererManager, new FaceEaterModel(), 0.75F);
+		super(rendererManager, new VolcanDaemonModel(), 0.75F);
 		this.addLayer(new GlowFireLayer<VolcanDaemon, PhantomModel<VolcanDaemon>>(this));
 	}
 

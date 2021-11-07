@@ -13,9 +13,11 @@ import com.deimoshexxus.netherhexedkingdom.init.ModEntities;
 import com.deimoshexxus.netherhexedkingdom.init.Registration;
 import com.mojang.serialization.Codec;
 
+import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.biome.Biome.Category;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.FlatChunkGenerator;
@@ -118,40 +120,44 @@ public class NetherHexedKingdomMain
 //Structures code
     public void biomeModification(final BiomeLoadingEvent event) 
     {
-    	event.setCategory(Category.NETHER);
+//    	RegistryKey.create(Registry.BIOME_REGISTRY, event.getName());
+//    	event.setCategory(Category.NETHER);
 
-        if (ConfigHandler.NETHER_WATCH_TOWER_SPAWN.get())
-        {
-        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_WATCH_TOWER);
-        }
-        if (ConfigHandler.NETHER_PRISON_SPAWN.get())
-        {
-        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_PRISON);
-        }
-        if (ConfigHandler.NETHER_GREED_MINES_SPAWN.get())
-        {
-        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_GREED_MINES);
-        }
-        if (ConfigHandler.NETHER_LOOKOUT_SPAWN.get())
-        {
-        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_LOOKOUT);
-        }
-        if (ConfigHandler.NETHER_OUTPOST_SPAWN.get())
-        {
-        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_OUTPOST);
-        }
-        if (ConfigHandler.NETHER_BULLION_TEMPLE_SPAWN.get())
-        {
-        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_BULLION_TEMPLE);
-        }
-        if (ConfigHandler.NETHER_IRON_CLAD_SPAWN.get())
-        {
-        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_IRON_CLAD);
-        }
-        if (ConfigHandler.NETHER_RED_SUN_TOWER_SPAWN.get())
-        {
-        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_RED_SUN_TOWER);
-        }
+    	if (event.getName().equals(Biomes.NETHER_WASTES.getRegistryName()))
+    	{
+	        if (ConfigHandler.NETHER_WATCH_TOWER_SPAWN.get())
+	        {
+	        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_WATCH_TOWER);
+	        }
+	        if (ConfigHandler.NETHER_PRISON_SPAWN.get())
+	        {
+	        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_PRISON);
+	        }
+	        if (ConfigHandler.NETHER_GREED_MINES_SPAWN.get())
+	        {
+	        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_GREED_MINES);
+	        }
+	        if (ConfigHandler.NETHER_LOOKOUT_SPAWN.get())
+	        {
+	        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_LOOKOUT);
+	        }
+	        if (ConfigHandler.NETHER_OUTPOST_SPAWN.get())
+	        {
+	        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_OUTPOST);
+	        }
+	        if (ConfigHandler.NETHER_BULLION_TEMPLE_SPAWN.get())
+	        {
+	        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_BULLION_TEMPLE);
+	        }
+	        if (ConfigHandler.NETHER_IRON_CLAD_SPAWN.get())
+	        {
+	        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_IRON_CLAD);
+	        }
+	        if (ConfigHandler.NETHER_RED_SUN_TOWER_SPAWN.get())
+	        {
+	        	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_RED_SUN_TOWER);
+	        }
+    	}	        
     }
     
     public Map<Structure<?>, StructureSeparationSettings> structureConfig() {

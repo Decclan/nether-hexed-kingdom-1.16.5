@@ -2,7 +2,7 @@ package com.deimoshexxus.netherhexedkingdom.entities.render;
 
 import com.deimoshexxus.netherhexedkingdom.NetherHexedKingdomMain;
 import com.deimoshexxus.netherhexedkingdom.entities.HexanGuardEntity;
-import com.deimoshexxus.netherhexedkingdom.entities.models.TestEntityTwoModel;
+import com.deimoshexxus.netherhexedkingdom.entities.models.HexanGuardEntityModel;
 
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -11,13 +11,13 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class HexanGuardEntityRenderer extends MobRenderer<HexanGuardEntity, TestEntityTwoModel>
+public class HexanGuardEntityRenderer extends MobRenderer<HexanGuardEntity, HexanGuardEntityModel>
 {
 	private static final ResourceLocation TEXTURE = new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "textures/entity/nether_hexan_guard.png");
 	
 	public HexanGuardEntityRenderer(EntityRendererManager rendererManager) 
 	{
-		super(rendererManager, new TestEntityTwoModel(), 0.5F);
+		super(rendererManager, new HexanGuardEntityModel(), 0.5F);
 	}
 	
 	@Override

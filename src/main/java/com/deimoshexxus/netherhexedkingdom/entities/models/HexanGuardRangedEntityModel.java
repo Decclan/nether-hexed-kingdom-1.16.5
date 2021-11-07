@@ -1,8 +1,9 @@
 package com.deimoshexxus.netherhexedkingdom.entities.models;
 
+
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
-import com.deimoshexxus.netherhexedkingdom.entities.HexanGuardMeleeEntity;
+import com.deimoshexxus.netherhexedkingdom.entities.HexanGuardRangedEntity;
 import net.minecraft.client.renderer.entity.model.SkeletonModel;
 import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.renderer.model.ModelHelper;
@@ -13,7 +14,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.HandSide;
 import net.minecraft.util.math.MathHelper;
 
-public class TestEntityFourModel extends SkeletonModel<HexanGuardMeleeEntity> 
+public class HexanGuardRangedEntityModel extends SkeletonModel<HexanGuardRangedEntity> 
 {
 	
 	private final ModelRenderer waist;
@@ -27,8 +28,9 @@ public class TestEntityFourModel extends SkeletonModel<HexanGuardMeleeEntity>
 	private final ModelRenderer rightLeg;
 	private final ModelRenderer leftLeg;
 
-	public TestEntityFourModel() 
+	public HexanGuardRangedEntityModel() 
 	{
+		//super(0.0F);
 		super(0.0F, false);
 		
 		texWidth = 64;
@@ -87,7 +89,7 @@ public class TestEntityFourModel extends SkeletonModel<HexanGuardMeleeEntity>
 	}
 	
 	@Override
-	public void prepareMobModel(HexanGuardMeleeEntity entity, float p_212843_2_, float p_212843_3_, float p_212843_4_) 
+	public void prepareMobModel(HexanGuardRangedEntity entity, float p_212843_2_, float p_212843_3_, float p_212843_4_) 
 	{
 		this.rightArmPose = BipedModel.ArmPose.EMPTY;
 		this.leftArmPose = BipedModel.ArmPose.EMPTY;
@@ -108,7 +110,7 @@ public class TestEntityFourModel extends SkeletonModel<HexanGuardMeleeEntity>
 	}
 	
 
-	public void setupAnim(HexanGuardMeleeEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(HexanGuardRangedEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
 		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 //		ItemStack itemstack = entity.getMainHandItem();

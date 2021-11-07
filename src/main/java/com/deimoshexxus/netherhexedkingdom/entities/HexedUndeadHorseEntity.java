@@ -18,14 +18,11 @@ import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
-import net.minecraft.entity.monster.WitherSkeletonEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.horse.HorseEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.DyeableArmorItem;
-import net.minecraft.item.DyeableHorseArmorItem;
 import net.minecraft.item.HorseArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -45,10 +42,10 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 //import net.minecraft.entity.passive.horse.ZombieHorseEntity;
 
-public class WitherSkeletonHorseRider extends HorseEntity {
+public class HexedUndeadHorseEntity extends HorseEntity {
    private static final UUID ARMOR_MODIFIER_UUID = UUID.fromString("556E1665-8B10-40C8-8F9D-CF9B1667F295");
 
-   public WitherSkeletonHorseRider(EntityType<? extends HorseEntity> p_i50238_1_, World p_i50238_2_) {
+   public HexedUndeadHorseEntity(EntityType<? extends HorseEntity> p_i50238_1_, World p_i50238_2_) {
       super(p_i50238_1_, p_i50238_2_);
    }
 
@@ -65,7 +62,6 @@ public class WitherSkeletonHorseRider extends HorseEntity {
    {
       this.goalSelector.addGoal(0, new SwimGoal(this));
    }
-	
    
   	public static AttributeModifierMap.MutableAttribute createAttributes() 
 	{
@@ -92,12 +88,12 @@ public class WitherSkeletonHorseRider extends HorseEntity {
 	{
 		return CreatureAttribute.UNDEAD;
 	}
-
+	
 	public boolean canBeControlledByRider(boolean controlBool) 
 	{
 		return this.getControllingPassenger() instanceof LivingEntity; //changed from Living to monster 6/11/21
 	}
-	
+
    public void addAdditionalSaveData(CompoundNBT p_213281_1_) {
       super.addAdditionalSaveData(p_213281_1_);
 
@@ -199,7 +195,7 @@ public class WitherSkeletonHorseRider extends HorseEntity {
 
 	public boolean isFood(ItemStack stack) 
 	{
-		return stack.getItem() == Items.COAL || stack.getItem() == Items.BONE_MEAL;
+		return stack.getItem() == Items.ROTTEN_FLESH || stack.getItem() == Items.NETHER_WART;
 	}
     
    public ActionResultType mobInteract(PlayerEntity player, Hand stack) {
@@ -259,12 +255,12 @@ public class WitherSkeletonHorseRider extends HorseEntity {
 	{
 		return false;
 	}
-	
+   
 	public boolean isBaby() 
 	{
 		return false;
 	}
-   
+	
    public boolean canWearArmor() {
       return true;
    }
@@ -288,7 +284,7 @@ public class WitherSkeletonHorseRider extends HorseEntity {
 	      return MathHelper.ceil((p_225508_1_ * 0.5F - 2.0F) * p_225508_2_);
    }
    
-	public static boolean checkWhorseSpawnRules(EntityType<WitherSkeletonHorseRider> p_234361_0_, IWorld world, SpawnReason p_234361_2_, BlockPos pos, Random p_234361_4_) 
+	public static boolean checkWhorseSpawnRules(EntityType<HexedUndeadHorseEntity> p_234361_0_, IWorld world, SpawnReason p_234361_2_, BlockPos pos, Random p_234361_4_) 
 	{
 		return !world.getBlockState(pos.below()).is(Blocks.NETHER_WART_BLOCK) && !world.getBlockState(pos.below()).is(Blocks.AIR) && !world.getBlockState(pos.below()).is(Blocks.LAVA);
 	}
@@ -307,44 +303,14 @@ public class WitherSkeletonHorseRider extends HorseEntity {
 //	{
 //   		return super.getPassengersRidingOffset() - 0.0D;
 //	}
- 
    
-//	public static boolean canSpawnRider(EntityType<WitherSkeletonHorseRider> type, IServerWorld world, 
-//			SpawnReason spawnReason, BlockPos pos, Random random)
-//	{
-//		if ((MonsterEntity.isDarkEnoughToSpawn(world, pos, random)) && checkAnimalSpawnRules(type, world, spawnReason, pos, random) && checkMobSpawnRules(type, world, spawnReason, pos, random))
-//		{
-//			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(16);
-//			List<WitherSkeletonHorseRider> entities = world.getEntitiesOfClass(WitherSkeletonHorseRider.class, box, (entity) -> {return true;});
-//			return entities.size() < 6;
-//		}
-//		return false;
-//	}
-   
-	@Nullable
-	public ILivingEntityData finalizeSpawn(IServerWorld serverWorld, DifficultyInstance difficulty, SpawnReason spawnR, @Nullable ILivingEntityData livingDat, @Nullable CompoundNBT nbtDat) 
-	{
-	livingDat = super.finalizeSpawn(serverWorld, difficulty, spawnR, livingDat, nbtDat); 
-	{
-		WitherSkeletonEntity skeletonentity = EntityType.WITHER_SKELETON.create(this.level);
- 		ItemStack colourLeatherHelmet = new ItemStack(Items.LEATHER_HELMET, 1);
- 		((DyeableArmorItem) colourLeatherHelmet.getItem()).setColor(colourLeatherHelmet, 3420722);
-        skeletonentity.moveTo(this.getX(), this.getY(), this.getZ(), this.yRot, 0.0F);
-        skeletonentity.startRiding(this);
-        skeletonentity.finalizeSpawn(serverWorld, difficulty, spawnR, (ILivingEntityData)null, (CompoundNBT)null);
-        skeletonentity.setItemSlot(EquipmentSlotType.HEAD, colourLeatherHelmet);
-        skeletonentity.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.STONE_AXE));
-//      skeletonentity.setItemSlot(EquipmentSlotType.OFFHAND, new ItemStack(Items.SHIELD));
-        skeletonentity.canPickUpLoot();
-        skeletonentity.fireImmune();
-	}
-	ItemStack colourLeatherHarmor = new ItemStack(Items.LEATHER_HORSE_ARMOR);
-	((DyeableHorseArmorItem) colourLeatherHarmor.getItem()).setColor(colourLeatherHarmor, 3420722);
-	this.inventory.setItem(1, colourLeatherHarmor);
-//	this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.3D);
-	this.setBaby(false);
-	this.getAttributes();
-	this.getControllingPassenger();
-	return livingDat;
-	}
+   @Nullable
+   public ILivingEntityData finalizeSpawn(IServerWorld serverWorld, DifficultyInstance difficulty, SpawnReason spawnR, @Nullable ILivingEntityData livingDat, @Nullable CompoundNBT nbtDat) 
+   {
+      livingDat = super.finalizeSpawn(serverWorld, difficulty, spawnR, livingDat, nbtDat);
+
+      this.setBaby(false);
+
+      return livingDat;
+   }
 }

@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import com.deimoshexxus.netherhexedkingdom.init.ModItems;
 import com.deimoshexxus.netherhexedkingdom.init.SoundsHandler;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
@@ -40,6 +41,7 @@ import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.RestrictSunGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
@@ -101,6 +103,12 @@ public class HexanGuardRangedEntity extends AbstractSkeletonEntity
 	}
 	
 	@Override
+	protected int getExperienceReward(PlayerEntity player) 
+	{
+		return 3 + this.random.nextInt(6);
+	}
+	
+	@Override
 	protected void populateDefaultEquipmentSlots(DifficultyInstance p_180481_1_)
 	{
 		super.populateDefaultEquipmentSlots(p_180481_1_);
@@ -136,17 +144,33 @@ public class HexanGuardRangedEntity extends AbstractSkeletonEntity
 		return SoundEvents.SKELETON_STEP;
 	}
 	
-	public static boolean canSpawn(EntityType<HexanGuardRangedEntity> type, IServerWorld world, 
-			SpawnReason spawnReason, BlockPos pos, Random random)
+	public static boolean checkMonsterSpawnRules(EntityType<? extends MonsterEntity> entity, IServerWorld serverWorld, SpawnReason p_223325_2_, BlockPos pos, Random p_223325_4_) 
 	{
-		if (MonsterEntity.isDarkEnoughToSpawn(world, pos, random))
-		{
-			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(8);
-			List<HexanGuardRangedEntity> entities = world.getEntitiesOfClass(HexanGuardRangedEntity.class, box, (entity) -> {return true;});
-			return entities.size() < 3;
-		}
-		return false;
+		return serverWorld.getDifficulty() != Difficulty.PEACEFUL 
+				&& serverWorld.getBlockState(pos.below()).getBlock() == Blocks.NETHER_BRICKS
+				|| serverWorld.getBlockState(pos.below()).getBlock() == Blocks.NETHERRACK
+				&& serverWorld.getBlockState(pos.below()).getBlock() != Blocks.AIR
+				&& serverWorld.getBlockState(pos.below(1)).getBlock() != Blocks.AIR 
+				&& isDarkEnoughToSpawn(serverWorld, pos, p_223325_4_) 
+				&& checkMobSpawnRules(entity, serverWorld, p_223325_2_, pos, p_223325_4_);
 	}
+
+//	public static boolean canSpawn(EntityType<HexanGuardRangedEntity> type, IServerWorld world, 
+//			SpawnReason spawnReason, BlockPos pos, Random random)
+//	{
+//		if (checkMonsterSpawnRules(type, world, spawnReason, pos, random));
+//		{
+//			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(8);
+//			List<HexanGuardRangedEntity> entities = world.getEntitiesOfClass(HexanGuardRangedEntity.class, box, (entity) -> {return true;});
+//			
+//			if ((world.getBlockState(pos.below()).getBlock() != Blocks.AIR) && (world.getBlockState(pos).getBlock() != Blocks.AIR))
+//			{
+//				return entities.size() < 3;
+//			}
+//			return false;
+//		}
+//		
+//	}
 	
 	@Nullable
 	public ILivingEntityData finalizeSpawn(IServerWorld p_213386_1_, DifficultyInstance p_213386_2_, SpawnReason p_213386_3_, @Nullable ILivingEntityData p_213386_4_, @Nullable CompoundNBT p_213386_5_) 

@@ -1,35 +1,33 @@
 package com.deimoshexxus.netherhexedkingdom.events;
 
 import com.deimoshexxus.netherhexedkingdom.NetherHexedKingdomMain;
-import com.deimoshexxus.netherhexedkingdom.init.ModEntities;
+import com.deimoshexxus.netherhexedkingdom.world.ModEntityWorldGen;
 
-import net.minecraft.entity.EntityClassification;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.MobSpawnInfo;
-import net.minecraftforge.common.world.MobSpawnInfoBuilder;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
-@EventBusSubscriber(modid = NetherHexedKingdomMain.MOD_ID)
+//import net.minecraft.entity.EntitySpawnPlacementRegistry; //this one
+//import net.minecraft.world.spawner.WanderingTraderSpawner;
+//import net.minecraft.world.spawner.WorldEntitySpawner;
+//import net.minecraft.world.biome.provider.NetherBiomeProvider;
+//import net.minecraft.world.biome.MobSpawnInfo.
+
+@EventBusSubscriber(modid = NetherHexedKingdomMain.MOD_ID) //, bus = Mod.EventBusSubscriber.Bus.MOD
 public class EntityEvents 
 {
-	@SubscribeEvent
-	public static void onBiomeLoad(BiomeLoadingEvent event)
-	{
-		if (event.getName() == null)
-			return;
-		MobSpawnInfoBuilder spawns = event.getSpawns();
-		
-		//if (event.getCategory().equals(Biome.Category.NETHER))
-		if (event.getCategory().equals(Biome.Category.NETHER))//getCategory().equals(Biomes.SOUL_SAND_VALLEY)			creature might not spawn in nether
-		{
-			spawns.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(ModEntities.WITHER_SKELETON_HORSE.get(), 2, 0, 3));
-			spawns.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(ModEntities.WITHER_SKELETON_HORSE_RIDER.get(), 1, 0, 3));
-			spawns.addSpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(ModEntities.VOLCAN_DAEMON_ENTITY.get(), 1, 0, 1));
-		} //MobSpawnInfo																								//weight min max
-	}
-	
-	
+//    @Nullable
+//    public ResourceLocation getName()
+//    {
+//        return Biomes.NETHER_WASTES.getRegistryName();
+//    }
 
+	@SubscribeEvent (priority = EventPriority.HIGH)
+	public static void onBiomeLoad(final BiomeLoadingEvent event)
+	{
+		ModEntityWorldGen.onEntitySpawn(event);
+
+		if (event.getName() == null) return;	
+	}
 }

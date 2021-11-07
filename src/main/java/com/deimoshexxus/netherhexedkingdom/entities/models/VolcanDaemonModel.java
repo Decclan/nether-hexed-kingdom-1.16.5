@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.entity.model.PhantomModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
 
-public class FaceEaterModel extends PhantomModel<VolcanDaemon> 
+public class VolcanDaemonModel extends PhantomModel<VolcanDaemon> 
 {
 	private final ModelRenderer body;
 	private final ModelRenderer leftWingBase;	//leftWingBase
@@ -19,7 +19,7 @@ public class FaceEaterModel extends PhantomModel<VolcanDaemon>
 	private final ModelRenderer tail;
 	private final ModelRenderer tailtip;
 	
-	public FaceEaterModel() 
+	public VolcanDaemonModel() 
 	{
 		texWidth = 256;
 		texHeight = 256;
