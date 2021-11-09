@@ -5,6 +5,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.Entity;
@@ -27,12 +28,14 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockPos.Mutable;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.LightType;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.Heightmap.Type;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -54,6 +57,12 @@ public class VolcanDaemon extends PhantomEntity
    {
 	    return CreatureAttribute.UNDEAD;
    }
+   
+   protected boolean shouldDespawnInPeaceful() 
+   {
+	   return true;
+   }
+   
    protected void defineSynchedData() 
    {
       super.defineSynchedData();
@@ -174,23 +183,61 @@ public class VolcanDaemon extends PhantomEntity
 		      p_213281_1_.putInt("Size", this.getPhantomSize());
 		   }
    
-   public static boolean isDarkEnoughToSpawn(IServerWorld serverWorld, BlockPos pos, Random random) {
-	      if (serverWorld.getBrightness(LightType.SKY, pos) > random.nextInt(32)) {
-	         return false;
-	      } else {
-	         int i = serverWorld.getLevel().isThundering() ? serverWorld.getMaxLocalRawBrightness(pos, 10) : serverWorld.getMaxLocalRawBrightness(pos);
-	         return i <= random.nextInt(8);
-	      }
-	   }	   
-		   
-	public static boolean checkMonsterSpawnRules(EntityType<VolcanDaemon> p_223325_0_, IServerWorld serverWorld, SpawnReason p_223325_2_, BlockPos pos, Random p_223325_4_) 
+//   public static boolean isDarkEnoughToSpawn(IServerWorld serverWorld, BlockPos pos, Random random) {
+//	      if (serverWorld.getBrightness(LightType.SKY, pos) > random.nextInt(32)) {
+//	         return false;
+//	      } else {
+//	         int i = serverWorld.getLevel().isThundering() ? serverWorld.getMaxLocalRawBrightness(pos, 10) : serverWorld.getMaxLocalRawBrightness(pos);
+//	         return i <= random.nextInt(8);
+//	      }
+//	   }	   
+
+   private static final Mutable POS = new Mutable();
+   private static boolean isWithinAir(IServerWorld serverWorld, BlockPos pos, int directRadius, int heightRadius)
+   {
+	   for (int x = pos.getX() - directRadius; x <= pos.getX() + directRadius; x++)
+	   {
+		   POS.setX(x);
+		   for (int z = pos.getZ() - directRadius; z <= pos.getZ() + directRadius; z++)
+		   {
+			   POS.setZ(z);
+			   for (int y = pos.getY() - heightRadius; y <= pos.getY() + heightRadius; y++)
+			   {
+				   POS.setY(y);
+				   if (serverWorld.getBlockState(POS).getBlock() == Blocks.AIR) {
+					   return true;
+				   }
+			   }
+		   }
+	   }
+	   return false;
+   }
+   
+	public static boolean checkMonsterSpawnRules(EntityType<VolcanDaemon> entity, IServerWorld serverWorld, SpawnReason spawnReason, BlockPos pos, Random random) 
 	{
-		return serverWorld.getDifficulty() != Difficulty.PEACEFUL 
-				&& serverWorld.getBlockState(pos.below(1)).getBlock() == Blocks.AIR
-				&& serverWorld.getBlockState(pos.above(1)).getBlock() == Blocks.AIR 
-				&& isDarkEnoughToSpawn(serverWorld, pos, p_223325_4_) 
-				&& checkMobSpawnRules(p_223325_0_, serverWorld, p_223325_2_, pos, p_223325_4_);
+		//int y = serverWorld.getChunk(pos).getHeight(Heightmap.Type.WORLD_SURFACE, pos.getX() & 15, pos.getY() & 15);
+		//return y > 64 && pos.getY() >= y && y < 127;
+//		int y = serverWorld.getChunk(pos).getHeight(Heightmap.Type.WORLD_SURFACE, pos.getX() & 15, pos.getY() & 15);
+
+
+//		boolean blockstate = serverWorld.getBlockState(pos.below(16)).getBlock() == Blocks.AIR && serverWorld.getBlockState(pos.above(16)).getBlock() == Blocks.AIR;
+//		boolean blockstateDirectional = serverWorld.getBlockState(pos.north(8)).getBlock() == Blocks.AIR 
+//				&& serverWorld.getBlockState(pos.south(8)).getBlock() == Blocks.AIR
+//				&& serverWorld.getBlockState(pos.east(8)).getBlock() == Blocks.AIR
+//				&& serverWorld.getBlockState(pos.west(8)).getBlock() == Blocks.AIR;
+
+		return isWithinAir(serverWorld, pos, 96, 32);
+		
 	}  
+
+//	public static boolean checkMonsterSpawnRules(EntityType<VolcanDaemon> entity, IServerWorld serverWorld, SpawnReason spawnReason, BlockPos pos, Random random) 
+//	{
+//		return serverWorld.getDifficulty() != Difficulty.PEACEFUL 
+//				&& serverWorld.getBlockState(pos.below(1)).getBlock() == Blocks.AIR
+//				&& serverWorld.getBlockState(pos.above(1)).getBlock() == Blocks.AIR 
+//				&& isDarkEnoughToSpawn(serverWorld, pos, random) 
+//				&& checkMobSpawnRules(entity, serverWorld, spawnReason, pos, random);
+//	}  
 
 		   
 //	public static boolean canSpawn(EntityType<VolcanDaemon> type, IServerWorld world, 
@@ -200,8 +247,8 @@ public class VolcanDaemon extends PhantomEntity
 //		{
 //			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(128);
 //			List<VolcanDaemon> entities = world.getEntitiesOfClass(VolcanDaemon.class, box, (entity) -> {return true;});
-//			int place = world.getChunk(pos).getHeight(Type.WORLD_SURFACE, pos.getX() & 15, pos.getY() & 15);
-//			if (place > 64 && pos.getZ() >= 96 && entities.size() < 3)
+//			int place = ld.getChunk(pos).getHeight(Type.WORLD_SURFACE, pos.getX() & 15, pos.getY() & 15);
+//			if (place > 64 &wor& pos.getZ() >= 96 && entities.size() < 3)
 //			{
 //				return true;
 //			}
@@ -214,7 +261,7 @@ public class VolcanDaemon extends PhantomEntity
 	
 	public ILivingEntityData finalizeSpawn(IServerWorld p_213386_1_, DifficultyInstance p_213386_2_, SpawnReason p_213386_3_, @Nullable ILivingEntityData p_213386_4_, @Nullable CompoundNBT p_213386_5_) 
 	{
-	this.anchorPoint = this.blockPosition().above(16);
+	this.anchorPoint = this.blockPosition().above(8);
 	//this.setPhantomSize(0);
 	return super.finalizeSpawn(p_213386_1_, p_213386_2_, p_213386_3_, p_213386_4_, p_213386_5_);
 	}

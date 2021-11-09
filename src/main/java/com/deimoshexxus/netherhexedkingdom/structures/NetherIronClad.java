@@ -73,7 +73,7 @@ public class NetherIronClad extends Structure<NoFeatureConfig> {
 
             IBlockReader blockReader = chunkGenerator.getBaseColumn(blockpos.getX(), blockpos.getZ());
 
-            for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl; --y)
+            for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl; --y) // y always less than sea level
             {
             	BlockPos.Mutable airblockpos = new BlockPos.Mutable(x+6, y+4, z+6);
             	//BlockPos.Mutable lavablockpos = new BlockPos.Mutable(x+6, y-4, z+6);

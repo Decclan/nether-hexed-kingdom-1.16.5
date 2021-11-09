@@ -29,6 +29,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.pathfinding.PathNodeType;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
@@ -58,7 +60,7 @@ public class WitherSkeletonHorseEntity extends HorseEntity
 	{
 		super(type, worldIn);
 		//this.setPathfindingMalus(PathNodeType.DANGER_FIRE, 8.0F); //changed to 8.0
-		this.setPathfindingMalus(PathNodeType.LAVA, 8.0F);  //added 26/10/21
+		this.setPathfindingMalus(PathNodeType.LAVA, -1.0F);  //added 08/11/21
 	}
 	
    protected void registerGoals() 
@@ -269,75 +271,29 @@ public class WitherSkeletonHorseEntity extends HorseEntity
 	
 	public static boolean checkWhorseSpawnRules(EntityType<WitherSkeletonHorseEntity> p_234361_0_, IWorld world, SpawnReason p_234361_2_, BlockPos pos, Random p_234361_4_) 
 	{
-		//return world.getBlockState(pos.below()).is(Blocks.NETHERRACK);
-		return !world.getBlockState(pos.below()).is(Blocks.NETHER_WART_BLOCK) && !world.getBlockState(pos.below()).is(Blocks.AIR) && !world.getBlockState(pos.below()).is(Blocks.LAVA);
-//		if(!world.getBlockState(pos.below()).is(Blocks.NETHER_WART_BLOCK) && !world.getBlockState(pos.below()).is(Blocks.AIR) && !world.getBlockState(pos.below()).is(Blocks.LAVA))
-//		{
-//			return true;
-//		}
-//		else;
-//		{
-//			return false;
-//		}
+		return !world.getBlockState(pos.below()).is(Blocks.NETHER_WART_BLOCK) 
+				&& !world.getBlockState(pos.below()).is(Blocks.AIR) 
+				&& !world.getBlockState(pos.below()).is(Blocks.LAVA);
 	}
 	
-//	public boolean removeWhenFarAway(double p_213397_1_) 
-//	{
-//		return !this.isPersistenceRequired(); //need taming overhaul, persistence to be set when tamed
-//	}
 
 	public float getWalkTargetValue(BlockPos pos, IWorldReader worldReader) 
 	{
 		return worldReader.getBlockState(pos.below()).is(Blocks.NETHERRACK) ? 10.0F : 0.0F;
 	}
 
+
 	
-//	public static boolean canSpawn(EntityType<WitherSkeletonHorseEntity> type, IServerWorld world, 
-//			SpawnReason spawnReason, BlockPos pos, Random random)
-//	{
-//
-//		if ((MonsterEntity.isDarkEnoughToSpawn(world, pos, random)) && checkAnimalSpawnRules(type, world, spawnReason, pos, random))
-//		{
-//			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(16);
-//			List<WitherSkeletonHorseEntity> entities = world.getEntitiesOfClass(WitherSkeletonHorseEntity.class, box, (entity) -> {return true;});
-//			return entities.size() < 6;
-//			//world.containsAnyLiquid(box)
-//			
-////			BlockState blockstate = ((IForgeBlockState) pos).getBlockState();
-////			
-////			if (pos.getX() && pos.getZ() == world.getBlockState(blockstate.is(Blocks.LAVA))) 
-////			{
-////				
-////			}
-//
-////			Optional<RegistryKey<Biome>> biomes = world.getBiomeName(pos);
-//		
-//			
-////            Biome biome = world.getBiome(pos);
-////            Biome.Category biome$category = biome.getBiomeCategory();
-////            if (biome$category == Biome.Category.MUSHROOM) 
-////            {
-////               return 0;
-////            }
-//			
-////			if (pos.getY() >= 36 )
-////			{
-////				return entities.size() < 6;
-////			}
-//			
-////			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(32);
-////			List<WitherSkeletonHorseEntity> entities = world.getEntitiesOfClass(WitherSkeletonHorseEntity.class, box, (entity) -> {return true;});
-////			int height = world.getChunk(pos).getHeight(Type.WORLD_SURFACE, pos.getX() & 15, pos.getY() & 15);
-////			if (height >= 40 && entities.size() < 24) //&& pos.getZ() >= 40
-////			{
-////				return true;
-////			}
-//			
-//			//return entities.size() < 3;
-//		}
-//		return false;
-//	}
+	public boolean removeWhenFarAway(double p_213397_1_) 
+	{
+		return !this.isPersistenceRequired();
+	}
 	
+	public boolean canBeAffected(EffectInstance p_70687_1_) 
+	{
+		return p_70687_1_.getEffect() == Effects.WITHER ? false : super.canBeAffected(p_70687_1_);
+	}
+   
 	   @Nullable
 	   public ILivingEntityData finalizeSpawn(IServerWorld serverWorld, DifficultyInstance difficulty, SpawnReason spawnR, @Nullable ILivingEntityData livingDat, @Nullable CompoundNBT nbtDat) 
 	   {

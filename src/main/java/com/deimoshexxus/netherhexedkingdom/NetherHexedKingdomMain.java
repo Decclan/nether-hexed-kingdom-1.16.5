@@ -85,8 +85,7 @@ public class NetherHexedKingdomMain
     {
         LOGGER.info("PREINIT");
         event.enqueueWork(() -> {
-//    		ModEntities.registerEntityAttributes();
-//    		ModEntities.registerEntitySpawns();
+    		ModEntities.registerEntitySpawns();
             NetherStructures.setupStructures();
             NetherConfiguredStructures.registerConfiguredStructures();
 

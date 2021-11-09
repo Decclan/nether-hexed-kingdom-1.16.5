@@ -30,6 +30,8 @@ import net.minecraft.item.HorseArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
@@ -290,13 +292,11 @@ public class WitherSkeletonHorseRider extends HorseEntity {
    
 	public static boolean checkWhorseSpawnRules(EntityType<WitherSkeletonHorseRider> p_234361_0_, IWorld world, SpawnReason p_234361_2_, BlockPos pos, Random p_234361_4_) 
 	{
-		return !world.getBlockState(pos.below()).is(Blocks.NETHER_WART_BLOCK) && !world.getBlockState(pos.below()).is(Blocks.AIR) && !world.getBlockState(pos.below()).is(Blocks.LAVA);
+		return !world.getBlockState(pos.below()).is(Blocks.NETHER_WART_BLOCK) 
+				&& !world.getBlockState(pos.below()).is(Blocks.AIR) 
+				&& !world.getBlockState(pos.below()).is(Blocks.LAVA);
 	}
-	
-//	public boolean removeWhenFarAway(double p_213397_1_) 
-//	{
-//		return !this.isPersistenceRequired(); //need taming overhaul, persistence to be set when tamed
-//	}
+
 
 	public float getWalkTargetValue(BlockPos pos, IWorldReader worldReader) 
 	{
@@ -321,6 +321,16 @@ public class WitherSkeletonHorseRider extends HorseEntity {
 //		return false;
 //	}
    
+	public boolean removeWhenFarAway(double p_213397_1_) 
+	{
+		return !this.isPersistenceRequired();
+	}
+
+	public boolean canBeAffected(EffectInstance p_70687_1_) 
+	{
+		return p_70687_1_.getEffect() == Effects.WITHER ? false : super.canBeAffected(p_70687_1_);
+	}	
+
 	@Nullable
 	public ILivingEntityData finalizeSpawn(IServerWorld serverWorld, DifficultyInstance difficulty, SpawnReason spawnR, @Nullable ILivingEntityData livingDat, @Nullable CompoundNBT nbtDat) 
 	{

@@ -108,7 +108,7 @@ public class ModEntities
 		
 		EntitySpawnPlacementRegistry.register(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(),
 				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
-				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexanGuardRangedEntity::checkMonsterSpawnRules);
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexanGuardRangedEntity::checkRangedSpawnRules);
 		
 		EntitySpawnPlacementRegistry.register(ModEntities.VOLCAN_DAEMON_ENTITY.get(),
 				EntitySpawnPlacementRegistry.PlacementType.NO_RESTRICTIONS, 
@@ -124,7 +124,7 @@ public class ModEntities
 		
 		EntitySpawnPlacementRegistry.register(ModEntities.UNDEAD_HORSE.get(),
 				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
-				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexedUndeadHorseEntity::checkWhorseSpawnRules);
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexedUndeadHorseEntity::checkDeadHorseSpawnRules);
 		
 		EntitySpawnPlacementRegistry.register(ModEntities.UNDEAD_HORSE_RIDER.get(),
 				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 

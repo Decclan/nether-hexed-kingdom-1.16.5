@@ -24,7 +24,8 @@ public class ModEntityWorldGen
 		specificNetherBiomes(event, ModEntities.UNDEAD_HORSE.get(), 5, 0, 2, Biomes.CRIMSON_FOREST);
 		specificNetherBiomes(event, ModEntities.UNDEAD_HORSE_RIDER.get(), 10, 0, 3, Biomes.SOUL_SAND_VALLEY);
 		
-		specificNetherBiomes(event, ModEntities.VOLCAN_DAEMON_ENTITY.get(), 1, 0, 1, Biomes.BASALT_DELTAS);
+		specificNetherBiomes(event, ModEntities.VOLCAN_DAEMON_ENTITY.get(), 80, 1, 3, Biomes.BASALT_DELTAS);
+		
 		specificNetherBiomes(event, ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), 80, 1, 3, Biomes.WARPED_FOREST);
 		specificNetherBiomes(event, ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), 80, 1, 3, Biomes.WARPED_FOREST);
 	}

@@ -284,9 +284,10 @@ public class HexedUndeadHorseEntity extends HorseEntity {
 	      return MathHelper.ceil((p_225508_1_ * 0.5F - 2.0F) * p_225508_2_);
    }
    
-	public static boolean checkWhorseSpawnRules(EntityType<HexedUndeadHorseEntity> p_234361_0_, IWorld world, SpawnReason p_234361_2_, BlockPos pos, Random p_234361_4_) 
+	public static boolean checkDeadHorseSpawnRules(EntityType<HexedUndeadHorseEntity> p_234361_0_, IWorld world, SpawnReason p_234361_2_, BlockPos pos, Random p_234361_4_) 
 	{
-		return !world.getBlockState(pos.below()).is(Blocks.NETHER_WART_BLOCK) && !world.getBlockState(pos.below()).is(Blocks.AIR) && !world.getBlockState(pos.below()).is(Blocks.LAVA);
+		return world.getBlockState(pos.below()).is(Blocks.CRIMSON_NYLIUM);
+		//return !world.getBlockState(pos.below()).is(Blocks.NETHER_WART_BLOCK) && !world.getBlockState(pos.below()).is(Blocks.AIR) && !world.getBlockState(pos.below()).is(Blocks.LAVA);
 	}
 	
 //	public boolean removeWhenFarAway(double p_213397_1_) 
@@ -294,9 +295,14 @@ public class HexedUndeadHorseEntity extends HorseEntity {
 //		return !this.isPersistenceRequired(); //need taming overhaul, persistence to be set when tamed
 //	}
 
+	public boolean removeWhenFarAway(double p_213397_1_) 
+	{
+		return !this.isPersistenceRequired();
+	}
+	
 	public float getWalkTargetValue(BlockPos pos, IWorldReader worldReader) 
 	{
-		return worldReader.getBlockState(pos.below()).is(Blocks.NETHERRACK) ? 10.0F : 0.0F;
+		return worldReader.getBlockState(pos.below()).is(Blocks.CRIMSON_NYLIUM) ? 10.0F : 0.0F;
 	}
 	
 //   	public double getPassengersRidingOffset() 

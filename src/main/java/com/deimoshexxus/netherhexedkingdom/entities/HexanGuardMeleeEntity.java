@@ -1,6 +1,5 @@
 package com.deimoshexxus.netherhexedkingdom.entities;
 
-import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Nullable;
@@ -12,10 +11,14 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
+import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.monster.AbstractSkeletonEntity;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.monster.WitherSkeletonEntity;
+//import net.minecraft.entity.monster.WitherSkeletonEntity;
+//import net.minecraft.entity.monster.MagmaCubeEntity;
+//import net.minecraft.entity.passive.StriderEntity;
 import net.minecraft.entity.monster.ZombifiedPiglinEntity;
 import net.minecraft.entity.monster.piglin.AbstractPiglinEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
@@ -26,11 +29,12 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.pathfinding.GroundPathNavigator;
 import net.minecraft.pathfinding.PathNodeType;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.Direction;
 import net.minecraft.util.GroundPathHelper;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -44,8 +48,10 @@ import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
+import net.minecraft.world.IWorld;
+import net.minecraft.world.IWorldReader;
+import net.minecraft.world.LightType;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.Heightmap;
 
 public class HexanGuardMeleeEntity extends AbstractSkeletonEntity
 	{
@@ -155,15 +161,66 @@ public class HexanGuardMeleeEntity extends AbstractSkeletonEntity
 		return SoundEvents.SKELETON_STEP;
 	}
 	
-	public static boolean checkGuardSpawnRules(EntityType<HexanGuardMeleeEntity> entity, IServerWorld serverWorld, SpawnReason p_223325_2_, BlockPos pos, Random p_223325_4_) 
+	public static boolean checkGuardSpawnRules(EntityType<HexanGuardMeleeEntity> entity, IWorld world, SpawnReason spawnReason, BlockPos pos, Random random) 
 	{
-		return serverWorld.getDifficulty() != Difficulty.PEACEFUL 
-				&& serverWorld.getBlockState(pos.below()).getBlock() == Blocks.NETHER_BRICKS
-				|| serverWorld.getBlockState(pos.below()).getBlock() == Blocks.NETHERRACK
-				&& serverWorld.getBlockState(pos.below()).getBlock() != Blocks.AIR 
-				&& isDarkEnoughToSpawn(serverWorld, pos, p_223325_4_) 
-				&& checkMobSpawnRules(entity, serverWorld, p_223325_2_, pos, p_223325_4_);
-	}
+	      BlockPos.Mutable blockpos$mutable = pos.mutable();
+
+	      do {
+	         blockpos$mutable.move(Direction.UP);
+	      } while(!world.getFluidState(blockpos$mutable).is(FluidTags.LAVA) && !world.getBlockState(blockpos$mutable).is(Blocks.AIR));
+
+	      return world.getBlockState(blockpos$mutable).is(Blocks.NETHERRACK);
+	   }
+	
+	   public boolean checkSpawnObstruction(IWorldReader p_205019_1_) {
+		      return p_205019_1_.isUnobstructed(this) && !p_205019_1_.containsAnyLiquid(this.getBoundingBox());
+		   }
+//		return serverWorld.getDifficulty() != Difficulty.PEACEFUL 
+//				&& serverWorld.getBlockState(pos.below()).getBlock() == Blocks.NETHER_BRICKS
+//				|| serverWorld.getBlockState(pos.below()).getBlock() == Blocks.NETHERRACK
+//				&& serverWorld.getBlockState(pos.below()).getBlock() != Blocks.AIR 
+//				&& isDarkEnoughToSpawn(serverWorld, pos, random) 
+//				&& checkMobSpawnRules(entity, serverWorld, spawnReason, pos, random)
+//				&& checkAnyLightMonsterSpawnRules(entity, serverWorld, spawnReason, pos, random)
+//				&& checkMonsterSpawnRules(entity, serverWorld, spawnReason, pos, random);
+//	}
+	
+//	   public static boolean checkMobSpawnRules(EntityType<? extends MobEntity> p_223315_0_, IWorld p_223315_1_, SpawnReason p_223315_2_, BlockPos p_223315_3_, Random p_223315_4_) {
+//		      BlockPos blockpos = p_223315_3_.below();
+//		      return p_223315_2_ == SpawnReason.SPAWNER || p_223315_1_.getBlockState(blockpos).isValidSpawn(p_223315_1_, blockpos, p_223315_0_);
+//		   }
+//
+//	   
+//	   
+//		   public boolean checkSpawnRules(IWorld p_213380_1_, SpawnReason p_213380_2_) {
+//		      return true;
+//		   }
+//
+//	
+//	
+//	   public boolean checkSpawnObstruction(IWorldReader serverWorld) {
+//		      return !serverWorld.containsAnyLiquid(this.getBoundingBox()) && serverWorld.isUnobstructed(this);
+//		   }
+//	
+//	   public static boolean isDarkEnoughToSpawn(IServerWorld serverWorld, BlockPos pos, Random random) {
+//		      if (serverWorld.getBrightness(LightType.SKY, pos) > random.nextInt(32)) {
+//		         return false;
+//		      } else {
+//		         int i = serverWorld.getLevel().isThundering() ? serverWorld.getMaxLocalRawBrightness(pos, 10) : serverWorld.getMaxLocalRawBrightness(pos);
+//		         return i <= random.nextInt(8);
+//		      }
+//		   }
+//
+//		   public static boolean checkMonsterSpawnRules(EntityType<? extends MonsterEntity> entity, IServerWorld serverWorld, SpawnReason spawnReason, BlockPos pos, Random random) {
+//		      return serverWorld.getDifficulty() != Difficulty.PEACEFUL 
+//		    		  && isDarkEnoughToSpawn(serverWorld, pos, random) 
+//		    		  && checkMobSpawnRules(entity, serverWorld, spawnReason, pos, random);
+//		   }
+//
+//		   public static boolean checkAnyLightMonsterSpawnRules(EntityType<? extends MonsterEntity> p_223324_0_, IWorld p_223324_1_, SpawnReason p_223324_2_, BlockPos p_223324_3_, Random p_223324_4_) {
+//		      return p_223324_1_.getDifficulty() != Difficulty.PEACEFUL 
+//		    		  && checkMobSpawnRules(p_223324_0_, p_223324_1_, p_223324_2_, p_223324_3_, p_223324_4_);
+//		   }
 	
 //	   private static List<MobSpawnInfo.Spawners> mobsAt(ServerWorld p_241463_0_, StructureManager p_241463_1_, ChunkGenerator p_241463_2_, EntityClassification p_241463_3_, BlockPos p_241463_4_, @Nullable Biome p_241463_5_) {
 //		      return p_241463_3_ == EntityClassification.MONSTER && p_241463_0_.getBlockState(p_241463_4_.below()).getBlock() == Blocks.NETHER_BRICKS && p_241463_1_.getStructureAt(p_241463_4_, false, Structure.NETHER_BRIDGE).isValid() ? Structure.NETHER_BRIDGE.getSpecialEnemies() : p_241463_2_.getMobsAt(p_241463_5_ != null ? p_241463_5_ : p_241463_0_.getBiome(p_241463_4_), p_241463_1_, p_241463_3_, p_241463_4_);
