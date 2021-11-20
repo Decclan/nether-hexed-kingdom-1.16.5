@@ -37,7 +37,7 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 0.0,
-                "max": 2.0,
+                "max": 1.0,
                 "type": "minecraft:uniform"
               }
             },
@@ -69,10 +69,13 @@
             },
             {
               "function": "minecraft:looting_enchant",
-              "count": 0.0
+              "count": {
+                "min": 0.0,
+                "max": 1.0
+              }
             }
           ],
-          "name": "minecraft:golden_apple"
+          "name": "minecraft:gold_nugget"
         }
       ]
     },

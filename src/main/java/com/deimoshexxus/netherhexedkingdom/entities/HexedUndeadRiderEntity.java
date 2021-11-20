@@ -24,9 +24,9 @@ import net.minecraft.world.IServerWorld;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
-public class HexedGuardRiderEntity extends HexedUndeadHorseEntity {
+public class HexedUndeadRiderEntity extends HexedUndeadHorseEntity {
 
-	public HexedGuardRiderEntity(EntityType<? extends HexedUndeadHorseEntity> p_i50238_1_, World p_i50238_2_) 
+	public HexedUndeadRiderEntity(EntityType<? extends HexedUndeadHorseEntity> p_i50238_1_, World p_i50238_2_) 
 	{
 		super(p_i50238_1_, p_i50238_2_);
 	}

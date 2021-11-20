@@ -11,7 +11,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.monster.AbstractSkeletonEntity;
 import net.minecraft.entity.monster.MonsterEntity;
@@ -45,12 +44,10 @@ import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.RestrictSunGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
-import net.minecraft.world.LightType;
 import net.minecraft.world.World;
 
 public class HexanGuardMeleeEntity extends AbstractSkeletonEntity
@@ -61,7 +58,6 @@ public class HexanGuardMeleeEntity extends AbstractSkeletonEntity
 		super(type, worldIn);
 		this.setPathfindingMalus(PathNodeType.LAVA, 10.0F);
 		this.applyOpenDoorsAbility();
-		//this.fireImmune();
 	}
 
 	protected void registerGoals() 
@@ -166,10 +162,10 @@ public class HexanGuardMeleeEntity extends AbstractSkeletonEntity
 	      BlockPos.Mutable blockpos$mutable = pos.mutable();
 
 	      do {
-	         blockpos$mutable.move(Direction.UP);
-	      } while(!world.getFluidState(blockpos$mutable).is(FluidTags.LAVA) && !world.getBlockState(blockpos$mutable).is(Blocks.AIR));
+	         blockpos$mutable.move(Direction.DOWN);
+	      } while(!world.getFluidState(blockpos$mutable).is(FluidTags.LAVA)); //&& !world.getBlockState(blockpos$mutable).is(Blocks.AIR)
 
-	      return world.getBlockState(blockpos$mutable).is(Blocks.NETHERRACK);
+	      return world.getBlockState(blockpos$mutable).is(Blocks.NETHER_BRICKS);
 	   }
 	
 	   public boolean checkSpawnObstruction(IWorldReader p_205019_1_) {

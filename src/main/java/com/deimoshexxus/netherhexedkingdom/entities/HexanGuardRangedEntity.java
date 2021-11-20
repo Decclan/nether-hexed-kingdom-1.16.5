@@ -1,6 +1,5 @@
 package com.deimoshexxus.netherhexedkingdom.entities;
 
-import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Nullable;
@@ -25,14 +24,10 @@ import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.pathfinding.GroundPathNavigator;
-import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.Direction;
 import net.minecraft.util.GroundPathHelper;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -153,10 +148,8 @@ public class HexanGuardRangedEntity extends AbstractSkeletonEntity
 //		   }
 	
 	   public static boolean checkRangedSpawnRules(EntityType<HexanGuardRangedEntity> p_234351_0_, IWorld p_234351_1_, SpawnReason p_234351_2_, BlockPos p_234351_3_, Random p_234351_4_) {
-		      return p_234351_1_.getDifficulty() != Difficulty.PEACEFUL 
-		    		  && p_234351_1_.getBlockState(p_234351_3_.below()).getBlock() != Blocks.NETHER_WART_BLOCK
-		    		  && p_234351_1_.getBlockState(p_234351_3_.below()).getBlock() != Blocks.LAVA
-		      		  && p_234351_1_.getBlockState(p_234351_3_.below()).getBlock() != Blocks.AIR;
+		      return p_234351_1_.getDifficulty() != Difficulty.PEACEFUL
+		    		  && p_234351_1_.getBlockState(p_234351_3_.below()).getBlock() != Blocks.LAVA;
 		   }
 
 

@@ -49,8 +49,8 @@ public class NetherPrison extends Structure<NoFeatureConfig> {
 
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
             new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 100, 4, 9),
-            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), 100, 3, 8),
-            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), 100, 1, 3)
+            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), 100, 5, 8),
+            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), 100, 3, 5)
     );
     
     @Override

@@ -7,7 +7,7 @@ import com.deimoshexxus.netherhexedkingdom.entities.WightTraderEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.VolcanDaemon;
 import com.deimoshexxus.netherhexedkingdom.entities.HexanGuardMeleeEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.HexanGuardRangedEntity;
-import com.deimoshexxus.netherhexedkingdom.entities.HexedGuardRiderEntity;
+import com.deimoshexxus.netherhexedkingdom.entities.HexedUndeadRiderEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.HexedUndeadHorseEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.HexanGuardEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.WitherSkeletonHorseEntity;
@@ -68,8 +68,8 @@ public class ModEntities
 			() -> EntityType.Builder.<HexedUndeadHorseEntity>of(HexedUndeadHorseEntity::new, EntityClassification.MONSTER).sized(1.41F, 1.7F).clientTrackingRange(10).
 			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "hexed_undead_horse").toString()));
 	
-	public static final RegistryObject<EntityType<HexedGuardRiderEntity>> UNDEAD_HORSE_RIDER = Registration.ENTITY_TYPES.register("hexed_undead_horse_rider",  
-			() -> EntityType.Builder.<HexedGuardRiderEntity>of(HexedGuardRiderEntity::new, EntityClassification.MONSTER).sized(1.41F, 1.7F).clientTrackingRange(10).
+	public static final RegistryObject<EntityType<HexedUndeadRiderEntity>> UNDEAD_HORSE_RIDER = Registration.ENTITY_TYPES.register("hexed_undead_horse_rider",  
+			() -> EntityType.Builder.<HexedUndeadRiderEntity>of(HexedUndeadRiderEntity::new, EntityClassification.MONSTER).sized(1.41F, 1.7F).clientTrackingRange(10).
 			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "hexed_undead_horse_rider").toString()));
 	
 //	public static final RegistryObject<EntityType<SkeletonEntity>> SKELETON = register("skeleton", 
@@ -89,7 +89,7 @@ public class ModEntities
 		event.put(ModEntities.WITHER_SKELETON_HORSE.get(), WitherSkeletonHorseEntity.createAttributes().build());
 		event.put(ModEntities.WITHER_SKELETON_HORSE_RIDER.get(), WitherSkeletonHorseRider.createAttributes().build());
 		event.put(ModEntities.UNDEAD_HORSE.get(), HexedUndeadHorseEntity.createAttributes().build());
-		event.put(ModEntities.UNDEAD_HORSE_RIDER.get(), HexedGuardRiderEntity.createAttributes().build());
+		event.put(ModEntities.UNDEAD_HORSE_RIDER.get(), HexedUndeadRiderEntity.createAttributes().build());
 	}
 	
 	public static void registerEntitySpawns()
@@ -128,7 +128,7 @@ public class ModEntities
 		
 		EntitySpawnPlacementRegistry.register(ModEntities.UNDEAD_HORSE_RIDER.get(),
 				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
-				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexedGuardRiderEntity::checkSpawnRules);
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexedUndeadRiderEntity::checkSpawnRules);
 	}
 	
 	static void register() {}

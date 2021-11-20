@@ -23,7 +23,6 @@ public class EntityEvents
 	public static void onBiomeLoad(final BiomeLoadingEvent event)
 	{
 		ModEntityWorldGen.onEntitySpawn(event);
-//		ModStructureWorldGen.onStructureSpawn(event);
 
 		if (event.getName() == null) return;	
 	}

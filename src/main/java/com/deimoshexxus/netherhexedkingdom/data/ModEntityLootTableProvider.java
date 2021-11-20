@@ -78,6 +78,7 @@ public class ModEntityLootTableProvider extends EntityLootTables
 	    			.apply(SetCount.setCount(RandomValueRange.between(1.0F, 6.0F)))
 	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))))));
 
+		
 		this.add(ModEntities.HEXAN_GUARD_ENTITY.get(), LootTable.lootTable());
 		this.add(ModEntities.WIGHT_ENTITY.get(), LootTable.lootTable());
 		this.add(ModEntities.WIGHT_KNIGHT_ENTITY.get(), LootTable.lootTable());
@@ -105,6 +106,18 @@ public class ModEntityLootTableProvider extends EntityLootTables
 	    			.apply(SetCount.setCount(RandomValueRange.between(0.0F, 3.0F)))
 	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F))))));
 
+		this.add(ModEntities.UNDEAD_HORSE.get(), LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+					.setRolls(ConstantRange.exactly(1))
+					.add(ItemLootEntry.lootTableItem(Items.ROTTEN_FLESH))
+					.apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F)))
+					));
+		this.add(ModEntities.UNDEAD_HORSE_RIDER.get(), LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+					.setRolls(ConstantRange.exactly(1))
+					.add(ItemLootEntry.lootTableItem(Items.ROTTEN_FLESH))
+					.apply(SetCount.setCount(RandomValueRange.between(0.0F, 2.0F)))
+					));
 
 //	    this.add(EntityType.SKELETON, LootTable.lootTable()
 //	    		.withPool(LootPool.lootPool()
