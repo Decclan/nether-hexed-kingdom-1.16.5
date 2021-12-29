@@ -104,7 +104,7 @@ public class ModEntities
 		
 		EntitySpawnPlacementRegistry.register(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(),
 				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
-				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexanGuardMeleeEntity::checkGuardSpawnRules);
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexanGuardMeleeEntity::checkMonsterSpawnRules);
 		
 		EntitySpawnPlacementRegistry.register(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(),
 				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
@@ -112,7 +112,7 @@ public class ModEntities
 		
 		EntitySpawnPlacementRegistry.register(ModEntities.VOLCAN_DAEMON_ENTITY.get(),
 				EntitySpawnPlacementRegistry.PlacementType.NO_RESTRICTIONS, 
-				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, VolcanDaemon::checkMonsterSpawnRules);
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, VolcanDaemon::daemonSpawnRules);
 		
 		EntitySpawnPlacementRegistry.register(ModEntities.WITHER_SKELETON_HORSE.get(),
 				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 

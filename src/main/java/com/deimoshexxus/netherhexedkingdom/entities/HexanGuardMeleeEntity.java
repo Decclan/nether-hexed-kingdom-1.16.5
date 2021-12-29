@@ -157,97 +157,20 @@ public class HexanGuardMeleeEntity extends AbstractSkeletonEntity
 		return SoundEvents.SKELETON_STEP;
 	}
 	
-	public static boolean checkGuardSpawnRules(EntityType<HexanGuardMeleeEntity> entity, IWorld world, SpawnReason spawnReason, BlockPos pos, Random random) 
-	{
-	      BlockPos.Mutable blockpos$mutable = pos.mutable();
-
-	      do {
-	         blockpos$mutable.move(Direction.DOWN);
-	      } while(!world.getFluidState(blockpos$mutable).is(FluidTags.LAVA)); //&& !world.getBlockState(blockpos$mutable).is(Blocks.AIR)
-
-	      return world.getBlockState(blockpos$mutable).is(Blocks.NETHER_BRICKS);
-	   }
-	
-	   public boolean checkSpawnObstruction(IWorldReader p_205019_1_) {
-		      return p_205019_1_.isUnobstructed(this) && !p_205019_1_.containsAnyLiquid(this.getBoundingBox());
-		   }
-//		return serverWorld.getDifficulty() != Difficulty.PEACEFUL 
-//				&& serverWorld.getBlockState(pos.below()).getBlock() == Blocks.NETHER_BRICKS
-//				|| serverWorld.getBlockState(pos.below()).getBlock() == Blocks.NETHERRACK
-//				&& serverWorld.getBlockState(pos.below()).getBlock() != Blocks.AIR 
-//				&& isDarkEnoughToSpawn(serverWorld, pos, random) 
-//				&& checkMobSpawnRules(entity, serverWorld, spawnReason, pos, random)
-//				&& checkAnyLightMonsterSpawnRules(entity, serverWorld, spawnReason, pos, random)
-//				&& checkMonsterSpawnRules(entity, serverWorld, spawnReason, pos, random);
-//	}
-	
-//	   public static boolean checkMobSpawnRules(EntityType<? extends MobEntity> p_223315_0_, IWorld p_223315_1_, SpawnReason p_223315_2_, BlockPos p_223315_3_, Random p_223315_4_) {
-//		      BlockPos blockpos = p_223315_3_.below();
-//		      return p_223315_2_ == SpawnReason.SPAWNER || p_223315_1_.getBlockState(blockpos).isValidSpawn(p_223315_1_, blockpos, p_223315_0_);
-//		   }
-//
-//	   
-//	   
-//		   public boolean checkSpawnRules(IWorld p_213380_1_, SpawnReason p_213380_2_) {
-//		      return true;
-//		   }
-//
-//	
-//	
-//	   public boolean checkSpawnObstruction(IWorldReader serverWorld) {
-//		      return !serverWorld.containsAnyLiquid(this.getBoundingBox()) && serverWorld.isUnobstructed(this);
-//		   }
-//	
-//	   public static boolean isDarkEnoughToSpawn(IServerWorld serverWorld, BlockPos pos, Random random) {
-//		      if (serverWorld.getBrightness(LightType.SKY, pos) > random.nextInt(32)) {
-//		         return false;
-//		      } else {
-//		         int i = serverWorld.getLevel().isThundering() ? serverWorld.getMaxLocalRawBrightness(pos, 10) : serverWorld.getMaxLocalRawBrightness(pos);
-//		         return i <= random.nextInt(8);
-//		      }
-//		   }
-//
-//		   public static boolean checkMonsterSpawnRules(EntityType<? extends MonsterEntity> entity, IServerWorld serverWorld, SpawnReason spawnReason, BlockPos pos, Random random) {
-//		      return serverWorld.getDifficulty() != Difficulty.PEACEFUL 
-//		    		  && isDarkEnoughToSpawn(serverWorld, pos, random) 
-//		    		  && checkMobSpawnRules(entity, serverWorld, spawnReason, pos, random);
-//		   }
-//
-//		   public static boolean checkAnyLightMonsterSpawnRules(EntityType<? extends MonsterEntity> p_223324_0_, IWorld p_223324_1_, SpawnReason p_223324_2_, BlockPos p_223324_3_, Random p_223324_4_) {
-//		      return p_223324_1_.getDifficulty() != Difficulty.PEACEFUL 
-//		    		  && checkMobSpawnRules(p_223324_0_, p_223324_1_, p_223324_2_, p_223324_3_, p_223324_4_);
-//		   }
-	
-//	   private static List<MobSpawnInfo.Spawners> mobsAt(ServerWorld p_241463_0_, StructureManager p_241463_1_, ChunkGenerator p_241463_2_, EntityClassification p_241463_3_, BlockPos p_241463_4_, @Nullable Biome p_241463_5_) {
-//		      return p_241463_3_ == EntityClassification.MONSTER && p_241463_0_.getBlockState(p_241463_4_.below()).getBlock() == Blocks.NETHER_BRICKS && p_241463_1_.getStructureAt(p_241463_4_, false, Structure.NETHER_BRIDGE).isValid() ? Structure.NETHER_BRIDGE.getSpecialEnemies() : p_241463_2_.getMobsAt(p_241463_5_ != null ? p_241463_5_ : p_241463_0_.getBiome(p_241463_4_), p_241463_1_, p_241463_3_, p_241463_4_);
-//		   }
-	
-//	   public static boolean checkMobSpawnRules(EntityType<? extends MobEntity> p_223315_0_, IWorld p_223315_1_, SpawnReason p_223315_2_, BlockPos p_223315_3_, Random p_223315_4_) {
-//		      BlockPos blockpos = p_223315_3_.below();
-//		      return p_223315_2_ == SpawnReason.SPAWNER || p_223315_1_.getBlockState(blockpos).isValidSpawn(p_223315_1_, blockpos, p_223315_0_);
-//		   }
-	
-//	public static boolean canSpawn(EntityType<HexanGuardMeleeEntity> type, IServerWorld world, 
-//			SpawnReason spawnReason, BlockPos pos, Random random)
+//	public static boolean checkGuardSpawnRules(EntityType<HexanGuardMeleeEntity> entity, IWorld world, SpawnReason spawnReason, BlockPos pos, Random random) 
 //	{
-//		if (checkMonsterSpawnRules(type, world, spawnReason, pos, random));
-//		{
-//			int x = pos.getX();
-//			int z = pos.getZ();
-//			int height = world.getHeight(Heightmap.Type.WORLD_SURFACE, pos.getX(), pos.getZ());
-//			BlockPos blockpos = new BlockPos(x, height, z);
-//			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(8);
-//			List<HexanGuardMeleeEntity> entities = world.getEntitiesOfClass(HexanGuardMeleeEntity.class, box, (entity) -> {return true;});
-//			
-//			if ((world.getBlockState(blockpos.below()).getBlock() == Blocks.AIR) && (world.getBlockState(blockpos).getBlock() == Blocks.AIR))
-//			{
-//				return false;
-//			}else {
-//				return entities.size() < 3;
-//			}
-//		}
-//		
-//	}
+//	      BlockPos.Mutable blockpos$mutable = pos.mutable();
+//
+//	      do {
+//	         blockpos$mutable.move(Direction.DOWN);
+//	      } while(!world.getFluidState(blockpos$mutable).is(FluidTags.LAVA)); //&& !world.getBlockState(blockpos$mutable).is(Blocks.AIR)
+//
+//	      return world.getBlockState(blockpos$mutable).is(Blocks.NETHER_BRICKS);
+//	   }
+//	
+//	   public boolean checkSpawnObstruction(IWorldReader p_205019_1_) {
+//		      return p_205019_1_.isUnobstructed(this) && !p_205019_1_.containsAnyLiquid(this.getBoundingBox());
+//		   }
 
 	@Nullable
 	public ILivingEntityData finalizeSpawn(IServerWorld world, DifficultyInstance difficulty, SpawnReason spawnReason, @Nullable ILivingEntityData livingDat, @Nullable CompoundNBT compNBT) 
