@@ -5,7 +5,6 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -27,7 +26,6 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockPos.Mutable;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
@@ -178,35 +176,7 @@ public class VolcanDaemon extends PhantomEntity
 		      p_213281_1_.putInt("Size", this.getPhantomSize());
 		   }
    
-//   public static boolean isDarkEnoughToSpawn(IServerWorld serverWorld, BlockPos pos, Random random) {
-//	      if (serverWorld.getBrightness(LightType.SKY, pos) > random.nextInt(32)) {
-//	         return false;
-//	      } else {
-//	         int i = serverWorld.getLevel().isThundering() ? serverWorld.getMaxLocalRawBrightness(pos, 10) : serverWorld.getMaxLocalRawBrightness(pos);
-//	         return i <= random.nextInt(8);
-//	      }
-//	   }	   
 
-//   private static final Mutable POS = new Mutable();
-//   private static boolean isWithinAir(IServerWorld serverWorld, BlockPos pos, int directRadius, int heightRadius)
-//   {
-//	   for (int x = pos.getX() - directRadius; x <= pos.getX() + directRadius; x++)
-//	   {
-//		   POS.setX(x);
-//		   for (int z = pos.getZ() - directRadius; z <= pos.getZ() + directRadius; z++)
-//		   {
-//			   POS.setZ(z);
-//			   for (int y = pos.getY() - heightRadius; y <= pos.getY() + heightRadius; y++)
-//			   {
-//				   POS.setY(y);
-//				   if (serverWorld.getBlockState(POS).getBlock() == Blocks.AIR) {
-//					   return true;
-//				   }
-//			   }
-//		   }
-//	   }
-//	   return false;
-//   }
    
 	public static boolean daemonSpawnRules(EntityType<VolcanDaemon> type, IServerWorld world, 
 			SpawnReason spawnReason, BlockPos pos, Random random)
@@ -220,34 +190,6 @@ public class VolcanDaemon extends PhantomEntity
 		return false;
 	}
 
-//	public static boolean checkMonsterSpawnRules(EntityType<VolcanDaemon> entity, IServerWorld serverWorld, SpawnReason spawnReason, BlockPos pos, Random random) 
-//	{
-//		return serverWorld.getDifficulty() != Difficulty.PEACEFUL 
-//				&& serverWorld.getBlockState(pos.below(1)).getBlock() == Blocks.AIR
-//				&& serverWorld.getBlockState(pos.above(1)).getBlock() == Blocks.AIR 
-//				&& isDarkEnoughToSpawn(serverWorld, pos, random) 
-//				&& checkMobSpawnRules(entity, serverWorld, spawnReason, pos, random);
-//	}  
-
-		   
-//	public static boolean canSpawn(EntityType<VolcanDaemon> type, IServerWorld world, 
-//			SpawnReason spawnReason, BlockPos pos, Random random)
-//	{
-//		if (MonsterEntity.isDarkEnoughToSpawn(world, pos, random))
-//		{
-//			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(128);
-//			List<VolcanDaemon> entities = world.getEntitiesOfClass(VolcanDaemon.class, box, (entity) -> {return true;});
-//			int place = ld.getChunk(pos).getHeight(Type.WORLD_SURFACE, pos.getX() & 15, pos.getY() & 15);
-//			if (place > 64 &wor& pos.getZ() >= 96 && entities.size() < 3)
-//			{
-//				return true;
-//			}
-//			
-////			int y = world.getChunk(pos).getHeight(Type.MOTION_BLOCKING, pos.getX() & 15, pos.getY() & 15);
-////			return y > 92 && pos.getY() >= 96 && entities.size() < 3;
-//		}
-//		return false;
-//	}
 	
 	public ILivingEntityData finalizeSpawn(IServerWorld p_213386_1_, DifficultyInstance p_213386_2_, SpawnReason p_213386_3_, @Nullable ILivingEntityData p_213386_4_, @Nullable CompoundNBT p_213386_5_) 
 	{

@@ -1,13 +1,9 @@
 package com.deimoshexxus.netherhexedkingdom.entities;
 
-import java.util.List;
-import java.util.Random;
-
 import com.deimoshexxus.netherhexedkingdom.init.SoundsHandler;
 
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.monster.ZombifiedPiglinEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
@@ -17,8 +13,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.GroundPathHelper;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.AvoidEntityGoal;
@@ -26,7 +20,6 @@ import net.minecraft.entity.ai.goal.HurtByTargetGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.RestrictSunGoal;
-import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 
 public class HexanGuardEntity extends MonsterEntity
@@ -94,15 +87,18 @@ public class HexanGuardEntity extends MonsterEntity
 		return SoundEvents.SKELETON_STEP;
 	}
 	
-	public static boolean canSpawn(EntityType<HexanGuardEntity> type, IServerWorld world, 
-			SpawnReason spawnReason, BlockPos pos, Random random)
-	{
-		if (MonsterEntity.isDarkEnoughToSpawn(world, pos, random))
-		{
-			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(8);
-			List<HexanGuardEntity> entities = world.getEntitiesOfClass(HexanGuardEntity.class, box, (entity) -> {return true;});
-			return entities.size() < 3;
-		}
-		return false;
-	}
+//	public static boolean canGuardSpawn(EntityType<HexanGuardEntity> type, IServerWorld world, 
+//			SpawnReason spawnReason, BlockPos pos, Random random)
+//	{
+//		//return world.getBlockState(pos.below()).is(Blocks.CRIMSON_NYLIUM);
+//		if (MonsterEntity.isDarkEnoughToSpawn(world, pos, random) 
+//				&& (world.getBlockState(pos.below()).is(Blocks.NETHER_BRICKS) 
+//						|| (world.getBlockState(pos.below()).is(ModBlocks.IRON_PLATE_BLOCK.get()))))
+//		{
+//			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(8);
+//			List<HexanGuardEntity> entities = world.getEntitiesOfClass(HexanGuardEntity.class, box, (entity) -> {return true;});
+//			return entities.size() < 3;
+//		}
+//		return false;
+//	}
 }

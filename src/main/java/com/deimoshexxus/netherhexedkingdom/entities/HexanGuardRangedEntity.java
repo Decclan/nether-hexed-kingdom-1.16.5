@@ -1,9 +1,11 @@
 package com.deimoshexxus.netherhexedkingdom.entities;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import com.deimoshexxus.netherhexedkingdom.init.ModBlocks;
 import com.deimoshexxus.netherhexedkingdom.init.ModItems;
 import com.deimoshexxus.netherhexedkingdom.init.SoundsHandler;
 
@@ -28,6 +30,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.GroundPathHelper;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -38,10 +41,8 @@ import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.RestrictSunGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 
@@ -143,58 +144,28 @@ public class HexanGuardRangedEntity extends AbstractSkeletonEntity
 		return SoundEvents.SKELETON_STEP;
 	}
 	
-//	   public void setOnGround(boolean p_230245_1_) {
-//		      this.onGround = p_230245_1_;
-//		   }
-	
-	   public static boolean checkRangedSpawnRules(EntityType<HexanGuardRangedEntity> p_234351_0_, IWorld p_234351_1_, SpawnReason p_234351_2_, BlockPos p_234351_3_, Random p_234351_4_) {
-		      return p_234351_1_.getDifficulty() != Difficulty.PEACEFUL
-		    		  && p_234351_1_.getBlockState(p_234351_3_.below()).getBlock() != Blocks.LAVA;
-		   }
-
-
-
-//	   
-//	public static boolean checkRangedSpawnRules(EntityType<HexanGuardRangedEntity> entity, IWorld world, SpawnReason spawnReason, BlockPos pos, Random random) 
-//	{
-//      BlockPos.Mutable blockpos$mutable = pos.mutable();
-//      BlockPos.Mutable blockpos$mutabledown = blockpos$mutable.move(Direction.DOWN);
-//      do {
-//         blockpos$mutable.move(Direction.DOWN);
-//      } while(!world.getFluidState(blockpos$mutable).is(FluidTags.LAVA)); //while(world.getBlockState(blockpos$mutable).is(Blocks.WARPED_NYLIUM));
-//
-//      return !world.getBlockState(blockpos$mutable).is(Blocks.AIR) && world.getBlockState(blockpos$mutabledown).is(Blocks.WARPED_NYLIUM);
-//		
-////		return serverWorld.getDifficulty() != Difficulty.PEACEFUL 
-////				&& serverWorld.getBlockState(pos.below()).getBlock() == Blocks.NETHER_BRICKS
-////				|| serverWorld.getBlockState(pos.below()).getBlock() == Blocks.NETHERRACK
-////				&& serverWorld.getBlockState(pos.below()).getBlock() != Blocks.AIR
-////				&& serverWorld.getBlockState(pos.below(-1)).getBlock() != Blocks.AIR
-////				&& serverWorld.getBlockState(pos.below()).getBlock() != Blocks.LAVA
-////				&& isDarkEnoughToSpawn(serverWorld, pos, random) 
-////				&& checkMobSpawnRules(entity, serverWorld, spawnReason, pos, random);
-//	}
-
-	   public boolean checkSpawnObstruction(IWorldReader serverWorld) {
-		      return !serverWorld.containsAnyLiquid(this.getBoundingBox()) && serverWorld.isUnobstructed(this);
-		   }
-//	public static boolean canSpawn(EntityType<HexanGuardRangedEntity> type, IServerWorld world, 
+//	public static boolean canRangedGuardSpawn(EntityType<HexanGuardRangedEntity> type, IServerWorld world, 
 //			SpawnReason spawnReason, BlockPos pos, Random random)
 //	{
-//		if (checkMonsterSpawnRules(type, world, spawnReason, pos, random));
+//		if (MonsterEntity.isDarkEnoughToSpawn(world, pos, random) 
+//				&& (world.getBlockState(pos.below()).is(Blocks.NETHER_BRICKS)
+//				|| (world.getBlockState(pos.below()).is(Blocks.RED_NETHER_BRICKS)
+//				|| (world.getBlockState(pos.below()).is(ModBlocks.IRON_PLATE_BLOCK.get())))))
 //		{
 //			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(8);
 //			List<HexanGuardRangedEntity> entities = world.getEntitiesOfClass(HexanGuardRangedEntity.class, box, (entity) -> {return true;});
-//			
-//			if ((world.getBlockState(pos.below()).getBlock() != Blocks.AIR) && (world.getBlockState(pos).getBlock() != Blocks.AIR))
-//			{
-//				return entities.size() < 3;
-//			}
-//			return false;
+//			return entities.size() < 3;
 //		}
-//		
+//		return false;
 //	}
-	
+
+
+
+	public boolean checkSpawnObstruction(IWorldReader serverWorld) 
+	{
+		return !serverWorld.containsAnyLiquid(this.getBoundingBox()) && serverWorld.isUnobstructed(this);
+	}
+
 	@Nullable
 	public ILivingEntityData finalizeSpawn(IServerWorld p_213386_1_, DifficultyInstance p_213386_2_, SpawnReason p_213386_3_, @Nullable ILivingEntityData p_213386_4_, @Nullable CompoundNBT p_213386_5_) 
 	{

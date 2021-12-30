@@ -3,9 +3,6 @@ package com.deimoshexxus.netherhexedkingdom.init;
 import com.deimoshexxus.netherhexedkingdom.NetherHexedKingdomMain;
 import com.deimoshexxus.netherhexedkingdom.entities.render.VolcanDaemonEntityRenderer;
 import com.deimoshexxus.netherhexedkingdom.entities.render.HexanGuardMeleeEntityRenderer;
-import com.deimoshexxus.netherhexedkingdom.entities.render.WightEntityRenderer;
-import com.deimoshexxus.netherhexedkingdom.entities.render.WightKnightEntityRenderer;
-import com.deimoshexxus.netherhexedkingdom.entities.render.WightTraderEntityRenderer;
 import com.deimoshexxus.netherhexedkingdom.entities.render.HexanGuardRangedEntityRenderer;
 import com.deimoshexxus.netherhexedkingdom.entities.render.HexedUndeadHorseRenderer;
 import com.deimoshexxus.netherhexedkingdom.entities.render.HexanGuardEntityRenderer;
@@ -45,9 +42,9 @@ public class Registration
 	
 	public static void registerRenderers()
 	{
-        RenderingRegistry.registerEntityRenderingHandler(ModEntities.WIGHT_ENTITY.get(), WightEntityRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(ModEntities.WIGHT_KNIGHT_ENTITY.get(), WightKnightEntityRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(ModEntities.WIGHT_TRADER_ENTITY.get(), WightTraderEntityRenderer::new);
+//        RenderingRegistry.registerEntityRenderingHandler(ModEntities.WIGHT_ENTITY.get(), WightEntityRenderer::new);
+//        RenderingRegistry.registerEntityRenderingHandler(ModEntities.WIGHT_KNIGHT_ENTITY.get(), WightKnightEntityRenderer::new);
+//        RenderingRegistry.registerEntityRenderingHandler(ModEntities.WIGHT_TRADER_ENTITY.get(), WightTraderEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.VOLCAN_DAEMON_ENTITY.get(), VolcanDaemonEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.HEXAN_GUARD_ENTITY.get(), HexanGuardEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), HexanGuardRangedEntityRenderer::new);

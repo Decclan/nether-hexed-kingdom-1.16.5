@@ -28,9 +28,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.pathfinding.GroundPathNavigator;
 import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.Direction;
 import net.minecraft.util.GroundPathHelper;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
@@ -157,16 +155,19 @@ public class HexanGuardMeleeEntity extends AbstractSkeletonEntity
 		return SoundEvents.SKELETON_STEP;
 	}
 	
-//	public static boolean checkGuardSpawnRules(EntityType<HexanGuardMeleeEntity> entity, IWorld world, SpawnReason spawnReason, BlockPos pos, Random random) 
+//	public static boolean canGuardSpawn(EntityType<HexanGuardMeleeEntity> entity, IWorld world, SpawnReason spawnReason, BlockPos pos, Random random) 
 //	{
-//	      BlockPos.Mutable blockpos$mutable = pos.mutable();
+//		return !world.getBlockState(pos.below()).is(Blocks.NETHER_WART_BLOCK) 
+//				&& !world.getBlockState(pos.below()).is(Blocks.AIR) 
+//				&& !world.getBlockState(pos.below()).is(Blocks.LAVA);
+//	}
+//	
 //
-//	      do {
-//	         blockpos$mutable.move(Direction.DOWN);
-//	      } while(!world.getFluidState(blockpos$mutable).is(FluidTags.LAVA)); //&& !world.getBlockState(blockpos$mutable).is(Blocks.AIR)
-//
-//	      return world.getBlockState(blockpos$mutable).is(Blocks.NETHER_BRICKS);
-//	   }
+//	public float getWalkTargetValue(BlockPos pos, IWorldReader worldReader) 
+//	{
+//		return worldReader.getBlockState(pos.below()).is(Blocks.NETHER_BRICKS) ? 10.0F : 0.0F;
+//	}
+
 //	
 //	   public boolean checkSpawnObstruction(IWorldReader p_205019_1_) {
 //		      return p_205019_1_.isUnobstructed(this) && !p_205019_1_.containsAnyLiquid(this.getBoundingBox());

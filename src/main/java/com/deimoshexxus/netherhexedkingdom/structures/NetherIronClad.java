@@ -44,8 +44,8 @@ public class NetherIronClad extends Structure<NoFeatureConfig> {
 
 
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
-            new MobSpawnInfo.Spawners(EntityType.BLAZE, 70, 5, 12),
-            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), 70, 5, 12)
+            new MobSpawnInfo.Spawners(EntityType.BLAZE, 100, 5, 12),
+            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), 100, 5, 12)
     );
     
     @Override

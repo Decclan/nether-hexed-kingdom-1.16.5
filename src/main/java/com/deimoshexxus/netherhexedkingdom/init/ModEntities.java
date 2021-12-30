@@ -1,9 +1,6 @@
 package com.deimoshexxus.netherhexedkingdom.init;
 
 import com.deimoshexxus.netherhexedkingdom.NetherHexedKingdomMain;
-import com.deimoshexxus.netherhexedkingdom.entities.WightEntity;
-import com.deimoshexxus.netherhexedkingdom.entities.WightKnightEntity;
-import com.deimoshexxus.netherhexedkingdom.entities.WightTraderEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.VolcanDaemon;
 import com.deimoshexxus.netherhexedkingdom.entities.HexanGuardMeleeEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.HexanGuardRangedEntity;
@@ -28,17 +25,17 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;;
 @Mod.EventBusSubscriber(modid = NetherHexedKingdomMain.MOD_ID, bus = Bus.MOD)
 public class ModEntities
 {
-	public static final RegistryObject<EntityType<WightEntity>> WIGHT_ENTITY = Registration.ENTITY_TYPES.register("wight_entity", 
-			() -> EntityType.Builder.<WightEntity>of(WightEntity::new, EntityClassification.CREATURE).sized(0.5f, 1.85f).clientTrackingRange(8).
-			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "wight_entity").toString()));
-	
-	public static final RegistryObject<EntityType<WightKnightEntity>> WIGHT_KNIGHT_ENTITY = Registration.ENTITY_TYPES.register("wight_knight_entity", 
-			() -> EntityType.Builder.<WightKnightEntity>of(WightKnightEntity::new, EntityClassification.CREATURE).sized(0.5f, 1.85f).clientTrackingRange(8).
-			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "wight_knight_entity").toString()));
-	
-	public static final RegistryObject<EntityType<WightTraderEntity>> WIGHT_TRADER_ENTITY = Registration.ENTITY_TYPES.register("wight_trader_entity", 
-			() -> EntityType.Builder.<WightTraderEntity>of(WightTraderEntity::new, EntityClassification.CREATURE).sized(0.5f, 1.85f).clientTrackingRange(8).
-			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "wight_trader_entity").toString()));
+//	public static final RegistryObject<EntityType<WightEntity>> WIGHT_ENTITY = Registration.ENTITY_TYPES.register("wight_entity", 
+//			() -> EntityType.Builder.<WightEntity>of(WightEntity::new, EntityClassification.CREATURE).sized(0.5f, 1.85f).clientTrackingRange(8).
+//			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "wight_entity").toString()));
+//	
+//	public static final RegistryObject<EntityType<WightKnightEntity>> WIGHT_KNIGHT_ENTITY = Registration.ENTITY_TYPES.register("wight_knight_entity", 
+//			() -> EntityType.Builder.<WightKnightEntity>of(WightKnightEntity::new, EntityClassification.CREATURE).sized(0.5f, 1.85f).clientTrackingRange(8).
+//			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "wight_knight_entity").toString()));
+//	
+//	public static final RegistryObject<EntityType<WightTraderEntity>> WIGHT_TRADER_ENTITY = Registration.ENTITY_TYPES.register("wight_trader_entity", 
+//			() -> EntityType.Builder.<WightTraderEntity>of(WightTraderEntity::new, EntityClassification.CREATURE).sized(0.5f, 1.85f).clientTrackingRange(8).
+//			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "wight_trader_entity").toString()));
 	
 	public static final RegistryObject<EntityType<VolcanDaemon>> VOLCAN_DAEMON_ENTITY = Registration.ENTITY_TYPES.register("volcan_daemon_entity", 
 			() -> EntityType.Builder.<VolcanDaemon>of(VolcanDaemon::new, EntityClassification.MONSTER).fireImmune().
@@ -79,9 +76,9 @@ public class ModEntities
 	@SubscribeEvent
 	public static void registerGlobalEntityAttributes(EntityAttributeCreationEvent event)
 	{
-		event.put(ModEntities.WIGHT_ENTITY.get(), WightEntity.createAttributes().build());
-		event.put(ModEntities.WIGHT_KNIGHT_ENTITY.get(), WightKnightEntity.createAttributes().build());
-		event.put(ModEntities.WIGHT_TRADER_ENTITY.get(), WightTraderEntity.createAttributes().build());
+//		event.put(ModEntities.WIGHT_ENTITY.get(), WightEntity.createAttributes().build());
+//		event.put(ModEntities.WIGHT_KNIGHT_ENTITY.get(), WightKnightEntity.createAttributes().build());
+//		event.put(ModEntities.WIGHT_TRADER_ENTITY.get(), WightTraderEntity.createAttributes().build());
 		event.put(ModEntities.VOLCAN_DAEMON_ENTITY.get(), VolcanDaemon.createAttributes().build());
 		event.put(ModEntities.HEXAN_GUARD_ENTITY.get(), HexanGuardEntity.createAttributes().build());
 		event.put(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), HexanGuardRangedEntity.createAttributes().build());
@@ -94,9 +91,9 @@ public class ModEntities
 	
 	public static void registerEntitySpawns()
 	{
-		EntitySpawnPlacementRegistry.register(ModEntities.WIGHT_ENTITY.get(),
-				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
-				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WightEntity::canSpawn);
+//		EntitySpawnPlacementRegistry.register(ModEntities.WIGHT_ENTITY.get(),
+//				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
+//				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WightEntity::canSpawn);
 		
 		EntitySpawnPlacementRegistry.register(ModEntities.HEXAN_GUARD_ENTITY.get(),
 				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
@@ -108,7 +105,7 @@ public class ModEntities
 		
 		EntitySpawnPlacementRegistry.register(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(),
 				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
-				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexanGuardRangedEntity::checkRangedSpawnRules);
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexanGuardRangedEntity::checkMonsterSpawnRules);
 		
 		EntitySpawnPlacementRegistry.register(ModEntities.VOLCAN_DAEMON_ENTITY.get(),
 				EntitySpawnPlacementRegistry.PlacementType.NO_RESTRICTIONS, 

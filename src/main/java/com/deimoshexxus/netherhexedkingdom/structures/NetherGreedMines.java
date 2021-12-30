@@ -48,9 +48,9 @@ public class NetherGreedMines extends Structure<NoFeatureConfig> {
 
 
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
-            new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 100, 5, 15),
-            new MobSpawnInfo.Spawners(EntityType.BLAZE, 50, 1, 3),
-            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), 50, 2, 7)
+            new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 90, 5, 10),
+            new MobSpawnInfo.Spawners(EntityType.BLAZE, 90, 3, 6),
+            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), 100, 6, 12)
     );
     
     @Override

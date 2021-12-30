@@ -347,6 +347,7 @@ public class WitherSkeletonHorseRider extends HorseEntity {
 //      skeletonentity.setItemSlot(EquipmentSlotType.OFFHAND, new ItemStack(Items.SHIELD));
         skeletonentity.canPickUpLoot();
         skeletonentity.fireImmune();
+        skeletonentity.setHealth(64.0F);
 	}
 	ItemStack colourLeatherHarmor = new ItemStack(Items.LEATHER_HORSE_ARMOR);
 	((DyeableHorseArmorItem) colourLeatherHarmor.getItem()).setColor(colourLeatherHarmor, 3420722);

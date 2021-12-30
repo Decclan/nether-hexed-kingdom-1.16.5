@@ -12,7 +12,7 @@
       "weight": 1,
       "element": {
 
-       "location": "netherhexedkingdom:hexed_watch_tower",
+       "location": "netherhexedkingdom:hexed_watch_tower_base",
 
         "processors": "minecraft:empty",
 

@@ -58,10 +58,9 @@ public class ModEntityWorldGen
 					Biomes.SOUL_SAND_VALLEY);
 		}
 		
-		//specificNetherBiomes(event, EntityType.SKELETON_HORSE, 100, 1, 3, Biomes.NETHER_WASTES); //creatures/animals dont spawn in nether, needs to be monster
+		//specificNetherBiomes(event, EntityType.SKELETON_HORSE, 100, 1, 3, Biomes.NETHER_WASTES); 
+		//creature class entities don't spawn in nether, needs to be a monster
 			
-		specificNetherBiomes(event, ModEntities.VOLCAN_DAEMON_ENTITY.get(),
-				80, 1, 3, Biomes.BASALT_DELTAS);
 		
 	}
 

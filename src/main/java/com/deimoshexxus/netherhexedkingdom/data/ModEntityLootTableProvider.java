@@ -32,8 +32,8 @@ public class ModEntityLootTableProvider extends EntityLootTables
 	    			.apply(SetCount.setCount(RandomValueRange.between(2.0F, 6.0F)))
 	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))))
 	    		.withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1))
-	    			.add(ItemLootEntry.lootTableItem(ModItems.NETHERITE_OXIDE.get())
-	    			.apply(SetCount.setCount(RandomValueRange.between(0.0F, 1.0F)))
+	    			.add(ItemLootEntry.lootTableItem(Items.COAL)
+	    			.apply(SetCount.setCount(RandomValueRange.between(1.0F, 3.0F)))
 	    			.apply(LootingEnchantBonus.lootingMultiplier(RandomValueRange.between(0.0F, 1.0F)))))
 	    		.withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1))
 	    			.add(ItemLootEntry.lootTableItem(Items.GOLD_NUGGET)
@@ -80,9 +80,9 @@ public class ModEntityLootTableProvider extends EntityLootTables
 
 		
 		this.add(ModEntities.HEXAN_GUARD_ENTITY.get(), LootTable.lootTable());
-		this.add(ModEntities.WIGHT_ENTITY.get(), LootTable.lootTable());
-		this.add(ModEntities.WIGHT_KNIGHT_ENTITY.get(), LootTable.lootTable());
-		this.add(ModEntities.WIGHT_TRADER_ENTITY.get(), LootTable.lootTable());
+//		this.add(ModEntities.WIGHT_ENTITY.get(), LootTable.lootTable());
+//		this.add(ModEntities.WIGHT_KNIGHT_ENTITY.get(), LootTable.lootTable());
+//		this.add(ModEntities.WIGHT_TRADER_ENTITY.get(), LootTable.lootTable());
 		
 		this.add(ModEntities.WITHER_SKELETON_HORSE.get(), LootTable.lootTable()
 				.withPool(LootPool.lootPool()
