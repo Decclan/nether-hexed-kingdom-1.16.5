@@ -1,5 +1,6 @@
 package com.deimoshexxus.netherhexedkingdom;
 
+import com.deimoshexxus.netherhexedkingdom.config.ConfigHandler;
 import com.deimoshexxus.netherhexedkingdom.structures.NetherBullionTemple;
 import com.deimoshexxus.netherhexedkingdom.structures.NetherGreedMines;
 import com.deimoshexxus.netherhexedkingdom.structures.NetherIronClad;
@@ -47,57 +48,57 @@ public class NetherStructures {
 
         setupMapSpacingAndLand(
         		NETHER_WATCH_TOWER.get(),
-                new StructureSeparationSettings(10,
-                        3,
+                new StructureSeparationSettings(ConfigHandler.NETHER_WATCH_TOWER_MAX.get(),
+                		ConfigHandler.NETHER_WATCH_TOWER_MIN.get(),
                         294028347 ),
                 true);
         
         setupMapSpacingAndLand(
         		NETHER_PRISON.get(),
-                new StructureSeparationSettings(15,
-                        5,
+                new StructureSeparationSettings(ConfigHandler.NETHER_PRISON_MAX.get(),
+                		ConfigHandler.NETHER_PRISON_MIN.get(),
                         563854638 ),
                 true);
         
         setupMapSpacingAndLand(
         		NETHER_GREED_MINES.get(),
-                new StructureSeparationSettings(16,
-                        8,
+                new StructureSeparationSettings(ConfigHandler.NETHER_GREED_MINES_MAX.get(),
+                		ConfigHandler.NETHER_GREED_MINES_MIN.get(),
                         674646743 ),
                 false);
         
         setupMapSpacingAndLand(
         		NETHER_LOOKOUT.get(),
-                new StructureSeparationSettings(18,
-                        8,
+                new StructureSeparationSettings(ConfigHandler.NETHER_LOOKOUT_MAX.get(),
+                		ConfigHandler.NETHER_LOOKOUT_MIN.get(),
                         329405624 ),
                 false);
         
         setupMapSpacingAndLand(
         		NETHER_OUTPOST.get(),
-                new StructureSeparationSettings(12,
-                        6,
+                new StructureSeparationSettings(ConfigHandler.NETHER_OUTPOST_MAX.get(),
+                		ConfigHandler.NETHER_OUTPOST_MIN.get(),
                         920485738 ),
                 true);
         
         setupMapSpacingAndLand(
         		NETHER_BULLION_TEMPLE.get(),
-                new StructureSeparationSettings(16,
-                        7,
+                new StructureSeparationSettings(ConfigHandler.NETHER_BULLION_TEMPLE_MAX.get(),
+                		ConfigHandler.NETHER_BULLION_TEMPLE_MIN.get(),
                         2049876748 ),
                 false);
         
         setupMapSpacingAndLand(
         		NETHER_IRON_CLAD.get(),
-                new StructureSeparationSettings(10,
-                        5,
+                new StructureSeparationSettings(ConfigHandler.NETHER_IRON_CLAD_MAX.get(),
+                		ConfigHandler.NETHER_IRON_CLAD_MIN.get(),
                         994756773 ),
                 true);
         
         setupMapSpacingAndLand(
         		NETHER_RED_SUN_TOWER.get(),
-                new StructureSeparationSettings(16,
-                        8,
+                new StructureSeparationSettings(ConfigHandler.NETHER_RED_SUN_TOWER_MAX.get(),
+                		ConfigHandler.NETHER_RED_SUN_TOWER_MIN.get(),
                         529055930 ),
                 true);
         // Add more structures here and so on

@@ -89,8 +89,12 @@ public class NetherBullionTemple extends Structure<NoFeatureConfig> {
 
             IBlockReader blockReader = chunkGenerator.getBaseColumn(blockpos.getX(), blockpos.getZ());
 
-            for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl + 64 + this.random.nextInt(chunkGenerator.getGenDepth() - 34 - sl); --y) {
-                BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
+            for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl + 40 + this.random.nextInt(chunkGenerator.getGenDepth() - 34 - sl); --y) {
+                if (y > chunkGenerator.getGenDepth() - sl - 2)
+                {
+                	continue;
+                }
+            	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
                 blockpos$mutable.move(Direction.DOWN);
                 BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
                 if (this.getBoundingBox().intersects(getBoundingBox()))

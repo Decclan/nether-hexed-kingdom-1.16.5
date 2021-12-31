@@ -17,6 +17,24 @@ public final class ConfigHandler
 	public static final ForgeConfigSpec.BooleanValue NETHER_IRON_CLAD_SPAWN;
 	public static final ForgeConfigSpec.BooleanValue NETHER_RED_SUN_TOWER_SPAWN;
 	
+	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_WATCH_TOWER_MAX;
+	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_PRISON_MAX;
+	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_GREED_MINES_MAX;
+	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_LOOKOUT_MAX;
+	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_OUTPOST_MAX;
+	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_BULLION_TEMPLE_MAX;
+	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_IRON_CLAD_MAX;
+	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_RED_SUN_TOWER_MAX;
+	
+	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_WATCH_TOWER_MIN;
+	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_PRISON_MIN;
+	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_GREED_MINES_MIN;
+	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_LOOKOUT_MIN;
+	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_OUTPOST_MIN;
+	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_BULLION_TEMPLE_MIN;
+	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_IRON_CLAD_MIN;
+	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_RED_SUN_TOWER_MIN;
+	
 	//Entities
 	public static final ForgeConfigSpec.BooleanValue WILD_WITHER_SKELETON_SPAWN;
 	public static final ForgeConfigSpec.BooleanValue WILD_WITHER_SKELETON_HORSE_SPAWN;
@@ -49,29 +67,77 @@ public final class ConfigHandler
 		BUILDER.comment("\nEnable/disable generation of each structure:"
 				+ "\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 				+ "\nGenerate nether watch tower? \nDefault value: true");
-		NETHER_WATCH_TOWER_SPAWN = BUILDER.define("Nether watch tower?", true);
+		NETHER_WATCH_TOWER_SPAWN = BUILDER.define("Generate nether watch tower?", true);
+		
+		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 10");
+		NETHER_WATCH_TOWER_MAX = BUILDER.define("Watch tower max", 10);
+		
+		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 3");
+		NETHER_WATCH_TOWER_MIN = BUILDER.define("Watch tower min", 3);
 		
 		BUILDER.comment("\nGenerate nether prison? \nDefault value: true");
-		NETHER_PRISON_SPAWN = BUILDER.define("Nether prison", true);
+		NETHER_PRISON_SPAWN = BUILDER.define("Generate nether prison?", true);
+		
+		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 15");
+		NETHER_PRISON_MAX = BUILDER.define("Nether prison max", 15);
+		
+		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 5");
+		NETHER_PRISON_MIN = BUILDER.define("Nether prison min", 5);
 		
 		BUILDER.comment("\nGenerate nether mines? \nDefault value: true");
-		NETHER_GREED_MINES_SPAWN = BUILDER.define("Nether mines", true);
+		NETHER_GREED_MINES_SPAWN = BUILDER.define("Generate nether mines?", true);
+		
+		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 16");
+		NETHER_GREED_MINES_MAX = BUILDER.define("Nether mines max", 16);
+		
+		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 8");
+		NETHER_GREED_MINES_MIN = BUILDER.define("Nether mines min", 8);
 		
 		BUILDER.comment("\nGenerate nether lookout? \nDefault value: true");
-		NETHER_LOOKOUT_SPAWN = BUILDER.define("Nether lookout", true);
+		NETHER_LOOKOUT_SPAWN = BUILDER.define("Generate nether lookout?", true);
+		
+		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 18");
+		NETHER_LOOKOUT_MAX = BUILDER.define("Nether lookout max", 18);
+		
+		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 8");
+		NETHER_LOOKOUT_MIN = BUILDER.define("Nether lookout min", 8);
 		
 		BUILDER.comment("\nGenerate nether outpost? \nDefault value: true");
-		NETHER_OUTPOST_SPAWN = BUILDER.define("Nether outpost", true);
+		NETHER_OUTPOST_SPAWN = BUILDER.define("Generate nether outpost?", true);
+		
+		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 12");
+		NETHER_OUTPOST_MAX = BUILDER.define("Nether outpost max", 12);
+		
+		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 6");
+		NETHER_OUTPOST_MIN = BUILDER.define("Nether outpost min", 6);
 		
 		BUILDER.comment("\nGenerate nether bullion temple? \nDefault value: true");
-		NETHER_BULLION_TEMPLE_SPAWN = BUILDER.define("Bullion temple", true);
+		NETHER_BULLION_TEMPLE_SPAWN = BUILDER.define("Generate bullion temple?", true);
+		
+		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 16");
+		NETHER_BULLION_TEMPLE_MAX = BUILDER.define("Bullion temple max", 16);
+		
+		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 7");
+		NETHER_BULLION_TEMPLE_MIN = BUILDER.define("Bullion temple min", 7);
 		
 		BUILDER.comment("\nGenerate nether iron clad? \nDefault value: true");
-		NETHER_IRON_CLAD_SPAWN = BUILDER.define("Iron clad", true);
+		NETHER_IRON_CLAD_SPAWN = BUILDER.define("Generate iron clad?", true);
+		
+		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 10");
+		NETHER_IRON_CLAD_MAX = BUILDER.define("Iron clad max", 10);
+		
+		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 5");
+		NETHER_IRON_CLAD_MIN = BUILDER.define("Iron clad min", 5);
 		
 		BUILDER.comment("\nGenerate nether tower of red sun? \nDefault value: true");
-		NETHER_RED_SUN_TOWER_SPAWN = BUILDER.define("Tower of red sun?", true);
+		NETHER_RED_SUN_TOWER_SPAWN = BUILDER.define("Generate tower of red sun?", true);
 
+		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 24");
+		NETHER_RED_SUN_TOWER_MAX = BUILDER.define("Tower of red sun max", 24);
+		
+		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 12");
+		NETHER_RED_SUN_TOWER_MIN = BUILDER.define("Tower of red sun min", 12);
+		
 		BUILDER.comment("\nEnable/disable each entity to the natural generation list in the nether:"
 				+ "\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 				+ "\nAdd wither skeletons to the nether wastes? \nDefault value: true");
@@ -91,20 +157,20 @@ public final class ConfigHandler
 
 		BUILDER.comment("\nNatural generation spawn weight for each entity:"
 				+ "\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
-				+"\nSpawn weight for wither skeletons. \nDefault value: 30");
-		WEIGHT_WITHER_SKELETON_SPAWN = BUILDER.define("Wither skeletons weight", 30);
+				+"\nSpawn weight for wither skeletons. \nDefault value: 15");
+		WEIGHT_WITHER_SKELETON_SPAWN = BUILDER.define("Wither skeletons weight", 15);
 		
-		BUILDER.comment("\npawn weight for wither skeleton horses. Default value: 20");
-		WEIGHT_WITHER_SKELETON_HORSE_SPAWN = BUILDER.define("Wither skeleton horse weight", 20);
+		BUILDER.comment("\npawn weight for wither skeleton horses. Default value: 12");
+		WEIGHT_WITHER_SKELETON_HORSE_SPAWN = BUILDER.define("Wither skeleton horse weight", 12);
 		
-		BUILDER.comment("\nSpawn weight for wither skeleton death riders. Default value: 30");
-		WEIGHT_WITHER_SKELETON_DEATH_RIDER_SPAWN = BUILDER.define("Wither skeleton death rider weight", 30);
+		BUILDER.comment("\nSpawn weight for wither skeleton death riders. Default value: 20");
+		WEIGHT_WITHER_SKELETON_DEATH_RIDER_SPAWN = BUILDER.define("Wither skeleton death rider weight", 20);
 		
 		BUILDER.comment("\nSpawn weight for hexed undead horses. Default value: 5");
 		WEIGHT_HEXED_UNDEAD_HORSE_SPAWN = BUILDER.define("Hexed undead horse weight", 5);
 		
-		BUILDER.comment("\nSpawn weight for hexed undead horse riders. Default value: 10");
-		WEIGHT_HEXED_UNDEAD_HORSE_RIDER_SPAWN = BUILDER.define("Hexed undead horse rider weight", 10);
+		BUILDER.comment("\nSpawn weight for hexed undead horse riders. Default value: 8");
+		WEIGHT_HEXED_UNDEAD_HORSE_RIDER_SPAWN = BUILDER.define("Hexed undead horse rider weight", 8);
 		
 		BUILDER.comment("\nMinimum spawn number for each entity:"
 				+ "\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"

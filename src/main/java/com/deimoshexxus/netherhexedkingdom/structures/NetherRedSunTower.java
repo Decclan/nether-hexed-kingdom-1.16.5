@@ -85,14 +85,18 @@ public class NetherRedSunTower extends Structure<NoFeatureConfig> {
             int z = (chunkZ << 4) + 7;
 
             int sl = chunkGenerator.getSeaLevel();
-            int y = sl + this.random.nextInt(chunkGenerator.getGenDepth() - 66 - sl);
+            int y = sl + this.random.nextInt(chunkGenerator.getGenDepth() - 34 - sl);
             
             BlockPos blockpos = new BlockPos(x, y, z);
 
             IBlockReader blockReader = chunkGenerator.getBaseColumn(blockpos.getX(), blockpos.getZ());
 
             for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl; --y) {
-                BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
+            	if (y > chunkGenerator.getGenDepth() - sl - 2)
+                {
+            		continue;
+                }
+            	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
                 blockpos$mutable.move(Direction.DOWN);
                 BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
                 if (this.getBoundingBox().intersects(getBoundingBox()))

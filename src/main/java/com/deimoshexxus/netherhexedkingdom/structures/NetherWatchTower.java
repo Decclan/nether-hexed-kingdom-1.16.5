@@ -97,6 +97,11 @@ public class NetherWatchTower extends Structure<NoFeatureConfig> {
             IBlockReader blockReader = chunkGenerator.getBaseColumn(blockpos.getX(), blockpos.getZ());
 
             for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl; --y) {
+            	
+            	if (y > chunkGenerator.getGenDepth() - sl - 34)
+                {
+                	continue;
+                }
             	BlockPos airblockpos = new BlockPos.Mutable(x+6, y+16, z+6);
             	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
                 blockpos$mutable.move(Direction.DOWN);
@@ -141,7 +146,7 @@ public class NetherWatchTower extends Structure<NoFeatureConfig> {
             this.calculateBoundingBox();
 
             NetherHexedKingdomMain.LOGGER.log(Level.DEBUG, "Watch Tower at " +
-                            this.pieces.get(0).getBoundingBox().x0 + " " +
+            				this.pieces.get(0).getBoundingBox().x0 + " " +
                             this.pieces.get(0).getBoundingBox().y0 + " " +
                             this.pieces.get(0).getBoundingBox().z0);
         }
