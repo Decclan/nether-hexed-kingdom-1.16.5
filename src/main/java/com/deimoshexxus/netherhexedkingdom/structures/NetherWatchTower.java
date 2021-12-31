@@ -49,7 +49,7 @@ public class NetherWatchTower extends Structure<NoFeatureConfig> {
 
 
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
-            new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 100, 4, 9)
+            new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 100, 3, 6)
     );
     
     @Override
@@ -110,7 +110,7 @@ public class NetherWatchTower extends Structure<NoFeatureConfig> {
                    break;
                 }
                 BlockState airblockstate = blockReader.getBlockState(airblockpos);
-                if (airblockstate.is(Blocks.AIR)) 
+                if (!airblockstate.is(Blocks.AIR)) 
                 {
                 	continue;
                 }

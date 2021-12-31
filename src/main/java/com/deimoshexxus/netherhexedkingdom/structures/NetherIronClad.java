@@ -44,8 +44,8 @@ public class NetherIronClad extends Structure<NoFeatureConfig> {
 
 
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
-            new MobSpawnInfo.Spawners(EntityType.BLAZE, 100, 5, 12),
-            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), 100, 5, 12)
+            new MobSpawnInfo.Spawners(EntityType.BLAZE, 100, 1, 6),
+            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), 100, 1, 8)
     );
     
     @Override
@@ -65,61 +65,45 @@ public class NetherIronClad extends Structure<NoFeatureConfig> {
             int z = (chunkZ << 4) + 7;
 
             int sl = chunkGenerator.getSeaLevel();
-            int y = sl - 3;
-            
-            this.boundingBox = MutableBoundingBox.getUnknownBox();
+            int y = sl - 3; //clad structure start
+            //int al = sl + 1; //air level
             
             BlockPos blockpos = new BlockPos(x, y, z);
 
             IBlockReader blockReader = chunkGenerator.getBaseColumn(blockpos.getX(), blockpos.getZ());
 
-            for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl; --y) // y always less than sea level
+            for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl; --y)
+            //generates random pos, while y (29) > sl (n32) reduce struct pos by 1 until at 29 
             {
-            	BlockPos.Mutable airblockpos = new BlockPos.Mutable(x+6, y+4, z+6);
-            	//BlockPos.Mutable lavablockpos = new BlockPos.Mutable(x+6, y-4, z+6);
-            	//BlockPos.Mutable blockpos$mutableeast = new BlockPos.Mutable(x+14, y+4, z+14);
-                BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
+            	BlockPos airblockpos = new BlockPos.Mutable(x+6, y+16, z+6);
+            	BlockPos lavablockpos = new BlockPos.Mutable(x+6, y-3, z+6);
+            	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
                 blockpos$mutable.move(Direction.DOWN);
-                BlockState blockstatedown = blockReader.getBlockState(blockpos$mutable);
-                
-                
+                BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
                 if (this.getBoundingBox().intersects(getBoundingBox()))
                 {
                 	break;
                 }
-                if (blockstate.is(Blocks.AIR) && (blockstatedown.is(Blocks.SOUL_SAND) || blockstatedown.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) 
+                if (blockstate.is(Blocks.AIR) && (!blockstate1.is(Blocks.LAVA) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) 
                 {
                    break;
                 }
-//                if (blockstatedown.is(Blocks.LAVA))
-//        		{
-//                	return;
-//        		}
-                //BlockState lavablockstate= blockReader.getBlockState(lavablockpos); //doesnt do anything
-                BlockState airblockstate = blockReader.getBlockState(airblockpos);
-                for(int yaircheck = y + 32; y < yaircheck; --y) //cancels out prior for loop --y
-                {
-                	if (airblockstate.is(Blocks.AIR) && (blockstatedown.is(Blocks.LAVA))) // && (lavablockstate.is(Blocks.LAVA))
-                	{
-                		return;
-                	}
-                }break;
-                
-                
-//                if (airblockstate.is(Blocks.AIR)) 
+//                if (!blockstate.is(Blocks.LAVA))
 //                {
 //                	continue;
 //                }
-                
-//                BlockState blockstateeast = blockReader.getBlockState(blockpos$mutableeast);
-//                if (blockstateeast.is(Blocks.AIR))
-//        		{
-//                	continue;
-//        		}else
-//        		{
-//        			break;
-//        		}
+                BlockState airblockstate = blockReader.getBlockState(airblockpos);
+                if (!airblockstate.is(Blocks.AIR)) 
+                {
+                	continue;
+                }
+                BlockState lavablockstate = blockReader.getBlockState(lavablockpos);
+                if (!lavablockstate.is(Blocks.LAVA)) 
+                {
+                	continue;
+                }
              }
+            
             JigsawManager.addPieces(
                     dynamicRegistryManager,
                     new VillageConfig(() -> dynamicRegistryManager.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY)
