@@ -3,7 +3,7 @@ package com.deimoshexxus.netherhexedkingdom.init;
 import java.util.function.Supplier;
 
 import com.deimoshexxus.netherhexedkingdom.block.RotatableBlock;
-import com.deimoshexxus.netherhexedkingdom.item.ModItemGroup;
+import com.deimoshexxus.netherhexedkingdom.item.ModItemGroupIcon;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -128,7 +128,7 @@ public class ModBlocks
 	private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block)
 	{
 		RegistryObject<T> ret = registerNoItem(name, block);
-		Registration.ITEMS.register(name, () -> new BlockItem(ret.get(), new Item.Properties().tab(ModItemGroup.NETHER_HEXED_GROUP)));
+		Registration.ITEMS.register(name, () -> new BlockItem(ret.get(), new Item.Properties().tab(ModItemGroupIcon.NETHER_HEXED_GROUP)));
 		return ret;
 	}
 	

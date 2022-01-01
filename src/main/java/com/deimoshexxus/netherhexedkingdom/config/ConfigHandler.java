@@ -66,7 +66,7 @@ public final class ConfigHandler
 		
 		BUILDER.comment("\nEnable/disable generation of each structure:"
 				+ "\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
-				+ "\nGenerate nether watch tower? \nDefault value: true");
+				+ "\nNether watch tower generation. \nDefault value: true");
 		NETHER_WATCH_TOWER_SPAWN = BUILDER.define("Generate nether watch tower?", true);
 		
 		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 10");
@@ -75,7 +75,7 @@ public final class ConfigHandler
 		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 3");
 		NETHER_WATCH_TOWER_MIN = BUILDER.define("Watch tower min", 3);
 		
-		BUILDER.comment("\nGenerate nether prison? \nDefault value: true");
+		BUILDER.comment("\nNether prison generation. \nDefault value: true");
 		NETHER_PRISON_SPAWN = BUILDER.define("Generate nether prison?", true);
 		
 		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 15");
@@ -84,7 +84,7 @@ public final class ConfigHandler
 		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 5");
 		NETHER_PRISON_MIN = BUILDER.define("Nether prison min", 5);
 		
-		BUILDER.comment("\nGenerate nether mines? \nDefault value: true");
+		BUILDER.comment("\nNether mines generation. \nDefault value: true");
 		NETHER_GREED_MINES_SPAWN = BUILDER.define("Generate nether mines?", true);
 		
 		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 16");
@@ -93,7 +93,7 @@ public final class ConfigHandler
 		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 8");
 		NETHER_GREED_MINES_MIN = BUILDER.define("Nether mines min", 8);
 		
-		BUILDER.comment("\nGenerate nether lookout? \nDefault value: true");
+		BUILDER.comment("\nNether lookout generation. \nDefault value: true");
 		NETHER_LOOKOUT_SPAWN = BUILDER.define("Generate nether lookout?", true);
 		
 		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 18");
@@ -102,7 +102,7 @@ public final class ConfigHandler
 		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 8");
 		NETHER_LOOKOUT_MIN = BUILDER.define("Nether lookout min", 8);
 		
-		BUILDER.comment("\nGenerate nether outpost? \nDefault value: true");
+		BUILDER.comment("\nNether outpost generation. \nDefault value: true");
 		NETHER_OUTPOST_SPAWN = BUILDER.define("Generate nether outpost?", true);
 		
 		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 12");
@@ -111,7 +111,7 @@ public final class ConfigHandler
 		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 6");
 		NETHER_OUTPOST_MIN = BUILDER.define("Nether outpost min", 6);
 		
-		BUILDER.comment("\nGenerate nether bullion temple? \nDefault value: true");
+		BUILDER.comment("\nNether bullion temple generation. \nDefault value: true");
 		NETHER_BULLION_TEMPLE_SPAWN = BUILDER.define("Generate bullion temple?", true);
 		
 		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 16");
@@ -120,7 +120,7 @@ public final class ConfigHandler
 		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 7");
 		NETHER_BULLION_TEMPLE_MIN = BUILDER.define("Bullion temple min", 7);
 		
-		BUILDER.comment("\nGenerate nether iron clad? \nDefault value: true");
+		BUILDER.comment("\nNether iron clad generation. \nDefault value: true");
 		NETHER_IRON_CLAD_SPAWN = BUILDER.define("Generate iron clad?", true);
 		
 		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 10");
@@ -129,7 +129,7 @@ public final class ConfigHandler
 		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 5");
 		NETHER_IRON_CLAD_MIN = BUILDER.define("Iron clad min", 5);
 		
-		BUILDER.comment("\nGenerate nether tower of red sun? \nDefault value: true");
+		BUILDER.comment("\nNether tower of red sun generation. \nDefault value: true");
 		NETHER_RED_SUN_TOWER_SPAWN = BUILDER.define("Generate tower of red sun?", true);
 
 		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 24");

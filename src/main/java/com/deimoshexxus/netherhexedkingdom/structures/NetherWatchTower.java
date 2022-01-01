@@ -49,7 +49,7 @@ public class NetherWatchTower extends Structure<NoFeatureConfig> {
 
 
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
-            new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 100, 3, 6)
+            new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 100, 1, 6)
     );
     
     @Override
@@ -98,24 +98,30 @@ public class NetherWatchTower extends Structure<NoFeatureConfig> {
 
             for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl; --y) {
             	
-            	if (y > chunkGenerator.getGenDepth() - sl - 34)
-                {
-                	continue;
-                }
-            	BlockPos airblockpos = new BlockPos.Mutable(x+6, y+16, z+6);
+            	BlockPos airblockpos = new BlockPos.Mutable(blockpos$mutable.getX(),blockpos$mutable.getY() + 16,blockpos$mutable.getZ());
+            	BlockPos airblockpos2 = new BlockPos.Mutable(blockpos$mutable.getX(),blockpos$mutable.getY() + 32,blockpos$mutable.getZ());
             	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
                 blockpos$mutable.move(Direction.DOWN);
                 BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
+                if (y > chunkGenerator.getGenDepth() - sl - 34)
+                {
+                	continue;
+                }
                 if (this.getBoundingBox().intersects(getBoundingBox()))
                 {
-                	break;
+                	continue;
                 }
                 if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) 
                 {
-                   break;
+                	continue;
                 }
                 BlockState airblockstate = blockReader.getBlockState(airblockpos);
                 if (!airblockstate.is(Blocks.AIR)) 
+                {
+                	continue;
+                }
+                BlockState airblockstate2 = blockReader.getBlockState(airblockpos2);
+                if (!airblockstate2.is(Blocks.AIR)) 
                 {
                 	continue;
                 }

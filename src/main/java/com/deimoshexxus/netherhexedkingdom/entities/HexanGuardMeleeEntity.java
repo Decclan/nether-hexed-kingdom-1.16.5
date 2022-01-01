@@ -1,13 +1,10 @@
 package com.deimoshexxus.netherhexedkingdom.entities;
 
-import java.util.Random;
-
 import javax.annotation.Nullable;
 
 import com.deimoshexxus.netherhexedkingdom.init.ModItems;
 import com.deimoshexxus.netherhexedkingdom.init.SoundsHandler;
 
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
@@ -32,7 +29,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.GroundPathHelper;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.AvoidEntityGoal;
@@ -44,8 +40,6 @@ import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 
 public class HexanGuardMeleeEntity extends AbstractSkeletonEntity
@@ -88,7 +82,7 @@ public class HexanGuardMeleeEntity extends AbstractSkeletonEntity
 		.add(Attributes.MOVEMENT_SPEED, 0.28D)
 		.add(Attributes.ATTACK_DAMAGE, 4.5D)
 //		.add(Attributes.ARMOR, 2.0D)
-		.add(Attributes.MAX_HEALTH, 26.0D);
+		.add(Attributes.MAX_HEALTH, 28.0D);
 	}
 
 	public CreatureAttribute getMobType() 

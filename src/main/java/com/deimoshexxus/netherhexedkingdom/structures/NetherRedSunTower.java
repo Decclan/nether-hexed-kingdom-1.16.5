@@ -48,11 +48,10 @@ public class NetherRedSunTower extends Structure<NoFeatureConfig> {
 
 
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
-            new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 100, 3, 12),
-            new MobSpawnInfo.Spawners(EntityType.BLAZE, 100, 3, 7),
+            new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 90, 1, 6),
+            new MobSpawnInfo.Spawners(EntityType.BLAZE, 90, 1, 6),
             new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), 100, 3, 12),
-            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), 100, 3, 6)
-//            new MobSpawnInfo.Spawners(ModEntities.VOLCAN_DAEMON_ENTITY.get(), 20, 1, 3)
+            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), 100, 3, 8)
     );
     
     @Override
@@ -92,19 +91,34 @@ public class NetherRedSunTower extends Structure<NoFeatureConfig> {
             IBlockReader blockReader = chunkGenerator.getBaseColumn(blockpos.getX(), blockpos.getZ());
 
             for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl; --y) {
-            	if (y > chunkGenerator.getGenDepth() - sl - 2)
-                {
-            		continue;
-                }
+            	BlockPos airblockpos = new BlockPos.Mutable(blockpos$mutable.getX(),blockpos$mutable.getY() + 32,blockpos$mutable.getZ());
+            	BlockPos airblockpos2 = new BlockPos.Mutable(blockpos$mutable.getX(),blockpos$mutable.getY() + 64,blockpos$mutable.getZ());
             	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
                 blockpos$mutable.move(Direction.DOWN);
                 BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
+                
+                
+            	if (y > chunkGenerator.getGenDepth() - sl - 2) 
+                {
+            		continue;
+                }
+                
                 if (this.getBoundingBox().intersects(getBoundingBox()))
                 {
-                	break;
+                	continue;
                 }
                 if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) {
-                   break;
+                	continue;
+                }
+                BlockState airblockstate = blockReader.getBlockState(airblockpos);
+                if (!airblockstate.is(Blocks.AIR))
+        		{
+                	continue;
+        		}
+                BlockState airblockstate2 = blockReader.getBlockState(airblockpos2);
+                if (!airblockstate2.is(Blocks.AIR)) 
+                {
+                	continue;
                 }
              }
             

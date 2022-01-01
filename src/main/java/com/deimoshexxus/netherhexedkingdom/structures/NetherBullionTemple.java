@@ -48,9 +48,9 @@ public class NetherBullionTemple extends Structure<NoFeatureConfig> {
 
 
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
-            new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 90, 5, 9),
-            new MobSpawnInfo.Spawners(EntityType.BLAZE, 90, 1, 5),
-            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), 90, 4, 9)
+            new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 100, 1, 6),
+            new MobSpawnInfo.Spawners(EntityType.BLAZE, 100, 1, 6),
+            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), 100, 3, 9)
     );
     
     @Override
@@ -90,13 +90,18 @@ public class NetherBullionTemple extends Structure<NoFeatureConfig> {
             IBlockReader blockReader = chunkGenerator.getBaseColumn(blockpos.getX(), blockpos.getZ());
 
             for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl + 40 + this.random.nextInt(chunkGenerator.getGenDepth() - 34 - sl); --y) {
+
+            	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
+                blockpos$mutable.move(Direction.DOWN);
+                BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
                 if (y > chunkGenerator.getGenDepth() - sl - 2)
                 {
                 	continue;
                 }
-            	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
-                blockpos$mutable.move(Direction.DOWN);
-                BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
+                if (y < chunkGenerator.getGenDepth() - sl - 52)
+                {
+            		continue;
+                }
                 if (this.getBoundingBox().intersects(getBoundingBox()))
                 {
                 	break;

@@ -50,7 +50,7 @@ public class NetherLookout extends Structure<NoFeatureConfig> {
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
             new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 90, 3, 7),
             new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), 100, 3, 8),
-            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), 100, 1, 5)
+            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), 100, 2, 6)
     );
     
     @Override
@@ -90,13 +90,18 @@ public class NetherLookout extends Structure<NoFeatureConfig> {
             IBlockReader blockReader = chunkGenerator.getBaseColumn(blockpos.getX(), blockpos.getZ());
             	//(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl + 64 + this.random.nextInt(chunkGenerator.getGenDepth() - 34 - sl); --y)
             for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl + 40 + this.random.nextInt(chunkGenerator.getGenDepth() - sl); --y) {
+
+            	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
+                blockpos$mutable.move(Direction.DOWN);
+                BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
             	if (y > chunkGenerator.getGenDepth() - sl - 2)
                 {
             		continue;
                 }
-            	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
-                blockpos$mutable.move(Direction.DOWN);
-                BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
+                if (y < chunkGenerator.getGenDepth() - sl - 52)
+                {
+            		continue;
+                }
                 if (this.getBoundingBox().intersects(getBoundingBox()))
                 {
                 	break;
@@ -104,12 +109,6 @@ public class NetherLookout extends Structure<NoFeatureConfig> {
                 if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) {
                     break;
                 }
-//                if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND))) {
-//                   break;
-//                }
-//                if (blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP)) {
-//                	continue;
-//                }
              }
             
             JigsawManager.addPieces(

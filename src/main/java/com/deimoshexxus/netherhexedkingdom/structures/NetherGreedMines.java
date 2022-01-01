@@ -48,9 +48,9 @@ public class NetherGreedMines extends Structure<NoFeatureConfig> {
 
 
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
-            new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 90, 5, 10),
-            new MobSpawnInfo.Spawners(EntityType.BLAZE, 90, 3, 6),
-            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), 100, 6, 12)
+            new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 100, 3, 6),
+            new MobSpawnInfo.Spawners(EntityType.BLAZE, 100, 2, 6),
+            new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), 100, 3, 8)
     );
     
     @Override
@@ -90,13 +90,13 @@ public class NetherGreedMines extends Structure<NoFeatureConfig> {
             IBlockReader blockReader = chunkGenerator.getBaseColumn(blockpos.getX(), blockpos.getZ());
 
             for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl; --y) {
-            	if (y > chunkGenerator.getGenDepth() - sl - 2)
-                {
-            		continue;
-                }
             	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
                 blockpos$mutable.move(Direction.DOWN);
                 BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
+            	if (y > chunkGenerator.getGenDepth() - sl - 42)
+                {
+            		continue;
+                }
                 if (this.getBoundingBox().intersects(getBoundingBox()))
                 {
                 	break;

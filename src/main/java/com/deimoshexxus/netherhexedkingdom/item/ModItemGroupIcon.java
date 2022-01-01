@@ -5,7 +5,7 @@ import com.deimoshexxus.netherhexedkingdom.init.ModItems;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 
-public class ModItemGroup 
+public class ModItemGroupIcon 
 {
 	public static final ItemGroup NETHER_HEXED_GROUP = new ItemGroup("netherhexedmodtab")
 	{

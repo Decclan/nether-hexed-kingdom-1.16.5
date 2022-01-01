@@ -75,25 +75,32 @@ public class NetherIronClad extends Structure<NoFeatureConfig> {
             for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl; --y)
             //generates random pos, while y (29) > sl (n32) reduce struct pos by 1 until at 29 
             {
-            	BlockPos airblockpos = new BlockPos.Mutable(x+6, y+16, z+6);
-            	BlockPos lavablockpos = new BlockPos.Mutable(x+6, y-3, z+6);
+            	BlockPos airblockpos = new BlockPos.Mutable(blockpos$mutable.getX(),blockpos$mutable.getY() + 8,blockpos$mutable.getZ());
+            	BlockPos airblockpos2 = new BlockPos.Mutable(blockpos$mutable.getX(),blockpos$mutable.getY() + 16,blockpos$mutable.getZ());
+            	BlockPos lavablockpos = new BlockPos.Mutable(blockpos$mutable.getX(),blockpos$mutable.getY() - 8,blockpos$mutable.getZ());
             	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
                 blockpos$mutable.move(Direction.DOWN);
                 BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
+                
                 if (this.getBoundingBox().intersects(getBoundingBox()))
                 {
-                	break;
+                	continue;
                 }
                 if (blockstate.is(Blocks.AIR) && (!blockstate1.is(Blocks.LAVA) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) 
                 {
-                   break;
+                   continue;
                 }
-//                if (!blockstate.is(Blocks.LAVA))
-//                {
-//                	continue;
-//                }
+                if (!blockstate.is(Blocks.LAVA))
+                {
+                	continue;
+                }
                 BlockState airblockstate = blockReader.getBlockState(airblockpos);
                 if (!airblockstate.is(Blocks.AIR)) 
+                {
+                	continue;
+                }
+                BlockState airblockstate2 = blockReader.getBlockState(airblockpos2);
+                if (!airblockstate2.is(Blocks.AIR)) 
                 {
                 	continue;
                 }

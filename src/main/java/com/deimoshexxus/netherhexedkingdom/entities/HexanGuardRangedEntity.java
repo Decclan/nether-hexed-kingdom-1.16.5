@@ -1,15 +1,10 @@
 package com.deimoshexxus.netherhexedkingdom.entities;
 
-import java.util.List;
-import java.util.Random;
-
 import javax.annotation.Nullable;
 
-import com.deimoshexxus.netherhexedkingdom.init.ModBlocks;
 import com.deimoshexxus.netherhexedkingdom.init.ModItems;
 import com.deimoshexxus.netherhexedkingdom.init.SoundsHandler;
 
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
@@ -30,8 +25,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.GroundPathHelper;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.AvoidEntityGoal;
@@ -86,7 +79,7 @@ public class HexanGuardRangedEntity extends AbstractSkeletonEntity
 		.add(Attributes.MOVEMENT_SPEED, 0.28D)
 		.add(Attributes.ATTACK_DAMAGE, 4.5D)
 //		.add(Attributes.ARMOR, 2.0D)
-		.add(Attributes.MAX_HEALTH, 26.0D);
+		.add(Attributes.MAX_HEALTH, 28.0D);
 	}
 
 	private void applyOpenDoorsAbility() 

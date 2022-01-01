@@ -37,9 +37,9 @@ public class ModEntities
 //			() -> EntityType.Builder.<WightTraderEntity>of(WightTraderEntity::new, EntityClassification.CREATURE).sized(0.5f, 1.85f).clientTrackingRange(8).
 //			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "wight_trader_entity").toString()));
 	
-	public static final RegistryObject<EntityType<VolcanDaemon>> VOLCAN_DAEMON_ENTITY = Registration.ENTITY_TYPES.register("volcan_daemon_entity", 
-			() -> EntityType.Builder.<VolcanDaemon>of(VolcanDaemon::new, EntityClassification.MONSTER).fireImmune().
-			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "volcan_daemon_entity").toString()));
+//	public static final RegistryObject<EntityType<VolcanDaemon>> VOLCAN_DAEMON_ENTITY = Registration.ENTITY_TYPES.register("volcan_daemon_entity", 
+//			() -> EntityType.Builder.<VolcanDaemon>of(VolcanDaemon::new, EntityClassification.MONSTER).fireImmune().
+//			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "volcan_daemon_entity").toString()));
 
 	public static final RegistryObject<EntityType<HexanGuardEntity>> HEXAN_GUARD_ENTITY = Registration.ENTITY_TYPES.register("hexan_guard_entity", 
 			() -> EntityType.Builder.<HexanGuardEntity>of(HexanGuardEntity::new, EntityClassification.MONSTER).fireImmune().sized(0.6f, 1.95f).
@@ -79,7 +79,7 @@ public class ModEntities
 //		event.put(ModEntities.WIGHT_ENTITY.get(), WightEntity.createAttributes().build());
 //		event.put(ModEntities.WIGHT_KNIGHT_ENTITY.get(), WightKnightEntity.createAttributes().build());
 //		event.put(ModEntities.WIGHT_TRADER_ENTITY.get(), WightTraderEntity.createAttributes().build());
-		event.put(ModEntities.VOLCAN_DAEMON_ENTITY.get(), VolcanDaemon.createAttributes().build());
+//		event.put(ModEntities.VOLCAN_DAEMON_ENTITY.get(), VolcanDaemon.createAttributes().build());
 		event.put(ModEntities.HEXAN_GUARD_ENTITY.get(), HexanGuardEntity.createAttributes().build());
 		event.put(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), HexanGuardRangedEntity.createAttributes().build());
 		event.put(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), HexanGuardMeleeEntity.createAttributes().build());
@@ -97,19 +97,19 @@ public class ModEntities
 		
 		EntitySpawnPlacementRegistry.register(ModEntities.HEXAN_GUARD_ENTITY.get(),
 				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
-				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexanGuardEntity::checkMonsterSpawnRules);
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexanGuardEntity::checkAnyLightMonsterSpawnRules);
 		
 		EntitySpawnPlacementRegistry.register(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(),
 				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
-				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexanGuardMeleeEntity::checkMonsterSpawnRules);
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexanGuardMeleeEntity::checkAnyLightMonsterSpawnRules);
 		
 		EntitySpawnPlacementRegistry.register(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(),
 				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
-				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexanGuardRangedEntity::checkMonsterSpawnRules);
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HexanGuardRangedEntity::checkAnyLightMonsterSpawnRules);
 		
-		EntitySpawnPlacementRegistry.register(ModEntities.VOLCAN_DAEMON_ENTITY.get(),
-				EntitySpawnPlacementRegistry.PlacementType.NO_RESTRICTIONS, 
-				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, VolcanDaemon::daemonSpawnRules);
+//		EntitySpawnPlacementRegistry.register(ModEntities.VOLCAN_DAEMON_ENTITY.get(),
+//				EntitySpawnPlacementRegistry.PlacementType.NO_RESTRICTIONS, 
+//				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, VolcanDaemon::daemonSpawnRules);
 		
 		EntitySpawnPlacementRegistry.register(ModEntities.WITHER_SKELETON_HORSE.get(),
 				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
