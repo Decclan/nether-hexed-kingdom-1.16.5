@@ -1,7 +1,6 @@
 package com.deimoshexxus.netherhexedkingdom.init;
 
 import com.deimoshexxus.netherhexedkingdom.NetherHexedKingdomMain;
-import com.deimoshexxus.netherhexedkingdom.entities.render.VolcanDaemonEntityRenderer;
 import com.deimoshexxus.netherhexedkingdom.entities.render.HexanGuardMeleeEntityRenderer;
 import com.deimoshexxus.netherhexedkingdom.entities.render.HexanGuardRangedEntityRenderer;
 import com.deimoshexxus.netherhexedkingdom.entities.render.HexedUndeadHorseRenderer;

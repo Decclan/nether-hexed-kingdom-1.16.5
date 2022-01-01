@@ -98,10 +98,14 @@ public class NetherBullionTemple extends Structure<NoFeatureConfig> {
                 {
                 	continue;
                 }
-                if (y < chunkGenerator.getGenDepth() - sl - 52)
+                if (y < sl + 40)
                 {
             		continue;
                 }
+//                if (y < chunkGenerator.getGenDepth() - sl - 52)
+//                {
+//            		continue;
+//                }
                 if (this.getBoundingBox().intersects(getBoundingBox()))
                 {
                 	break;
