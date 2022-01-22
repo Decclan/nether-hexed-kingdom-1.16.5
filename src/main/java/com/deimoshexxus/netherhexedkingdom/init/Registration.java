@@ -4,6 +4,7 @@ import com.deimoshexxus.netherhexedkingdom.NetherHexedKingdomMain;
 import com.deimoshexxus.netherhexedkingdom.entities.render.HexanGuardMeleeEntityRenderer;
 import com.deimoshexxus.netherhexedkingdom.entities.render.HexanGuardRangedEntityRenderer;
 import com.deimoshexxus.netherhexedkingdom.entities.render.HexedUndeadHorseRenderer;
+import com.deimoshexxus.netherhexedkingdom.entities.render.VolcanDaemonEntityRenderer;
 import com.deimoshexxus.netherhexedkingdom.entities.render.HexanGuardEntityRenderer;
 import com.deimoshexxus.netherhexedkingdom.entities.render.WitherSkeletonHorseRenderer;
 import com.deimoshexxus.netherhexedkingdom.entities.render.WitherSkeletonHorseRiderRenderer;
@@ -44,7 +45,7 @@ public class Registration
 //        RenderingRegistry.registerEntityRenderingHandler(ModEntities.WIGHT_ENTITY.get(), WightEntityRenderer::new);
 //        RenderingRegistry.registerEntityRenderingHandler(ModEntities.WIGHT_KNIGHT_ENTITY.get(), WightKnightEntityRenderer::new);
 //        RenderingRegistry.registerEntityRenderingHandler(ModEntities.WIGHT_TRADER_ENTITY.get(), WightTraderEntityRenderer::new);
-//        RenderingRegistry.registerEntityRenderingHandler(ModEntities.VOLCAN_DAEMON_ENTITY.get(), VolcanDaemonEntityRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.VOLCAN_DAEMON_ENTITY.get(), VolcanDaemonEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.HEXAN_GUARD_ENTITY.get(), HexanGuardEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), HexanGuardRangedEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), HexanGuardMeleeEntityRenderer::new);

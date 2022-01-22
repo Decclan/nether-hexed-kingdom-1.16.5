@@ -16,6 +16,7 @@ public final class ConfigHandler
 	public static final ForgeConfigSpec.BooleanValue NETHER_BULLION_TEMPLE_SPAWN;
 	public static final ForgeConfigSpec.BooleanValue NETHER_IRON_CLAD_SPAWN;
 	public static final ForgeConfigSpec.BooleanValue NETHER_RED_SUN_TOWER_SPAWN;
+	public static final ForgeConfigSpec.BooleanValue NETHER_VOLCAN_PIT_SPAWN;
 	
 	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_WATCH_TOWER_MAX;
 	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_PRISON_MAX;
@@ -25,6 +26,7 @@ public final class ConfigHandler
 	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_BULLION_TEMPLE_MAX;
 	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_IRON_CLAD_MAX;
 	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_RED_SUN_TOWER_MAX;
+	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_VOLCAN_PIT_MAX;
 	
 	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_WATCH_TOWER_MIN;
 	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_PRISON_MIN;
@@ -34,6 +36,7 @@ public final class ConfigHandler
 	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_BULLION_TEMPLE_MIN;
 	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_IRON_CLAD_MIN;
 	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_RED_SUN_TOWER_MIN;
+	public static final ForgeConfigSpec.ConfigValue<Integer> NETHER_VOLCAN_PIT_MIN;
 	
 	//Entities
 	public static final ForgeConfigSpec.BooleanValue WILD_WITHER_SKELETON_SPAWN;
@@ -137,6 +140,15 @@ public final class ConfigHandler
 		
 		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 12");
 		NETHER_RED_SUN_TOWER_MIN = BUILDER.define("Tower of red sun min", 12);
+		
+		BUILDER.comment("\nNether volcan pit generation. \nDefault value: true");
+		NETHER_VOLCAN_PIT_SPAWN = BUILDER.define("Generate volcan pits?", true);
+
+		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 24");
+		NETHER_VOLCAN_PIT_MAX = BUILDER.define("Volcan pit max", 24);
+		
+		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 12");
+		NETHER_VOLCAN_PIT_MIN = BUILDER.define("Volcan pit min", 12);
 		
 		BUILDER.comment("\nEnable/disable each entity to the natural generation list in the nether:"
 				+ "\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"

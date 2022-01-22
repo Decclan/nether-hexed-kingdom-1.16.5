@@ -52,6 +52,10 @@ public class ModStructureWorldGen
 		    {
 		    	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_RED_SUN_TOWER);
 		    }
+		    if (ConfigHandler.NETHER_VOLCAN_PIT_SPAWN.get())
+		    {
+		    	event.getGeneration().getStructures().add(() -> NetherConfiguredStructures.CONFIGURED_NETHER_VOLCAN_PIT);
+		    }
 		}
 	}
 }

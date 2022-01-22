@@ -180,6 +180,11 @@ public class NetherHexedKingdomMain
             	tempMap.putIfAbsent(NetherStructures.NETHER_RED_SUN_TOWER.get(), DimensionStructuresSettings.DEFAULTS.get(NetherStructures.NETHER_RED_SUN_TOWER.get()));
             }
            
+            if (ConfigHandler.NETHER_VOLCAN_PIT_SPAWN.get())
+            {
+            	tempMap.putIfAbsent(NetherStructures.NETHER_VOLCAN_PIT.get(), DimensionStructuresSettings.DEFAULTS.get(NetherStructures.NETHER_VOLCAN_PIT.get()));
+            }
+            
             serverWorld.getChunkSource().generator.getSettings().structureConfig = tempMap;
         }
    }

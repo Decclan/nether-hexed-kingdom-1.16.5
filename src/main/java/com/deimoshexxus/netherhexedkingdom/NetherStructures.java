@@ -8,6 +8,7 @@ import com.deimoshexxus.netherhexedkingdom.structures.NetherLookout;
 import com.deimoshexxus.netherhexedkingdom.structures.NetherOutpost;
 import com.deimoshexxus.netherhexedkingdom.structures.NetherPrison;
 import com.deimoshexxus.netherhexedkingdom.structures.NetherRedSunTower;
+import com.deimoshexxus.netherhexedkingdom.structures.NetherVolcanPit;
 import com.deimoshexxus.netherhexedkingdom.structures.NetherWatchTower;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -37,7 +38,8 @@ public class NetherStructures {
     public static final RegistryObject<Structure<NoFeatureConfig>> NETHER_BULLION_TEMPLE = DEFERRED_REGISTRY_STRUCTURE.register("hexed_bullion_temple", () -> (new NetherBullionTemple(NoFeatureConfig.CODEC)));
     public static final RegistryObject<Structure<NoFeatureConfig>> NETHER_IRON_CLAD = DEFERRED_REGISTRY_STRUCTURE.register("hexed_iron_clad", () -> (new NetherIronClad(NoFeatureConfig.CODEC)));
     public static final RegistryObject<Structure<NoFeatureConfig>> NETHER_RED_SUN_TOWER = DEFERRED_REGISTRY_STRUCTURE.register("hexed_red_sun_tower", () -> (new NetherRedSunTower(NoFeatureConfig.CODEC)));
-
+    public static final RegistryObject<Structure<NoFeatureConfig>> NETHER_VOLCAN_PIT = DEFERRED_REGISTRY_STRUCTURE.register("hexed_volcan_pit", () -> (new NetherVolcanPit(NoFeatureConfig.CODEC)));
+    
     public static void setupStructures() {
 //        setupMapSpacingAndLand(
 //                STRUCTURE_INSTANCE.get(), /* The instance of the structure */
@@ -101,6 +103,13 @@ public class NetherStructures {
                 		ConfigHandler.NETHER_RED_SUN_TOWER_MIN.get(),
                         529055930 ),
                 true);
+        
+        setupMapSpacingAndLand(
+        		NETHER_VOLCAN_PIT.get(),
+                new StructureSeparationSettings(ConfigHandler.NETHER_VOLCAN_PIT_MAX.get(),
+                		ConfigHandler.NETHER_VOLCAN_PIT_MIN.get(),
+                        574783746 ),
+                false);
         // Add more structures here and so on
     }
 

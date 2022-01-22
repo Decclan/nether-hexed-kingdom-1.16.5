@@ -27,11 +27,16 @@ import net.minecraft.potion.Effects;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+
+//import net.minecraft.entity.monster.GhastEntity;
+//import net.minecraft.entity.projectile.WitherSkullEntity;
+//import net.minecraft.entity.projectile.;
 
 public class VolcanDaemon extends PhantomEntity 
 {
@@ -43,7 +48,6 @@ public class VolcanDaemon extends PhantomEntity
 	{
 		super(type, world);
 		this.goalSelector.addGoal(7, new VolcanDaemon.FireballAttackGoal(this));
-//		this.setPersistenceRequired();
 	}
 	
    public CreatureAttribute getMobType() 
@@ -132,7 +136,7 @@ public class VolcanDaemon extends PhantomEntity
 		               FireballEntity fireballentity = new FireballEntity(world, this.daemon, d2, d3, d4);
 //		               fireballentity.doEnchantDamageEffects(livingentity, this.daemon);
 		               fireballentity.explosionPower = this.daemon.getExplosionPower();
-		               fireballentity.setPos(this.daemon.getX() + vector3d.x * 4.0D, this.daemon.getY(0.5D) + 0.5D, fireballentity.getZ() + vector3d.z * 4.0D);
+		               fireballentity.setPos(this.daemon.getX() + vector3d.x * 4.0D, this.daemon.getY(), fireballentity.getZ() + vector3d.z * 4.0D);
 		               world.addFreshEntity(fireballentity);
 		               this.chargeTime = -40;
 		            }
@@ -151,7 +155,8 @@ public class VolcanDaemon extends PhantomEntity
 		         return false;
 		      } else {
 		         if (p_70652_1_ instanceof LivingEntity) {
-		            ((LivingEntity)p_70652_1_).addEffect(new EffectInstance(Effects.CONFUSION, 200));
+		            ((LivingEntity)p_70652_1_).addEffect(new EffectInstance(Effects.CONFUSION, 300));
+		            ((LivingEntity)p_70652_1_).addEffect(new EffectInstance(Effects.HUNGER, 100));
 		         }
 
 		         return true;
@@ -181,10 +186,14 @@ public class VolcanDaemon extends PhantomEntity
 	public static boolean daemonSpawnRules(EntityType<VolcanDaemon> type, IServerWorld world, 
 			SpawnReason spawnReason, BlockPos pos, Random random)
 	{
-		if (MonsterEntity.isDarkEnoughToSpawn(world, pos, random))
+//		return world.getDifficulty() != Difficulty.PEACEFUL 
+//				&& checkMobSpawnRules(type, world, spawnReason, pos, random);
+//	   
+		if (MonsterEntity.isDarkEnoughToSpawn(world, pos, random) && world.getDifficulty() != Difficulty.PEACEFUL)
 		{
-			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(16);
-			List<WightEntity> entities = world.getEntitiesOfClass(WightEntity.class, box, (entity) -> {return true;});
+			AxisAlignedBB box = new AxisAlignedBB(pos).inflate(64);
+			List<VolcanDaemon> entities = world.getEntitiesOfClass(VolcanDaemon.class, box, (entity) -> {return true;});
+			checkMobSpawnRules(type, world, spawnReason, pos, random);
 			return entities.size() < 6;
 		}
 		return false;

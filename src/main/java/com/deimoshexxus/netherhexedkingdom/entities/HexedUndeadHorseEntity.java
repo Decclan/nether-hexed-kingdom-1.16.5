@@ -161,17 +161,17 @@ public class HexedUndeadHorseEntity extends HorseEntity {
 
    protected SoundEvent getAmbientSound() {
        super.getAmbientSound();
-       return this.isEyeInFluid(FluidTags.WATER) ? SoundEvents.SKELETON_HORSE_AMBIENT_WATER : SoundEvents.SKELETON_HORSE_AMBIENT;
+       return this.isEyeInFluid(FluidTags.WATER) ? SoundEvents.SKELETON_HORSE_AMBIENT_WATER : SoundEvents.ZOMBIE_HORSE_AMBIENT;
     }
 
     protected SoundEvent getDeathSound() {
        super.getDeathSound();
-       return SoundEvents.SKELETON_HORSE_DEATH;
+       return SoundEvents.ZOMBIE_HORSE_DEATH;
     }
 
     protected SoundEvent getHurtSound(DamageSource p_184601_1_) {
        super.getHurtSound(p_184601_1_);
-       return SoundEvents.SKELETON_HORSE_HURT;
+       return SoundEvents.ZOMBIE_HORSE_HURT;
     }
 
     protected SoundEvent getSwimSound() {
@@ -195,7 +195,7 @@ public class HexedUndeadHorseEntity extends HorseEntity {
 
 	public boolean isFood(ItemStack stack) 
 	{
-		return stack.getItem() == Items.ROTTEN_FLESH || stack.getItem() == Items.NETHER_WART;
+		return stack.getItem() == Items.CRIMSON_FUNGUS || stack.getItem() == Items.NETHER_WART;
 	}
     
    public ActionResultType mobInteract(PlayerEntity player, Hand stack) {
@@ -290,11 +290,6 @@ public class HexedUndeadHorseEntity extends HorseEntity {
 		//return !world.getBlockState(pos.below()).is(Blocks.NETHER_WART_BLOCK) && !world.getBlockState(pos.below()).is(Blocks.AIR) && !world.getBlockState(pos.below()).is(Blocks.LAVA);
 	}
 	
-//	public boolean removeWhenFarAway(double p_213397_1_) 
-//	{
-//		return !this.isPersistenceRequired(); //need taming overhaul, persistence to be set when tamed
-//	}
-
 	public boolean removeWhenFarAway(double p_213397_1_) 
 	{
 		return !this.isPersistenceRequired();
