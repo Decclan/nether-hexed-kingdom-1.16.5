@@ -18,7 +18,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class VolcanDaemonEntityRenderer extends MobRenderer <VolcanDaemon, PhantomModel<VolcanDaemon>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "textures/entity/volcan_daemon_entity_new.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "textures/entity/volcan_daemon_char_layer.png");
 	
 	public VolcanDaemonEntityRenderer(EntityRendererManager rendererManager) 
 	{

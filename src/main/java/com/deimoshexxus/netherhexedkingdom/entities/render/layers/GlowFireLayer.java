@@ -13,7 +13,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class GlowFireLayer<T extends Entity, M extends EntityModel<T>> extends AbstractEyesLayer<T, M>
 {
-	private static final RenderType GLOW = RenderType.eyes(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "textures/entity/face_eater_entity_large_fire.png"));
+	private static final RenderType GLOW = RenderType.eyes(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "textures/entity/volcan_daemon_fire_layer.png"));
 
    public GlowFireLayer(IEntityRenderer<T, M> p_i50928_1_) 
    {

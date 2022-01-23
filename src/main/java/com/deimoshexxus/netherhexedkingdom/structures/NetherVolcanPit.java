@@ -28,6 +28,9 @@ import net.minecraft.world.gen.feature.structure.*;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 import org.apache.logging.log4j.Level;
 
+import net.minecraft.world.gen.feature.structure.NetherFossilStructure;
+import net.minecraft.world.gen.feature.structure.NetherFossilStructures;
+
 import java.util.List;
 
 public class NetherVolcanPit extends Structure<NoFeatureConfig> {
@@ -104,7 +107,7 @@ public class NetherVolcanPit extends Structure<NoFeatureConfig> {
             		continue;
                 }
                 BlockState basaltblockstate = blockReader.getBlockState(basaltblockpos);
-                if (basaltblockstate.is(Blocks.BASALT) && (blockstate.is(Blocks.BASALT)))
+                if (!basaltblockstate.is(Blocks.BASALT) && (!blockstate.is(Blocks.BASALT)))
         		{
                 	continue;
         		}
