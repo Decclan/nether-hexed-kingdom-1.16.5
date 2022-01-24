@@ -38,7 +38,7 @@ public class ModEntities
 //			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "wight_trader_entity").toString()));
 	
 	public static final RegistryObject<EntityType<VolcanDaemon>> VOLCAN_DAEMON_ENTITY = Registration.ENTITY_TYPES.register("volcan_daemon_entity", 
-			() -> EntityType.Builder.<VolcanDaemon>of(VolcanDaemon::new, EntityClassification.MONSTER).fireImmune().sized(4.0f, 0.3f).
+			() -> EntityType.Builder.<VolcanDaemon>of(VolcanDaemon::new, EntityClassification.MONSTER).fireImmune().sized(2.5f, 1.5f).
 			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "volcan_daemon_entity").toString()));
 
 	public static final RegistryObject<EntityType<HexanGuardEntity>> HEXAN_GUARD_ENTITY = Registration.ENTITY_TYPES.register("hexan_guard_entity", 

@@ -28,8 +28,8 @@ import net.minecraft.world.gen.feature.structure.*;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 import org.apache.logging.log4j.Level;
 
-import net.minecraft.world.gen.feature.structure.NetherFossilStructure;
-import net.minecraft.world.gen.feature.structure.NetherFossilStructures;
+//import net.minecraft.world.gen.feature.structure.NetherFossilStructure;
+//import net.minecraft.world.gen.feature.structure.NetherFossilStructures;
 
 import java.util.List;
 
@@ -84,6 +84,7 @@ public class NetherVolcanPit extends Structure<NoFeatureConfig> {
 
             int netherGenDepth = 127;
             int netherSeaLevel = 32;
+            int heightLimit = 90;
             
             //int netherSeaLevel = chunkGenerator.getSeaLevel();  //overworld sea level value 63
             int y = netherSeaLevel + this.random.nextInt(netherGenDepth - 2 - netherSeaLevel);
@@ -98,16 +99,16 @@ public class NetherVolcanPit extends Structure<NoFeatureConfig> {
             	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
                 blockpos$mutable.move(Direction.DOWN);
                 BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
-                if (y > netherGenDepth - netherSeaLevel - 36) //gen depth in 256 (overworld) nether only 127
+                if (y < netherGenDepth - netherSeaLevel - 36) //gen depth in 256 (overworld) nether only 127
                 {
                 	continue;
                 }
-                if (y < netherSeaLevel + 50)
+                if (y > heightLimit)
                 {
             		continue;
                 }
                 BlockState basaltblockstate = blockReader.getBlockState(basaltblockpos);
-                if (!basaltblockstate.is(Blocks.BASALT) && (!blockstate.is(Blocks.BASALT)))
+                if (basaltblockstate.is(Blocks.BASALT) && (blockstate.is(Blocks.BASALT)))
         		{
                 	continue;
         		}

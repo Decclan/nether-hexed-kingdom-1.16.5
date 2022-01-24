@@ -94,7 +94,7 @@ public class NetherBullionTemple extends Structure<NoFeatureConfig> {
             	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
                 blockpos$mutable.move(Direction.DOWN);
                 BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
-                if (y > chunkGenerator.getGenDepth() - sl - 2)
+                if (y > chunkGenerator.getGenDepth() - sl - 32)
                 {
                 	continue;
                 }

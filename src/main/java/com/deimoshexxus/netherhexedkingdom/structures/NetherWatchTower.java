@@ -111,7 +111,7 @@ public class NetherWatchTower extends Structure<NoFeatureConfig> {
                 {
                 	continue;
                 }
-                if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) 
+                if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.NETHERRACK) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) 
                 {
                 	continue;
                 }
