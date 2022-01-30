@@ -68,7 +68,7 @@ public class NetherVolcanPit extends Structure<NoFeatureConfig> {
 
         BlockState topBlock = columnOfBlocks.getBlockState(centerOfChunk.above(landHeight));
 
-        return topBlock.getFluidState().isEmpty();// && landHeight > 70;
+        return topBlock.getFluidState().isEmpty(); // && landHeight < 80;
     }
 
     public static class Start extends StructureStart<NoFeatureConfig>  {
@@ -95,10 +95,11 @@ public class NetherVolcanPit extends Structure<NoFeatureConfig> {
 
             for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > netherSeaLevel + 40 + this.random.nextInt(netherGenDepth - 36 - netherSeaLevel); --y) {
 
-            	BlockPos basaltblockpos = new BlockPos.Mutable(blockpos$mutable.getX() + 32,blockpos$mutable.getY(),blockpos$mutable.getZ() + 32);
+            	//BlockPos basaltblockpos = (blockpos$mutable.getX() + 32, blockpos$mutable.getY(),blockpos$mutable.getZ() + 32);
             	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
                 blockpos$mutable.move(Direction.DOWN);
                 BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
+                
                 if (y < netherGenDepth - netherSeaLevel - 36) //gen depth in 256 (overworld) nether only 127
                 {
                 	continue;
@@ -107,11 +108,11 @@ public class NetherVolcanPit extends Structure<NoFeatureConfig> {
                 {
             		continue;
                 }
-                BlockState basaltblockstate = blockReader.getBlockState(basaltblockpos);
-                if (basaltblockstate.is(Blocks.BASALT) && (blockstate.is(Blocks.BASALT)))
-        		{
-                	continue;
-        		}
+//                BlockState basaltblockstate = blockReader.getBlockState(basaltblockpos);
+//                if (basaltblockstate.is(Blocks.BASALT) && (blockstate.is(Blocks.BASALT)))
+//        		{
+//                	continue;
+//        		}
 
 //                if (this.getBoundingBox().intersects(getBoundingBox()))
 //                {

@@ -38,5 +38,6 @@
 	"entity.netherhexedkingdom.wither_skeleton_horse": "Wither Skeleton Horse",
 	"entity.netherhexedkingdom.wither_skeleton_horse_rider": "Wither Death Rider",
 	"entity.netherhexedkingdom.hexed_undead_horse": "Hexed Undead Horse",
-	"entity.netherhexedkingdom.hexed_undead_horse_rider": "Hexed Undead Horse Rider"
+	"entity.netherhexedkingdom.hexed_undead_horse_rider": "Hexed Undead Horse Rider",
+	"entity.netherhexedkingdom.piglin_beserker_entity": "Piglin Beserker"
 }
