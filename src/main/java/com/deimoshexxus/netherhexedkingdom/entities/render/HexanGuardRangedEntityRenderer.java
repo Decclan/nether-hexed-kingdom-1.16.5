@@ -21,7 +21,7 @@ public class HexanGuardRangedEntityRenderer extends BipedRenderer<HexanGuardRang
 	public HexanGuardRangedEntityRenderer(EntityRendererManager rendererManager) 
 	{
 		super(rendererManager, new HexanGuardRangedEntityModel(), 0.5F);
-	    this.addLayer(new BipedArmorLayer<>(this, new BipedModel<HexanGuardRangedEntity>(1.0F), new BipedModel<HexanGuardRangedEntity>(1.0F)));
+	    this.addLayer(new BipedArmorLayer<>(this, new BipedModel<HexanGuardRangedEntity>(1.02F), new BipedModel<HexanGuardRangedEntity>(1.02F)));
 	}
 	
 	@Override

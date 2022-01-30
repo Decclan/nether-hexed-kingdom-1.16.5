@@ -20,7 +20,7 @@ public class HexanGuardMeleeEntityRenderer extends BipedRenderer<HexanGuardMelee
 	public HexanGuardMeleeEntityRenderer(EntityRendererManager rendererManager) 
 	{
 		super(rendererManager, new HexanGuardMeleeEntityModel(), 0.5F);
-	    this.addLayer(new BipedArmorLayer<>(this, new BipedModel<HexanGuardMeleeEntity>(1.0F), new BipedModel<HexanGuardMeleeEntity>(1.0F)));
+	    this.addLayer(new BipedArmorLayer<>(this, new BipedModel<HexanGuardMeleeEntity>(1.02F), new BipedModel<HexanGuardMeleeEntity>(1.02F)));
 	}
 	
 	@Override

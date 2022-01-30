@@ -7,8 +7,8 @@ import com.deimoshexxus.netherhexedkingdom.entities.PiglinBeserkerEntity;
 import com.deimoshexxus.netherhexedkingdom.init.ModEntities;
 import com.google.common.collect.ImmutableMap;
 
+import net.minecraft.client.renderer.entity.BipedRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.layers.BipedArmorLayer;
 import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.renderer.entity.model.PiglinModel;
@@ -22,7 +22,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 //import net.minecraft.client.renderer.entity.PiglinRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class PiglinBeserkerRenderer extends MobRenderer<PiglinBeserkerEntity, PiglinModel<PiglinBeserkerEntity>>
+public class PiglinBeserkerRenderer extends BipedRenderer<PiglinBeserkerEntity, PiglinModel<PiglinBeserkerEntity>>
 {
 	//private static final ResourceLocation TEXTURE = new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "textures/entity/piglin_beserker.png");
 	   private static final Map<EntityType<?>, ResourceLocation> resourceLocations = ImmutableMap.of(ModEntities.PIGLIN_BESERKER_ENTITY.get(), new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "textures/entity/piglin_beserker.png"), EntityType.ZOMBIFIED_PIGLIN, new ResourceLocation("textures/entity/piglin/zombified_piglin.png"));
@@ -31,7 +31,7 @@ public class PiglinBeserkerRenderer extends MobRenderer<PiglinBeserkerEntity, Pi
 	
 	public PiglinBeserkerRenderer(EntityRendererManager rendererManager) 
 	{
-		super(rendererManager, new PiglinModel<PiglinBeserkerEntity>(0.0F, 64, 64), 0.0F);
+		super(rendererManager, new PiglinModel<PiglinBeserkerEntity>(0.0F, 64, 64), 0.5F);
 		this.addLayer(new BipedArmorLayer<>(this, new BipedModel<PiglinBeserkerEntity>(1.02F), new BipedModel<PiglinBeserkerEntity>(1.02F)));
 	}
 	

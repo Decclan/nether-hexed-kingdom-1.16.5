@@ -2,8 +2,6 @@ package com.deimoshexxus.netherhexedkingdom.entities;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 
@@ -21,8 +19,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.EntityPredicates;
-import net.minecraft.util.RangedInteger;
-import net.minecraft.util.TickRangeConverter;
 import net.minecraft.world.GameRules;
 
 public class PiglinPublicTasks extends PiglinTasks{
