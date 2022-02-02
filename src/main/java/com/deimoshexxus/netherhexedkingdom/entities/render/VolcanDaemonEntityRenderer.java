@@ -32,13 +32,13 @@ public class VolcanDaemonEntityRenderer extends MobRenderer <VolcanDaemon, Phant
 		return TEXTURE;
 	}
 
-	protected void scale(VolcanDaemon p_225620_1_, MatrixStack p_225620_2_, float p_225620_3_) 
-	{
-		int i = p_225620_1_.getPhantomSize();
-		float f = 1.0F + 0.15F * (float)i;
-		p_225620_2_.scale(f, f, f);
-		p_225620_2_.translate(0.0D, 1.3125D, 0.1875D);
-	}
+//	protected void scale(VolcanDaemon p_225620_1_, MatrixStack p_225620_2_, float p_225620_3_) 
+//	{
+//		int i = p_225620_1_.getPhantomSize();
+//		float f = 1.0F + 0.15F * (float)i;
+//		p_225620_2_.scale(f, f, f);
+//		p_225620_2_.translate(0.0D, 1.3125D, 0.1875D);
+//	}
 
    protected void setupRotations(VolcanDaemon p_225621_1_, MatrixStack p_225621_2_, float p_225621_3_, float p_225621_4_, float p_225621_5_) 
    {

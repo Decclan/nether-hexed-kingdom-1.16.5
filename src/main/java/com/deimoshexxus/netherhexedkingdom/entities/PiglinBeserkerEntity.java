@@ -34,6 +34,9 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+//import net.minecraft.entity.monster.piglin.PiglinEntity;
+//import net.minecraft.entity.monster.piglin.PiglinBruteEntity;
+
 public class PiglinBeserkerEntity extends AbstractPiglinEntity
 {
 	protected static final ImmutableList<SensorType<? extends Sensor<? super PiglinBeserkerEntity>>> SENSOR_TYPES = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.NEAREST_ITEMS, SensorType.HURT_BY, SensorType.PIGLIN_BRUTE_SPECIFIC_SENSOR);
@@ -48,7 +51,9 @@ public class PiglinBeserkerEntity extends AbstractPiglinEntity
 	
 	public static AttributeModifierMap.MutableAttribute createAttributes() 
 	{
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, 70.0D).add(Attributes.MOVEMENT_SPEED, (double)0.38F).add(Attributes.ATTACK_DAMAGE, 8.0D);
+		return MonsterEntity.createMonsterAttributes().add(Attributes.MAX_HEALTH, 70.0D)
+				.add(Attributes.MOVEMENT_SPEED, (double)0.38F)
+				.add(Attributes.ATTACK_DAMAGE, 8.0D);
 	}
 
 	   @Nullable
@@ -67,7 +72,7 @@ public class PiglinBeserkerEntity extends AbstractPiglinEntity
 				this.setItemSlot(EquipmentSlotType.OFFHAND, new ItemStack(Items.GOLDEN_SWORD));
 			} else if (chance <= 3)
 			{
-				this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.STONE_SWORD));
+				this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.GOLDEN_SWORD));
 			} else {
 				this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.GOLDEN_AXE));
 			}
@@ -77,11 +82,12 @@ public class PiglinBeserkerEntity extends AbstractPiglinEntity
 			}
 			if (chance >= 7)
 			{
-				this.setItemSlot(EquipmentSlotType.HEAD, new ItemStack(Items.GOLDEN_HELMET));
+				//this.setItemSlot(EquipmentSlotType.HEAD, new ItemStack(Items.GOLDEN_HELMET));
+				this.setItemSlot(EquipmentSlotType.CHEST, new ItemStack(Items.GOLDEN_CHESTPLATE));
+				this.setItemSlot(EquipmentSlotType.LEGS, new ItemStack(Items.GOLDEN_LEGGINGS));
+				this.setItemSlot(EquipmentSlotType.FEET, new ItemStack(Items.GOLDEN_BOOTS));
 			}
-			this.setItemSlot(EquipmentSlotType.CHEST, new ItemStack(Items.GOLDEN_CHESTPLATE));
-			this.setItemSlot(EquipmentSlotType.LEGS, new ItemStack(Items.GOLDEN_LEGGINGS));
-			this.setItemSlot(EquipmentSlotType.FEET, new ItemStack(Items.GOLDEN_BOOTS));
+
 	   }
 	   
 	   protected Brain.BrainCodec<PiglinBeserkerEntity> brainProvider() {
@@ -92,7 +98,8 @@ public class PiglinBeserkerEntity extends AbstractPiglinEntity
 		      return PiglinBeserkerBrain.makeBrain(this, this.brainProvider().makeBrain(p_213364_1_));
 		   }
 
-		   public Brain<PiglinBeserkerEntity> getBrain() {
+		   @SuppressWarnings("unchecked")
+		public Brain<PiglinBeserkerEntity> getBrain() {
 		      return (Brain<PiglinBeserkerEntity>)super.getBrain();
 		   }
 

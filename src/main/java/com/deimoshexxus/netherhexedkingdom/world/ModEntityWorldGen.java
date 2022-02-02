@@ -58,6 +58,8 @@ public class ModEntityWorldGen
 					Biomes.SOUL_SAND_VALLEY);
 		}
 		
+		specificNetherBiomes(event, ModEntities.PIGLIN_BESERKER_ENTITY.get(), 6, 1, 3, Biomes.CRIMSON_FOREST); 
+		
 		//specificNetherBiomes(event, EntityType.SKELETON_HORSE, 100, 1, 3, Biomes.NETHER_WASTES); 
 		//creature class entities don't spawn in nether, needs to be a monster
 			

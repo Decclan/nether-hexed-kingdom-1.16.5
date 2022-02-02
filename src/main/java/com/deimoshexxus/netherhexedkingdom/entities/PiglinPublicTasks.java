@@ -63,12 +63,12 @@ public class PiglinPublicTasks extends PiglinTasks{
 	   private static Optional<LivingEntity> getAngerTarget(AbstractPiglinEntity p_234532_0_) {
 		      return BrainUtil.getLivingEntityFromUUIDMemory(p_234532_0_, MemoryModuleType.ANGRY_AT);
 		   }
-	   private static void setAngerTargetToNearestTargetablePlayerIfFound(AbstractPiglinEntity p_241431_0_, LivingEntity p_241431_1_) {
-		      Optional<PlayerEntity> optional = getNearestVisibleTargetablePlayer(p_241431_0_);
+	   private static void setAngerTargetToNearestTargetablePlayerIfFound(AbstractPiglinEntity abstractEntity, LivingEntity livingEntity) {
+		      Optional<PlayerEntity> optional = getNearestVisibleTargetablePlayer(abstractEntity);
 		      if (optional.isPresent()) {
-		         setAngerTarget(p_241431_0_, optional.get());
+		         setAngerTarget(abstractEntity, optional.get());
 		      } else {
-		         setAngerTarget(p_241431_0_, p_241431_1_);
+		         setAngerTarget(abstractEntity, livingEntity);
 		      }
 
 		   }
@@ -85,18 +85,17 @@ public class PiglinPublicTasks extends PiglinTasks{
 		      return false;
 		   }
 	   
-	   protected static void setAngerTarget(AbstractPiglinEntity p_234497_0_, LivingEntity p_234497_1_) {
-		      if (isAttackAllowed(p_234497_1_)) {
-		         p_234497_0_.getBrain().eraseMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
-		         p_234497_0_.getBrain().setMemoryWithExpiry(MemoryModuleType.ANGRY_AT, p_234497_1_.getUUID(), 600L);
-		         if (p_234497_1_.getType() == EntityType.HOGLIN ) {
-		            dontKillAnyMoreHoglinsForAWhile(p_234497_0_);
+	   protected static void setAngerTarget(AbstractPiglinEntity abstractEntity, LivingEntity livingEntity) {
+		      if (isAttackAllowed(livingEntity)) {
+		         abstractEntity.getBrain().eraseMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
+		         abstractEntity.getBrain().setMemoryWithExpiry(MemoryModuleType.ANGRY_AT, livingEntity.getUUID(), 600L);
+		         if (livingEntity.getType() == EntityType.HOGLIN ) {
+		            dontKillAnyMoreHoglinsForAWhile(abstractEntity);
 		         }
 
-		         if (p_234497_1_.getType() == EntityType.PLAYER && p_234497_0_.level.getGameRules().getBoolean(GameRules.RULE_UNIVERSAL_ANGER)) {
-		            p_234497_0_.getBrain().setMemoryWithExpiry(MemoryModuleType.UNIVERSAL_ANGER, true, 600L);
+		         if (livingEntity.getType() == EntityType.PLAYER && abstractEntity.level.getGameRules().getBoolean(GameRules.RULE_UNIVERSAL_ANGER)) {
+		            abstractEntity.getBrain().setMemoryWithExpiry(MemoryModuleType.UNIVERSAL_ANGER, true, 600L);
 		         }
-
 		      }
 		   }
 	   

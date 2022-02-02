@@ -14,8 +14,8 @@ import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.monster.PhantomEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FireballEntity;
 import net.minecraft.nbt.CompoundNBT;
@@ -34,20 +34,26 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-//import net.minecraft.entity.monster.GhastEntity;
+import net.minecraft.entity.monster.GhastEntity;
+//import net.minecraft.entity.monster.PhantomEntity;
 //import net.minecraft.entity.projectile.WitherSkullEntity;
 //import net.minecraft.entity.projectile.;
 
-public class VolcanDaemon extends PhantomEntity 
+public class VolcanDaemon extends GhastEntity 
 {
 	private static final DataParameter<Boolean> DATA_IS_CHARGING = EntityDataManager.defineId(VolcanDaemon.class, DataSerializers.BOOLEAN);
 	private BlockPos anchorPoint = BlockPos.ZERO;
 	private int explosionPower = 2;
 
-	public VolcanDaemon(EntityType<? extends PhantomEntity> type, World world) 
+	public VolcanDaemon(EntityType<? extends GhastEntity> type, World world) 
 	{
 		super(type, world);
+//	    this.goalSelector.addGoal(5, new VolcanDaemon.RandomFlyGoal(this));
+//	    this.goalSelector.addGoal(7, new VolcanDaemon.LookAroundGoal(this));
 		this.goalSelector.addGoal(7, new VolcanDaemon.FireballAttackGoal(this));
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, 16, true, false, (p_213812_1_) -> {
+			return Math.abs(p_213812_1_.getY() - this.getY()) <= 4.0D;
+		}));
 	}
 	
    public CreatureAttribute getMobType() 
@@ -169,7 +175,7 @@ public class VolcanDaemon extends PhantomEntity
 		         this.anchorPoint = new BlockPos(p_70037_1_.getInt("AX"), p_70037_1_.getInt("AY"), p_70037_1_.getInt("AZ"));
 		      }
 
-		      this.setPhantomSize(p_70037_1_.getInt("Size"));
+		      //this.setPhantomSize(p_70037_1_.getInt("Size"));
 		   }
 
 		   public void addAdditionalSaveData(CompoundNBT p_213281_1_) 
@@ -178,7 +184,7 @@ public class VolcanDaemon extends PhantomEntity
 		      p_213281_1_.putInt("AX", this.anchorPoint.getX());
 		      p_213281_1_.putInt("AY", this.anchorPoint.getY());
 		      p_213281_1_.putInt("AZ", this.anchorPoint.getZ());
-		      p_213281_1_.putInt("Size", this.getPhantomSize());
+		      //p_213281_1_.putInt("Size", this.getPhantomSize());
 		   }
    
 

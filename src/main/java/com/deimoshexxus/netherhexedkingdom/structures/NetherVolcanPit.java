@@ -45,7 +45,7 @@ public class NetherVolcanPit extends Structure<NoFeatureConfig> {
 
     @Override
     public GenerationStage.Decoration step() {
-        return GenerationStage.Decoration.UNDERGROUND_STRUCTURES;
+        return GenerationStage.Decoration.UNDERGROUND_DECORATION;
     }
 
 
@@ -82,80 +82,72 @@ public class NetherVolcanPit extends Structure<NoFeatureConfig> {
             int x = (chunkX << 4) + 7;
             int z = (chunkZ << 4) + 7;
 
-            int netherGenDepth = 127;
-            int netherSeaLevel = 32;
-            int heightLimit = 90;
-            
-            //int netherSeaLevel = chunkGenerator.getSeaLevel();  //overworld sea level value 63
-            int y = netherSeaLevel + this.random.nextInt(netherGenDepth - 2 - netherSeaLevel);
-            
+            int sl = chunkGenerator.getSeaLevel();
+            int y = sl + this.random.nextInt(chunkGenerator.getGenDepth() - 2 - sl);
+
             BlockPos blockpos = new BlockPos(x, y, z);
 
             IBlockReader blockReader = chunkGenerator.getBaseColumn(blockpos.getX(), blockpos.getZ());
 
-            for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > netherSeaLevel + 40 + this.random.nextInt(netherGenDepth - 36 - netherSeaLevel); --y) {
-
-            	//BlockPos basaltblockpos = (blockpos$mutable.getX() + 32, blockpos$mutable.getY(),blockpos$mutable.getZ() + 32);
+            for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl; --y) {
+//            	if (y > chunkGenerator.getGenDepth() - sl - 2)
+//                {
+//            		continue;
+//                }
             	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
                 blockpos$mutable.move(Direction.DOWN);
                 BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
+                //BlockState northbasalt = blockReader.getBlockState(blockpos$mutable);
+                //blockpos$mutable.move(Direction.NORTH);
+                //BlockState southbasalt = blockReader.getBlockState(blockpos$mutable);
+                //blockpos$mutable.move(Direction.SOUTH);
+                //BlockState eastbasalt = blockReader.getBlockState(blockpos$mutable);
+                //blockpos$mutable.move(Direction.EAST);
+                //BlockState westbasalt = blockReader.getBlockState(blockpos$mutable);
+                //blockpos$mutable.move(Direction.WEST);
                 
-                if (y < netherGenDepth - netherSeaLevel - 36) //gen depth in 256 (overworld) nether only 127
-                {
-                	continue;
-                }
-                if (y > heightLimit)
-                {
-            		continue;
-                }
-//                BlockState basaltblockstate = blockReader.getBlockState(basaltblockpos);
-//                if (basaltblockstate.is(Blocks.BASALT) && (blockstate.is(Blocks.BASALT)))
-//        		{
-//                	continue;
-//        		}
-
 //                if (this.getBoundingBox().intersects(getBoundingBox()))
 //                {
 //                	break;
 //                }
-                //|| blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP)
+                if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) { // && (blockstate1.is(Blocks.BASALT))
+                   break;
+                }
+                if (!blockstate1.is(Blocks.BASALT))
+                {
+                    continue;
+                }
+             }  
 //                if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.BASALT) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) {
 //                    break;
 //                }
-//                if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND) )) {
-//                   break;
-//                }
-                
-                //
-                
-                if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.BASALT) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) {
-                    break;
-                }
+//            }
+            if (y > 60 && y < 90)
+            {
+	            JigsawManager.addPieces(
+	                    dynamicRegistryManager,
+	                    new VillageConfig(() -> dynamicRegistryManager.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY)
+	
+	                            .get(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "hexed_volcan_pit/start_pool")),
+	                            10),
+	                    AbstractVillagePiece::new,
+	                    chunkGenerator,
+	                    templateManagerIn,
+	                    new BlockPos(x, y, z),
+	                    this.pieces,
+	                    this.random,
+	                    false,
+	                    false);
+	
+	            this.pieces.forEach(piece -> piece.move(0, -1, 0));
+	            this.pieces.forEach(piece -> piece.getBoundingBox().y0 -= 1);
+	            this.calculateBoundingBox();
+	
+	            NetherHexedKingdomMain.LOGGER.log(Level.DEBUG, "Volcan Pit at " +
+	                            this.pieces.get(0).getBoundingBox().x0 + " " +
+	                            this.pieces.get(0).getBoundingBox().y0 + " " +
+	                            this.pieces.get(0).getBoundingBox().z0);
             }
-            
-            JigsawManager.addPieces(
-                    dynamicRegistryManager,
-                    new VillageConfig(() -> dynamicRegistryManager.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY)
-
-                            .get(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "hexed_volcan_pit/start_pool")),
-                            10),
-                    AbstractVillagePiece::new,
-                    chunkGenerator,
-                    templateManagerIn,
-                    new BlockPos(x, y, z),
-                    this.pieces,
-                    this.random,
-                    false,
-                    false);
-
-            this.pieces.forEach(piece -> piece.move(0, -1, 0));
-            this.pieces.forEach(piece -> piece.getBoundingBox().y0 -= 1);
-            this.calculateBoundingBox();
-
-            NetherHexedKingdomMain.LOGGER.log(Level.DEBUG, "Volcan Pit at " +
-                            this.pieces.get(0).getBoundingBox().x0 + " " +
-                            this.pieces.get(0).getBoundingBox().y0 + " " +
-                            this.pieces.get(0).getBoundingBox().z0);
         }
     }
 }
