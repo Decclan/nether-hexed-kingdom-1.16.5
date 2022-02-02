@@ -5,6 +5,7 @@ import com.deimoshexxus.netherhexedkingdom.entities.HexanGuardMeleeEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.HexanGuardRangedEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.HexedUndeadRiderEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.PiglinBeserkerEntity;
+import com.deimoshexxus.netherhexedkingdom.entities.PiglinChieftonEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.VolcanDaemon;
 import com.deimoshexxus.netherhexedkingdom.entities.HexedUndeadHorseEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.HexanGuardEntity;
@@ -70,9 +71,12 @@ public class ModEntities
 			() -> EntityType.Builder.<HexedUndeadRiderEntity>of(HexedUndeadRiderEntity::new, EntityClassification.MONSTER).sized(1.41F, 1.7F).clientTrackingRange(10).
 			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "hexed_undead_horse_rider").toString()));
 	
-
 	public static final RegistryObject<EntityType<PiglinBeserkerEntity>> PIGLIN_BESERKER_ENTITY = Registration.ENTITY_TYPES.register("piglin_beserker_entity", 
 			() -> EntityType.Builder.<PiglinBeserkerEntity>of(PiglinBeserkerEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).
+			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "piglin_beserker_entity").toString()));
+
+	public static final RegistryObject<EntityType<PiglinChieftonEntity>> PIGLIN_CHIEFTON_ENTITY = Registration.ENTITY_TYPES.register("piglin_chiefton_entity", 
+			() -> EntityType.Builder.<PiglinChieftonEntity>of(PiglinChieftonEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).
 			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "piglin_beserker_entity").toString()));
 
 //	public static final RegistryObject<EntityType<SkeletonEntity>> SKELETON = register("skeleton", 
@@ -94,6 +98,7 @@ public class ModEntities
 		event.put(ModEntities.UNDEAD_HORSE.get(), HexedUndeadHorseEntity.createAttributes().build());
 		event.put(ModEntities.UNDEAD_HORSE_RIDER.get(), HexedUndeadRiderEntity.createAttributes().build());
 		event.put(ModEntities.PIGLIN_BESERKER_ENTITY.get(), PiglinBeserkerEntity.createAttributes().build());
+		event.put(ModEntities.PIGLIN_CHIEFTON_ENTITY.get(), PiglinChieftonEntity.createAttributes().build());
 	}
 	
 	public static void registerEntitySpawns()
@@ -137,6 +142,11 @@ public class ModEntities
 		EntitySpawnPlacementRegistry.register(ModEntities.PIGLIN_BESERKER_ENTITY.get(),
 				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
 				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PiglinBeserkerEntity::checkAnyLightMonsterSpawnRules);
+	
+		EntitySpawnPlacementRegistry.register(ModEntities.PIGLIN_CHIEFTON_ENTITY.get(),
+				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PiglinChieftonEntity::checkAnyLightMonsterSpawnRules);
+
 	}
 	
 	static void register() {}

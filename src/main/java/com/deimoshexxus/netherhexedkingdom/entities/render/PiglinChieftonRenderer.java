@@ -3,7 +3,7 @@ package com.deimoshexxus.netherhexedkingdom.entities.render;
 import java.util.Map;
 
 import com.deimoshexxus.netherhexedkingdom.NetherHexedKingdomMain;
-import com.deimoshexxus.netherhexedkingdom.entities.PiglinBeserkerEntity;
+import com.deimoshexxus.netherhexedkingdom.entities.PiglinChieftonEntity;
 import com.deimoshexxus.netherhexedkingdom.init.ModEntities;
 import com.google.common.collect.ImmutableMap;
 
@@ -21,21 +21,21 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 //import net.minecraft.client.renderer.entity.PiglinRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class PiglinBeserkerRenderer extends BipedRenderer<PiglinBeserkerEntity, PiglinModel<PiglinBeserkerEntity>>
+public class PiglinChieftonRenderer extends BipedRenderer<PiglinChieftonEntity, PiglinModel<PiglinChieftonEntity>>
 {
 	//private static final ResourceLocation TEXTURE = new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "textures/entity/piglin_beserker.png");
-	   private static final Map<EntityType<?>, ResourceLocation> resourceLocations = ImmutableMap.of(ModEntities.PIGLIN_BESERKER_ENTITY.get(), new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "textures/entity/piglin_beserker.png"), EntityType.ZOMBIFIED_PIGLIN, new ResourceLocation("textures/entity/piglin/zombified_piglin.png"));
+	   private static final Map<EntityType<?>, ResourceLocation> resourceLocations = ImmutableMap.of(ModEntities.PIGLIN_CHIEFTON_ENTITY.get(), new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "textures/entity/piglin_chiefton.png"), EntityType.ZOMBIFIED_PIGLIN, new ResourceLocation("textures/entity/piglin/zombified_piglin.png"));
 
 	
 	
-	public PiglinBeserkerRenderer(EntityRendererManager rendererManager) 
+	public PiglinChieftonRenderer(EntityRendererManager rendererManager) 
 	{
-		super(rendererManager, new PiglinModel<PiglinBeserkerEntity>(0.0F, 64, 64), 0.5F);
-		this.addLayer(new BipedArmorLayer<>(this, new BipedModel<PiglinBeserkerEntity>(1.02F), new BipedModel<PiglinBeserkerEntity>(1.02F)));
+		super(rendererManager, new PiglinModel<PiglinChieftonEntity>(0.0F, 64, 64), 0.5F);
+		this.addLayer(new BipedArmorLayer<>(this, new BipedModel<PiglinChieftonEntity>(1.02F), new BipedModel<PiglinChieftonEntity>(1.02F)));
 	}
 	
 	@Override
-	public ResourceLocation getTextureLocation(PiglinBeserkerEntity entity) 
+	public ResourceLocation getTextureLocation(PiglinChieftonEntity entity) 
 	{
 	      ResourceLocation resourcelocation = resourceLocations.get(entity.getType());
 	      if (resourcelocation == null) {
@@ -45,7 +45,7 @@ public class PiglinBeserkerRenderer extends BipedRenderer<PiglinBeserkerEntity, 
 	      }
 	}
 	
-	protected boolean isShaking(PiglinBeserkerEntity p_230495_1_) {
+	protected boolean isShaking(PiglinChieftonEntity p_230495_1_) {
 		return p_230495_1_ instanceof AbstractPiglinEntity && ((AbstractPiglinEntity)p_230495_1_).isConverting();
 	}
 }

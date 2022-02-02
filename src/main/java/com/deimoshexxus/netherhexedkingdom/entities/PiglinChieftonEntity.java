@@ -37,13 +37,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 //import net.minecraft.entity.monster.piglin.PiglinEntity;
 //import net.minecraft.entity.monster.piglin.PiglinBruteEntity;
 
-public class PiglinBeserkerEntity extends AbstractPiglinEntity
+public class PiglinChieftonEntity extends AbstractPiglinEntity
 {
-	protected static final ImmutableList<SensorType<? extends Sensor<? super PiglinBeserkerEntity>>> SENSOR_TYPES = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.NEAREST_ITEMS, SensorType.HURT_BY, SensorType.PIGLIN_BRUTE_SPECIFIC_SENSOR);
+	protected static final ImmutableList<SensorType<? extends Sensor<? super PiglinChieftonEntity>>> SENSOR_TYPES = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.NEAREST_ITEMS, SensorType.HURT_BY, SensorType.PIGLIN_BRUTE_SPECIFIC_SENSOR);
 	protected static final ImmutableList<MemoryModuleType<?>> MEMORY_TYPES = ImmutableList.of(MemoryModuleType.LOOK_TARGET, MemoryModuleType.DOORS_TO_CLOSE, MemoryModuleType.LIVING_ENTITIES, MemoryModuleType.VISIBLE_LIVING_ENTITIES, MemoryModuleType.NEAREST_VISIBLE_PLAYER, MemoryModuleType.NEAREST_VISIBLE_TARGETABLE_PLAYER, MemoryModuleType.NEAREST_VISIBLE_ADULT_PIGLINS, MemoryModuleType.NEARBY_ADULT_PIGLINS, MemoryModuleType.HURT_BY, MemoryModuleType.HURT_BY_ENTITY, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.ATTACK_TARGET, MemoryModuleType.ATTACK_COOLING_DOWN, MemoryModuleType.INTERACTION_TARGET, MemoryModuleType.PATH, MemoryModuleType.ANGRY_AT, MemoryModuleType.NEAREST_VISIBLE_NEMESIS, MemoryModuleType.HOME);
 
 
-	public PiglinBeserkerEntity(EntityType<? extends AbstractPiglinEntity> type, World worldIn) 
+	public PiglinChieftonEntity(EntityType<? extends AbstractPiglinEntity> type, World worldIn) 
 	{
 		super(type, worldIn);
 		this.xpReward = 30;
@@ -58,7 +58,7 @@ public class PiglinBeserkerEntity extends AbstractPiglinEntity
 
 	   @Nullable
 	   public ILivingEntityData finalizeSpawn(IServerWorld p_213386_1_, DifficultyInstance p_213386_2_, SpawnReason p_213386_3_, @Nullable ILivingEntityData p_213386_4_, @Nullable CompoundNBT p_213386_5_) {
-	      PiglinBeserkerBrain.initMemories(this);
+	      PiglinChieftonBrain.initMemories(this);
 	      this.populateDefaultEquipmentSlots(p_213386_2_);
 	      return super.finalizeSpawn(p_213386_1_, p_213386_2_, p_213386_3_, p_213386_4_, p_213386_5_);
 	   }
@@ -68,8 +68,7 @@ public class PiglinBeserkerEntity extends AbstractPiglinEntity
 			int chance = 1 + (int) (Math.random() * 10);
 			if (chance >= 8)
 			{
-				this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.GOLDEN_SWORD));
-				this.setItemSlot(EquipmentSlotType.OFFHAND, new ItemStack(Items.GOLDEN_SWORD));
+				this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.CROSSBOW));
 			} else if (chance <= 3)
 			{
 				this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.GOLDEN_SWORD));
@@ -82,25 +81,26 @@ public class PiglinBeserkerEntity extends AbstractPiglinEntity
 			}
 			if (chance >= 7)
 			{
-				//this.setItemSlot(EquipmentSlotType.HEAD, new ItemStack(Items.GOLDEN_HELMET));
-				this.setItemSlot(EquipmentSlotType.CHEST, new ItemStack(Items.GOLDEN_CHESTPLATE));
+				
+				this.setItemSlot(EquipmentSlotType.CHEST, new ItemStack(Items.LEATHER_CHESTPLATE));
 //				this.setItemSlot(EquipmentSlotType.LEGS, new ItemStack(Items.GOLDEN_LEGGINGS));
 //				this.setItemSlot(EquipmentSlotType.FEET, new ItemStack(Items.GOLDEN_BOOTS));
 			}
+			
 
 	   }
 	   
-	   protected Brain.BrainCodec<PiglinBeserkerEntity> brainProvider() {
+	   protected Brain.BrainCodec<PiglinChieftonEntity> brainProvider() {
 		      return Brain.provider(MEMORY_TYPES, SENSOR_TYPES);
 		   }
 
 		   protected Brain<?> makeBrain(Dynamic<?> p_213364_1_) {
-		      return PiglinBeserkerBrain.makeBrain(this, this.brainProvider().makeBrain(p_213364_1_));
+		      return PiglinChieftonBrain.makeBrain(this, this.brainProvider().makeBrain(p_213364_1_));
 		   }
 
 		   @SuppressWarnings("unchecked")
-		public Brain<PiglinBeserkerEntity> getBrain() {
-		      return (Brain<PiglinBeserkerEntity>)super.getBrain();
+		public Brain<PiglinChieftonEntity> getBrain() {
+		      return (Brain<PiglinChieftonEntity>)super.getBrain();
 		   }
 
 		   public boolean canHunt() {
@@ -112,11 +112,11 @@ public class PiglinBeserkerEntity extends AbstractPiglinEntity
 		   }
 
 		   protected void customServerAiStep() {
-		      this.level.getProfiler().push("PiglinBeserkerBrain");
+		      this.level.getProfiler().push("PiglinChieftonBrain");
 		      this.getBrain().tick((ServerWorld)this.level, this);
 		      this.level.getProfiler().pop();
-		      PiglinBeserkerBrain.updateActivity(this);
-		      PiglinBeserkerBrain.maybePlayActivitySound(this);
+		      PiglinChieftonBrain.updateActivity(this);
+		      PiglinChieftonBrain.maybePlayActivitySound(this);
 		      super.customServerAiStep();
 		   }
 
@@ -131,7 +131,7 @@ public class PiglinBeserkerEntity extends AbstractPiglinEntity
 		         return false;
 		      } else {
 		         if (flag && p_70097_1_.getEntity() instanceof LivingEntity) {
-		            PiglinBeserkerBrain.wasHurtBy(this, (LivingEntity)p_70097_1_.getEntity());
+		            PiglinChieftonBrain.wasHurtBy(this, (LivingEntity)p_70097_1_.getEntity());
 		         }
 
 		         return flag;
