@@ -36,8 +36,8 @@ import net.minecraft.util.math.GlobalPos;
 //import net.minecraft.entity.monster.piglin.PiglinTasks;
 //import net.minecraft.entity.monster.piglin.PiglinEntity;
 
-public class PiglinChieftonBrain {
-   protected static Brain<?> makeBrain(PiglinChieftonEntity p_242354_0_, Brain<PiglinChieftonEntity> p_242354_1_) {
+public class PiglinPrisonerBrain {
+   protected static Brain<?> makeBrain(PiglinPrisonerEntity p_242354_0_, Brain<PiglinPrisonerEntity> p_242354_1_) {
       initCoreActivity(p_242354_0_, p_242354_1_);
       initIdleActivity(p_242354_0_, p_242354_1_);
       initFightActivity(p_242354_0_, p_242354_1_);
@@ -47,17 +47,17 @@ public class PiglinChieftonBrain {
       return p_242354_1_;
    }
 
-   protected static void initMemories(PiglinChieftonEntity p_242352_0_) {
+   protected static void initMemories(PiglinPrisonerEntity p_242352_0_) {
       GlobalPos globalpos = GlobalPos.of(p_242352_0_.level.dimension(), p_242352_0_.blockPosition());
       p_242352_0_.getBrain().setMemory(MemoryModuleType.HOME, globalpos);
    }
 
-   private static void initCoreActivity(PiglinChieftonEntity p_242359_0_, Brain<PiglinChieftonEntity> p_242359_1_) {
+   private static void initCoreActivity(PiglinPrisonerEntity p_242359_0_, Brain<PiglinPrisonerEntity> p_242359_1_) {
       p_242359_1_.addActivity(Activity.CORE, 0, ImmutableList.of(new LookTask(45, 90), new WalkToTargetTask(), new InteractWithDoorTask(), new GetAngryTask<>()));
    }
 
-   private static void initIdleActivity(PiglinChieftonEntity p_242362_0_, Brain<PiglinChieftonEntity> p_242362_1_) {
-      p_242362_1_.addActivity(Activity.IDLE, 10, ImmutableList.of(new ForgetAttackTargetTask<>(PiglinChieftonBrain::findNearestValidAttackTarget), createIdleLookBehaviors(), createIdleMovementBehaviors(), new FindInteractionAndLookTargetTask(EntityType.PLAYER, 4)));
+   private static void initIdleActivity(PiglinPrisonerEntity p_242362_0_, Brain<PiglinPrisonerEntity> p_242362_1_) {
+      p_242362_1_.addActivity(Activity.IDLE, 10, ImmutableList.of(new ForgetAttackTargetTask<>(PiglinPrisonerBrain::findNearestValidAttackTarget), createIdleLookBehaviors(), createIdleMovementBehaviors(), new FindInteractionAndLookTargetTask(EntityType.PLAYER, 4)));
    }
 
 //   private static void initFightActivity(PiglinChieftonEntity p_242364_0_, Brain<PiglinChieftonEntity> p_242364_1_) {
@@ -67,22 +67,22 @@ public class PiglinChieftonBrain {
 //   }
 
 
-   private static void initFightActivity(PiglinChieftonEntity p_234488_0_, Brain<PiglinChieftonEntity> p_234488_1_) {
-	      p_234488_1_.addActivityAndRemoveMemoryWhenStopped(Activity.FIGHT, 10, ImmutableList.<net.minecraft.entity.ai.brain.task.Task<? super PiglinChieftonEntity>>of(new FindNewAttackTargetTask<>((p_234523_1_) -> {
+   private static void initFightActivity(PiglinPrisonerEntity p_234488_0_, Brain<PiglinPrisonerEntity> p_234488_1_) {
+	      p_234488_1_.addActivityAndRemoveMemoryWhenStopped(Activity.FIGHT, 10, ImmutableList.<net.minecraft.entity.ai.brain.task.Task<? super PiglinPrisonerEntity>>of(new FindNewAttackTargetTask<>((p_234523_1_) -> {
 	         return !isNearestValidAttackTarget(p_234488_0_, p_234523_1_);																						//new ShootTargetTask(), new FinishedHuntTask(),							
-	      }), new SupplementedTask<>(PiglinChieftonBrain::hasCrossbow, new AttackStrafingTask<>(5, 0.75F)), new MoveToTargetTask(1.0F), new AttackTargetTask(20),  new PredicateTask<>(PiglinChieftonBrain::isNearZombified, MemoryModuleType.ATTACK_TARGET)), MemoryModuleType.ATTACK_TARGET);
+	      }), new SupplementedTask<>(PiglinPrisonerBrain::hasCrossbow, new AttackStrafingTask<>(5, 0.75F)), new MoveToTargetTask(1.0F), new AttackTargetTask(20),  new PredicateTask<>(PiglinPrisonerBrain::isNearZombified, MemoryModuleType.ATTACK_TARGET)), MemoryModuleType.ATTACK_TARGET);
 	   }
    
-   private static FirstShuffledTask<PiglinChieftonEntity> createIdleLookBehaviors() {
+   private static FirstShuffledTask<PiglinPrisonerEntity> createIdleLookBehaviors() {
       return new FirstShuffledTask<>(ImmutableList.of(Pair.of(new LookAtEntityTask(EntityType.PLAYER, 8.0F), 1), Pair.of(new LookAtEntityTask(EntityType.PIGLIN, 8.0F), 1), Pair.of(new LookAtEntityTask(EntityType.PIGLIN_BRUTE, 8.0F), 1), Pair.of(new LookAtEntityTask(8.0F), 1), Pair.of(new DummyTask(30, 60), 1)));
    }
 
-   private static FirstShuffledTask<PiglinChieftonEntity> createIdleMovementBehaviors() {
+   private static FirstShuffledTask<PiglinPrisonerEntity> createIdleMovementBehaviors() {
       return new FirstShuffledTask<>(ImmutableList.of(Pair.of(new WalkRandomlyTask(0.6F), 2), Pair.of(InteractWithEntityTask.of(EntityType.PIGLIN, 8, MemoryModuleType.INTERACTION_TARGET, 0.6F, 2), 2), Pair.of(InteractWithEntityTask.of(EntityType.PIGLIN_BRUTE, 8, MemoryModuleType.INTERACTION_TARGET, 0.6F, 2), 2), Pair.of(new WalkTowardsPosTask(MemoryModuleType.HOME, 0.6F, 2, 100), 2), Pair.of(new WorkTask(MemoryModuleType.HOME, 0.6F, 5), 2), Pair.of(new DummyTask(30, 60), 1)));
    }
 
-   protected static void updateActivity(PiglinChieftonEntity p_242358_0_) {
-      Brain<PiglinChieftonEntity> brain = p_242358_0_.getBrain();
+   protected static void updateActivity(PiglinPrisonerEntity p_242358_0_) {
+      Brain<PiglinPrisonerEntity> brain = p_242358_0_.getBrain();
       Activity activity = brain.getActiveNonCoreActivity().orElse((Activity)null);
       brain.setActiveActivityToFirstValid(ImmutableList.of(Activity.FIGHT, Activity.IDLE));
       Activity activity1 = brain.getActiveNonCoreActivity().orElse((Activity)null);
@@ -123,20 +123,20 @@ public class PiglinChieftonBrain {
 
 
    
-   protected static void wasHurtBy(PiglinChieftonEntity p_242353_0_, LivingEntity p_242353_1_) {
+   protected static void wasHurtBy(PiglinPrisonerEntity p_242353_0_, LivingEntity p_242353_1_) {
       if (!(p_242353_1_ instanceof AbstractPiglinEntity)) {
          PiglinPublicTasks.maybeRetaliate(p_242353_0_, p_242353_1_);
       }
    }
 
-   protected static void maybePlayActivitySound(PiglinChieftonEntity p_242360_0_) {
+   protected static void maybePlayActivitySound(PiglinPrisonerEntity p_242360_0_) {
       if ((double)p_242360_0_.level.random.nextFloat() < 0.0125D) {
          playActivitySound(p_242360_0_);
       }
 
    }
 
-   private static void playActivitySound(PiglinChieftonEntity p_242363_0_) {
+   private static void playActivitySound(PiglinPrisonerEntity p_242363_0_) {
       p_242363_0_.getBrain().getActiveNonCoreActivity().ifPresent((p_242355_1_) -> {
          if (p_242355_1_ == Activity.FIGHT) {
             p_242363_0_.playAngrySound();
@@ -148,8 +148,8 @@ public class PiglinChieftonBrain {
 	      return p_234494_0_.isHolding(item -> item instanceof net.minecraft.item.CrossbowItem);
 	   }
    
-   private static boolean isNearZombified(PiglinChieftonEntity p_234525_0_) {
-	      Brain<PiglinChieftonEntity> brain = p_234525_0_.getBrain();
+   private static boolean isNearZombified(PiglinPrisonerEntity p_234525_0_) {
+	      Brain<PiglinPrisonerEntity> brain = p_234525_0_.getBrain();
 	      if (brain.hasMemoryValue(MemoryModuleType.NEAREST_VISIBLE_ZOMBIFIED)) {
 	         LivingEntity livingentity = brain.getMemory(MemoryModuleType.NEAREST_VISIBLE_ZOMBIFIED).get();
 	         return p_234525_0_.closerThan(livingentity, 6.0D);

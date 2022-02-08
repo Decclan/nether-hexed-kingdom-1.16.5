@@ -5,7 +5,7 @@ import com.deimoshexxus.netherhexedkingdom.entities.HexanGuardMeleeEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.HexanGuardRangedEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.HexedUndeadRiderEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.PiglinBeserkerEntity;
-import com.deimoshexxus.netherhexedkingdom.entities.PiglinChieftonEntity;
+import com.deimoshexxus.netherhexedkingdom.entities.PiglinPrisonerEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.VolcanDaemon;
 import com.deimoshexxus.netherhexedkingdom.entities.HexedUndeadHorseEntity;
 import com.deimoshexxus.netherhexedkingdom.entities.HexanGuardEntity;
@@ -75,9 +75,9 @@ public class ModEntities
 			() -> EntityType.Builder.<PiglinBeserkerEntity>of(PiglinBeserkerEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).
 			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "piglin_beserker_entity").toString()));
 
-	public static final RegistryObject<EntityType<PiglinChieftonEntity>> PIGLIN_CHIEFTON_ENTITY = Registration.ENTITY_TYPES.register("piglin_chiefton_entity", 
-			() -> EntityType.Builder.<PiglinChieftonEntity>of(PiglinChieftonEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).
-			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "piglin_beserker_entity").toString()));
+	public static final RegistryObject<EntityType<PiglinPrisonerEntity>> PIGLIN_PRISONER_ENTITY = Registration.ENTITY_TYPES.register("piglin_prisoner_entity", 
+			() -> EntityType.Builder.<PiglinPrisonerEntity>of(PiglinPrisonerEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).
+			build(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, "piglin_prisoner_entity").toString()));
 
 //	public static final RegistryObject<EntityType<SkeletonEntity>> SKELETON = register("skeleton", 
 //			EntityType.Builder.<SkeletonEntity>of(SkeletonEntity::new, EntityClassification.MONSTER)
@@ -98,7 +98,7 @@ public class ModEntities
 		event.put(ModEntities.UNDEAD_HORSE.get(), HexedUndeadHorseEntity.createAttributes().build());
 		event.put(ModEntities.UNDEAD_HORSE_RIDER.get(), HexedUndeadRiderEntity.createAttributes().build());
 		event.put(ModEntities.PIGLIN_BESERKER_ENTITY.get(), PiglinBeserkerEntity.createAttributes().build());
-		event.put(ModEntities.PIGLIN_CHIEFTON_ENTITY.get(), PiglinChieftonEntity.createAttributes().build());
+		event.put(ModEntities.PIGLIN_PRISONER_ENTITY.get(), PiglinPrisonerEntity.createAttributes().build());
 	}
 	
 	public static void registerEntitySpawns()
@@ -143,9 +143,9 @@ public class ModEntities
 				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
 				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PiglinBeserkerEntity::checkAnyLightMonsterSpawnRules);
 	
-		EntitySpawnPlacementRegistry.register(ModEntities.PIGLIN_CHIEFTON_ENTITY.get(),
+		EntitySpawnPlacementRegistry.register(ModEntities.PIGLIN_PRISONER_ENTITY.get(),
 				EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, 
-				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PiglinChieftonEntity::checkAnyLightMonsterSpawnRules);
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, PiglinPrisonerEntity::checkAnyLightMonsterSpawnRules);
 
 	}
 	

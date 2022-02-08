@@ -5,7 +5,7 @@ import com.deimoshexxus.netherhexedkingdom.entities.render.HexanGuardMeleeEntity
 import com.deimoshexxus.netherhexedkingdom.entities.render.HexanGuardRangedEntityRenderer;
 import com.deimoshexxus.netherhexedkingdom.entities.render.HexedUndeadHorseRenderer;
 import com.deimoshexxus.netherhexedkingdom.entities.render.PiglinBeserkerRenderer;
-import com.deimoshexxus.netherhexedkingdom.entities.render.PiglinChieftonRenderer;
+import com.deimoshexxus.netherhexedkingdom.entities.render.PiglinPrisonerRenderer;
 import com.deimoshexxus.netherhexedkingdom.entities.render.VolcanDaemonEntityRenderer;
 import com.deimoshexxus.netherhexedkingdom.entities.render.HexanGuardEntityRenderer;
 import com.deimoshexxus.netherhexedkingdom.entities.render.WitherSkeletonHorseRenderer;
@@ -56,6 +56,6 @@ public class Registration
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.UNDEAD_HORSE.get(), HexedUndeadHorseRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.UNDEAD_HORSE_RIDER.get(), HexedUndeadHorseRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.PIGLIN_BESERKER_ENTITY.get(), PiglinBeserkerRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(ModEntities.PIGLIN_CHIEFTON_ENTITY.get(), PiglinChieftonRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.PIGLIN_PRISONER_ENTITY.get(), PiglinPrisonerRenderer::new);
 	}
 }
