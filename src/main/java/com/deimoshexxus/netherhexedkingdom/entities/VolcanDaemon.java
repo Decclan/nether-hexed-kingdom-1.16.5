@@ -78,7 +78,7 @@ public class VolcanDaemon extends GhastEntity
 		.add(Attributes.FOLLOW_RANGE, 128.0D)
 		.add(Attributes.ATTACK_KNOCKBACK, 2.2D)
 		.add(Attributes.MOVEMENT_SPEED, 0.3D)
-		.add(Attributes.ATTACK_DAMAGE, 6.0D)
+		.add(Attributes.ATTACK_DAMAGE, 4.0D)
 		.add(Attributes.ARMOR, 3.0D)
 		.add(Attributes.MAX_HEALTH, 26.0D)
 		.add(Attributes.FLYING_SPEED, 6.0D);
