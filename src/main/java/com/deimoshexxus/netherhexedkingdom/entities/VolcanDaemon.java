@@ -51,7 +51,7 @@ public class VolcanDaemon extends GhastEntity
 //	    this.goalSelector.addGoal(5, new VolcanDaemon.RandomFlyGoal(this));
 //	    this.goalSelector.addGoal(7, new VolcanDaemon.LookAroundGoal(this));
 		this.goalSelector.addGoal(7, new VolcanDaemon.FireballAttackGoal(this));
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, 16, true, false, (p_213812_1_) -> {
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, 12, true, false, (p_213812_1_) -> {
 			return Math.abs(p_213812_1_.getY() - this.getY()) <= 4.0D;
 		}));
 	}
@@ -75,13 +75,13 @@ public class VolcanDaemon extends GhastEntity
 	public static AttributeModifierMap.MutableAttribute createAttributes() 
 	{
 		return MonsterEntity.createMonsterAttributes()
-		.add(Attributes.FOLLOW_RANGE, 128.0D)
+		.add(Attributes.FOLLOW_RANGE, 96.0D)
 		.add(Attributes.ATTACK_KNOCKBACK, 2.2D)
-		.add(Attributes.MOVEMENT_SPEED, 0.3D)
-		.add(Attributes.ATTACK_DAMAGE, 4.0D)
-		.add(Attributes.ARMOR, 3.0D)
+		.add(Attributes.MOVEMENT_SPEED, 0.2D)
+		.add(Attributes.ATTACK_DAMAGE, 3.0D)
+		.add(Attributes.ARMOR, 1.0D)
 		.add(Attributes.MAX_HEALTH, 26.0D)
-		.add(Attributes.FLYING_SPEED, 6.0D);
+		.add(Attributes.FLYING_SPEED, 3.0D);
 	}
 	   
 	   //Firecharge attack goal start//

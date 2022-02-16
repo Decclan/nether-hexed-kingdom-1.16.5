@@ -99,7 +99,7 @@ jar {
         attributes([
             "Specification-Title": "netherhexedkingdom-1.16.5",
             "Specification-Vendor": "deimoshexxus",
-            "Specification-Version": "1", // We are version 1 of ourselves
+            "Specification-Version": "1.1", // We are version 1.1 of ourselves
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
             "Implementation-Vendor" :"deimoshexxus",
