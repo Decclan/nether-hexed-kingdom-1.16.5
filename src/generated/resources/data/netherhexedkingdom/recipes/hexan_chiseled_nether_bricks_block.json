@@ -1,11 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "   ",
     " # ",
+    " i ",
     " # "
   ],
   "key": {
+    "i": {
+      "item": "netherhexedkingdom:militus_alloy_nugget"
+    },
     "#": {
       "item": "minecraft:nether_brick_slab"
     }

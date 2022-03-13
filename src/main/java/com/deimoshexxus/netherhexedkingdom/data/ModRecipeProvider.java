@@ -147,7 +147,7 @@ public class ModRecipeProvider extends RecipeProvider
 		.pattern(" # ")
 		.pattern(" i ")
 		.pattern(" # ")
-		.unlockedBy("has_item", has(Items.NETHER_BRICKS))
+		.unlockedBy("has_item", has(ModItems.MILITUS_ALLOY_NUGGET.get()))
 		.save(consumer);
 		
 		

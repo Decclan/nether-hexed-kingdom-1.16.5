@@ -1,7 +1,6 @@
 {
-  "parent": "minecraft:block/cube_column",
+  "parent": "minecraft:block/cube_all",
   "textures": {
-    "side": "netherhexedkingdom:block/hexan_chiseled_nether_bricks",
-    "end": "netherhexedkingdom:block/hexan_chiseled_nether_bricks"
+    "all": "netherhexedkingdom:block/hexan_chiseled_nether_bricks_block"
   }
 }
