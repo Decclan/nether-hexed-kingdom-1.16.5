@@ -22,5 +22,21 @@
         "sounds": [
         		{ "name": "netherhexedkingdom:entity/hexan_guard/hexan_guard_death", "stream": false }
         	]
+    },
+    
+    "netherhexedkingdom.entity.volcan_daemon_ambient":
+    {
+        "category": "entity",
+        "sounds": [
+        		{ "name": "netherhexedkingdom:entity/volcan_daemon/volcan_daemon_ambient", "stream": false }
+        	]
+    },
+    
+    "netherhexedkingdom.entity.volcan_daemon_attack":
+    {
+        "category": "entity",
+        "sounds": [
+        		{ "name": "netherhexedkingdom:entity/volcan_daemon/volcan_daemon_attack", "stream": false }
+        	]
     }
 }

@@ -22,6 +22,13 @@ public class SoundsHandler
 	public static final RegistryObject<SoundEvent> ENTITY_HEXAN_GUARD_DEATH = 
 			registerSoundEvent("netherhexedkingdom.entity.hexan_guard_death");
 	
+	public static final RegistryObject<SoundEvent> ENTITY_VOLCAN_DAEMON_AMBIENT = 
+			registerSoundEvent("netherhexedkingdom.entity.volcan_daemon_ambient");
+
+	public static final RegistryObject<SoundEvent> ENTITY_VOLCAN_DAEMON_ATTACK = 
+			registerSoundEvent("netherhexedkingdom.entity.volcan_daemon_attack");
+
+	
 	private static RegistryObject<SoundEvent> registerSoundEvent(String name)
 	{
 		return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(NetherHexedKingdomMain.MOD_ID, name)));

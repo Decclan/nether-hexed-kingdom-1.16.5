@@ -10,8 +10,8 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 3.0,
-                "max": 9.0,
+                "min": 0.0,
+                "max": 1.0,
                 "type": "minecraft:uniform"
               }
             },
@@ -75,7 +75,7 @@
               }
             }
           ],
-          "name": "minecraft:gold_ingot"
+          "name": "minecraft:gold_nugget"
         }
       ]
     },

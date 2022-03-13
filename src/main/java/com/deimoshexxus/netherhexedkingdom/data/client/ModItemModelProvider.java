@@ -34,6 +34,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 		withExistingParent("gargoyle_basalt_block", modLoc("block/gargoyle_basalt_block"));
 		withExistingParent("gargoyle_obsidian_block", modLoc("block/gargoyle_obsidian_block"));
 
+		withExistingParent("hexan_chiseled_nether_bricks_block", modLoc("block/hexan_chiseled_nether_bricks_block"));
 		
 //		withExistingParent("nether_brick_pressure_plate", modLoc("block/nether_brick_pressure_plate"));
 //		withExistingParent("nether_brick_torch", modLoc("block/nether_brick_torch"));

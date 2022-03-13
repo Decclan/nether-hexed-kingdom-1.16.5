@@ -51,6 +51,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 		tag(ModTags.Blocks.BLOCK_OBSIDIAN_GARGOYLE).add(ModBlocks.GARGOYLE_OBSIDIAN_BLOCK.get());
 		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.BLOCK_OBSIDIAN_GARGOYLE);
 
+		tag(ModTags.Blocks.BLOCK_HEXAN_CHISELED_NETHER_BRICK).add(ModBlocks.HEXAN_CHISELED_NETHER_BRICKS.get());
+		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.BLOCK_HEXAN_CHISELED_NETHER_BRICK);
+
+		
 		
 //		tag(ModTags.Blocks.NETHER_BRICK_PLATE).add(ModBlocks.NETHER_BRICK_PRESSURE_PLATE.get());
 //		tag(Tags.Blocks.STONE).addTag(ModTags.Blocks.NETHER_BRICK_PLATE);

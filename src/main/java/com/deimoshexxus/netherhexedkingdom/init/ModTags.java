@@ -29,6 +29,7 @@ public class ModTags
 		public static final ITag.INamedTag<Block> BLOCK_BASALT_GARGOYLE = mod("basalt_gargoyle");
 		public static final ITag.INamedTag<Block> BLOCK_OBSIDIAN_GARGOYLE = mod("obsidian_gargoyle");
 		
+		public static final ITag.INamedTag<Block> BLOCK_HEXAN_CHISELED_NETHER_BRICK = mod("hexan_chiseled_nether_bricks");
 //		public static final ITag.INamedTag<Block> NETHER_BRICK_PLATE = mod("nether_brick_plate");
 //		public static final ITag.INamedTag<Block> NETHER_BRICK_TORCH = mod("nether_brick_torch");
 //		public static final ITag.INamedTag<Block> NETHER_BRICK_WALL_TORCH = mod("nether_brick_wall_torch");
@@ -47,6 +48,7 @@ public class ModTags
 
 	public static final class Items
 	{
+		//BlockItems
 		public static final ITag.INamedTag<Item> ORES_MILITUS = forge("ores/militus");
 		public static final ITag.INamedTag<Item> STORAGE_BLOCKS_MILITUS = forge("storage_blocks/militus");
 		
@@ -63,7 +65,9 @@ public class ModTags
 		public static final ITag.INamedTag<Item> BLOCK_BASALT_GARGOYLE = mod("basalt_gargoyle");
 		public static final ITag.INamedTag<Item> BLOCK_OBSIDIAN_GARGOYLE = mod("obsidian_gargoyle");
 
-
+		public static final ITag.INamedTag<Item> BLOCK_HEXAN_CHISELED_NETHER_BRICK = mod("hexan_chiseled_nether_bricks");
+		
+		//ItemItems
 		public static final ITag.INamedTag<Item> INGOTS_MILITUS = forge("ingots/militus");
 		public static final ITag.INamedTag<Item> NUGGETS_MILITUS = forge("nuggets/militus");
 		

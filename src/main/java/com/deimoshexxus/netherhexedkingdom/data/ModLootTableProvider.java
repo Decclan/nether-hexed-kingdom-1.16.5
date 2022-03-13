@@ -70,6 +70,7 @@ public class ModLootTableProvider extends LootTableProvider
 			dropSelf(ModBlocks.GARGOYLE_QUARTZ_BLOCK.get());
 			dropSelf(ModBlocks.GARGOYLE_BASALT_BLOCK.get());
 			dropSelf(ModBlocks.GARGOYLE_OBSIDIAN_BLOCK.get());
+			dropSelf(ModBlocks.HEXAN_CHISELED_NETHER_BRICKS.get());
 		}
 		
 		@Override

@@ -25,7 +25,7 @@ public class ModBlocks
 	public static final RegistryObject<Block> MILITUS_ALLOY_ORE = register("militus_alloy_ore", () ->
 		new Block(AbstractBlock.Properties.of(Material.STONE)
 				.strength(3, 10)
-				.harvestLevel(2)
+				.harvestLevel(1)
 				.sound(SoundType.STONE)
 				.requiresCorrectToolForDrops()
 				.harvestTool(ToolType.PICKAXE)
@@ -34,6 +34,7 @@ public class ModBlocks
 	public static final RegistryObject<Block> MILITUS_ALLOY_BLOCK = register("militus_alloy_block", () ->
 		new Block(AbstractBlock.Properties.of(Material.METAL)
 				.strength(3, 12)
+				.harvestLevel(1)
 				.sound(SoundType.METAL)
 				.requiresCorrectToolForDrops()
 				.harvestTool(ToolType.PICKAXE)));
@@ -119,6 +120,15 @@ public class ModBlocks
 				.requiresCorrectToolForDrops()
 				.harvestTool(ToolType.PICKAXE)
 				.sound(SoundType.STONE)));
+	
+	public static final RegistryObject<Block> HEXAN_CHISELED_NETHER_BRICKS = register("hexan_chiseled_nether_bricks_block", () ->
+	new Block(AbstractBlock.Properties.of(Material.STONE)
+			.strength(5, 12)
+			.harvestLevel(1)
+			.sound(SoundType.NETHER_BRICKS)
+			.requiresCorrectToolForDrops()
+			.harvestTool(ToolType.PICKAXE)
+			));
 
 	private static <T extends Block>RegistryObject<T> registerNoItem(String name, Supplier <T> block)
 	{

@@ -24,8 +24,10 @@ public class ModBlockStateProvider extends BlockStateProvider
 		simpleBlock(ModBlocks.MILITUS_ALLOY_BLOCK.get());
 		simpleBlock(ModBlocks.MILITUS_ALLOY_ORE.get());
 		simpleBlock(ModBlocks.IRON_PLATE_BLOCK.get());
+		simpleBlock(ModBlocks.HEXAN_CHISELED_NETHER_BRICKS.get());
+		
 		axisBlock(ModBlocks.ETERNAL_LIGHT_BLOCK.get(), modLoc("block/eternal_light_side"), modLoc("block/eternal_light_end"));
-
+		
 		getVariantBuilder(ModBlocks.HUMAN_SKELETON_TOP_BLOCK.get())		
 			.forAllStates(state -> ConfiguredModel.builder()
 					.modelFile(existingModelFile("human_skeleton_top_block"))

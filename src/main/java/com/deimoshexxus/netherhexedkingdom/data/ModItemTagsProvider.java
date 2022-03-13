@@ -50,6 +50,10 @@ public class ModItemTagsProvider extends ItemTagsProvider
 		copy(ModTags.Blocks.BLOCK_OBSIDIAN_GARGOYLE, ModTags.Items.BLOCK_OBSIDIAN_GARGOYLE);
 		copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
 		
+		copy(ModTags.Blocks.BLOCK_HEXAN_CHISELED_NETHER_BRICK, ModTags.Items.BLOCK_HEXAN_CHISELED_NETHER_BRICK);
+		copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
+
+		
 //		copy(ModTags.Blocks.NETHER_BRICK_PLATE, ModTags.Items.NETHER_BRICK_PLATE);
 //		copy(Tags.Blocks.STONE, Tags.Items.STONE);
 //		copy(ModTags.Blocks.NETHER_BRICK_TORCH, ModTags.Items.NETHER_BRICK_TORCH);
