@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "netherhexedkingdom:hexan_chiseled_nether_bricks_block"
+      "netherhexedkingdom:gilded_bricks_of_lost_time_block"
     ]
   },
   "criteria": {
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "item": "netherhexedkingdom:militus_alloy_nugget"
+            "item": "netherhexedkingdom:militus_alloy_ingot"
           }
         ]
       }
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "netherhexedkingdom:hexan_chiseled_nether_bricks_block"
+        "recipe": "netherhexedkingdom:gilded_bricks_of_lost_time_block"
       }
     }
   },

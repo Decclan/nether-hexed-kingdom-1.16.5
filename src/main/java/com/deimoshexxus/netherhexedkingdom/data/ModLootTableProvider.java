@@ -44,10 +44,6 @@ public class ModLootTableProvider extends LootTableProvider
 	@Override
 	protected void validate(Map<ResourceLocation, LootTable> map, ValidationTracker validationtracker)
 	{
-//      for(ResourceLocation resourcelocation : Sets.difference(LootTables.all(), map.keySet())) {
-//          validationtracker.reportProblem("Missing built-in table: " + resourcelocation);
-//       }
-
        map.forEach((p_218436_2_, p_218436_3_) -> {
           LootTableManager.validate(validationtracker, p_218436_2_, p_218436_3_);
        });
@@ -71,6 +67,7 @@ public class ModLootTableProvider extends LootTableProvider
 			dropSelf(ModBlocks.GARGOYLE_BASALT_BLOCK.get());
 			dropSelf(ModBlocks.GARGOYLE_OBSIDIAN_BLOCK.get());
 			dropSelf(ModBlocks.HEXAN_CHISELED_NETHER_BRICKS.get());
+			dropSelf(ModBlocks.GILDED_BRICKS_OF_LOST_TIME.get());
 		}
 		
 		@Override

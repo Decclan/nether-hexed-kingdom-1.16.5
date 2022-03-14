@@ -24,24 +24,23 @@ public class ModBlocks
 {
 	public static final RegistryObject<Block> MILITUS_ALLOY_ORE = register("militus_alloy_ore", () ->
 		new Block(AbstractBlock.Properties.of(Material.STONE)
-				.strength(3, 10)
+				.strength(16, 10)
 				.harvestLevel(1)
 				.sound(SoundType.STONE)
 				.requiresCorrectToolForDrops()
-				.harvestTool(ToolType.PICKAXE)
-				));
+				.harvestTool(ToolType.PICKAXE)));
 
 	public static final RegistryObject<Block> MILITUS_ALLOY_BLOCK = register("militus_alloy_block", () ->
 		new Block(AbstractBlock.Properties.of(Material.METAL)
-				.strength(3, 12)
-				.harvestLevel(1)
+				.strength(64, 15)
+				.harvestLevel(2)
 				.sound(SoundType.METAL)
 				.requiresCorrectToolForDrops()
 				.harvestTool(ToolType.PICKAXE)));
 
 	public static final RegistryObject<Block> IRON_PLATE_BLOCK = register("iron_plate_block", () ->
 		new Block(AbstractBlock.Properties.of(Material.METAL)
-				.strength(3, 8)
+				.strength(10, 8)
 				.sound(SoundType.METAL)
 				.harvestLevel(1)
 				.requiresCorrectToolForDrops()
@@ -115,7 +114,7 @@ public class ModBlocks
 	public static final RegistryObject<RotatableBlock> GARGOYLE_OBSIDIAN_BLOCK = register("gargoyle_obsidian_block", () ->
 		new RotatableBlock(AbstractBlock.Properties.of(Material.STONE)
 				.harvestLevel(3)
-				.strength(6, 6)
+				.strength(6, 8)
 				.noOcclusion()
 				.requiresCorrectToolForDrops()
 				.harvestTool(ToolType.PICKAXE)
@@ -123,8 +122,17 @@ public class ModBlocks
 	
 	public static final RegistryObject<Block> HEXAN_CHISELED_NETHER_BRICKS = register("hexan_chiseled_nether_bricks_block", () ->
 	new Block(AbstractBlock.Properties.of(Material.STONE)
-			.strength(5, 12)
+			.strength(5, 10)
 			.harvestLevel(1)
+			.sound(SoundType.NETHER_BRICKS)
+			.requiresCorrectToolForDrops()
+			.harvestTool(ToolType.PICKAXE)
+			));
+	
+	public static final RegistryObject<Block> GILDED_BRICKS_OF_LOST_TIME = register("gilded_bricks_of_lost_time_block", () ->
+	new Block(AbstractBlock.Properties.of(Material.STONE)
+			.strength(32, 14) //time to mine, blast resistance
+			.harvestLevel(2)
 			.sound(SoundType.NETHER_BRICKS)
 			.requiresCorrectToolForDrops()
 			.harvestTool(ToolType.PICKAXE)

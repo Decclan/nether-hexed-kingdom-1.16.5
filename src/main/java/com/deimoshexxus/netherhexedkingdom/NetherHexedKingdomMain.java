@@ -86,15 +86,13 @@ public class NetherHexedKingdomMain
     		ModEntities.registerEntitySpawns();
             NetherStructures.setupStructures();
             NetherConfiguredStructures.registerConfiguredStructures();
-
-            LOGGER.info("Sounds Added");
     	});    
      }
 
     private void client(final FMLClientSetupEvent event) 
     {
     	Registration.registerRenderers();
-        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
+        //LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
@@ -140,10 +138,10 @@ public class NetherHexedKingdomMain
             	NetherHexedKingdomMain.LOGGER.error("Was unable to check if " + serverWorld.dimension().location() + " is using Terraforged's ChunkGenerator.");
             }
             //prevents superflat spawn
-            if(serverWorld.getChunkSource().getGenerator() instanceof FlatChunkGenerator &&
-                serverWorld.dimension().equals(World.OVERWORLD)){
-                return;
-            }
+//            if(serverWorld.getChunkSource().getGenerator() instanceof FlatChunkGenerator &&
+//                serverWorld.dimension().equals(World.OVERWORLD)){
+//                return;
+//            }
             
             Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(serverWorld.getChunkSource().generator.getSettings().structureConfig());
            

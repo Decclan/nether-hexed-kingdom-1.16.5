@@ -53,6 +53,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 
 		tag(ModTags.Blocks.BLOCK_HEXAN_CHISELED_NETHER_BRICK).add(ModBlocks.HEXAN_CHISELED_NETHER_BRICKS.get());
 		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.BLOCK_HEXAN_CHISELED_NETHER_BRICK);
+		tag(ModTags.Blocks.BLOCK_GILDED_BRICKS_OF_LOST_TIME).add(ModBlocks.GILDED_BRICKS_OF_LOST_TIME.get());
+		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.BLOCK_GILDED_BRICKS_OF_LOST_TIME);
 
 		
 		

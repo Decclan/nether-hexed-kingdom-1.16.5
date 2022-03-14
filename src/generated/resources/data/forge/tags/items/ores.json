@@ -1,17 +1,6 @@
 {
   "replace": false,
   "values": [
-    "#forge:ores/militus",
-    "#forge:storage_blocks/militus",
-    "#netherhexedkingdom:iron_plate",
-    "#netherhexedkingdom:skeleton_top",
-    "#netherhexedkingdom:skeleton_bottom",
-    "#netherhexedkingdom:blackstone_firestand",
-    "#netherhexedkingdom:gold_gargoyle",
-    "#netherhexedkingdom:blackstone_gargoyle",
-    "#netherhexedkingdom:quartz_gargoyle",
-    "#netherhexedkingdom:basalt_gargoyle",
-    "#netherhexedkingdom:obsidian_gargoyle",
-    "#netherhexedkingdom:hexan_chiseled_nether_bricks"
+    "#forge:ores/militus"
   ]
 }

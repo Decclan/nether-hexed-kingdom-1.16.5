@@ -24,7 +24,7 @@ public class ModItemTagsProvider extends ItemTagsProvider
 		copy(ModTags.Blocks.ORES_MILITUS, ModTags.Items.ORES_MILITUS);
 		copy(Tags.Blocks.ORES, Tags.Items.ORES);
 		copy(ModTags.Blocks.STORAGE_BLOCKS_MILITUS, ModTags.Items.STORAGE_BLOCKS_MILITUS);
-		copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.ORES);
+		copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
 		
 		copy(ModTags.Blocks.BLOCK_IRON_PLATE, ModTags.Items.BLOCK_IRON_PLATE);
 		copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
@@ -51,6 +51,8 @@ public class ModItemTagsProvider extends ItemTagsProvider
 		copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
 		
 		copy(ModTags.Blocks.BLOCK_HEXAN_CHISELED_NETHER_BRICK, ModTags.Items.BLOCK_HEXAN_CHISELED_NETHER_BRICK);
+		copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
+		copy(ModTags.Blocks.BLOCK_GILDED_BRICKS_OF_LOST_TIME, ModTags.Items.BLOCK_GILDED_BRICKS_OF_LOST_TIME);
 		copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
 
 		

@@ -325,7 +325,7 @@
               "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "minecraft:gold_helmet"
+          "name": "minecraft:golden_helmet"
         },
         {
           "type":"minecraft:item",
