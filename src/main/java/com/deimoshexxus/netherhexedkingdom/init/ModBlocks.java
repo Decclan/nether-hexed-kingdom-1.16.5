@@ -24,7 +24,7 @@ public class ModBlocks
 {
 	public static final RegistryObject<Block> MILITUS_ALLOY_ORE = register("militus_alloy_ore", () ->
 		new Block(AbstractBlock.Properties.of(Material.STONE)
-				.strength(16, 10)
+				.strength(16, 13) //was 10
 				.harvestLevel(1)
 				.sound(SoundType.STONE)
 				.requiresCorrectToolForDrops()
@@ -32,7 +32,7 @@ public class ModBlocks
 
 	public static final RegistryObject<Block> MILITUS_ALLOY_BLOCK = register("militus_alloy_block", () ->
 		new Block(AbstractBlock.Properties.of(Material.METAL)
-				.strength(64, 15)
+				.strength(64, 16) //was 15
 				.harvestLevel(2)
 				.sound(SoundType.METAL)
 				.requiresCorrectToolForDrops()
@@ -131,7 +131,7 @@ public class ModBlocks
 	
 	public static final RegistryObject<Block> GILDED_BRICKS_OF_LOST_TIME = register("gilded_bricks_of_lost_time_block", () ->
 	new Block(AbstractBlock.Properties.of(Material.STONE)
-			.strength(32, 14) //time to mine, blast resistance
+			.strength(32, 15) //time to mine, blast resistance //was 14
 			.harvestLevel(2)
 			.sound(SoundType.NETHER_BRICKS)
 			.requiresCorrectToolForDrops()

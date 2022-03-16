@@ -151,12 +151,12 @@ public class ModRecipeProvider extends RecipeProvider
 		.save(consumer);
 		
 		ShapedRecipeBuilder.shaped(ModBlocks.GILDED_BRICKS_OF_LOST_TIME.get())
-		.define('i', ModItems.MILITUS_ALLOY_INGOT.get())
+		.define('n', ModItems.MILITUS_ALLOY_NUGGET.get())
 		.define('#', Items.NETHER_BRICK)
-		.pattern("###")
-		.pattern("iii")
-		.pattern("###")
-		.unlockedBy("has_item", has(ModItems.MILITUS_ALLOY_INGOT.get()))
+		.pattern("#n#")
+		.pattern("nnn")
+		.pattern("#n#")
+		.unlockedBy("has_item", has(ModItems.MILITUS_ALLOY_NUGGET.get()))
 		.save(consumer);
 		
 		//Cooking//
