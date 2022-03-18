@@ -26,6 +26,8 @@ public class ModBlockStateProvider extends BlockStateProvider
 		simpleBlock(ModBlocks.IRON_PLATE_BLOCK.get());
 		simpleBlock(ModBlocks.HEXAN_CHISELED_NETHER_BRICKS.get());
 		simpleBlock(ModBlocks.GILDED_BRICKS_OF_LOST_TIME.get());
+		simpleBlock(ModBlocks.RED_GILDED_BRICKS_OF_LOST_TIME.get());
+		simpleBlock(ModBlocks.HEXAN_CHISELED_POLISHED_BLACKSTONE.get());
 		
 		axisBlock(ModBlocks.ETERNAL_LIGHT_BLOCK.get(), modLoc("block/eternal_light_side"), modLoc("block/eternal_light_end"));
 		

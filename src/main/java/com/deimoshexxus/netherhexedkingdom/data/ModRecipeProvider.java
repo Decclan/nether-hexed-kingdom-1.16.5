@@ -159,6 +159,25 @@ public class ModRecipeProvider extends RecipeProvider
 		.unlockedBy("has_item", has(ModItems.MILITUS_ALLOY_NUGGET.get()))
 		.save(consumer);
 		
+		ShapedRecipeBuilder.shaped(ModBlocks.RED_GILDED_BRICKS_OF_LOST_TIME.get())
+		.define('n', ModItems.MILITUS_ALLOY_NUGGET.get())
+		.define('#', Items.NETHER_BRICK)
+		.define('w', Items.NETHER_WART)
+		.pattern("#n#")
+		.pattern("nwn")
+		.pattern("#n#")
+		.unlockedBy("has_item", has(ModItems.MILITUS_ALLOY_NUGGET.get()))
+		.save(consumer);
+		
+		ShapedRecipeBuilder.shaped(ModBlocks.HEXAN_CHISELED_POLISHED_BLACKSTONE.get())
+		.define('n', ModItems.MILITUS_ALLOY_NUGGET.get())
+		.define('#', Items.POLISHED_BLACKSTONE_SLAB)
+		.pattern(" # ")
+		.pattern(" n ")
+		.pattern(" # ")
+		.unlockedBy("has_item", has(ModItems.MILITUS_ALLOY_NUGGET.get()))
+		.save(consumer);
+		
 		//Cooking//
 		CookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.MILITUS_ALLOY_ORE.get()), ModItems.MILITUS_ALLOY_INGOT.get(), 0.7F, 200)
 		.unlockedBy("has_item", has(ModBlocks.MILITUS_ALLOY_ORE.get()))

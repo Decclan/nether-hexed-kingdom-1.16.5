@@ -29,8 +29,10 @@ public class ModTags
 		public static final ITag.INamedTag<Block> BLOCK_BASALT_GARGOYLE = mod("basalt_gargoyle");
 		public static final ITag.INamedTag<Block> BLOCK_OBSIDIAN_GARGOYLE = mod("obsidian_gargoyle");
 		
-		public static final ITag.INamedTag<Block> BLOCK_HEXAN_CHISELED_NETHER_BRICK = mod("hexan_chiseled_nether_bricks");
+		public static final ITag.INamedTag<Block> BLOCK_HEXAN_CHISELED_NETHER_BRICKS = mod("hexan_chiseled_nether_bricks");
 		public static final ITag.INamedTag<Block> BLOCK_GILDED_BRICKS_OF_LOST_TIME = mod("gilded_bricks_of_lost_time");
+		public static final ITag.INamedTag<Block> BLOCK_RED_GILDED_BRICKS_OF_LOST_TIME = mod("red_gilded_bricks_of_lost_time");
+		public static final ITag.INamedTag<Block> BLOCK_HEXAN_CHISELED_POLISHED_BLACKSTONE = mod("hexan_chiseled_polished_blackstone");
 
 //		public static final ITag.INamedTag<Block> NETHER_BRICK_PLATE = mod("nether_brick_plate");
 //		public static final ITag.INamedTag<Block> NETHER_BRICK_TORCH = mod("nether_brick_torch");
@@ -67,8 +69,10 @@ public class ModTags
 		public static final ITag.INamedTag<Item> BLOCK_BASALT_GARGOYLE = mod("basalt_gargoyle");
 		public static final ITag.INamedTag<Item> BLOCK_OBSIDIAN_GARGOYLE = mod("obsidian_gargoyle");
 
-		public static final ITag.INamedTag<Item> BLOCK_HEXAN_CHISELED_NETHER_BRICK = mod("hexan_chiseled_nether_bricks");
+		public static final ITag.INamedTag<Item> BLOCK_HEXAN_CHISELED_NETHER_BRICKS = mod("hexan_chiseled_nether_bricks");
 		public static final ITag.INamedTag<Item> BLOCK_GILDED_BRICKS_OF_LOST_TIME = mod("gilded_bricks_of_lost_time");
+		public static final ITag.INamedTag<Item> BLOCK_RED_GILDED_BRICKS_OF_LOST_TIME = mod("red_gilded_bricks_of_lost_time");
+		public static final ITag.INamedTag<Item> BLOCK_HEXAN_CHISELED_POLISHED_BLACKSTONE = mod("hexan_chiseled_polished_blackstone");
 		
 		//ItemItems
 		public static final ITag.INamedTag<Item> INGOTS_MILITUS = forge("ingots/militus");

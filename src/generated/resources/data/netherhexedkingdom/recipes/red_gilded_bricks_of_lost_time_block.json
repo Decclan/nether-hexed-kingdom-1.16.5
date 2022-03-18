@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#n#",
+    "nwn",
+    "#n#"
+  ],
+  "key": {
+    "n": {
+      "item": "netherhexedkingdom:militus_alloy_nugget"
+    },
+    "#": {
+      "item": "minecraft:nether_brick"
+    },
+    "w": {
+      "item": "minecraft:nether_wart"
+    }
+  },
+  "result": {
+    "item": "netherhexedkingdom:red_gilded_bricks_of_lost_time_block"
+  }
+}

@@ -51,13 +51,16 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 		tag(ModTags.Blocks.BLOCK_OBSIDIAN_GARGOYLE).add(ModBlocks.GARGOYLE_OBSIDIAN_BLOCK.get());
 		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.BLOCK_OBSIDIAN_GARGOYLE);
 
-		tag(ModTags.Blocks.BLOCK_HEXAN_CHISELED_NETHER_BRICK).add(ModBlocks.HEXAN_CHISELED_NETHER_BRICKS.get());
-		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.BLOCK_HEXAN_CHISELED_NETHER_BRICK);
+		tag(ModTags.Blocks.BLOCK_HEXAN_CHISELED_NETHER_BRICKS).add(ModBlocks.HEXAN_CHISELED_NETHER_BRICKS.get());
+		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.BLOCK_HEXAN_CHISELED_NETHER_BRICKS);
 		tag(ModTags.Blocks.BLOCK_GILDED_BRICKS_OF_LOST_TIME).add(ModBlocks.GILDED_BRICKS_OF_LOST_TIME.get());
 		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.BLOCK_GILDED_BRICKS_OF_LOST_TIME);
+		tag(ModTags.Blocks.BLOCK_RED_GILDED_BRICKS_OF_LOST_TIME).add(ModBlocks.RED_GILDED_BRICKS_OF_LOST_TIME.get());
+		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.BLOCK_RED_GILDED_BRICKS_OF_LOST_TIME);
+		tag(ModTags.Blocks.BLOCK_HEXAN_CHISELED_POLISHED_BLACKSTONE).add(ModBlocks.HEXAN_CHISELED_POLISHED_BLACKSTONE.get());
+		tag(Tags.Blocks.STORAGE_BLOCKS).addTag(ModTags.Blocks.BLOCK_HEXAN_CHISELED_POLISHED_BLACKSTONE);
 
-		
-		
+
 //		tag(ModTags.Blocks.NETHER_BRICK_PLATE).add(ModBlocks.NETHER_BRICK_PRESSURE_PLATE.get());
 //		tag(Tags.Blocks.STONE).addTag(ModTags.Blocks.NETHER_BRICK_PLATE);
 //		

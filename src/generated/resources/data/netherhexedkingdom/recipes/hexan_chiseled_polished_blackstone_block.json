@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " n ",
+    " # "
+  ],
+  "key": {
+    "n": {
+      "item": "netherhexedkingdom:militus_alloy_nugget"
+    },
+    "#": {
+      "item": "minecraft:polished_blackstone_slab"
+    }
+  },
+  "result": {
+    "item": "netherhexedkingdom:hexan_chiseled_polished_blackstone_block"
+  }
+}

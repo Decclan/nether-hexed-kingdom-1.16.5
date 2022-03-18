@@ -68,6 +68,8 @@ public class ModLootTableProvider extends LootTableProvider
 			dropSelf(ModBlocks.GARGOYLE_OBSIDIAN_BLOCK.get());
 			dropSelf(ModBlocks.HEXAN_CHISELED_NETHER_BRICKS.get());
 			dropSelf(ModBlocks.GILDED_BRICKS_OF_LOST_TIME.get());
+			dropSelf(ModBlocks.RED_GILDED_BRICKS_OF_LOST_TIME.get());
+			dropSelf(ModBlocks.HEXAN_CHISELED_POLISHED_BLACKSTONE.get());
 		}
 		
 		@Override

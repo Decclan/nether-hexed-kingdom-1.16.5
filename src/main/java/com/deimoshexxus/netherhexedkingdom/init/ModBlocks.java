@@ -59,66 +59,66 @@ public class ModBlocks
 				.sound(SoundType.BONE_BLOCK)));
 
 	public static final RegistryObject<RotatableBlock> HUMAN_SKELETON_BOTTOM_BLOCK = register("human_skeleton_bottom_block", () ->
-		new RotatableBlock(AbstractBlock.Properties.of(Material.CLAY)
-				.strength(1, 1)
-				.noOcclusion()
-				.sound(SoundType.BONE_BLOCK)));
+	new RotatableBlock(AbstractBlock.Properties.of(Material.CLAY)
+			.strength(1, 1)
+			.noOcclusion()
+			.sound(SoundType.BONE_BLOCK)));
 
 	public static final RegistryObject<Block> BACKSTONE_FIRESTAND_BLOCK = register("blackstone_firestand_block", () ->
-		new Block(AbstractBlock.Properties.of(Material.STONE)
-				.lightLevel(state -> 11)
-				.harvestLevel(1)
-				.strength(2, 6)
-				.noOcclusion()
-				.requiresCorrectToolForDrops()
-				.harvestTool(ToolType.PICKAXE)
-				.sound(SoundType.STONE)));
+	new Block(AbstractBlock.Properties.of(Material.STONE)
+			.lightLevel(state -> 11)
+			.harvestLevel(1)
+			.strength(2, 6)
+			.noOcclusion()
+			.requiresCorrectToolForDrops()
+			.harvestTool(ToolType.PICKAXE)
+			.sound(SoundType.STONE)));
 	
 	public static final RegistryObject<RotatableBlock> GARGOYLE_GOLD_BLOCK = register("gargoyle_gold_block", () ->
-		new RotatableBlock(AbstractBlock.Properties.of(Material.METAL)
-				.lightLevel(state -> 3)
-				.harvestLevel(2)
-				.strength(3, 5)
-				.noOcclusion()
-				.requiresCorrectToolForDrops()
-				.harvestTool(ToolType.PICKAXE)
-				.sound(SoundType.METAL)));
+	new RotatableBlock(AbstractBlock.Properties.of(Material.METAL)
+			.lightLevel(state -> 3)
+			.harvestLevel(2)
+			.strength(3, 5)
+			.noOcclusion()
+			.requiresCorrectToolForDrops()
+			.harvestTool(ToolType.PICKAXE)
+			.sound(SoundType.METAL)));
 	
 	public static final RegistryObject<RotatableBlock> GARGOYLE_BLACKSTONE_BLOCK = register("gargoyle_blackstone_block", () ->
-		new RotatableBlock(AbstractBlock.Properties.of(Material.STONE)
-				.harvestLevel(1)
-				.strength(2, 3)
-				.noOcclusion()
-				.requiresCorrectToolForDrops()
-				.harvestTool(ToolType.PICKAXE)
-				.sound(SoundType.STONE)));
+	new RotatableBlock(AbstractBlock.Properties.of(Material.STONE)
+			.harvestLevel(1)
+			.strength(2, 3)
+			.noOcclusion()
+			.requiresCorrectToolForDrops()
+			.harvestTool(ToolType.PICKAXE)
+			.sound(SoundType.STONE)));
 	
 	public static final RegistryObject<RotatableBlock> GARGOYLE_QUARTZ_BLOCK = register("gargoyle_quartz_block", () ->
-		new RotatableBlock(AbstractBlock.Properties.of(Material.STONE)
-				.harvestLevel(1)
-				.strength(2, 3)
-				.noOcclusion()
-				.requiresCorrectToolForDrops()
-				.harvestTool(ToolType.PICKAXE)
-				.sound(SoundType.STONE)));
+	new RotatableBlock(AbstractBlock.Properties.of(Material.STONE)
+			.harvestLevel(1)
+			.strength(2, 3)
+			.noOcclusion()
+			.requiresCorrectToolForDrops()
+			.harvestTool(ToolType.PICKAXE)
+			.sound(SoundType.STONE)));
 	
 	public static final RegistryObject<RotatableBlock> GARGOYLE_BASALT_BLOCK = register("gargoyle_basalt_block", () ->
-		new RotatableBlock(AbstractBlock.Properties.of(Material.STONE)
-				.harvestLevel(1)
-				.strength(2, 3)
-				.noOcclusion()
-				.requiresCorrectToolForDrops()
-				.harvestTool(ToolType.PICKAXE)
-				.sound(SoundType.STONE)));
+	new RotatableBlock(AbstractBlock.Properties.of(Material.STONE)
+			.harvestLevel(1)
+			.strength(2, 3)
+			.noOcclusion()
+			.requiresCorrectToolForDrops()
+			.harvestTool(ToolType.PICKAXE)
+			.sound(SoundType.STONE)));
 	
 	public static final RegistryObject<RotatableBlock> GARGOYLE_OBSIDIAN_BLOCK = register("gargoyle_obsidian_block", () ->
-		new RotatableBlock(AbstractBlock.Properties.of(Material.STONE)
-				.harvestLevel(3)
-				.strength(6, 8)
-				.noOcclusion()
-				.requiresCorrectToolForDrops()
-				.harvestTool(ToolType.PICKAXE)
-				.sound(SoundType.STONE)));
+	new RotatableBlock(AbstractBlock.Properties.of(Material.STONE)
+			.harvestLevel(3)
+			.strength(6, 8)
+			.noOcclusion()
+			.requiresCorrectToolForDrops()
+			.harvestTool(ToolType.PICKAXE)
+			.sound(SoundType.STONE)));
 	
 	public static final RegistryObject<Block> HEXAN_CHISELED_NETHER_BRICKS = register("hexan_chiseled_nether_bricks_block", () ->
 	new Block(AbstractBlock.Properties.of(Material.STONE)
@@ -133,6 +133,24 @@ public class ModBlocks
 	new Block(AbstractBlock.Properties.of(Material.STONE)
 			.strength(32, 15) //time to mine, blast resistance //was 14
 			.harvestLevel(2)
+			.sound(SoundType.NETHER_BRICKS)
+			.requiresCorrectToolForDrops()
+			.harvestTool(ToolType.PICKAXE)
+			));
+	
+	public static final RegistryObject<Block> RED_GILDED_BRICKS_OF_LOST_TIME = register("red_gilded_bricks_of_lost_time_block", () ->
+	new Block(AbstractBlock.Properties.of(Material.STONE)
+			.strength(32, 15) //time to mine, blast resistance //was 14
+			.harvestLevel(2)
+			.sound(SoundType.NETHER_BRICKS)
+			.requiresCorrectToolForDrops()
+			.harvestTool(ToolType.PICKAXE)
+			));
+	
+	public static final RegistryObject<Block> HEXAN_CHISELED_POLISHED_BLACKSTONE = register("hexan_chiseled_polished_blackstone_block", () ->
+	new Block(AbstractBlock.Properties.of(Material.STONE)
+			.strength(4, 8)
+			.harvestLevel(1)
 			.sound(SoundType.NETHER_BRICKS)
 			.requiresCorrectToolForDrops()
 			.harvestTool(ToolType.PICKAXE)
