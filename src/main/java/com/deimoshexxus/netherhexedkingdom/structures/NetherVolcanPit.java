@@ -90,10 +90,7 @@ public class NetherVolcanPit extends Structure<NoFeatureConfig> {
             IBlockReader blockReader = chunkGenerator.getBaseColumn(blockpos.getX(), blockpos.getZ());
 
             for(BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable(x, y, z); y > sl; --y) {
-//            	if (y > chunkGenerator.getGenDepth() - sl - 2)
-//                {
-//            		continue;
-//                }
+
             	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
                 blockpos$mutable.move(Direction.DOWN);
                 BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);

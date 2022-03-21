@@ -81,7 +81,7 @@ public class NetherHexedKingdomMain
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        LOGGER.info("PREINIT");
+        //LOGGER.info("PREINIT");
         event.enqueueWork(() -> {
     		ModEntities.registerEntitySpawns();
             NetherStructures.setupStructures();
@@ -109,7 +109,6 @@ public class NetherHexedKingdomMain
 
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
-        LOGGER.info("Server starting FML event");
     }
 
 //Structures code

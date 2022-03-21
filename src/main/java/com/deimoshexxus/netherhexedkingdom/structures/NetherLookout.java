@@ -27,8 +27,6 @@ import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.jigsaw.JigsawManager;
 import net.minecraft.world.gen.feature.structure.*;
 import net.minecraft.world.gen.feature.template.TemplateManager;
-import org.apache.logging.log4j.Level;
-
 import java.util.List;
 
 public class NetherLookout extends Structure<NoFeatureConfig> {
@@ -134,10 +132,6 @@ public class NetherLookout extends Structure<NoFeatureConfig> {
             this.pieces.forEach(piece -> piece.getBoundingBox().y0 -= 1);
             this.calculateBoundingBox();
 
-            NetherHexedKingdomMain.LOGGER.log(Level.DEBUG, "Lookout at " +
-                            this.pieces.get(0).getBoundingBox().x0 + " " +
-                            this.pieces.get(0).getBoundingBox().y0 + " " +
-                            this.pieces.get(0).getBoundingBox().z0);
         }
     }
 }

@@ -22,8 +22,6 @@ import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.jigsaw.JigsawManager;
 import net.minecraft.world.gen.feature.structure.*;
 import net.minecraft.world.gen.feature.template.TemplateManager;
-import org.apache.logging.log4j.Level;
-
 import java.util.List;
 
 public class NetherIronClad extends Structure<NoFeatureConfig> {
@@ -43,7 +41,6 @@ public class NetherIronClad extends Structure<NoFeatureConfig> {
 
 
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
-            //new MobSpawnInfo.Spawners(EntityType.BLAZE, 100, 1, 6),
             new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_RANGED_ENTITY.get(), 100, 1, 8)
     );
     
@@ -129,10 +126,6 @@ public class NetherIronClad extends Structure<NoFeatureConfig> {
             this.pieces.forEach(piece -> piece.getBoundingBox().y0 -= 1);
             this.calculateBoundingBox();
 
-            NetherHexedKingdomMain.LOGGER.log(Level.DEBUG, "Iron Clad at " +
-                            this.pieces.get(0).getBoundingBox().x0 + " " +
-                            this.pieces.get(0).getBoundingBox().y0 + " " +
-                            this.pieces.get(0).getBoundingBox().z0);
         }
     }
 }

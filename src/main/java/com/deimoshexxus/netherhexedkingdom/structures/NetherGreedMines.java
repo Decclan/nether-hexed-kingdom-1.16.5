@@ -27,8 +27,6 @@ import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.jigsaw.JigsawManager;
 import net.minecraft.world.gen.feature.structure.*;
 import net.minecraft.world.gen.feature.template.TemplateManager;
-import org.apache.logging.log4j.Level;
-
 import java.util.List;
 
 public class NetherGreedMines extends Structure<NoFeatureConfig> {
@@ -50,7 +48,7 @@ public class NetherGreedMines extends Structure<NoFeatureConfig> {
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
             new MobSpawnInfo.Spawners(EntityType.WITHER_SKELETON, 100, 3, 6),
             new MobSpawnInfo.Spawners(ModEntities.HEXAN_GUARD_MELEE_ENTITY.get(), 100, 3, 12),
-            new MobSpawnInfo.Spawners(ModEntities.PIGLIN_BESERKER_ENTITY.get(), 100, 1, 6)
+            new MobSpawnInfo.Spawners(ModEntities.PIGLIN_BESERKER_ENTITY.get(), 100, 1, 3)
     );
     
     @Override
@@ -124,11 +122,6 @@ public class NetherGreedMines extends Structure<NoFeatureConfig> {
             this.pieces.forEach(piece -> piece.move(0, 1, 0));
             this.pieces.forEach(piece -> piece.getBoundingBox().y0 -= 1);
             this.calculateBoundingBox();
-
-            NetherHexedKingdomMain.LOGGER.log(Level.DEBUG, "Mines at " +
-                            this.pieces.get(0).getBoundingBox().x0 + " " +
-                            this.pieces.get(0).getBoundingBox().y0 + " " +
-                            this.pieces.get(0).getBoundingBox().z0);
         }
     }
 }
