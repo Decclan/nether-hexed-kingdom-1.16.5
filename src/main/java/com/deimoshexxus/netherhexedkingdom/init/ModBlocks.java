@@ -10,22 +10,17 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.StairsBlock;
-import net.minecraft.block.TorchBlock;
-import net.minecraft.block.WallTorchBlock;
 import net.minecraft.block.material.Material;
 
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraft.block.BlockState;
 
 //import net.minecraft.block.AbstractFireBlock;
 //import net.minecraft.world.level.
@@ -184,7 +179,5 @@ public class ModBlocks
 	{
 		RenderTypeLookup.setRenderLayer(HUMAN_SKELETON_TOP_BLOCK.get(), RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(HUMAN_SKELETON_BOTTOM_BLOCK.get(), RenderType.cutout());
-//		RenderTypeLookup.setRenderLayer(STONE_TORCH.get(), RenderType.cutout());
-//		RenderTypeLookup.setRenderLayer(WALL_STONE_TORCH.get(), RenderType.cutout());
     }
 }
