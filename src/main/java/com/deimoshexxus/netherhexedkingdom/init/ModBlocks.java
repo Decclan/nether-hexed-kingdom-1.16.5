@@ -36,7 +36,7 @@ public class ModBlocks
 
 	public static final RegistryObject<Block> MILITUS_ALLOY_BLOCK = register("militus_alloy_block", () ->
 		new Block(AbstractBlock.Properties.of(Material.METAL)
-				.strength(64, 16) //was 15
+				.strength(20, 16) //was 64, 15
 				.harvestLevel(2)
 				.sound(SoundType.METAL)
 				.requiresCorrectToolForDrops()
