@@ -11,7 +11,7 @@
         {
           "type": "minecraft:item",
           "weight": 15,
-          "name": "minecraft:gray_dye"
+          "name": "minecraft:red_dye"
         },
         {
           "type": "minecraft:item",
@@ -26,7 +26,12 @@
         {
           "type": "minecraft:item",
           "weight": 5,
-          "name": "minecraft:enchanted_golden_apple"
+          "name": "minecraft:chainmail_chestplate"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "minecraft:golden_apple"
         },
         {
           "type": "minecraft:item",
@@ -85,7 +90,7 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 10,
+          "weight": 5,
           "functions": [
             {
               "function": "minecraft:enchant_randomly"
@@ -164,13 +169,13 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 1.0,
+                "min": 2.0,
                 "max": 3.0,
                 "type": "minecraft:uniform"
               }
             }
           ],
-          "name": "minecraft:ender_pearl"
+          "name": "minecraft:glowstone_dust"
         },
         {
           "type": "minecraft:item",
@@ -194,7 +199,7 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 4.0,
+                "min": 3.0,
                 "max": 8.0,
                 "type": "minecraft:uniform"
               }
@@ -210,7 +215,7 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 2.0,
-                "max": 4.0,
+                "max": 6.0,
                 "type": "minecraft:uniform"
               }
             }
@@ -240,7 +245,7 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 2.0,
-                "max": 4.0,
+                "max": 3.0,
                 "type": "minecraft:uniform"
               }
             }
@@ -259,7 +264,7 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 1.0,
+                "min": 2.0,
                 "max": 8.0,
                 "type": "minecraft:uniform"
               }
@@ -274,7 +279,7 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 1.0,
+                "min": 3.0,
                 "max": 8.0,
                 "type": "minecraft:uniform"
               }
@@ -290,7 +295,7 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 1.0,
-                "max": 8.0,
+                "max": 3.0,
                 "type": "minecraft:uniform"
               }
             }
@@ -305,7 +310,7 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 1.0,
-                "max": 8.0,
+                "max": 3.0,
                 "type": "minecraft:uniform"
               }
             }
@@ -316,7 +321,7 @@
     },
     {
       "rolls": {
-        "min": 0.0,
+        "min": 1.0,
         "max": 2.0,
         "type": "minecraft:uniform"
       },
@@ -339,7 +344,7 @@
               "function":"minecraft:enchant_randomly"
             }
           ],
-          "name": "minecraft:iron_chestplate"
+          "name": "minecraft:chainmail_chestplate"
         },
         {
           "type":"minecraft:item",

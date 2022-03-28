@@ -4,14 +4,14 @@
     {
       "rolls": {
         "min": 1.0,
-        "max": 2.0,
+        "max": 3.0,
         "type": "minecraft:uniform"
       },
       "entries": [
         {
           "type": "minecraft:item",
-          "weight": 10,
-          "name": "minecraft:red_dye"
+          "weight": 15,
+          "name": "minecraft:night_vision"
         },
         {
           "type": "minecraft:item",
@@ -31,17 +31,32 @@
         {
           "type": "minecraft:item",
           "weight": 10,
-          "name": "minecraft:arrow"
+          "name": "minecraft:fermented_spider_eye"
         },
         {
           "type": "minecraft:item",
           "weight": 5,
-          "name": "minecraft:map"
+          "name": "minecraft:ender_pearl"
         },
         {
           "type": "minecraft:item",
           "weight": 5,
-          "name": "minecraft:black_dye"
+          "name": "minecraft:diamond"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "minecraft:book"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "minecraft:fire_resistance"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "minecraft:writable_book"
         },
         {
           "type": "minecraft:item",
@@ -50,13 +65,13 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 15,
-          "name": "minecraft:paper"
+          "weight": 10,
+          "name": "minecraft:bone"
         },
         {
           "type": "minecraft:item",
           "weight": 5,
-          "name": "minecraft:golden_horse_armor"
+          "name": "minecraft:golden_chestplate"
         },
         {
           "type": "minecraft:item",
@@ -66,11 +81,11 @@
         {
           "type": "minecraft:item",
           "weight": 5,
-          "name": "minecraft:golden_axe"
+          "name": "minecraft:golden_sword"
         },
         {
           "type": "minecraft:item",
-          "weight": 10,
+          "weight": 25,
           "functions": [
             {
               "function": "minecraft:enchant_randomly"
@@ -83,32 +98,21 @@
     {
       "rolls": 1,
       "entries": [
-	   {
-	      "type": "minecraft:item",
-	      "functions": [
-	        {
-	          "function": "minecraft:set_count",
-	          "count": {
-	            "min": 0.0,
-	            "max": 1.0,
-	            "type": "minecraft:uniform"
-	          }
-	        },
-	        {
-	          "function": "minecraft:looting_enchant",
-	          "count": {
-	            "min": 0.0,
-	            "max": 1.0
-	          },
-	          "limit": 1
-	        },
-	        {
-	          "function": "minecraft:set_nbt",
-	          "tag": "{Potion:\"minecraft:healing\"}"
-	        }
-	      ],
-	      "name": "minecraft:tipped_arrow"
-	    },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 5.0,
+                "max": 10.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
+          "name": "minecraft:iron_ingot"
+        },
         {
           "type": "minecraft:item",
           "weight": 5,
@@ -140,18 +144,18 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 1.0,
-                "max": 2.0,
+                "min": 3.0,
+                "max": 9.0,
                 "type": "minecraft:uniform"
               }
             }
           ],
-          "name": "netherhexedkingdom:eternal_light_block"
+          "name": "netherhexedkingdom:netherite_oxide"
         },
         {
           "type": "minecraft:item",
           "weight": 5,
-          "name": "minecraft:book"
+          "name": "minecraft:lava_bucket"
         },
 		{
           "type": "minecraft:item",
@@ -190,23 +194,23 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 4.0,
-                "max": 8.0,
+                "min": 2.0,
+                "max": 3.0,
                 "type": "minecraft:uniform"
               }
             }
           ],
-          "name": "minecraft:experience_bottle"
+          "name": "minecraft:book"
         },
         {
           "type": "minecraft:item",
-          "weight": 10,
+          "weight": 15,
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 2.0,
-                "max": 4.0,
+                "min": 3.0,
+                "max": 8.0,
                 "type": "minecraft:uniform"
               }
             }
@@ -236,7 +240,7 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 2.0,
-                "max": 4.0,
+                "max": 3.0,
                 "type": "minecraft:uniform"
               }
             }
@@ -255,13 +259,13 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 1.0,
-                "max": 8.0,
+                "min": 3.0,
+                "max": 12.0,
                 "type": "minecraft:uniform"
               }
             }
           ],
-          "name": "minecraft:bone"
+          "name": "minecraft:paper"
         },
         {
           "type": "minecraft:item",
@@ -270,7 +274,7 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 1.0,
+                "min": 3.0,
                 "max": 8.0,
                 "type": "minecraft:uniform"
               }
@@ -285,13 +289,13 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 1.0,
-                "max": 2.0,
+                "min": 3.0,
+                "max": 8.0,
                 "type": "minecraft:uniform"
               }
             }
           ],
-          "name": "minecraft:writable_book"
+          "name": "minecraft:glowstone_dust"
         },
         {
           "type": "minecraft:item",
@@ -300,13 +304,13 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 1.0,
+                "min": 2.0,
                 "max": 5.0,
                 "type": "minecraft:uniform"
               }
             }
           ],
-          "name": "minecraft:string"
+          "name": "netherhexedkingdom:netherite_oxide"
         }
       ]
     },
@@ -325,7 +329,7 @@
               "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "minecraft:golden_helmet"
+          "name": "minecraft:diamond_helmet"
         },
         {
           "type":"minecraft:item",
@@ -335,7 +339,7 @@
               "function":"minecraft:enchant_randomly"
             }
           ],
-          "name": "minecraft:chainmail_chestplate"
+          "name": "minecraft:golden_chestplate"
         },
         {
           "type":"minecraft:item",
@@ -345,7 +349,7 @@
               "function":"minecraft:enchant_randomly"
             }
           ],
-          "name": "minecraft:chainmail_leggings"
+          "name": "minecraft:golden_leggings"
         },
         {
           "type":"minecraft:item",
@@ -355,7 +359,7 @@
               "function":"minecraft:enchant_randomly"
             }
           ],
-          "name": "minecraft:diamond_boots"
+          "name": "minecraft:golden_boots"
         },
         {
           "type":"minecraft:item",
@@ -365,7 +369,7 @@
               "function":"minecraft:enchant_randomly"
             }
           ],
-          "name": "minecraft:gold_pickaxe"
+          "name": "minecraft:iron_pickaxe"
         }
       ]
     }    

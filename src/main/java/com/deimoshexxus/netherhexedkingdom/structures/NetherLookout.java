@@ -113,6 +113,7 @@ public class NetherLookout extends Structure<NoFeatureConfig> {
                 }
              }
             
+            if (y > 64 && y < 110)
             JigsawManager.addPieces(
                     dynamicRegistryManager,
                     new VillageConfig(() -> dynamicRegistryManager.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY)

@@ -117,6 +117,7 @@ public class NetherBullionTemple extends Structure<NoFeatureConfig> {
                 //|| blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP)
              }
             
+            if (y > 64 && y < 110)
             JigsawManager.addPieces(
                     dynamicRegistryManager,
                     new VillageConfig(() -> dynamicRegistryManager.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY)
