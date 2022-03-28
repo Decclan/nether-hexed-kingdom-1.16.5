@@ -50,7 +50,7 @@ public class NetherVolcanPit extends Structure<NoFeatureConfig> {
 
 
     private static final List<MobSpawnInfo.Spawners> STRUCTURE_MONSTERS = ImmutableList.of(
-            new MobSpawnInfo.Spawners(ModEntities.VOLCAN_DAEMON_ENTITY.get(), 3, 0, 1)
+//            new MobSpawnInfo.Spawners(ModEntities.PIGLIN_BESERKER_ENTITY.get(), 3, 0, 1)
     );
     
     @Override
