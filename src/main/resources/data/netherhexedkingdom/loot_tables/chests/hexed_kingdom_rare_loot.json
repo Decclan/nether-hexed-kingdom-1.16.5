@@ -95,6 +95,22 @@
         }
       ]
     },
+    
+    {
+      "type": "item",
+      "name": "minecraft:potion",
+      "weight": 5,
+      "functions": [
+        {
+          "function": "set_nbt",
+          "tag": "{Potion:\"minecraft:fire_resistance\"}"
+        },
+        {
+          "function": "enchant_randomly"
+        }
+      ]
+    },
+    
     {
       "rolls": 1,
       "entries": [
