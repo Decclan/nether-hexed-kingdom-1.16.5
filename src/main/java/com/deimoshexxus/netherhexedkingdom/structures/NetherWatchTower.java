@@ -127,6 +127,7 @@ public class NetherWatchTower extends Structure<NoFeatureConfig> {
                 }
              }
             
+            if (y > 30 && y < 90)
             JigsawManager.addPieces(
                     dynamicRegistryManager,
                     new VillageConfig(() -> dynamicRegistryManager.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY)

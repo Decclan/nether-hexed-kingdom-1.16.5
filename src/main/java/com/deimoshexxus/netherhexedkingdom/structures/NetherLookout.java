@@ -92,22 +92,22 @@ public class NetherLookout extends Structure<NoFeatureConfig> {
             	BlockState blockstate = blockReader.getBlockState(blockpos$mutable);
                 blockpos$mutable.move(Direction.DOWN);
                 BlockState blockstate1 = blockReader.getBlockState(blockpos$mutable);
-            	if (y > chunkGenerator.getGenDepth() - sl - 2)
-                {
-            		continue;
-                }
-                if (y < sl + 40)
-                {
-            		continue;
-                }
+//            	if (y > chunkGenerator.getGenDepth() - sl - 2)
+//                {
+//            		continue;
+//                }
+//                if (y < sl + 40)
+//                {
+//            		continue;
+//                }
 //                if (y < chunkGenerator.getGenDepth() - sl - 52)
 //                {
 //            		continue;
 //                }
-                if (this.getBoundingBox().intersects(getBoundingBox()))
-                {
-                	break;
-                }
+//                if (this.getBoundingBox().intersects(getBoundingBox()))
+//                {
+//                	break;
+//                }
                 if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) {
                     break;
                 }

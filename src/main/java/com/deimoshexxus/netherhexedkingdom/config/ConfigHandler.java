@@ -99,11 +99,11 @@ public final class ConfigHandler
 		BUILDER.comment("\nNether lookout generation. \nDefault value: true");
 		NETHER_LOOKOUT_SPAWN = BUILDER.define("Generate nether lookout?", true);
 		
-		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 18");
-		NETHER_LOOKOUT_MAX = BUILDER.define("Nether lookout max", 18);
+		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 15"); //was 18
+		NETHER_LOOKOUT_MAX = BUILDER.define("Nether lookout max", 16);
 		
-		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 8");
-		NETHER_LOOKOUT_MIN = BUILDER.define("Nether lookout min", 8);
+		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 5"); //was 8
+		NETHER_LOOKOUT_MIN = BUILDER.define("Nether lookout min", 6);
 		
 		BUILDER.comment("\nNether outpost generation. \nDefault value: true");
 		NETHER_OUTPOST_SPAWN = BUILDER.define("Generate nether outpost?", true);
@@ -120,8 +120,8 @@ public final class ConfigHandler
 		BUILDER.comment("\nMaximum chunk distance spawn attempt \nDefault value: 16");
 		NETHER_BULLION_TEMPLE_MAX = BUILDER.define("Bullion temple max", 16);
 		
-		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 7");
-		NETHER_BULLION_TEMPLE_MIN = BUILDER.define("Bullion temple min", 7);
+		BUILDER.comment("\nMinimum chunk distance spawn attempt \nDefault value: 6"); //was 7
+		NETHER_BULLION_TEMPLE_MIN = BUILDER.define("Bullion temple min", 6);
 		
 		BUILDER.comment("\nNether iron clad generation. \nDefault value: true");
 		NETHER_IRON_CLAD_SPAWN = BUILDER.define("Generate iron clad?", true);
