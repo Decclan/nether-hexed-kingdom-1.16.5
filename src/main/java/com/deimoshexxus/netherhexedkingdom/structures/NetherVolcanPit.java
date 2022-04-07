@@ -3,8 +3,6 @@ package com.deimoshexxus.netherhexedkingdom.structures;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.deimoshexxus.netherhexedkingdom.NetherHexedKingdomMain;
-import com.deimoshexxus.netherhexedkingdom.init.ModEntities;
-
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Direction;

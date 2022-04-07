@@ -101,9 +101,9 @@ public class NetherIronClad extends Structure<NoFeatureConfig> {
                 	continue;
                 }
                 BlockState lavablockstate = blockReader.getBlockState(lavablockpos);
-                if (!lavablockstate.is(Blocks.LAVA)) 
+                if (lavablockstate.is(Blocks.LAVA)) 
                 {
-                	continue;
+                	break;
                 }
              }
             
