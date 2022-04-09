@@ -41,7 +41,7 @@ public class NetherRedSunTower extends Structure<NoFeatureConfig> {
 
     @Override
     public GenerationStage.Decoration step() {
-        return GenerationStage.Decoration.UNDERGROUND_STRUCTURES;
+        return GenerationStage.Decoration.UNDERGROUND_DECORATION;
     }
 
 
@@ -116,7 +116,7 @@ public class NetherRedSunTower extends Structure<NoFeatureConfig> {
                 BlockState airblockstate2 = blockReader.getBlockState(airblockpos2);
                 if (!airblockstate2.is(Blocks.AIR)) 
                 {
-                	continue;
+                	break; //was continue
                 }
              }
             

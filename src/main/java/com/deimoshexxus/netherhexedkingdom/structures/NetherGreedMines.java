@@ -97,13 +97,14 @@ public class NetherGreedMines extends Structure<NoFeatureConfig> {
                 }
                 if (this.getBoundingBox().intersects(getBoundingBox()))
                 {
-                	break;
+                	continue;
                 }
                 if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) {
                    break;
                 }
              }
             
+            if (y > 32 && y < 48)
             JigsawManager.addPieces(
                     dynamicRegistryManager,
                     new VillageConfig(() -> dynamicRegistryManager.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY)

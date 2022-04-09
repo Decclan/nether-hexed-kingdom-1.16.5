@@ -43,7 +43,7 @@ public class NetherVolcanPit extends Structure<NoFeatureConfig> {
 
     @Override
     public GenerationStage.Decoration step() {
-        return GenerationStage.Decoration.UNDERGROUND_DECORATION;
+        return GenerationStage.Decoration.UNDERGROUND_STRUCTURES;
     }
 
 
@@ -105,12 +105,12 @@ public class NetherVolcanPit extends Structure<NoFeatureConfig> {
 //                {
 //                	break;
 //                }
-                if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.SOUL_SAND) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) { // && (blockstate1.is(Blocks.BASALT))
+//                if (!blockstate1.is(Blocks.BASALT))
+//                {
+//                    continue;
+//                }
+                if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.BASALT) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) { // && (blockstate1.is(Blocks.BASALT))
                    break;
-                }
-                if (!blockstate1.is(Blocks.BASALT))
-                {
-                    continue;
                 }
              }  
 //                if (blockstate.is(Blocks.AIR) && (blockstate1.is(Blocks.BASALT) || blockstate1.isFaceSturdy(blockReader, blockpos$mutable, Direction.UP))) {
